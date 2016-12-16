@@ -20,7 +20,8 @@ PS1='\[\033[01;32m\]\u:\W $ \[\e[0m\]'                         # default: PS1='\
 
 # Homebrewのなんかよくわからない設定
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH=$HOME/.nodebrew/current/bin:$PATH
+# node path setting
+#PATH=$HOME/.nodebrew/current/bin:$PATH
 
 ## 既存のコマンド名を使用する場合はcommandを付与すること
 # gcc hoge.c で hoge という実行ファイルを作成
