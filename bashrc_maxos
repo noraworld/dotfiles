@@ -1,5 +1,5 @@
 # Get the aliases
-alias    ls='ls -G'
+alias ls='ls -G'
 alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 
 # Set the environment variables
