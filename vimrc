@@ -12,12 +12,21 @@ set smartcase
 set hlsearch
 
 " Key bindings like Emacs
-map <C-f> <Right>
-map <C-b> <Left>
-map <C-a> <Home>
-map <C-e> <End>
-map <C-n> <Down>
-map <C-p> <Up>
+"" Normal mode + Visual mode
+noremap! <C-f> <Right>
+noremap! <C-b> <Left>
+noremap! <C-a> <Home>
+noremap! <C-e> <End>
+noremap! <C-n> <Down>
+noremap! <C-p> <Up>
+
+"" Commandline mode + Insert mode
+noremap <C-f> <Right>↲
+noremap <C-b> <Left>↲
+noremap <C-a> <Home>↲
+noremap <C-e> <End>↲
+noremap <C-n> <Down>↲
+noremap <C-p> <Up>↲
 
 " Syntax highlight on
 if has("syntax")
