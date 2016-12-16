@@ -10,9 +10,4 @@ alias ld='echo ERROR: cannot execute ld'
 alias grep='grep --color=auto'
 
 # Edit prompt
-PS1='\[\033[01;32m\]\u:\W $ \[\e[0m\]'                         # default: PS1='\h:\W \u\$ '
-# PS1='\[\e[0;36m\]\u:\W $ \[\e[0m\]'  # default: PS1='\h:\W \u\$ '
-# PS2='>> '                            # default: PS2='> '
-# \e[1;34m も好き
-# 適切な位置に "\[" や "\]" を入れないと改行されなかったり変な文字が残るので注意
-# http://pctonitijou.blog.fc2.com/blog-entry-243.html
+PS1='\[\033[01;32m\]\u:\W $ \[\e[0m\]'
