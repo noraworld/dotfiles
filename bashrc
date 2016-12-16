@@ -17,8 +17,3 @@ PS1='\[\033[01;32m\]\u:\W $ \[\e[0m\]'                         # default: PS1='\
 # \e[1;34m も好き
 # 適切な位置に "\[" や "\]" を入れないと改行されなかったり変な文字が残るので注意
 # http://pctonitijou.blog.fc2.com/blog-entry-243.html
-
-# Homebrewのなんかよくわからない設定
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
-# node path setting
-#PATH=$HOME/.nodebrew/current/bin:$PATH
