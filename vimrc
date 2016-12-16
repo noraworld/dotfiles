@@ -8,7 +8,7 @@ set smartindent
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set virtualedit=block
-set smartcase
+set ignorecase
 set hlsearch
 
 " Key bindings like Emacs
@@ -34,4 +34,7 @@ if has("syntax")
 endif
 
 " Syntax highlight color
-highlight Comment ctermfg=grey
+hi LineNr      ctermfg=cyan
+hi Comment     ctermfg=darkgrey
+hi NonText     ctermfg=white
+hi SpecialKey  ctermfg=white
