@@ -1,8 +1,6 @@
 alias sudo='sudo '
-alias ls='ls -G'
 alias dirs='dirs -v'
 alias history='history | tail -r | less'
-# alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 alias trash='rmtrash'
 # alias man='env LANG=C man'
 # alias jman='env LANG=ja_JP.UTF-8 man'

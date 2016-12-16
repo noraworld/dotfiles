@@ -1,0 +1,2 @@
+alias    ls='ls -G'
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'

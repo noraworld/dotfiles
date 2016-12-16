@@ -3,6 +3,20 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
+# Divide configs by OS
+case "${OSTYPE}" in
+  darwin*)
+    if [ -f ~/.bashrc_maxos ]; then
+      . ~/.bashrc_maxos
+    fi
+  ;;
+  linux*)
+    if [ -f ~/.bashrc_linux ]; then
+      . ~/.bashrc_linux
+    fi
+  ;;
+esac
+
 # Export the environment variables
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export HISTCONTROL=ignoredups
