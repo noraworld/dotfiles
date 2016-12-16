@@ -6,7 +6,7 @@ set tabstop=2
 set shiftwidth=2
 set smartindent
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:*,eol:↲,extends:»,precedes:«,nbsp:%
 set virtualedit=block
 set ignorecase
 set hlsearch
@@ -36,8 +36,8 @@ endif
 " Syntax highlight color
 hi LineNr      ctermfg=cyan
 hi Comment     ctermfg=darkgrey
-hi NonText     ctermfg=white
-hi SpecialKey  ctermfg=white
+hi NonText     ctermfg=lightgrey
+hi SpecialKey  ctermfg=lightgrey
 
 " Cursor shape
 let &t_ti.="\e[4 q"
