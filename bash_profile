@@ -21,5 +21,4 @@ esac
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
-# export HISTIGNORE="history*:hg*:cd*:pushd*:popd*:ls*:dirs*:fg*:bg*:quit*"
 export PATH
