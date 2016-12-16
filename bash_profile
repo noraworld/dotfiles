@@ -17,6 +17,11 @@ case "${OSTYPE}" in
   ;;
 esac
 
+# For Development configs
+if [ -f ~/.bashrc_dev ]; then
+  . ~/.bashrc_dev
+fi
+
 # Export the environment variables
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export HISTCONTROL=ignoredups
