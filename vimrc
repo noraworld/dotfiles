@@ -21,12 +21,12 @@ noremap! <C-n> <Down>
 noremap! <C-p> <Up>
 
 "" Commandline mode + Insert mode
-noremap <C-f> <Right>↲
-noremap <C-b> <Left>↲
-noremap <C-a> <Home>↲
-noremap <C-e> <End>↲
-noremap <C-n> <Down>↲
-noremap <C-p> <Up>↲
+noremap <C-f> <Right>
+noremap <C-b> <Left>
+noremap <C-a> <Home>
+noremap <C-e> <End>
+noremap <C-n> <Down>
+noremap <C-p> <Up>
 
 " Syntax highlight on
 if has("syntax")
