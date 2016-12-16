@@ -40,7 +40,7 @@ hi NonText     ctermfg=white
 hi SpecialKey  ctermfg=white
 
 " Cursor shape
-let &t_ti.="\e[2 q"
-let &t_SI.="\e[2 q"
-let &t_EI.="\e[2 q"
+let &t_ti.="\e[4 q"
+let &t_SI.="\e[4 q"
+let &t_EI.="\e[4 q"
 let &t_te.="\e[0 q"
