@@ -1,6 +1,0 @@
-# Get the aliases
-alias ls='ls -G'
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-
-# Set the environment variables
-PATH=/usr/local/sbin:$PATH  # for Homebrew
