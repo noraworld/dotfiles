@@ -5,6 +5,25 @@ alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
 
+# Divide configs by OS
+case "${OSTYPE}" in
+  darwin*)
+    if [ -f ~/.bashrc_maxos ]; then
+      . ~/.bashrc_maxos
+    fi
+  ;;
+  linux*)
+    if [ -f ~/.bashrc_linux ]; then
+      . ~/.bashrc_linux
+    fi
+  ;;
+esac
+
+# For Development configs
+if [ -f ~/.bashrc_dev ]; then
+  . ~/.bashrc_dev
+fi
+
 # Git completion config
 if [ -f /usr/local/git/contrib/completion/git-prompt.sh ]; then
   . /usr/local/git/contrib/completion/git-prompt.sh
