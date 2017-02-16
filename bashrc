@@ -19,9 +19,14 @@ case "${OSTYPE}" in
   ;;
 esac
 
-# For Development configs
+# For development configs
 if [ -f ~/.bashrc_dev ]; then
   . ~/.bashrc_dev
+fi
+
+# For production configs
+if [ -f ~/.bashrc_pro ]; then
+  . ~/.bashrc_pro
 fi
 
 # Git completion config
