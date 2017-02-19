@@ -6,7 +6,7 @@ set tabstop=2
 set shiftwidth=2
 set smartindent
 set list
-set listchars=tab:»-,trail:*,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:*,eol:$,extends:»,precedes:«,nbsp:%
 set virtualedit=block
 set ignorecase
 set hlsearch
