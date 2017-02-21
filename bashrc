@@ -2,7 +2,6 @@
 alias sudo='sudo '
 alias history='history | tail -r | less'
 alias dirs='dirs -v'
-alias grep='grep --color=always'
 alias less='less -R'
 
 # Divide configs by OS
