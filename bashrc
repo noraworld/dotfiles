@@ -1,6 +1,5 @@
 # Get the aliases
 alias sudo='sudo '
-alias history='history | tail -r | less'
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
@@ -19,9 +18,14 @@ case "${OSTYPE}" in
   ;;
 esac
 
-# For Development configs
+# For development configs
 if [ -f ~/.bashrc_dev ]; then
   . ~/.bashrc_dev
+fi
+
+# For production configs
+if [ -f ~/.bashrc_pro ]; then
+  . ~/.bashrc_pro
 fi
 
 # Git completion config
