@@ -1,6 +1,7 @@
-# nvm
-if [[ -s ~/.nvm/nvm.sh ]]; then
-  . ~/.nvm/nvm.sh
+# ndenv
+if [[ -s ~/.ndenv ]]; then
+  PATH="$HOME/.ndenv/bin:$PATH"
+  eval "$(ndenv init -)"
 fi
 
 # rbenv
