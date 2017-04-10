@@ -1,3 +1,5 @@
+runtime! config/*.vim
+
 " Set configs
 scriptencoding utf-8
 set encoding=utf-8
