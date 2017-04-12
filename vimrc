@@ -1,5 +1,8 @@
 " Load other config files
+"" The bundle must be first loaded
+runtime! config/bundle/*.vim
 runtime! config/*.vim
+runtime! config/*/*.vim
 
 " Set configs
 scriptencoding utf-8
@@ -28,10 +31,10 @@ hi LineNr     ctermfg=cyan
 hi Comment    ctermfg=darkgrey
 hi NonText    ctermfg=lightgrey
 hi SpecialKey ctermfg=lightgrey
+hi CursorLine ctermbg=17
 "" Not work. Need to change the terminal preferences
 "" Cursor color in preferences: R: 53, G: 125, B: 79
-" hi Cursor ctermbg=15 ctermfg=8
-hi CursorLine ctermbg=17
+"" hi Cursor ctermbg=15 ctermfg=8
 
 " Cursor shape
 let &t_ti.="\e[2 q"
