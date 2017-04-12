@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ndenv
 if [[ -s ~/.ndenv ]]; then
   PATH="$HOME/.ndenv/bin:$PATH"
