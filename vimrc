@@ -1,3 +1,4 @@
+" Load other config files
 runtime! config/*.vim
 
 " Set configs
@@ -14,13 +15,14 @@ set listchars=tab:»-,trail:*,eol:$,extends:»,precedes:«,nbsp:%
 set virtualedit=block
 set ignorecase
 set hlsearch
+set virtualedit=onemore
 
 " Key bindings like Emacs
 "" Normal mode + Visual mode
 noremap! <C-f> <Right>
 noremap! <C-b> <Left>
 noremap! <C-a> <Home>
-noremap! <C-e> <End>
+noremap! <C-e> <End><Right>
 noremap! <C-n> <Down>
 noremap! <C-p> <Up>
 
@@ -28,7 +30,7 @@ noremap! <C-p> <Up>
 noremap <C-f> <Right>
 noremap <C-b> <Left>
 noremap <C-a> <Home>
-noremap <C-e> <End>
+noremap <C-e> <End><Right>
 noremap <C-n> <Down>
 noremap <C-p> <Up>
 
@@ -38,10 +40,10 @@ if has("syntax")
 endif
 
 " Syntax highlight color
-hi LineNr      ctermfg=cyan
-hi Comment     ctermfg=darkgrey
-hi NonText     ctermfg=lightgrey
-hi SpecialKey  ctermfg=lightgrey
+hi LineNr     ctermfg=cyan
+hi Comment    ctermfg=darkgrey
+hi NonText    ctermfg=lightgrey
+hi SpecialKey ctermfg=lightgrey
 
 " Cursor shape
 let &t_ti.="\e[4 q"
