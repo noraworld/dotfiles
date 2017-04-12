@@ -33,6 +33,7 @@ noremap! <C-a> <Home>
 noremap! <C-e> <End><Right>
 noremap! <C-n> <Down>
 noremap! <C-p> <Up>
+noremap! <C-c> <Right><Esc>
 
 " Syntax highlight on
 if has("syntax")
