@@ -1,6 +1,6 @@
 nnoremap s  <Nop>
-nnoremap ss :<C-u>vs<CR>
-nnoremap sp :<C-u>sp<CR>
+nnoremap ss :<C-u>vs<CR><C-w>l
+nnoremap sp :<C-u>sp<CR><C-w>j
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
