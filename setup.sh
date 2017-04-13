@@ -58,7 +58,7 @@ fi
 
 # link all files in bash/ and vim/ directory
 link_directory ${PWD}/bash $HOME/.bash
-link_directory $PWD/vim $HOME/.vim/config
+link_directory $PWD/vim    $HOME/.vim/config
 
-# unlink this script and load config files
+# unlink this script
 unlink $HOME/.setup.sh
