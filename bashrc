@@ -7,37 +7,37 @@ alias less='less -R'
 # Divide configs by OS
 case "${OSTYPE}" in
   darwin*)
-    if [ -f ~/.bashrc_maxos ]; then
-      . ~/.bashrc_maxos
+    if [ -e ~/.bash/macos.bash ]; then
+      . ~/.bash/macos.bash
     fi
   ;;
   linux*)
-    if [ -f ~/.bashrc_linux ]; then
-      . ~/.bashrc_linux
+    if [ -e ~/.bash/linux.bash ]; then
+      . ~/.bash/linux.bash
     fi
   ;;
 esac
 
 # For development configs
-if [ -f ~/.bashrc_dev ]; then
-  . ~/.bashrc_dev
+if [ -e ~/.bash/development.bash ]; then
+  . ~/.bash/development.bash
 fi
 
 # For production configs
-if [ -f ~/.bashrc_pro ]; then
-  . ~/.bashrc_pro
+if [ -e ~/.bash/production.bash ]; then
+  . ~/.bash/production.bash
 fi
 
 # Git completion config
-if [ -f /usr/local/git/contrib/completion/git-prompt.sh ]; then
+if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
   . /usr/local/git/contrib/completion/git-prompt.sh
 fi
 
-if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+if [ -e /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
-if [ -f /usr/local/git/contrib/completion/git-prompt.sh ]; then
+if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
