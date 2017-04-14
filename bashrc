@@ -1,8 +1,12 @@
 # Get the aliases
+## General aliases
 alias sudo='sudo '
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
+
+## Override commnad aliases
+alias unlink='/usr/local/bin/_unlink'
 
 # Divide configs by OS
 case "${OSTYPE}" in
