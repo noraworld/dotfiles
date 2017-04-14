@@ -60,5 +60,8 @@ fi
 link_directory ${PWD}/bash $HOME/.bash
 link_directory $PWD/vim    $HOME/.vim/config
 
-# unlink this script
+# unlink this script and load config files
 unlink $HOME/.setup.sh
+exec -l $SHELL
+
+exit 0
