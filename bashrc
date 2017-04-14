@@ -6,7 +6,9 @@ alias grep='grep --color=always'
 alias less='less -R'
 
 ## Override commnad aliases
-alias unlink='/usr/local/bin/_unlink'
+if [ -e /usr/local/bin/_unlink ]; then
+  alias unlink='/usr/local/bin/_unlink'
+fi
 
 # Divide configs by OS
 case "${OSTYPE}" in
