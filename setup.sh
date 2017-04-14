@@ -3,7 +3,7 @@
 # raise error if this script is not executed in this directory
 if [ ${0} != "setup.sh" ]; then
   echo "Fatal error: this script must be executed in dotfiles directory."
-  echo "You need to change directory so you can execure this script by"
+  echo "You need to change directories so you can execure this script by"
   echo "typing the following command.\n"
   echo "$ sh setup.sh\n"
   echo "Aborted."
