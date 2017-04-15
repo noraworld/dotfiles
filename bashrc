@@ -4,6 +4,7 @@ alias sudo='sudo '
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
+alias vi='vim'
 
 ## Override commnad aliases
 if [ -e /usr/local/bin/_unlink ]; then
