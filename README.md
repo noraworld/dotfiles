@@ -15,6 +15,7 @@ All you have to do is run the setup script.
 ```bash
 $ cd path/to/dotfiles
 $ sh setup.sh
+$ source ~/.bash_profile
 ```
 
 Done!
