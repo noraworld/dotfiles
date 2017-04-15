@@ -60,9 +60,8 @@ fi
 link_directory ${PWD}/bash $HOME/.bash
 link_directory $PWD/vim    $HOME/.vim/config
 
-# unlink unnecessary files and load config files
+# unlink unnecessary files
 unlink $HOME/.setup.sh
 unlink $HOME/.README.md
-exec -l $SHELL
 
 exit 0
