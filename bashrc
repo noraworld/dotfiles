@@ -5,6 +5,7 @@ alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
 alias vi='vim'
+alias crontab='crontab -i'
 
 ## Override commnad aliases
 if [ -e /usr/local/bin/_unlink ]; then
