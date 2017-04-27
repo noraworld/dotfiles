@@ -24,3 +24,8 @@ if [[ -s ~/.phpenv ]]; then
   PATH="$HOME/.phpenv/bin:$PATH"
   eval "$(phpenv init -)"
 fi
+
+if [ -x "`which go`" ]; then
+  export GOPATH=$HOME/.go
+  PATH=$GOPATH/bin:$PATH
+fi
