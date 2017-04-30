@@ -8,10 +8,15 @@ alias vi='vim'
 alias crontab='crontab -i'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 
-## Override commnad aliases
+## Override the commnad aliases
 if [ -e /usr/local/bin/_unlink ]; then
   alias unlink='/usr/local/bin/_unlink'
 fi
+
+# Examine the large files in descending order
+function mcap() {
+  du -aBM ${1} | sort -rn | head ${2}
+}
 
 # Divide configs by OS
 case "${OSTYPE}" in
