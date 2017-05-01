@@ -6,7 +6,7 @@ alias grep='grep --color=always'
 alias less='less -R'
 alias vi='vim'
 alias crontab='crontab -i'
-alias gosearch='cd $(ghq root)/$(ghq list | peco)'
+alias gosearch='ghq look $(ghq list | peco)'
 
 ## Override commnad aliases
 if [ -e /usr/local/bin/_unlink ]; then
