@@ -26,7 +26,7 @@ if [[ -s ~/.phpenv ]]; then
 fi
 
 # gopath
-if [ -x "`which go`" ]; then
+if [ -s ~/.go ]; then
   export GOPATH=$HOME/.go
-  PATH=$GOPATH/bin:$PATH
+  PATH="$GOPATH/bin:$PATH"
 fi
