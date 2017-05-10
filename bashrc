@@ -5,7 +5,6 @@ alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
 alias vi='vim'
-alias crontab='crontab -i'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 
 ## Override the commnad aliases
