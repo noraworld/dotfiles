@@ -42,6 +42,22 @@ function link_directory() {
   fi
 }
 
+function install_vim_bundle() {
+  # install NeoBundle
+  curl -LsS https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
+  sh ./install.sh 1>/dev/null 2>/dev/null
+  rm ./install.sh
+
+  # install vim-plug
+  if [ ! -e ~/.vim/autoload ]; then
+    mkdir -p ~/.vim/autoload
+  fi
+  curl -LsS https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > ~/.vim/autoload/plug.vim
+
+  # install Vundle
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
+}
+
 # link all files in current directory
 for src_path in $PWD/*
 do
@@ -63,5 +79,8 @@ link_directory $PWD/vim    $HOME/.vim/config
 # unlink unnecessary files
 unlink $HOME/.setup.sh
 unlink $HOME/.README.md
+
+# install the Vim plugins
+install_vim_bundle
 
 exit 0
