@@ -2,11 +2,11 @@
 
 # raise error if this script is not executed in this directory
 if [ ${0} != "setup.sh" ]; then
-  echo "Fatal error: this script must be executed in dotfiles directory."
-  echo "You need to change directories so you can execure this script by"
-  echo "typing the following command.\n"
-  echo "$ sh setup.sh\n"
-  echo "Aborted."
+  echo -e "Fatal error: this script must be executed in dotfiles directory."
+  echo -e "You need to change directories so you can execure this script by"
+  echo -e "typing the following command.\n"
+  echo -e "$ sh setup.sh\n"
+  echo -e "Aborted."
   exit 1
 fi
 
@@ -16,8 +16,8 @@ function link_file() {
   # or a file but not a link file
   # or a link file but another file linking, then
   if [ -d ${2} ] || [ -f ${2} ] && [ ! -L ${2} ] || [ -L ${2} ] && [ "`readlink ${2}`" != "${1}" ]; then
-    echo "${2} already exists. You need to rename or move ${2} to another filename or directory."
-    echo "Skipping.\n"
+    echo -e "${2} already exists. You need to rename or move ${2} to another filename or directory."
+    echo -e "Skipping.\n"
   # else if the filename is not created,
   # so this script has not been executed yet or
   # unlink these files, then
@@ -32,8 +32,8 @@ function link_directory() {
   # or a directory but not a link directory
   # or a link directory but another directory linking, then
   if [ -f ${2} ] || [ -d ${2} ] && [ ! -L ${2} ] || [ -L ${2} ] && [ "`readlink ${2}`" != "${1}" ]; then
-    echo "${2} already exists. You need to rename or move ${2} to another filename or directory."
-    echo "Skipping.\n"
+    echo -e "${2} already exists. You need to rename or move ${2} to another filename or directory."
+    echo -e "Skipping.\n"
   # else if the filename is not created,
   # so this script has not been executed yet or
   # unlink these directories, then
