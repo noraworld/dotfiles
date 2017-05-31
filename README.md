@@ -21,7 +21,7 @@ $ source ~/.bash_profile
 Done!
 
 ## Dependencies
-The following is some libraries used in this dotfiles. These dependencies will be fixed by preparing provisoning in the future...
+The following is some libraries used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
 
 * coreutils (`brew install coreutils`)
 * binutils (`brew install binutils`)
