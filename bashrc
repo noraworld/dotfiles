@@ -5,6 +5,7 @@ alias load='source ~/.bash_profile'
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
+alias history='history | tac | less'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 

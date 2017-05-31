@@ -8,3 +8,4 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000000
 export PATH
+export MANPATH
