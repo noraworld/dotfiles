@@ -8,16 +8,6 @@ alias less='less -R'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 
-## Override the commnad aliases
-if [ -e ~/.bin/_unlink ]; then
-  alias unlink='~/.bin/_unlink'
-fi
-
-# Set self-making command path to environment variables
-if [ -e ~/.bin ]; then
-  PATH=$HOME/.bin:$PATH
-fi
-
 # Divide configs by OS
 case "${OSTYPE}" in
   darwin*)
@@ -40,6 +30,11 @@ fi
 # For production configs
 if [ -e ~/.bash/production.bash ]; then
   . ~/.bash/production.bash
+fi
+
+# Load self-making commands path
+if [ -e ~/.bash/bin.bash ]; then
+  . ~/.bash/bin.bash
 fi
 
 # Git completion config
