@@ -9,8 +9,13 @@ alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 
 ## Override the commnad aliases
-if [ -e /usr/local/bin/_unlink ]; then
-  alias unlink='/usr/local/bin/_unlink'
+if [ -e ~/.bin/_unlink ]; then
+  alias unlink='~/.bin/_unlink'
+fi
+
+# Set self-making command path to environment variables
+if [ -e ~/.bin ]; then
+  PATH=$HOME/.bin:$PATH
 fi
 
 # Divide configs by OS
