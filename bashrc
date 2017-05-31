@@ -1,6 +1,7 @@
 # Get the aliases
 ## General aliases
 alias sudo='sudo '
+alias load='source ~/.bash_profile'
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -R'
@@ -11,11 +12,6 @@ alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 if [ -e /usr/local/bin/_unlink ]; then
   alias unlink='/usr/local/bin/_unlink'
 fi
-
-# Examine the large files in descending order
-function mcap() {
-  du -aBM ${1} | sort -rn | head ${2}
-}
 
 # Divide configs by OS
 case "${OSTYPE}" in
