@@ -79,6 +79,7 @@ link_directory $PWD/vim    $HOME/.vim/config
 # unlink unnecessary files
 unlink $HOME/.setup.sh
 unlink $HOME/.README.md
+unlink $HOME/.LICENSE
 
 # install the Vim plugins
 install_vim_bundle
