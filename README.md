@@ -19,3 +19,13 @@ $ source ~/.bash_profile
 ```
 
 Done!
+
+## Dependencies
+The following is some libraries used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
+
+* coreutils (`brew install coreutils`)
+* binutils (`brew install binutils`)
+* findutils (`brew install findutils`)
+* peco (different between platforms)
+* git (git-completion)
+* ghq (different between platforms)
