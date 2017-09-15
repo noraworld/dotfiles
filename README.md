@@ -8,7 +8,7 @@ This repository includes the following configuration files.
 The Emacs configuration file is probably no longer updated, sorry x(
 
 ## How to setup
-All you have to do is run the setup script.
+All you have to do is run the setup script. See also the below problem solutions if no work well.
 
 **NOTICE:** You need to change directories so you can run it in dotfiles directory.
 
@@ -20,7 +20,8 @@ $ source ~/.bash_profile
 
 Done!
 
-**NOTE:** If you use new Ubuntu server, `curl` command might not be installed.
+### A problem with curl command not found
+If you use new Ubuntu server, `curl` might not be installed.
 
 ```bash
 curl: command not found
@@ -30,6 +31,13 @@ You have to install `curl` if the above message appears while running `setup.sh`
 
 ```bash
 $ sudo apt -y install curl
+```
+
+### A problem with syntax errors
+If you are faced with some syntax errors while running `setup.sh`, try using `bash` instead of `sh`.
+
+```bash
+$ bash setup.sh
 ```
 
 ## Dependencies
