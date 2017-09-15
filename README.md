@@ -20,6 +20,18 @@ $ source ~/.bash_profile
 
 Done!
 
+**NOTE:** If you use new Ubuntu server, `curl` command might not be installed.
+
+```bash
+curl: command not found
+```
+
+You have to install `curl` if the above message appears while running `setup.sh`. Then run `setup.sh` again.
+
+```bash
+$ sudo apt -y install curl
+```
+
 ## Dependencies
 The following is some libraries used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
 
