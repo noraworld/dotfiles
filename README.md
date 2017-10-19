@@ -5,12 +5,18 @@ This repository includes the following configuration files.
 * Vim
 * Emacs
 
-The Emacs configuration file is probably no longer updated, sorry x(
+The Emacs configuration file is probably no longer updated.
 
 ## How to setup
-All you have to do is run the setup script. See also the below problem solutions if no work well.
+Before running the setup script, you should move the following original dotfiles to somewhere else if they exist.
 
-**NOTICE:** You need to change directories so you can run it in dotfiles directory.
+* .bash_profile
+* .bashrc
+* .emacs.el
+* .inputrc
+* .vimrc
+
+All you have to do is run the setup script. See also the troubleshootings if no work well. You need to change directories so you can run it in dotfiles directory.
 
 ```bash
 $ cd path/to/dotfiles
@@ -20,6 +26,7 @@ $ source ~/.bash_profile
 
 Done!
 
+## Troubleshootings
 ### A problem with curl command not found
 If you use new Ubuntu server, `curl` might not be installed.
 
@@ -41,7 +48,7 @@ $ bash setup.sh
 ```
 
 ## Dependencies
-The following is some libraries used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
+The following libraries are used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
 
 * coreutils (`brew install coreutils`)
 * binutils (`brew install binutils`)
