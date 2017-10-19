@@ -10,11 +10,11 @@ The Emacs configuration file is probably no longer updated.
 ## How to setup
 Before running the setup script, you should move the following original dotfiles to somewhere else if they exist.
 
-* .bash_profile
-* .bashrc
-* .emacs.el
-* .inputrc
-* .vimrc
+* `.bash_profile`
+* `.bashrc`
+* `.emacs.el`
+* `.inputrc`
+* `.vimrc`
 
 All you have to do is run the setup script. See also the troubleshootings if no work well. You need to change directories so you can run it in dotfiles directory.
 
