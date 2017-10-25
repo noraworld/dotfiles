@@ -28,8 +28,8 @@ endif
 
 " Syntax highlight color
 hi LineNr     ctermfg=cyan
-hi Comment    ctermfg=darkgrey
-hi NonText    ctermfg=lightgrey
+hi Comment    ctermfg=lightgrey
+hi NonText    ctermfg=darkgrey
 hi SpecialKey ctermfg=lightgrey
 hi CursorLine ctermbg=17
 "" Not work. Need to change the terminal preferences
