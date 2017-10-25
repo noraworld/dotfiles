@@ -48,3 +48,12 @@ let &t_te.="\e[0 q"
 
 " Config for each filetype
 autocmd BufNewFile,BufRead *.conf set tabstop=4 shiftwidth=4
+
+function! s:remove_dust()
+  let cursor = getpos(".")
+  %s/\s\+$//ge
+  call setpos(".", cursor)
+  unlet cursor
+endfunction
+
+autocmd BufWritePre * call <SID>remove_dust()
