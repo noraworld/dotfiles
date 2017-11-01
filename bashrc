@@ -47,6 +47,11 @@ if [ -e /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
+# Set colors to ls command
+if [ -f ~/.dir_colors ]; then
+  eval $(dircolors -b ~/.dir_colors)
+fi
+
 if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
 fi

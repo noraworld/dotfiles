@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the aliases
-alias ls='/bin/ls -G'
+alias ls='ls --color=auto -N'
 alias gmacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 
 # Set the environment variables
