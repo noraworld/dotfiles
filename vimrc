@@ -48,6 +48,8 @@ let &t_te.="\e[0 q"
 
 " Config for each filetype
 autocmd BufNewFile,BufRead *.conf set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead bash_profile set filetype=sh
+autocmd BufNewFile,BufRead dir_colors set filetype=dircolors
 
 function! s:remove_dust()
   let cursor = getpos(".")
