@@ -59,4 +59,4 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * ghq (different between platforms)
 
 ## Others
-It is recommended to run the setup script every time new files added.
+It is recommended to run the setup script every time new files are added.
