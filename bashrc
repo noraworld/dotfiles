@@ -2,6 +2,8 @@
 ## General aliases
 alias sudo='sudo '
 alias load='source ~/.bash_profile'
+alias reload='exec -l $SHELL'
+alias restart='exec -l $SHELL'
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -iMNRS'
