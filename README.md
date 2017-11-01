@@ -15,6 +15,7 @@ Before running the setup script, you should move the following original dotfiles
 * `.emacs.el`
 * `.inputrc`
 * `.vimrc`
+* `.dir_colors`
 
 All you have to do is run the setup script. See also the troubleshootings if no work well. You need to change directories so you can run it in dotfiles directory.
 
@@ -56,3 +57,6 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * peco (different between platforms)
 * git (git-completion)
 * ghq (different between platforms)
+
+## Others
+It is recommended to run the setup script every time new files added.
