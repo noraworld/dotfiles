@@ -58,6 +58,20 @@ function install_vim_bundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
 }
 
+function check_git_version() {
+  # if Git version is 2.12.1, git_version is assigned to 2, and git_sub_version is assigned to 12.
+  git_version=`git --version | egrep -o '[0-9]+(\.[0-9]+)?' | head -1 | egrep -o '^[0-9]*' | head -1`
+  git_sub_version=`git --version | egrep -o '[0-9]+(\.[0-9]+)?' | head -1 | egrep -o '[0-9]*$' | head -1`
+  recommended_git_version=2
+  recommended_git_sub_version=8
+
+  # if Git version is less than recommended Git version
+  if [ "${git_version}" -lt "${recommended_git_version}" ] || ( [ "${git_version}" -eq "${recommended_git_version}" ] && [ "${git_sub_version}" -lt "${recommended_git_sub_version}" ] ); then
+    echo -e "WARNING: Your Git version is less than 2.8."
+    echo -e "It is recommended to use Git 2.8 or higher."
+  fi
+}
+
 # link all files in current directory
 for src_path in $PWD/*
 do
@@ -83,5 +97,8 @@ unlink $HOME/.LICENSE
 
 # install the Vim plugins
 install_vim_bundle
+
+# check Git version
+check_git_version
 
 exit 0
