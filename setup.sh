@@ -2,10 +2,12 @@
 
 # raise error if this script is not executed in this directory
 if [ ${0} != "setup.sh" ]; then
-  echo -e "Fatal error: this script must be executed in dotfiles directory."
+  echo -e "FATAL: this script must be executed in dotfiles directory."
   echo -e "You need to change directories so you can execure this script by"
-  echo -e "typing the following command.\n"
-  echo -e "$ sh setup.sh\n"
+  echo -e "typing the following command."
+  echo -e "=== EXECUTE BELOW ==="
+  echo -e "$ bash setup.sh"
+  echo -e "=== EXECUTE ABOVE ==="
   echo -e "Aborted."
   exit 1
 fi
@@ -58,6 +60,17 @@ function install_vim_bundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
 }
 
+function check_gitconfig_local() {
+  if [ ! -f $HOME/.gitconfig.local ]; then
+    echo -e "WARNING: $HOME/.gitconfig.local not found."
+    echo -e "Copy gitconfig.local.sample and rename the copied file to gitconfig.local."
+    echo -e "=== EXECUTE BELOW ==="
+    echo -e "$ cp gitconfig.local.sample gitconfig.local"
+    echo -e "=== EXECUTE ABOVE ==="
+    echo -e "Then replace it with your own configuration.\n"
+  fi
+}
+
 function check_git_version() {
   # if Git version is 2.12.1, git_version is assigned to 2, and git_sub_version is assigned to 12.
   git_version=`git --version | egrep -o '[0-9]+(\.[0-9]+)?' | head -1 | egrep -o '^[0-9]*' | head -1`
@@ -68,7 +81,7 @@ function check_git_version() {
   # if Git version is less than recommended Git version
   if [ "${git_version}" -lt "${recommended_git_version}" ] || ( [ "${git_version}" -eq "${recommended_git_version}" ] && [ "${git_sub_version}" -lt "${recommended_git_sub_version}" ] ); then
     echo -e "WARNING: Your Git version is less than ${recommended_git_version}.${recommended_git_sub_version}."
-    echo -e "It is recommended to use Git ${recommended_git_version}.${recommended_git_sub_version} or higher."
+    echo -e "It is recommended to use Git ${recommended_git_version}.${recommended_git_sub_version} or higher.\n"
   fi
 }
 
@@ -94,6 +107,7 @@ link_directory $PWD/vim    $HOME/.vim/config
 unlink $HOME/.setup.sh
 unlink $HOME/.README.md
 unlink $HOME/.LICENSE
+unlink $HOME/.gitconfig.local.sample
 
 # install the Vim plugins
 install_vim_bundle
@@ -101,4 +115,8 @@ install_vim_bundle
 # check Git version
 check_git_version
 
+# check if gitconfig.local exists
+check_gitconfig_local
+
+echo -e "Done! Check warnings if they exist."
 exit 0
