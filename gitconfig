@@ -18,3 +18,5 @@
   root = ~/.ghq/src
 [include]
 	path = .gitconfig.local
+[user]
+	useConfigOnly = true
