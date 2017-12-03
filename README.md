@@ -26,6 +26,8 @@ The following commands are used during the setup. Please install them.
 * `curl`
 * `git`
 
+It is recommended to install Git `2.8` or higher.
+
 ## How to setup
 Copy `gitconfig.local.sample` to `gitconfig.local`, and edit `gitconfig.local` to your own configurations.
 
