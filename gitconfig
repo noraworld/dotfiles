@@ -16,3 +16,5 @@
 	alias = !git config --global --list | grep --color=always \"alias\"
 [ghq]
   root = ~/.ghq/src
+[include]
+	path = .gitconfig.local
