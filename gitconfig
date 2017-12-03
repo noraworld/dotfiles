@@ -1,0 +1,18 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+[color]
+	ui = auto
+[alias]
+[alias]
+	up = !echo \"Pushing into branch $(git rev-parse --abbrev-ref HEAD)...\" && echo \"\" && git push -u origin $(git rev-parse --abbrev-ref HEAD)
+	alias = !git config --global --list | grep --color=always \"alias\"
+[ghq]
+  root = ~/.ghq/src
