@@ -67,8 +67,8 @@ function check_git_version() {
 
   # if Git version is less than recommended Git version
   if [ "${git_version}" -lt "${recommended_git_version}" ] || ( [ "${git_version}" -eq "${recommended_git_version}" ] && [ "${git_sub_version}" -lt "${recommended_git_sub_version}" ] ); then
-    echo -e "WARNING: Your Git version is less than 2.8."
-    echo -e "It is recommended to use Git 2.8 or higher."
+    echo -e "WARNING: Your Git version is less than ${recommended_git_version}.${recommended_git_sub_version}."
+    echo -e "It is recommended to use Git ${recommended_git_version}.${recommended_git_sub_version} or higher."
   fi
 }
 
