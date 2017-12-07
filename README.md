@@ -53,7 +53,7 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * binutils (`brew install binutils`)
 * findutils (`brew install findutils`)
 * peco (different between platforms)
-* git (git-completion)
+* git-completion (`sudo git clone https://github.com/git/git /usr/local/git`)
 * ghq (different between platforms)
 
 ## Others
