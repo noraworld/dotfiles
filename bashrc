@@ -9,7 +9,7 @@ alias less='less -iMNRS'
 alias history='history | tac | less'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
-alias hisexec='command $(history | sed "s/^ *[0-9]* *//g" | peco)'
+alias hisexec='hisexec=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $hisexec; command $hisexec'
 
 # Divide configs by OS
 case "${OSTYPE}" in
