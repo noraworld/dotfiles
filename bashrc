@@ -1,7 +1,6 @@
 # Get the aliases
 ## General aliases
 alias sudo='sudo '
-alias load='source ~/.bash_profile'
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
 alias dirs='dirs -v'
@@ -10,6 +9,7 @@ alias less='less -iMNRS'
 alias history='history | tac | less'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
+alias hisexec='command $(history | sed "s/^ *[0-9]* *//g" | peco)'
 
 # Divide configs by OS
 case "${OSTYPE}" in
