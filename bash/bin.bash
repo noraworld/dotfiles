@@ -10,3 +10,7 @@ fi
 if [ -e ~/.bin/_unlink ]; then
   alias unlink='~/.bin/_unlink'
 fi
+
+if [ -e ~/.bin/_pushd ]; then
+  . ~/.bin/_pushd
+fi
