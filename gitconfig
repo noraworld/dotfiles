@@ -11,5 +11,6 @@
 	up = !echo \"Pushing into branch $(git rev-parse --abbrev-ref HEAD)...\" && echo \"\" && git push -u origin $(git rev-parse --abbrev-ref HEAD)
 	alias = !git config --global --list | grep --color=always \"alias\"
 	count = !git log --oneline | wc -l
+	s = status
 [ghq]
 	root = ~/.ghq/src
