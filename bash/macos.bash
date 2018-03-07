@@ -11,7 +11,8 @@ fi
 
 # Set the environment variables
 PATH=/usr/local/sbin:$PATH                                  # Homebrew
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"        # coreutils
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"  # coreutils manual
-PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"        # findutils
-MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"  # findutils manual
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"        # GNU coreutils
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"  # GNU coreutils manual
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"        # GNU findutils
+MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"  # GNU findutils manual
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"                  # GNU getopt

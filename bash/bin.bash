@@ -14,3 +14,7 @@ fi
 if [ -e ~/.bin/_pushd ]; then
   . ~/.bin/_pushd
 fi
+
+if [ -e ~/.bin/_rm ]; then
+  alias rm='~/.bin/_rm'
+fi
