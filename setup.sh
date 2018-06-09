@@ -100,8 +100,9 @@ if [ ! -e $HOME/.vim ]; then
 fi
 
 # link all files in bash/ and vim/ directory
-link_directory ${PWD}/bash $HOME/.bash
-link_directory $PWD/vim    $HOME/.vim/config
+link_directory ${PWD}/bash       $HOME/.bash
+link_directory $PWD/vim          $HOME/.vim/config
+link_directory $PWD/git_template $HOME/.git_template
 
 # unlink unnecessary files
 unlink $HOME/.setup.sh
