@@ -67,7 +67,8 @@ function check_gitconfig_local() {
     echo -e "=== EXECUTE BELOW ==="
     echo -e "$ cp gitconfig.local.sample gitconfig.local"
     echo -e "=== EXECUTE ABOVE ==="
-    echo -e "Then replace it with your own configuration.\n"
+    echo -e "Then replace it with your own configuration."
+    echo -e "Or you can also add your local configuration.\n"
   fi
 }
 
