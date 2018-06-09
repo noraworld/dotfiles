@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo -e "Committed as \033[1;93m`git config --local user.name` <`git config --local user.email`>\033[00m\n"
