@@ -4,6 +4,8 @@ while read local_ref local_sha1 remote_ref remote_sha1
 do
   echo -e  "You are about to push:\n"
   echo -e  "	\033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93morigin/${remote_ref##refs/heads/}\033[00m\n"
+  echo -e  "The remote URL is:\n"
+  echo -e  "	\033[1;93m`git config --get remote.origin.url`\033[00m\n"
   echo -en "Are you sure? [Y/n]: "
 
   exec < /dev/tty
