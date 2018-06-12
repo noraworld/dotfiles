@@ -8,13 +8,17 @@ fi
 
 # Override the commnad aliases
 if [ -e ~/.bin/_unlink ]; then
-  alias unlink='~/.bin/_unlink'
+  alias unlink='source _unlink'
 fi
 
 if [ -e ~/.bin/_pushd ]; then
-  . ~/.bin/_pushd
+  alias pushd='source _pushd'
 fi
 
 if [ -e ~/.bin/_rm ]; then
-  alias rm='~/.bin/_rm'
+  alias rm='source _rm'
+fi
+
+if [ -e ~/.bin/mkcd ]; then
+  alias mkcd='source mkcd'
 fi
