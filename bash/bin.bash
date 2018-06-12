@@ -7,15 +7,16 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/override:$PATH
   PATH=$HOME/.bin/currentshell:$PATH
 
-  for cmd in $HOME/.bin/override/*
+  for script in $HOME/.bin/override/*
   do
-    cmd=`basename ${cmd}`
-    alias ${cmd}='source ${cmd}'
+    script=`basename ${script}`
+    cmd=`echo ${script} | cut -c 2-`
+    alias ${cmd}="source ${script}"
   done
 
   for cmd in $HOME/.bin/currentshell/*
   do
     cmd=`basename ${cmd}`
-    alias ${cmd}='source ${cmd}'
+    alias ${cmd}="source ${cmd}"
   done
 fi
