@@ -2,23 +2,20 @@
 
 # Set the self-making commands path to environment variables
 if [ -e ~/.bin ]; then
-  PATH=$HOME/.bin:$PATH
+  PATH=$HOME/.bin/general:$PATH
   PATH=$HOME/.bin/local:$PATH
-fi
+  PATH=$HOME/.bin/override:$PATH
+  PATH=$HOME/.bin/currentshell:$PATH
 
-# Override the commnad aliases
-if [ -e ~/.bin/_unlink ]; then
-  alias unlink='source _unlink'
-fi
+  for cmd in $HOME/.bin/override/*
+  do
+    cmd=`basename ${cmd}`
+    alias ${cmd}='source ${cmd}'
+  done
 
-if [ -e ~/.bin/_pushd ]; then
-  alias pushd='source _pushd'
-fi
-
-if [ -e ~/.bin/_rm ]; then
-  alias rm='source _rm'
-fi
-
-if [ -e ~/.bin/mkcd ]; then
-  alias mkcd='source mkcd'
+  for cmd in $HOME/.bin/currentshell/*
+  do
+    cmd=`basename ${cmd}`
+    alias ${cmd}='source ${cmd}'
+  done
 fi
