@@ -1,3 +1,4 @@
 [submodule "bin"]
 	path = bin
 	url = https://github.com/noraworld/bin.git
+	branch = master
