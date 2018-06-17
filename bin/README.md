@@ -4,7 +4,7 @@ A set of the self-making commands.
 ## How to setup
 1. Cloning this repository and run the setup script
 
-```sh
+```bash
 $ git clone https://github.com/noraworld/bin
 $ cd bin
 $ bash setup.sh
@@ -12,14 +12,14 @@ $ bash setup.sh
 
 2. Download a path setup script and run it
 
-```sh
+```bash
 $ git clone https://github.com/noraworld/dotfiles/blob/master/bash/bin.bash
 $ source dotfiles/bash/bin.bash
 ```
 
 3. Make them executable when sudo mode (Optional)
 
-```sh
+```bash
 $ sudo visudo
 ```
 
