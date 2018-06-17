@@ -1,0 +1,18 @@
+#!/bin/bash
+
+case "$#" in
+  "0" )
+    title="Terminal"
+    message="The command has been completed"
+  ;;
+  "1" )
+    title="Terminal"
+    message=$1
+  ;;
+  * )
+    title=$1
+    message=$2
+  ;;
+esac
+
+terminal-notifier -title "$title" -message "$message"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $1 =~ ^[0-9]+$ ]]; then
+  command pushd "+$@" 1>/dev/null || echo ""
+else
+  command pushd  "$@" 1>/dev/null || echo ""
+fi
+
+dirs -v

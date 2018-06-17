@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$1" = "--help" ]; then
+  echo "Show the largest files in descending order"
+  echo ""
+  echo "$ mcap [path] [number]"
+  echo ""
+  echo "The [path] is the path of the directory you would like to show up"
+  echo "If you leave out, the [path] is set as current directory."
+  echo ""
+  echo "The [number] is the number of filename you would like to show up."
+  echo "If you leave out, the [number] is set as 10."
+  exit 0
+fi
+
+if [ "$1" = "" ]; then
+  path="."
+else
+  path="$1"
+fi
+
+if [ "$2" = "" ]; then
+  num="-10"
+else
+  num="-$2"
+fi
+
+du -aBM ${path} | sort -rn | head ${num}

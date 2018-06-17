@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function start_mastodon() {
+  echo "Starting Mastodon..."
+  systemctl start postgresql-9.6 redis mastodon-web mastodon-sidekiq mastodon-streaming
+}
+
+function stop_mastodon() {
+  echo "Stopping Mastodon..."
+  systemctl stop postgresql-9.6 redis mastodon-web mastodon-sidekiq mastodon-streaming
+}
+
+case "$1" in
+  "start"              ) start_mastodon ;;
+  "stop"               ) stop_mastodon ;;
+  "status"             ) systemctl status postgresql-9.6 redis mastodon-web mastodon-sidekiq mastodon-streaming ;;
+  "restart" | "reload" ) stop_mastodon && start_mastodon ;;
+  *                    ) echo "Wrong command: \`$1\`"
+esac
+
+exit 0
