@@ -60,15 +60,9 @@ function install_vim_bundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
 }
 
-function check_gitconfig_local() {
-  if [ ! -f $HOME/.gitconfig.local ]; then
-    echo -e "WARNING: $HOME/.gitconfig.local not found."
-    echo -e "Copy gitconfig.local.sample and rename the copied file to gitconfig.local."
-    echo -e "=== EXECUTE BELOW ==="
-    echo -e "$ cp gitconfig.local.sample gitconfig.local"
-    echo -e "=== EXECUTE ABOVE ==="
-    echo -e "Then replace it with your own configuration."
-    echo -e "Or you can also add your local configuration.\n"
+function copy_gitconfig_local() {
+  if [ ! -f $PWD/gitconfig.local ]; then
+    cp $PWD/gitconfig.local.sample $PWD/gitconfig.local
   fi
 }
 
@@ -85,6 +79,9 @@ function check_git_version() {
     echo -e "It is recommended to use Git ${recommended_git_version}.${recommended_git_sub_version} or higher.\n"
   fi
 }
+
+# copy gitconfig.local.sample to gitconfig.local
+copy_gitconfig_local
 
 # link all files in current directory
 for src_path in $PWD/*
@@ -117,9 +114,6 @@ install_vim_bundle
 
 # check Git version
 check_git_version
-
-# check if gitconfig.local exists
-check_gitconfig_local
 
 echo -e "Done! Check warnings if they exist."
 exit 0

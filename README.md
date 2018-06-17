@@ -29,19 +29,13 @@ The following commands are used during the setup. Please install them.
 It is recommended to install Git `2.8` or higher.
 
 ## How to setup
-Copy `gitconfig.local.sample` to `gitconfig.local`, and edit `gitconfig.local` to your own configurations.
-
-```bash
-$ cp gitconfig.local.sample gitconfig.local
-# Edit gitconfig.local
-```
-
-Then please run the setup script. You need to change directories so you can run it in dotfiles directory.
+Run the setup script. You need to change directories so you can run it in dotfiles directory.
 
 ```bash
 $ cd path/to/dotfiles
 $ bash setup.sh
 $ source ~/.bash_profile
+$ git refresh
 ```
 
 Done!
@@ -57,4 +51,5 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * ghq (different between platforms)
 
 ## Others
-It is recommended to run the setup script every time new files are added.
+* It is recommended to run the setup script every time new files are added.
+* If you want to add your additional Git configurations, just add them to `gitconfig.local`.
