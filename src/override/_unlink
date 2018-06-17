@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for FILE in "$@"
+do
+  if [ -L ${FILE} ]; then
+    command unlink ${FILE}
+  else
+    echo -e "ERROR: ${FILE} is not a symbolic link" >&2
+  fi
+done

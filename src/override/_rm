@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Known issue: it removes when using sudo
+
+OPT=`getopt fr "$@"`
+if [ $? != 0 ]; then
+  exit 1
+fi
+eval set -- "$OPT"
+
+while true
+do
+  case "$1" in
+    # Ignore option -fr
+    -f | -r )
+      shift
+    ;;
+    -- )
+      shift
+      break
+    ;;
+    * )
+      echo "Something went wrong"
+      exit 1
+    ;;
+  esac
+done
+
+echo "Moving to trash"
+rmtrash $@
