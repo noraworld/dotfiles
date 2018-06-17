@@ -11,6 +11,8 @@ alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 alias hisexec='hisexec=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $hisexec; command $hisexec'
 alias laravel='php artisan'
+alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
+alias del='rmtrash'
 
 # Divide configs by OS
 case "${OSTYPE}" in
