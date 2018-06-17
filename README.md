@@ -24,7 +24,7 @@ You should move the following original dotfiles to somewhere else if they exist.
 The following commands are used during the setup. Please install them.
 
 * `curl`
-* `git`
+* `git` (`>= 2.8`)
 
 It is recommended to install Git `2.8` or higher.
 
