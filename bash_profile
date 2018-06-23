@@ -9,3 +9,5 @@ export HISTCONTROL=ignoredups
 export HISTSIZE=1000000
 export PATH
 export MANPATH
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
+export LESS='-R'

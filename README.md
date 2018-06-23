@@ -49,6 +49,7 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * peco (different between platforms)
 * git-completion (`sudo git clone https://github.com/git/git /usr/local/git`)
 * ghq (different between platforms)
+* source-highlight (`brew install source-highlight`)
 
 ## Others
 * It is recommended to run the setup script every time new files are added.
