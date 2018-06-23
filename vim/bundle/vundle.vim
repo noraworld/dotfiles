@@ -30,6 +30,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Additional plugins
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
