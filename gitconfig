@@ -1,6 +1,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+	pager = cat
 [include]
 	path = .gitconfig.local
 [user]
@@ -18,3 +19,6 @@
 	root = ~/.ghq/src
 [init]
 	templatedir = ~/.git_template
+[pager]
+	log = less
+	stash = false
