@@ -1,14 +1,12 @@
 #!/bin/bash
 
-commit_msg=$(cat $1)
 max_commit_msg_length=65
 
-echo "$commit_msg" | while read line
-do
-  line_length=${#line}
+commit_msg=$(cat $1)
+first_line=`echo "$commit_msg" | head -1`
+first_line_length=${#first_line}
 
-  if [ $line_length -gt $max_commit_msg_length ]; then
-    echo -e "\nerror: commit message must be less than $max_commit_msg_length characters for each line (this commit message has line of $line_length characters)"
-    exit 1
-  fi
-done
+if [ $first_line_length -gt $max_commit_msg_length ]; then
+  echo -e "\nerror: commit message must be less than $max_commit_msg_length characters for each line (this commit message has line of $first_line_length characters)"
+  exit 1
+fi
