@@ -6,7 +6,20 @@ commit_msg=$(cat $1)
 first_line=`echo "$commit_msg" | head -1`
 first_line_length=${#first_line}
 
+echo -e ""
+
 if [ $first_line_length -gt $max_commit_msg_length ]; then
-  echo -e "\nerror: commit message must be less than $max_commit_msg_length characters for each line (this commit message has line of $first_line_length characters)"
-  exit 1
+  echo -e  "warning: commit summaries contain more than $max_commit_msg_length characters ($first_line_length characters)"
+  echo -en "Continue commit anyway? [Y/n]: "
+
+  exec < /dev/tty
+  read confirm
+
+  if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+    echo -e "\n\033[1;93mContinue\033[00m\n"
+    exit 0
+  else
+    echo -e "\n\033[1;91mCanceled\033[00m"
+    exit 1
+  fi
 fi
