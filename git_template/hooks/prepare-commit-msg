@@ -1,6 +1,6 @@
 #!/bin/bash
 
-max_commit_msg_length=65
+max_commit_msg_length=50
 
 commit_msg=$(cat $1)
 first_line=`echo "$commit_msg" | head -1`
