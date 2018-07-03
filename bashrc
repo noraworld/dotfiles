@@ -61,9 +61,15 @@ if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
-# Edit prompt
+# Show Git branch on prompt
 if type __git_ps1 1>/dev/null 2>/dev/null; then
   PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]'
 else
   PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]'
+fi
+
+# Use direnv
+# It should appear even after shell extensions that manipulate the prompt like git-prompt
+if type direnv 1>/dev/null 2>/dev/null; then
+  eval "$(direnv hook bash)"
 fi
