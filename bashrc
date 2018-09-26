@@ -9,7 +9,7 @@ alias less='less -iMNRS'
 alias hist='history | tac | less | peco'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
-# alias hisexec='hisexec=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $hisexec; command $hisexec' # not used oftenly
+alias again='again=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $again; command $again'
 alias laravel='php artisan'
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 alias del='rmtrash'
