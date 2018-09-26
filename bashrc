@@ -6,7 +6,7 @@ alias restart='exec -l $SHELL'
 alias dirs='dirs -v'
 alias grep='grep --color=always'
 alias less='less -iMNRS'
-alias history='history | tac | less | peco'
+alias hist='history | tac | less | peco'
 alias vi='vim'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 # alias hisexec='hisexec=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $hisexec; command $hisexec' # not used oftenly
