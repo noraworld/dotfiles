@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ "$#" != "0" ]]; then
+  echo -e "No arguments expected. You may mix up \`git protect\`."
+  exit 1
+fi
+
+cat $(git rev-parse --git-dir)/hooks/pre-push-before/protect | while read line
+do
+  if [[ $line =~ "protected_branches=" ]]; then
+    echo "$line" | sed -e 's/protected_branches=(//g' | sed -e 's/)//g'
+    break
+  fi
+done
