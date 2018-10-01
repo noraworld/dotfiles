@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -f $(git rev-parse --git-dir)/hooks/pre-push-before/protect ]]; then
+  rm $(git rev-parse --git-dir)/hooks/pre-push-before/protect
+else
+  echo -e "No protected branches exist in this repository"
+fi
