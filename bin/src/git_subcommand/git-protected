@@ -5,6 +5,11 @@ if [[ "$#" != "0" ]]; then
   exit 1
 fi
 
+if ! [[ -f $(git rev-parse --git-dir)/hooks/pre-push-before/protect ]]; then
+  echo -e "No protected branches exist in this repository"
+  exit 1
+fi
+
 cat $(git rev-parse --git-dir)/hooks/pre-push-before/protect | while read line
 do
   if [[ $line =~ "protected_branches=" ]]; then
