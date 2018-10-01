@@ -13,7 +13,7 @@
 	alias = !git config --global --list | grep --color=always \"alias\"
 	count = !git log --oneline | wc -l
 	s = status
-	refresh = !touch $(git rev-parse --git-dir)/hooks/tmp && rm $(git rev-parse --git-dir)/hooks/* && git init
+	refresh = !touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
 	co = checkout
 [ghq]
 	root = ~/.ghq/src
