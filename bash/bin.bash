@@ -6,6 +6,7 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/local:$PATH
   PATH=$HOME/.bin/override:$PATH
   PATH=$HOME/.bin/currentshell:$PATH
+  PATH=$HOME/.bin/git_subcommand:$PATH
 
   for script in $HOME/.bin/override/*
   do
