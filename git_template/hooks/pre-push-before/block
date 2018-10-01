@@ -1,0 +1,10 @@
+#!/bin/bash
+
+protected_branches=(master develop)
+for pb in ${protected_branches[@]}
+do
+  if [[ "${remote_ref##refs/heads/}" = "$pb" ]]; then
+    echo "error: To push into $pb branch is prohibited"
+    exit 1
+  fi
+done

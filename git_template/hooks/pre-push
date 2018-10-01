@@ -1,25 +1,20 @@
 #!/bin/bash
 
-reponame=$1
-remoteurl=$2
-
+# This script only reads other scripts in pre-push-before and pre-push-after directories.
+# Because `read local_ref local_sha1 remote_ref remote_sha1` can be used only once.
+# If `read local_ref local_sha1 remote_ref remote_sha1` is used in multiple scripts as pre-push,
+# it does not work properly.
 while read local_ref local_sha1 remote_ref remote_sha1
 do
-  echo -e  "You are about to push:\n"
-  echo -e  "	\033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m\n"
-  echo -e  "The remote URL is:\n"
-  echo -e  "	\033[1;93m${remoteurl}\033[00m\n"
-  echo -en "Are you sure? [Y/n]: "
+  for before_scripts in $(git rev-parse --git-dir)/hooks/pre-push-before/*
+  do
+    . $before_scripts
+  done
 
-  exec < /dev/tty
-  read confirm
-
-  echo -e ""
-  if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
-    echo -e "Pushing to \033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m"
-    exit 0
-  else
-    echo -e "\033[1;91mCanceled\033[00m"
-    exit 1
-  fi
+  # The scripts in pre-push-after must be executed after the scripts in pre-push-before
+  # because they contain `exit 0`, which means the hook script stops in the middle of execution.
+  for after_scripts in $(git rev-parse --git-dir)/hooks/pre-push-after/*
+  do
+    . $after_scripts
+  done
 done
