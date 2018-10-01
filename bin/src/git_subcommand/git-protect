@@ -10,7 +10,7 @@ EOL
 cat << 'EOL' >> $(git rev-parse --git-dir)/hooks/pre-push-before/protect
 for pb in ${protected_branches[@]}; do
   if [[ "${remote_ref##refs/heads/}" = "$pb" ]]; then
-    echo "error: to push into $pb branch is prohibited"
+    echo -e "\033[1;91merror: to push into $pb branch is prohibited\033[00m"
     exit 1
   fi
 done
