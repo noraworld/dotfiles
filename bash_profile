@@ -12,6 +12,7 @@ export MANPATH
 export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
 export LESS='-R'
 export PROMPT_COMMAND
+export EDITOR=vim
 
 # Save the history in the right order
 shopt -u histappend
