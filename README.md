@@ -51,6 +51,8 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 * ghq (different between platforms)
 * source-highlight (`brew install source-highlight`)
 * direnv (`brew install direnv`)
+* getopt (`brew install gnu-getopt`)
+* sed (`brew install gnu-sed`)
 
 ## Others
 * It is recommended to run the setup script every time new files are added.
