@@ -2,7 +2,7 @@
 
 if [[ "$#" = "0" ]]; then
   echo -e "What branch do you want to protect?"
-  exit 1
+  exit 0
 fi
 
 cat << EOL > $(git rev-parse --git-dir)/hooks/pre-push-before/protect
