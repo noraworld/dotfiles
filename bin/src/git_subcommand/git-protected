@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$#" != "0" ]]; then
+if [[ "$#" != "0" ]] && ! [[ "$1" =~ ^-- ]] && ! [[ "$1" =~ ^- ]]; then
   echo -e "No arguments expected. You may mix up \`git protect\`."
   exit 1
 fi
@@ -13,7 +13,16 @@ fi
 cat $(git rev-parse --git-dir)/hooks/pre-push-before/protect | while read line
 do
   if [[ $line =~ "protected_branches=" ]]; then
-    echo "$line" | sed -e 's/protected_branches=(//g' | sed -e 's/)//g'
+    pb=`echo "$line" | sed -e 's/protected_branches=(//g' | sed -e 's/)//g'`
+
+    if [[ "$1" = "--verbose" ]]; then
+      echo -e "The branches listed below are now protected in this repository:"
+      echo -e "\033[1;93m"
+      echo -e "	$pb" | sed 's/ /\n	/g'
+      echo -e "\033[00m"
+    else
+      echo -e "\033[1;93m$pb\033[00m"
+    fi
     break
   fi
 done
