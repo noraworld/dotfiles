@@ -73,14 +73,21 @@ if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
   PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 fi
 
-# Run ls command automatically when changing directories
-if ! [[ "$PROMPT_COMMAND" =~ "autols" ]]; then
-  PROMPT_COMMAND="autols;$PROMPT_COMMAND"
+# Run specific command automatically when changing directories
+if ! [[ "$PROMPT_COMMAND" =~ "autorun" ]]; then
+  PROMPT_COMMAND="autorun;$PROMPT_COMMAND"
 fi
 
-autols() {
-  [[ -n $AUTOLS_DIR ]] && [[ $AUTOLS_DIR != $PWD ]] && ls
-  AUTOLS_DIR="${PWD}"
+autorun() {
+  if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
+    echo ""
+    dirs
+    echo ""
+    ls
+    echo ""
+  fi
+
+  AUTORUN_DIR="${PWD}"
 }
 
 # Use direnv
