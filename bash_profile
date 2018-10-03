@@ -19,3 +19,12 @@ shopt -u histappend
 
 # Auto correct and continue to run cd command even if directory name is misspelled partly
 shopt -s cdspell
+
+# Change directories without `cd`
+# NOTE: bash version more than 4.0 is required
+# On macOS, simply run:
+# $ brew install bash
+# $ echo /usr/local/bin/bash | sudo tee -a /etc/shells
+# $ chpass -s /usr/local/bin/bash
+# (Type your password, then reboot your shell application)
+shopt -s autocd
