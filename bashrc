@@ -73,6 +73,16 @@ if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
   PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 fi
 
+# Run ls command automatically when changing directories
+if ! [[ "$PROMPT_COMMAND" =~ "autols" ]]; then
+  PROMPT_COMMAND="autols;$PROMPT_COMMAND"
+fi
+
+autols() {
+  [[ -n $AUTOLS_DIR ]] && [[ $AUTOLS_DIR != $PWD ]] && ls
+  AUTOLS_DIR="${PWD}"
+}
+
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then
