@@ -16,3 +16,6 @@ export EDITOR=vim
 
 # Save the history in the right order
 shopt -u histappend
+
+# Auto correct and continue to run cd command even if directory name is misspelled partly
+shopt -s cdspell
