@@ -68,6 +68,11 @@ else
   PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]'
 fi
 
+# Share the history for each tab or window
+if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
+  PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+fi
+
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then

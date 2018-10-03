@@ -16,8 +16,3 @@ export EDITOR=vim
 
 # Save the history in the right order
 shopt -u histappend
-
-# Share the history for each tab or window
-if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
-  PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
-fi
