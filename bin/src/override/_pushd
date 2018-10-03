@@ -6,4 +6,5 @@ else
   command pushd  "$@" 1>/dev/null || echo ""
 fi
 
-dirs -v
+# This is unnecessary as long as it runs automatically when changing directories
+# dirs -v
