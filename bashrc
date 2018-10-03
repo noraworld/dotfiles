@@ -80,9 +80,11 @@ fi
 
 autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
-    echo ""
+    echo -e ""
+    echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
     dirs
-    echo ""
+    echo -e ""
+    echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
     ls
     echo ""
   fi
