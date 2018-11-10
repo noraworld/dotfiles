@@ -70,7 +70,7 @@ fi
 
 # Share the history for each tab or window
 if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
-  PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+  PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 fi
 
 # Run specific command automatically when changing directories
