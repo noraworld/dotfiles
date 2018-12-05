@@ -13,6 +13,7 @@ alias again='again=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $again; comma
 alias laravel='php artisan'
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 alias del='rmtrash'
+alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | peco`; echo -n $histcpy | pbcopy; echo "Copied to clipboard"'
 
 # Divide configs by OS
 case "${OSTYPE}" in
