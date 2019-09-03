@@ -14,6 +14,7 @@ alias laravel='php artisan'
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 alias del='rmtrash'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
+alias rails='echo -e "Using \`bundle exec rails\`\n"; bundle exec rails'
 
 # Divide configs by OS
 case "${OSTYPE}" in
