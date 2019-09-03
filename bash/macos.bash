@@ -23,3 +23,5 @@ MANPATH="/usr/local/opt/gnu-getopt/share/man:$MANPATH"      # GNU getopt manual
 
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"          # GNU sed
 MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"    # GNU sed manual
+
+PATH="/usr/local/opt/openssl/bin:$PATH"
