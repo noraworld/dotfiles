@@ -8,6 +8,14 @@
 	useConfigOnly = true
 [color]
 	ui = auto
+[color "diff"]
+	old = 167 normal
+	new = 030 normal
+[color "status"]
+	added = 030 normal
+	deleted = 167 normal
+	changed = 167 normal
+	untracked = 167 normal
 [alias]
 	up = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
 	alias = !git config --global --list | grep --color=always \"alias\"
@@ -22,3 +30,5 @@
 [pager]
 	log = less --no-init
 	stash = false
+[diff]
+	compactionHeuristic = true
