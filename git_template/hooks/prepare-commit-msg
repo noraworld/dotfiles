@@ -1,6 +1,7 @@
 #!/bin/bash
 
-max_commit_msg_length=50
+max_commit_msg_length_threshold_to_warn=50
+max_commit_msg_length_threshold_to_abort=69
 
 commit_msg=$(cat $1)
 first_line=`echo "$commit_msg" | head -1`
@@ -8,8 +9,13 @@ first_line_length=${#first_line}
 
 echo -e ""
 
-if [ $first_line_length -gt $max_commit_msg_length ]; then
-  echo -e  "warning: commit summaries contain more than $max_commit_msg_length characters ($first_line_length characters)"
+if [ $first_line_length -gt $max_commit_msg_length_threshold_to_abort ]; then
+  echo -e "error: commit summaries exceed $max_commit_msg_length_threshold_to_abort characters ($first_line_length characters)"
+  echo -e "       it cannot show on one line on GitHub"
+  echo -e "\n\033[1;91mAborted\033[00m"
+  exit 1
+elif [ $first_line_length -gt $max_commit_msg_length_threshold_to_warn ]; then
+  echo -e  "warning: commit summaries contain more than $max_commit_msg_length_threshold_to_warn characters ($first_line_length characters)"
   echo -en "Continue commit anyway? [Y/n]: "
 
   exec < /dev/tty
