@@ -1,0 +1,23 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key":     "ctrl+a",
+        "command": "cursorHome",
+        "when":    "editorTextFocus"
+    },
+    {
+        "key":     "ctrl+e",
+        "command": "cursorEnd",
+        "when":    "editorTextFocus"
+    },
+    {
+        "key":     "ctrl+shift+a",
+        "command": "cursorHomeSelect",
+        "when":    "editorTextFocus"
+    },
+    {
+        "key":     "ctrl+shift+e",
+        "command": "cursorEndSelect",
+        "when":    "editorTextFocus"
+    }
+]

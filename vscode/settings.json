@@ -1,0 +1,6 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.wordWrap": "on",
+    "terminal.integrated.scrollback": 100000,
+    "files.insertFinalNewline": true
+}
