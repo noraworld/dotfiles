@@ -17,14 +17,14 @@ function link_file() {
   # already exists and is a directory
   # or a file but not a link file
   # or a link file but another file linking, then
-  if [ -d ${2} ] || [ -f ${2} ] && [ ! -L ${2} ] || [ -L ${2} ] && [ "`readlink ${2}`" != "${1}" ]; then
-    echo -e "${2} already exists. You need to rename or move ${2} to another filename or directory."
+  if [ -d "${2}" ] || [ -f "${2}" ] && [ ! -L "${2}" ] || [ -L "${2}" ] && [ "`readlink \"${2}\"`" != "${1}" ]; then
+    echo -e "\"${2}\" already exists. You need to rename or move \"${2}\" to another filename or directory."
     echo -e "Skipping.\n"
   # else if the filename is not created,
   # so this script has not been executed yet or
   # unlink these files, then
-  elif [ ! -e ${2} ]; then
-    ln -s ${1} ${2}
+  elif [ ! -e "${2}" ]; then
+    ln -s "${1}" "${2}"
   fi
 }
 
@@ -33,14 +33,14 @@ function link_directory() {
   # already exists and is a file
   # or a directory but not a link directory
   # or a link directory but another directory linking, then
-  if [ -f ${2} ] || [ -d ${2} ] && [ ! -L ${2} ] || [ -L ${2} ] && [ "`readlink ${2}`" != "${1}" ]; then
-    echo -e "${2} already exists. You need to rename or move ${2} to another filename or directory."
+  if [ -f "${2}" ] || [ -d "${2}" ] && [ ! -L "${2}" ] || [ -L "${2}" ] && [ "`readlink \"${2}\"`" != "${1}" ]; then
+    echo -e "\"${2}\" already exists. You need to rename or move \"${2}\" to another filename or directory."
     echo -e "Skipping.\n"
   # else if the filename is not created,
   # so this script has not been executed yet or
   # unlink these directories, then
-  elif [ ! -e ${2} ]; then
-    ln -s ${1} ${2}
+  elif [ ! -e "${2}" ]; then
+    ln -s "${1}" "${2}"
   fi
 }
 
@@ -97,11 +97,24 @@ if [ ! -e $HOME/.vim ]; then
   mkdir $HOME/.vim
 fi
 
+if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
+  mkdir -p $HOME/Library/Application\ Support/Code/User
+fi
+
 # link all files in bash, vim, git_template and bin directory
 link_directory ${PWD}/bash       $HOME/.bash
 link_directory $PWD/vim          $HOME/.vim/config
 link_directory $PWD/git_template $HOME/.git_template
 link_directory $PWD/bin/src      $HOME/.bin
+
+# link VS Code preferences
+for src_path in ${PWD}/vscode/*
+do
+  if [ -f ${src_path} ]; then
+    dst_path=$HOME/Library/Application\ Support/Code/User/`basename ${src_path}`
+    link_file "${src_path}" "${dst_path}"
+  fi
+done
 
 # unlink unnecessary files
 unlink $HOME/.setup.sh
