@@ -14,6 +14,5 @@
         "reek": {
             "useBundler": true
         }
-    },
-    "ruby.format": "rubocop"
+    }
 }
