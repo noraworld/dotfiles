@@ -5,5 +5,18 @@
     "files.insertFinalNewline": true,
     "editor.renderWhitespace": "boundary",
     "editor.renderControlCharacters": true,
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+
+    // Ruby extension preferences
+    "ruby.useBundler": true,
+    "ruby.useLanguageServer": true,
+    "ruby.lint": {
+        "rubocop": {
+            "useBundler": true
+        },
+        "reek": {
+            "useBundler": true
+        }
+    },
+    "ruby.format": "rubocop"
 }
