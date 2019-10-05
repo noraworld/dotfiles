@@ -4,5 +4,6 @@
     "terminal.integrated.scrollback": 10000,
     "files.insertFinalNewline": true,
     "editor.renderWhitespace": "boundary",
-    "editor.renderControlCharacters": true
+    "editor.renderControlCharacters": true,
+    "editor.fontSize": 13
 }
