@@ -106,6 +106,7 @@ preexec() {
   _tn_cmd=$1
 }
 precmd() {
+  notification_period_threshold=180
   now=`date +%s`
   dur=$(( $now - $_tn_timestamp ))
 
@@ -113,7 +114,7 @@ precmd() {
     return
   fi
 
-  if [[ $dur -gt 60 ]]; then
+  if [[ $dur -gt notification_period_threshold ]]; then
     terminal-notifier -message "Finished: $_tn_cmd"
   fi
 
