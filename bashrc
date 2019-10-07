@@ -95,6 +95,9 @@ autorun() {
   AUTORUN_DIR="${PWD}"
 }
 
+# Load bash-preexec
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then
