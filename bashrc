@@ -108,13 +108,22 @@ preexec() {
 precmd() {
   now=`date +%s`
   dur=$(( $now - $_tn_timestamp ))
+
   if [[ $_tn_cmd == "" ]]; then
     return
   fi
+
   if [[ $dur -gt 60 ]]; then
     terminal-notifier -message "Finished: $_tn_cmd"
+  fi
+
+  echo
+  if [[ $dur -eq 1 ]]; then
+    echo elapsed time: $dur second
+  else
     echo elapsed time: $dur seconds
   fi
+
   _tn_cmd=''
 }
 
