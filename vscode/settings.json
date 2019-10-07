@@ -16,5 +16,8 @@
         }
     },
     "editor.tabSize": 2,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "bashrc": "shellscript"
+    }
 }
