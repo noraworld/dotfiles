@@ -98,6 +98,26 @@ autorun() {
 # Load bash-preexec
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
+# Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
+_tn_timestamp=`date +%s`
+_tn_cmd=''
+preexec() {
+  _tn_timestamp=`date +%s`
+  _tn_cmd=$1
+}
+precmd() {
+  now=`date +%s`
+  dur=$(( $now - $_tn_timestamp ))
+  if [[ $_tn_cmd == "" ]]; then
+    return
+  fi
+  if [[ $dur -gt 60 ]]; then
+    terminal-notifier -message "Finished: $_tn_cmd"
+    echo elapsed time: $dur seconds
+  fi
+  _tn_cmd=''
+}
+
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then
