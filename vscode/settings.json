@@ -19,5 +19,6 @@
     "files.trimTrailingWhitespace": true,
     "files.associations": {
         "bashrc": "shellscript"
-    }
+    },
+    "window.zoomLevel": 0
 }

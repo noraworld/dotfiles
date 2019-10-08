@@ -28,5 +28,33 @@
     {
         "key":     "shift+cmd+c",
         "command": "copyRelativeFilePath"
+    },
+    {
+        "key":     "cmd+numpad_add",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key":     "shift+cmd+[Semicolon]",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key":     "shift+cmd+[Minus]",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key":     "cmd+numpad_subtract",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key":     "cmd+[IntlRo]",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key":     "cmd+[Minus]",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key":     "cmd+numpad0",
+        "command": "-workbench.action.zoomReset"
     }
 ]
