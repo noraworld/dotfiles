@@ -20,5 +20,6 @@
     "files.associations": {
         "bashrc": "shellscript"
     },
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "editor.multiCursorModifier": "ctrlCmd"
 }
