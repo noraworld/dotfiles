@@ -4,8 +4,11 @@ alias sudo='sudo '
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
 alias d='dirs -v'
-alias push='push_directory'
 alias p='push_directory'
+alias push='push_directory'
+alias pop='pop_directory'
+alias pushd='echo -e "do not use pushd manually\nuse push instead" && pushd'
+alias popd='echo -e "do not use popd manually\nuse pop instead" && popd'
 alias g='git'
 alias grep='grep --color=always'
 alias less='less -iMNRS'
@@ -87,11 +90,11 @@ if [[ -e $HOME/.directory_stack_store ]]; then
     #   because `/` overlaps with path expression
     file=$(echo $line | sed -e "s|^~|$HOME|g")
 
-    pushd $file 1>/dev/null
+    command pushd $file 1>/dev/null
   done <<< $(tac $HOME/.directory_stack_store || tail -r $HOME/.directory_stack_store)
 
   # delete directory of when shell session starts from stack
-  popd -0 1>/dev/null
+  command popd -0 1>/dev/null
 
   dirs -v
 else

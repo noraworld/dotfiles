@@ -10,10 +10,10 @@ store_directory_stack() {
 }
 
 if [[ $1 =~ ^[0-9]+$ ]]; then
-  pushd "+$@" 1>/dev/null || echo
+  command pushd "+$@" 1>/dev/null || echo
   store_directory_stack
 else
-  pushd  "$@" 1>/dev/null || echo
+  command pushd  "$@" 1>/dev/null || echo
   store_directory_stack
 fi
 
