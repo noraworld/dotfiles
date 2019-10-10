@@ -1,5 +1,7 @@
 #!/bin/bash
 
+current_directory=$(pwd)
+
 store_directory_stack() {
   if [[ ! -e $HOME/.directory_stack_store ]]; then
     echo -e "Create $HOME/.directory_stack_store"
@@ -17,5 +19,8 @@ else
   store_directory_stack
 fi
 
-# This is unnecessary as long as it runs automatically when changing directories
-# dirs -v
+# output directory stack when directory which is not a current directory are popped
+# output directory stack at function autorun() in bashrc when current directory are popped
+if [[ $(pwd) = $current_directory ]]; then
+  dirs -v
+fi
