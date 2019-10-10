@@ -18,7 +18,9 @@ export EDITOR=vim
 shopt -u histappend
 
 # Auto correct and continue to run cd command even if directory name is misspelled partly
-shopt -s cdspell
+#
+# disable because this is rarely used
+#shopt -s cdspell
 
 # Change directories without `cd`
 # NOTE: bash version more than 4.0 is required
@@ -28,4 +30,9 @@ shopt -s cdspell
 # $ echo /usr/local/bin/bash | sudo tee -a /etc/shells
 # $ chpass -s /usr/local/bin/bash
 # (Type your password, then reboot your shell application)
-shopt -s autocd
+#
+# somehow this does not work on bash 5.0.11
+# though trying above command
+# this works on company MacBook Pro
+# but does not work on personal MacBook Pro (bash 5.0.11)
+#shopt -s autocd
