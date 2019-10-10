@@ -96,7 +96,9 @@ if [[ -e $HOME/.directory_stack_store ]]; then
   # delete directory of when shell session starts from stack
   command popd -0 1>/dev/null
 
+  echo -e "Restored directory stack"
   dirs -v
+  echo
 else
   echo -e "$HOME/.directory_stack_store is not found"
   echo -e "Skip"
