@@ -3,9 +3,9 @@
 alias sudo='sudo '
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
-alias dirs='dirs -v'
-alias d='dirs'
-alias p='pushd'
+alias d='dirs -v'
+alias push='push_directory'
+alias p='push_directory'
 alias g='git'
 alias grep='grep --color=always'
 alias less='less -iMNRS'
@@ -72,6 +72,33 @@ else
   PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]'
 fi
 
+# Restore directory stack when shell session starts or restarts
+# Also see function store_directory_stack() in ./bin/src/override/_pushd
+#
+# CAUTION: This should be loaded after ./bash/bin.bash is loaded
+if [[ -e $HOME/.directory_stack_store ]]; then
+  while read line
+  do
+    # expand tilde into home directory’s path
+    # somehow tilde is not expanded
+    #
+    # NOTE:
+    #   use `|` instead of `/` as sed separator
+    #   because `/` overlaps with path expression
+    file=$(echo $line | sed -e "s|^~|$HOME|g")
+
+    pushd $file 1>/dev/null
+  done <<< $(tac $HOME/.directory_stack_store || tail -r $HOME/.directory_stack_store)
+
+  # delete directory of when shell session starts from stack
+  popd -0 1>/dev/null
+
+  dirs -v
+else
+  echo -e "$HOME/.directory_stack_store is not found"
+  echo -e "Skip"
+fi
+
 # Share the history for each tab or window
 if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
   PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
@@ -86,7 +113,7 @@ autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
     echo -e ""
     echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
-    dirs
+    dirs -v
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
     ls
