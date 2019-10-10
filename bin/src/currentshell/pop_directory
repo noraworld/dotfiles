@@ -1,0 +1,21 @@
+#!/bin/bash
+
+store_directory_stack() {
+  if [[ ! -e $HOME/.directory_stack_store ]]; then
+    echo -e "Create $HOME/.directory_stack_store"
+    touch $HOME/.directory_stack_store
+  fi
+
+  dirs -v | sed "s/^ *[0-9]* *//g" > $HOME/.directory_stack_store
+}
+
+if [[ $1 =~ ^[0-9]+$ ]]; then
+  popd "+$@" 1>/dev/null || echo
+  store_directory_stack
+else
+  popd  "$@" 1>/dev/null || echo
+  store_directory_stack
+fi
+
+# This is unnecessary as long as it runs automatically when changing directories
+# dirs -v
