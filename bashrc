@@ -92,7 +92,9 @@ if [[ -e $HOME/.directory_stack_store ]]; then
       file=$(echo $line | sed -e "s|^~|$HOME|g")
 
       command pushd $file 1>/dev/null
-    done <<< $(tac $HOME/.directory_stack_store || tail -r $HOME/.directory_stack_store)
+    done << FILE
+$(tac $HOME/.directory_stack_store || tail -r $HOME/.directory_stack_store)
+FILE
 
     # delete directory of when shell session starts from stack
     command popd -0 1>/dev/null
