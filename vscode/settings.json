@@ -29,5 +29,6 @@
     },
     "window.zoomLevel": 0,
     "editor.multiCursorModifier": "ctrlCmd",
-    "terminal.integrated.confirmOnExit": true
+    "terminal.integrated.confirmOnExit": true,
+    "files.trimFinalNewlines": true
 }
