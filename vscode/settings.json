@@ -1,4 +1,10 @@
 {
+    // What I want to do if possible...
+    // - Kill active process executed by terminal when clicking "Kill Terminal" button and quitting VS Code
+    //   - Workaround: turn on the option that confirms on exit
+    // - Change modifier key of the option that follows link
+    //   - I want to use cmd+click, but multi-cursor overlaps
+
     "workbench.startupEditor": "newUntitledFile",
     "editor.wordWrap": "on",
     "terminal.integrated.scrollback": 10000,
