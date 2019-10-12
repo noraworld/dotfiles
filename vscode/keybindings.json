@@ -1,19 +1,22 @@
 // Place your key bindings in this file to override the defaults
 [
-    { "key": "ctrl+a",                "command": "cursorHome",                                  "when": "editorTextFocus" },
-    { "key": "ctrl+e",                "command": "cursorEnd",                                   "when": "editorTextFocus" },
-    { "key": "ctrl+shift+a",          "command": "cursorHomeSelect",                            "when": "editorTextFocus" },
-    { "key": "ctrl+shift+e",          "command": "cursorEndSelect",                             "when": "editorTextFocus" },
-    { "key": "shift+cmd+i",           "command": "editor.action.formatSelection",               "when": "editorTextFocus" },
-    { "key": "shift+cmd+c",           "command": "copyRelativeFilePath" },
-    { "key": "cmd+numpad_add",        "command": "-workbench.action.zoomIn" },
-    { "key": "shift+cmd+[Semicolon]", "command": "-workbench.action.zoomIn" },
-    { "key": "shift+cmd+[Minus]",     "command": "-workbench.action.zoomIn" },
-    { "key": "cmd+numpad_subtract",   "command": "-workbench.action.zoomOut" },
-    { "key": "cmd+[IntlRo]",          "command": "-workbench.action.zoomOut" },
-    { "key": "cmd+[Minus]",           "command": "-workbench.action.zoomOut" },
-    { "key": "cmd+numpad0",           "command": "-workbench.action.zoomReset" },
-    { "key": "ctrl+cmd+enter",        "command": "workbench.action.terminal.toggleTerminal"},
-    { "key": "cmd+left",              "command": "workbench.action.terminal.focusPreviousPane", "when": "terminalFocus" },
-    { "key": "cmd+right",             "command": "workbench.action.terminal.focusNextPane",     "when": "terminalFocus" }
+    { "key": "ctrl+a",       "command": "cursorHome",                                  "when": "editorTextFocus" },
+    { "key": "ctrl+e",       "command": "cursorEnd",                                   "when": "editorTextFocus" },
+    { "key": "ctrl+shift+a", "command": "cursorHomeSelect",                            "when": "editorTextFocus" },
+    { "key": "ctrl+shift+e", "command": "cursorEndSelect",                             "when": "editorTextFocus" },
+    { "key": "shift+cmd+i",  "command": "editor.action.formatSelection",               "when": "editorTextFocus" },
+    { "key": "cmd+left",     "command": "workbench.action.terminal.focusPreviousPane", "when": "terminalFocus"   },
+    { "key": "cmd+right",    "command": "workbench.action.terminal.focusNextPane",     "when": "terminalFocus"   },
+
+    { "key": "ctrl+cmd+enter", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "shift+cmd+c",    "command": "copyRelativeFilePath"                     },
+
+    // Disable defaults
+    { "key": "cmd+numpad_add",        "command": "-workbench.action.zoomIn"    },
+    { "key": "shift+cmd+[Semicolon]", "command": "-workbench.action.zoomIn"    },
+    { "key": "shift+cmd+[Minus]",     "command": "-workbench.action.zoomIn"    },
+    { "key": "cmd+numpad_subtract",   "command": "-workbench.action.zoomOut"   },
+    { "key": "cmd+[IntlRo]",          "command": "-workbench.action.zoomOut"   },
+    { "key": "cmd+[Minus]",           "command": "-workbench.action.zoomOut"   },
+    { "key": "cmd+numpad0",           "command": "-workbench.action.zoomReset" }
 ]
