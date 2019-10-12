@@ -56,5 +56,19 @@
     {
         "key":     "cmd+numpad0",
         "command": "-workbench.action.zoomReset"
+    },
+    {
+        "key":     "ctrl+cmd+enter",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key":     "cmd+left",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when":    "terminalFocus"
+    },
+    {
+        "key":     "cmd+right",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when":    "terminalFocus"
     }
 ]
