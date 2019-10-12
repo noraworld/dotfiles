@@ -28,5 +28,6 @@
         "bash_profile": "shellscript"
     },
     "window.zoomLevel": 0,
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "terminal.integrated.confirmOnExit": true
 }
