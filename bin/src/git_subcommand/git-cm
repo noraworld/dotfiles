@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo -e "Input a commit message"
+echo -e "Type Ctrl+D to quit input\n"
+
+echo -e "Tips:"
+echo -e "  - try not to exceed yellow line to make commit summary easy to understand"
+echo -e "  - avoid exceeding red line because commit summary cannot show on oneline on GitHub\n"
+
+# show ruler
+echo -e "\033[1;97m*********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
+
+while IFS= read line
+do
+  commit_message+=$(echo "$line\n")
+done < /dev/tty
+
+echo
+git commit -m "$(echo -e "$commit_message")"
