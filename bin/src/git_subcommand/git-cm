@@ -10,6 +10,7 @@ echo -e "  - avoid exceeding red line because commit summary cannot show on onel
 # show ruler
 echo -e "*********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
 
+# TODO: enable control character like Ctrl+H, Ctrl+D, Ctrl+A, Ctrl+E, Ctrl+F, Ctrl+B, left-arrow, and right-arrow
 while IFS= read line
 do
   commit_message+=$(echo "$line\n")
