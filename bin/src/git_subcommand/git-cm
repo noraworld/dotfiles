@@ -3,7 +3,7 @@
 echo -e "Input a commit message"
 echo -e "Type Ctrl+D to quit input\n"
 
-echo -e "Tips:"
+echo -e "Tips for good commit message:"
 echo -e "  - try not to exceed yellow line to make commit summary easy to understand"
 echo -e "  - avoid exceeding red line because commit summary cannot show on oneline on GitHub\n"
 
