@@ -8,7 +8,7 @@ echo -e "  - try not to exceed yellow line to make commit summary easy to unders
 echo -e "  - avoid exceeding red line because commit summary cannot show on oneline on GitHub\n"
 
 # show ruler
-echo -e "\033[1;97m*********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
+echo -e "*********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
 
 while IFS= read line
 do
