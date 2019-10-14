@@ -18,7 +18,7 @@ alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 alias again='again=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $again; command $again'
 alias laravel='php artisan'
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
-alias del='rmtrash'
+alias del='trash'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
 
 # Divide configs by OS
