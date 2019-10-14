@@ -1,20 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
-echo -e "Input a commit message"
-echo -e "Type Ctrl+D to quit input\n"
+# Refer to https://maku77.github.io/ruby/io/input-from-keyboard.html. Thanks a lot!
+require 'readline'
 
-echo -e "Tips for good commit message:"
-echo -e "  - try not to exceed yellow line to make commit summary easy to understand"
-echo -e "  - avoid exceeding red line because commit summary cannot show on oneline on GitHub\n"
+puts 'Input a commit message'
+puts "Type ^D (ctrl+d) to quit input\n\n"
+
+puts 'Tips for good commit message:'
+puts '  - try not to exceed yellow line to make commit summary easy to understand'
+puts "  - avoid exceeding red line because commit summary cannot show on oneline on GitHub\n\n"
 
 # show ruler
-echo -e "*********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
+puts "  *********1*********2*********3*********4*********5\033[1;93m*********6*********\033[1;91m7*****\033[00m"
 
-# TODO: enable control character like Ctrl+H, Ctrl+D, Ctrl+A, Ctrl+E, Ctrl+F, Ctrl+B, left-arrow, and right-arrow
-while IFS= read line
-do
-  commit_message+=$(echo "$line\n")
-done < /dev/tty
+commit_message = ''
+while line = Readline.readline('> ')
+  commit_message += "#{line}\n"
+end
 
-echo
-git commit -m "$(echo -e "$commit_message")"
+puts ''
+
+system("git commit -F- << EOF
+#{commit_message}
+EOF")
