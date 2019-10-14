@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git log
+
 echo -e "Committed as:"
 echo -e "  (use \"git reset --soft HEAD^\" to undo)\n"
 echo -e "	\033[1;93m`git config --local user.name` <`git config --local user.email`>\033[00m\n"
