@@ -151,15 +151,29 @@ precmd() {
     return
   fi
 
-  if [[ $dur -gt notification_period_threshold ]]; then
-    terminal-notifier -message "Finished: $_tn_cmd"
+  if [[ ! -e $HOME/.elapsed_time_ignore_commands ]]; then
+    touch $HOME/.elapsed_time_ignore_commands
   fi
 
-  echo
-  if [[ $dur -eq 1 ]]; then
-    echo elapsed time: $dur second
-  else
-    echo elapsed time: $dur seconds
+  is_elapsed_time=true
+  while read line
+  do
+    if [[ $_tn_cmd = $line ]]; then
+      is_elapsed_time=false
+    fi
+  done < $HOME/.elapsed_time_ignore_commands
+
+  if "${is_elapsed_time}"; then
+    if [[ $dur -gt notification_period_threshold ]]; then
+      terminal-notifier -message "Finished: $_tn_cmd"
+    fi
+
+    echo
+    if [[ $dur -eq 1 ]]; then
+      echo elapsed time: $dur second
+    else
+      echo elapsed time: $dur seconds
+    fi
   fi
 
   _tn_cmd=''
