@@ -1,0 +1,36 @@
+#!/bin/bash
+
+stopped_job_cmds_str=$(ps -e -o stat,command | grep -e '^T' -e '^Z' | awk '{print $2}')
+stopped_job_pids_str=$(ps -e -o stat,pid     | grep -e '^T' -e '^Z' | awk '{print $2}')
+stopped_job_cmds_arr=(`echo $stopped_job_cmds_str`)
+stopped_job_pids_arr=(`echo $stopped_job_pids_str`)
+
+if [[ $stopped_job_cmds_str = "" ]]; then
+  echo "No suspended processes or zombie processes exist"
+  exit 0
+fi
+
+echo -e "The processes listed below are currently suspended or zombies:"
+echo -e "\033[1;93m"
+
+for i in `seq 1 ${#stopped_job_cmds_arr[@]}`
+do
+  echo "	${stopped_job_cmds_arr[$i-1]}"
+done
+
+echo -e "\033[00m"
+echo -n "Are you sure you want to kill them all? [y/n]: "
+
+exec < /dev/tty
+read confirm
+
+echo -e ""
+if [ $confirm = "y" ] || [ $confirm = "Y" ] || [ $confirm = "yes" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+  for i in `seq 1 ${#stopped_job_pids_arr[@]}`
+  do
+    kill -9 ${stopped_job_pids_arr[$i-1]}
+    echo -e "Killed ${stopped_job_cmds_arr[$i-1]} (pid: ${stopped_job_pids_arr[$i-1]})"
+  done
+else
+  echo -e "Canceled"
+fi
