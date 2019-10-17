@@ -7,8 +7,12 @@ NORMAL_CHARACTER = "\033[00m".freeze
 YELLOW_CHARACTER = "\033[1;93m".freeze
 RED_CHARACTER    = "\033[1;91m".freeze
 
-puts 'Input a commit message'
-puts "Type ^D (ctrl+d) to quit input\n\n"
+puts "Input a commit message\n\n"
+
+puts 'Type ^D (ctrl+d) to quit input'
+puts "Type ^C (ctrl+c) to cancel commit\n\n"
+
+puts "Do not forget to escape \"\`\" (backquote) and \"\\\" (backslash)\n\n"
 
 puts 'Tips for good commit messages:'
 puts "  - try not to exceed #{YELLOW_CHARACTER}yellow line#{NORMAL_CHARACTER} to make commit summary easy to understand"
@@ -21,12 +25,19 @@ puts "\n"
 puts "  *********1*********2*********3*********4*********5#{YELLOW_CHARACTER}*********6*********#{RED_CHARACTER}7*********#{NORMAL_CHARACTER}"
 
 commit_message = ''
-while line = Readline.readline('> ')
-  commit_message += "#{line}\n"
-end
 
-puts ''
+begin
+  while line = Readline.readline('> ')
+    commit_message += "#{line}\n"
+  end
+
+  puts ''
 
 system("git commit -F- << EOF
 #{commit_message}
 EOF")
+
+# catch ctrl+c
+rescue Exception => e
+  puts 'Canceled'
+end
