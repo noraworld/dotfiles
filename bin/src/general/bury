@@ -12,18 +12,18 @@ do
   esac
 done
 
-stopped_job_cmds_str=$(ps -e -o stat,command | grep -e '^T' -e '^Z' | awk '{print $2}')
-stopped_job_pids_str=$(ps -e -o stat,pid     | grep -e '^T' -e '^Z' | awk '{print $2}')
+stopped_job_cmds_str=$(ps -e -o stat,command | grep -e '^T' | awk '{print $2}')
+stopped_job_pids_str=$(ps -e -o stat,pid     | grep -e '^T' | awk '{print $2}')
 stopped_job_cmds_arr=(`echo $stopped_job_cmds_str`)
 stopped_job_pids_arr=(`echo $stopped_job_pids_str`)
 
 if [[ $stopped_job_cmds_str = "" ]]; then
-  echo "No suspended processes or zombie processes exist"
+  echo "No suspended processes exist"
   exit 0
 fi
 
 if "${is_confirmation}"; then
-  echo -e "The processes listed below are currently suspended or zombies:"
+  echo -e "The processes listed below are currently suspended:"
 
   echo -e "\033[1;93m"
   for i in `seq 1 ${#stopped_job_cmds_arr[@]}`
