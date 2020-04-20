@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# anyenv
+if [[ -s ~/.anyenv ]]; then
+  PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+fi
+
 # ndenv
 if [[ -s ~/.ndenv ]]; then
   PATH="$HOME/.ndenv/bin:$PATH"
