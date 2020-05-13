@@ -1,6 +1,9 @@
-; Switch applications with Command + Tab (Ctrl + Tab)
+; Switch applications with Command(ctrl) + Tab (like macOS)
 Ctrl & Tab::AltTab
 Ctrl & SC029::ShiftAltTab
+
+; Take screenshot with command(ctrl) + shift + 4 (like macOS)
+^+4::Send,#+s
 
 ; Emacs keybinds
 ;; https://qiita.com/digitarhythm/items/d5dcc1e714f794d26536
