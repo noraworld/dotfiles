@@ -22,4 +22,7 @@ Ctrl & SC029::ShiftAltTab
 !l::Send,^l
 !u::Send,^u
 
+; Disable focusing to the menu bar in pressing the Alt key by itself
+Alt::Return
+
 Return
