@@ -15,4 +15,8 @@ Ctrl & SC029::ShiftAltTab
 !h::Send,{BS}
 !d::Send,{Delete}
 
+!c::Send,^c
+!l::Send,^l
+!u::Send,^u
+
 Return
