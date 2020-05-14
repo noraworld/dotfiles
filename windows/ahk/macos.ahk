@@ -5,6 +5,11 @@ Ctrl & SC029::ShiftAltTab
 ; Take screenshot with Command(Ctrl) + Shift + 4 (macOS-like)
 ^+4::Send,#+s
 
+; Switch zenkaku/hankaku with Ctrl(Alt) + Space
+;; https://yasushiito.hatenablog.com/entry/2019/03/15/183853
+;; https://blog.goo.ne.jp/mocas_lab/e/3d1238365a243bb4614587076e159998
+!Space::Send,{vkF3sc029}
+
 ; Emacs keybinds
 ;; https://qiita.com/digitarhythm/items/d5dcc1e714f794d26536
 ;; https://alfort728.hatenablog.com/entry/2019/03/29/041408
