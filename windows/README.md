@@ -29,3 +29,5 @@ You should run KeySwap as an administrator and restart Windows to apply changes.
 You should decrease the repeat rate in the keyboard properties.
 
 `Control Panel` > `Keyboard` > `Keyboard Properties` > `Character repeat` > `Repeat rate`
+
+![Keyboard properties](keyboard_properties.png)
