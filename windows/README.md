@@ -31,3 +31,6 @@ You should decrease the repeat rate in the keyboard properties.
 `Control Panel` > `Keyboard` > `Keyboard Properties` > `Character repeat` > `Repeat rate`
 
 ![Keyboard properties](keyboard_properties.png)
+
+## Special thanks
+[`IME.ahk`](ahk/IME.ahk) was downloaded from [here](https://w.atwiki.jp/eamat/pages/17.html) on May 16, 2020. Many thanks to the developer!
