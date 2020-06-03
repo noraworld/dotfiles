@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo -e "\033[1;96m$(dirs -l -v +0) (you are here)\033[00m"
+dirs -l -v | sed -r '1d'
