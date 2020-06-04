@@ -38,7 +38,7 @@ $ source ~/.bash_profile
 $ git refresh
 ```
 
-Done!
+That’s all!
 
 ## Dependencies
 The following libraries are used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
