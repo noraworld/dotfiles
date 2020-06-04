@@ -3,7 +3,7 @@
 alias sudo='sudo '
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
-alias d='show_directory'
+alias d='show_directory_stack'
 alias p='push_directory'
 alias push='push_directory'
 alias pop='pop_directory'
@@ -104,7 +104,7 @@ FILE
     command popd -0 1>/dev/null
 
     echo -e "Restored directory stack"
-    show_directory
+    show_directory_stack
     echo
   fi
 else
@@ -126,7 +126,7 @@ autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
     echo -e ""
     echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
-    show_directory
+    show_directory_stack
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
     ls
