@@ -30,5 +30,6 @@
     "window.zoomLevel": 0,
     "editor.multiCursorModifier": "ctrlCmd",
     "files.trimFinalNewlines": true,
-    "ruby.intellisense": "rubyLocate"
+    "ruby.intellisense": "rubyLocate",
+    "editor.cursorBlinking": "solid"
 }
