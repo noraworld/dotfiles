@@ -1,6 +1,14 @@
 # Setup for macOS
 ## Resident application
-TBA
+- [Lunar](https://lunar.fyi)
+- [Shifty](https://shifty.natethompson.io/en/)
+- [Amphetamine](https://apps.apple.com/jp/app/amphetamine/id937984704)
+- [Karabiner-Elements](https://karabiner-elements.pqrs.org)
+- [BetterSnapTool](https://apps.apple.com/jp/app/bettersnaptool/id417375580)
+- [Google IME](https://www.google.co.jp/ime/)
+- [Google Drive File Stream](https://support.google.com/drive/answer/7329379)
+- [Google Photos Backup](https://photos.google.com/apps)
+- [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
 
 ## Homebrew packages
 TBA
