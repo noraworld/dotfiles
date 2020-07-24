@@ -21,11 +21,13 @@ $ defaults write com.apple.screencapture location <SAVE_LOCATION_PATH>
 $ killall SystemUIServer
 ```
 
-#### Rollback
+<details><summary>Rollback</summary>
+
 ```bash
 $ defaults delete com.apple.screencapture location
 $ killall SystemUIServer
 ```
+</details>
 
 ### Add "Quit Finder" to Finder.app menu bar
 ```bash
@@ -33,11 +35,13 @@ $ defaults write com.apple.Finder QuitMenuItem -boolean true
 $ killall Finder
 ```
 
-#### Rollback
+<details><summary>Rollback</summary>
+
 ```bash
 $ defaults delete com.apple.Finder QuitMenuItem
 $ killall Finder
 ```
+</details>
 
 ### Disable clamshell mode for Mac notebook computer
 In order to disable clamshell mode, you need to use [macOS Recovery](https://support.apple.com/en-us/HT201314).
@@ -59,9 +63,11 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 ```
 2. Log out and back in, or restart your Mac
 
-#### Rollback
+<details><summary>Rollback</summary>
+
 1. Type the following command
 ```bash
 $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 ```
 2. Log out and back in, or restart your Mac
+</details>
