@@ -1,12 +1,12 @@
 # dotfiles
-This repository includes the following configuration files.
+This repository supports the following configuration files.
 
-* Bash
-* Vim
-* Emacs
-* Git
-
-The Emacs configuration file is probably no longer updated.
+| Type    | Fully supported | Partially supported | No longer supported |
+|---------|-----------------|---------------------|---------------------|
+| Shells  | Bash            |                     |                     |
+| Editors | Vim<br>VS Code  |                     | Emacs               |
+| SCM     | Git             |                     |                     |
+| OS      | macOS           | Windows<br>Ubuntu   |                     |
 
 ## Before the setup
 You should move the following original dotfiles to somewhere else if they exist.
