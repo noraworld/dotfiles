@@ -8,6 +8,15 @@ This repository supports the following configuration files.
 | SCM     | Git             |                     |                                                                |
 | OS      | macOS           | Windows<br>Ubuntu   |                                                                |
 
+<dl>
+  <dt>Fully supported</dt>
+  <dd>All configuration works fine. New configuration will be added, and existing configuration will be fixed if bugs exist.</dd>
+  <dt>Partially supported</dt>
+  <dd>Some configuration may not work properly. For example, due to the lack of commands. These problems will be fixed, but it may take a while.</dd>
+  <dt>No longer supported</dt>
+  <dd>The configuration files will not be supported.</dd>
+</dl>
+
 ## Before the setup
 You should move the following original dotfiles to somewhere else if they exist.
 
