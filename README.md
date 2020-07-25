@@ -2,7 +2,7 @@
 This repository supports the following configuration files.
 
 | Type    | Fully supported | Partially supported | No longer supported                                            |
-|---------|-----------------|---------------------|----------------------------------------------------------------|
+|:-------:|:---------------:|:-------------------:|:--------------------------------------------------------------:|
 | Shells  | Bash            |                     |                                                                |
 | Editors | Vim<br>VS Code  |                     | Emacs<br>[Sublime Text 3](https://github.com/noraworld/sublrc) |
 | SCM     | Git             |                     |                                                                |
