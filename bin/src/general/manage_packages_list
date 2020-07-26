@@ -12,6 +12,11 @@ PACKAGES_LIST_FILEPATHS = {
 
 def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   local_packages = `brew list`.split("\n")
+
+  PACKAGES_LIST_FILEPATHS.values.each do |file|
+    File.open(file, 'w') unless File.exist?(file)
+  end
+
   known_packages = `cat #{PACKAGES_LIST_FILEPATHS.values.join(' ')}`.split("\n")
   untracked_packages = local_packages - known_packages
 
@@ -41,6 +46,7 @@ def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       end
     else
       puts 'Undefined command. Redo!'
+      redo
     end
   end
 end
