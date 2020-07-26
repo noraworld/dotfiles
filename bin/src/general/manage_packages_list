@@ -22,21 +22,21 @@ def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 
   case untracked_packages.count
   when 0
-    puts "No packages found.\n"
+    puts "No untracked packages found.\n"
   when 1
-    puts "#{untracked_packages.count} package found.\n"
+    puts "#{untracked_packages.count} untracked package found.\n"
   else
-    puts "#{untracked_packages.count} packages found.\n"
+    puts "#{untracked_packages.count} untracked packages found.\n"
   end
 
   untracked_packages.each_with_index do |package, pkg_index|
     puts "\nPackage name: #{package} (#{package_url(package)}) (#{pkg_index + 1} of #{untracked_packages.count})"
 
     PACKAGES_LIST_FILEPATHS.keys.each_with_index do |key, cmd_index|
-      puts "#{cmd_index + 1}: Add to #{key.to_s.tr('_', ' ')} packages list"
+      puts "#{cmd_index + 1}: Add to #{key.to_s.tr('_', ' ').upcase} packages list"
     end
 
-    print 'Which command do you select?: '
+    print 'Which list do you want to add?: '
     cmd = STDIN.gets.strip
     cmd = cmd.to_i
 
