@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require 'io/console'
+require 'readline'
 
 PACKAGES_LIST_BASEPATH = "#{ENV['DOTPATH']}/packages/homebrew"
 PACKAGES_LIST_FILEPATHS = {
@@ -37,7 +38,7 @@ def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     end
 
     print 'Which list do you want to add?: '
-    cmd = STDIN.gets.strip
+    cmd = Readline.readline
     cmd = cmd.to_i
 
     if cmd >= 1 && cmd <= PACKAGES_LIST_FILEPATHS.count
