@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'io/console'
+
+PACKAGES_LIST_BASEPATH = "#{ENV['DOTPATH']}/packages/homebrew"
+PACKAGES_LIST_FILEPATHS = {
+  required:   "#{PACKAGES_LIST_BASEPATH}/required_packages_list",
+  dev:        "#{PACKAGES_LIST_BASEPATH}/dev_packages_list",
+  local_only: "#{PACKAGES_LIST_BASEPATH}/local_only_packages_list"
+}.freeze
+
+def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  local_packages = `brew list`.split("\n")
+  known_packages = `cat #{PACKAGES_LIST_FILEPATHS.values.join(' ')}`.split("\n")
+  untracked_packages = local_packages - known_packages
+
+  case untracked_packages.count
+  when 0
+    puts "No packages found.\n"
+  when 1
+    puts "#{untracked_packages.count} package found.\n"
+  else
+    puts "#{untracked_packages.count} packages found.\n"
+  end
+
+  untracked_packages.each_with_index do |package, pkg_index|
+    puts "\nPackage name: #{package} (#{package_url(package)}) (#{pkg_index + 1} of #{untracked_packages.count})"
+
+    PACKAGES_LIST_FILEPATHS.keys.each_with_index do |key, cmd_index|
+      puts "#{cmd_index + 1}: Add to #{key.to_s.tr('_', ' ')} packages list"
+    end
+
+    print 'Which command do you select?: '
+    cmd = STDIN.gets.strip
+    cmd = cmd.to_i
+
+    if cmd >= 1 && cmd <= PACKAGES_LIST_FILEPATHS.count
+      File.open(PACKAGES_LIST_FILEPATHS.values[cmd - 1], 'a') do |f|
+        f.puts package
+      end
+    else
+      puts 'Undefined command. Redo!'
+    end
+  end
+end
+
+def package_url(package)
+  "https://formulae.brew.sh/formula/#{package}"
+end
+
+main
