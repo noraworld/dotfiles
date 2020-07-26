@@ -3,6 +3,7 @@
 
 require 'io/console'
 require 'readline'
+require 'color_echo/get'
 
 PACKAGES_LIST_BASEPATH = "#{ENV['DOTPATH']}/packages/homebrew"
 PACKAGES_LIST_FILEPATHS = {
@@ -31,13 +32,13 @@ def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   end
 
   untracked_packages.each_with_index do |package, pkg_index|
-    puts "\nPackage name: #{package} (#{package_url(package)}) (#{pkg_index + 1} of #{untracked_packages.count})"
+    puts "\nPackage name: #{CE.tx(:bold, :underline).get(package)} (#{package_url(package)}) (#{pkg_index + 1} of #{untracked_packages.count})"
 
     PACKAGES_LIST_FILEPATHS.keys.each_with_index do |key, cmd_index|
       puts "#{cmd_index + 1}: Add to #{key.to_s.tr('_', ' ').upcase} packages list"
     end
 
-    print 'Which list do you want to add?: '
+    print 'To which list do you want to add?: '
     cmd = Readline.readline
     cmd = cmd.to_i
 
