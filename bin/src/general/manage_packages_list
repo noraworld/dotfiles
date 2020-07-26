@@ -12,7 +12,7 @@ PACKAGES_LIST_FILEPATHS = {
   local_only: "#{PACKAGES_LIST_BASEPATH}/local_only_packages_list"
 }.freeze
 
-def main # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+def main
   local_packages = `brew list`.split("\n")
 
   PACKAGES_LIST_FILEPATHS.values.each do |file|
