@@ -1,13 +1,17 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
-	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
 
-	// List of extensions which should be recommended for users of this workspace.
-	"recommendations": [
+  // Use `code --list-extensions` to list all installed extensions.
+  // https://www.nyamucoro.com/entry/2019/12/20/152939
 
-	],
-	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
-	"unwantedRecommendations": [
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "misogi.ruby-rubocop",
+    "rebornix.ruby",
+    "wingrunr21.vscode-ruby"
+  ],
 
-	]
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
 }
