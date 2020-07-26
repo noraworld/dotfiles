@@ -1,12 +1,13 @@
 # dotfiles
 This repository supports the following configuration files.
 
-| Type    | Fully supported | Partially supported | No longer supported                                            |
-|:-------:|:---------------:|:-------------------:|:--------------------------------------------------------------:|
-| Shells  | Bash            |                     |                                                                |
-| Editors | Vim<br>VS Code  |                     | Emacs<br>[Sublime Text 3](https://github.com/noraworld/sublrc) |
-| SCM     | Git             |                     |                                                                |
-| OS      | macOS           | Windows<br>Ubuntu   |                                                                |
+| Type             | Fully supported | Partially supported | No longer supported                                            |
+|------------------|:---------------:|:-------------------:|:--------------------------------------------------------------:|
+| Shells           | Bash            |                     |                                                                |
+| Editors          | Vim<br>VS Code  |                     | Emacs<br>[Sublime Text 3](https://github.com/noraworld/sublrc) |
+| SCM              | Git             |                     |                                                                |
+| OS               | macOS           | Windows<br>Linux    |                                                                |
+| Package managers | Homebrew        |                     |                                                                |
 
 <dl>
   <dt>Fully supported</dt>
@@ -45,9 +46,18 @@ $ cd path/to/dotfiles
 $ bash setup.sh
 $ source ~/.bash_profile
 $ git refresh
+$ bundle install
 ```
 
 That’s all!
+
+## Dependencies
+This dotfiles depends on the following.
+
+* Bash
+* Git version 2.8 or higher
+* Ruby (version 2.5.1 or higher is recommended)
+* Homebrew
 
 ## Dependencies
 The following libraries are used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
