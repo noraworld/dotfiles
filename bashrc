@@ -63,6 +63,11 @@ if [ -e /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
+# Set DOTPATH
+if [ -f ~/.dotpath ]; then
+  . ~/.dotpath
+fi
+
 # Set colors to ls command
 if [ -f ~/.dir_colors ]; then
   eval $(dircolors -b ~/.dir_colors)

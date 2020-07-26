@@ -80,8 +80,19 @@ function check_git_version() {
   fi
 }
 
+function make_dotfiles_path() {
+  if [ ! -e $HOME/.dotpath ]; then
+    touch $HOME/.dotpath
+  fi
+
+  echo -e "DOTPATH=$PWD" > $HOME/.dotpath
+}
+
 # copy gitconfig.local.sample to gitconfig.local
 copy_gitconfig_local
+
+# set DOTPATH
+make_dotfiles_path
 
 # link all files in current directory
 for src_path in $PWD/*
