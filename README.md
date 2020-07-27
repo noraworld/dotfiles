@@ -75,4 +75,4 @@ The following libraries are used in this dotfiles. These dependencies will be fi
 
 ## Others
 * It is recommended to run the setup script every time new files are added.
-* If you want to add your additional Git configurations, just add them to `gitconfig.local`.
+* If you want to add your additional Git configuration, just add them to `gitconfig.local`.

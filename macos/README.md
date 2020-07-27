@@ -1,5 +1,5 @@
 # Setup for macOS
-## Resident application
+## Resident applications
 - [Lunar](https://lunar.fyi)
 - [Shifty](https://shifty.natethompson.io/en/)
 - [Amphetamine](https://apps.apple.com/jp/app/amphetamine/id937984704)
@@ -12,7 +12,7 @@
 - [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
 
 ## Homebrew packages
-TBA
+TBA (I am planning to share `Brewfile`)
 
 ## Special system preferences
 ### Change save location for screencaptures
@@ -53,6 +53,15 @@ In order to disable clamshell mode, you need to use [macOS Recovery](https://sup
 ```bash
 $ nvram boot-args="niog=1"
 ```
+
+<details><summary>Rollback</summary>
+
+1. Same as the setup procedure 1-3
+2. Type the following command
+```bash
+$ nvram -d boot-args
+```
+</details>
 
 **NOTE**: This setting goes back after [resetting NVRAM or PRAM on your Mac](https://support.apple.com/en-us/HT204063).
 
