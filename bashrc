@@ -26,6 +26,12 @@ alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; e
 alias up='cd ..'
 alias sc='cat $DOTPATH/SUBSTITUTE_COMMAND_LIST'
 alias del='trash'
+alias l='lk'
+alias ll='lk -l'
+alias la='lk -a'
+alias lla='lk -la'
+alias lal='lk -al'
+alias lt='lk --tree'
 
 # Divide configs by OS
 case "${OSTYPE}" in
