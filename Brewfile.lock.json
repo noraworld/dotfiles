@@ -5,10 +5,10 @@
         "revision": "b4eb00f9b3af2b96a6362f041673fb487307494e"
       },
       "homebrew/cask": {
-        "revision": "a8f961d2c1b435d6754132959e6918459e170784"
+        "revision": "a93a39d4f389c7a387af160761b992f6620fe6a8"
       },
       "homebrew/core": {
-        "revision": "0e6317f0246ab1aea9342fbcca1f099740d784b2"
+        "revision": "4ab0917aa31e92ab15b0c54bde7ae45e5ad4547b"
       },
       "homebrew/services": {
         "revision": "e68b1b8a05ee097338d2b21a0edbe1dda905c61e"
@@ -590,7 +590,32 @@
           }
         }
       },
-      "rcmdnk/rcmdnkpac/rcmdnk-trash": null
+      "rcmdnk/rcmdnkpac/rcmdnk-trash": null,
+      "tree": {
+        "version": "1.8.0",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/tree-1.8.0.catalina.bottle.tar.gz",
+              "sha256": "18f7984bdbab22251e9fc3c7832dbace5c7f7a77e8d63717bb0078385e2bf255"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/tree-1.8.0.mojave.bottle.tar.gz",
+              "sha256": "7152288c457dd893de50fa9d6ac9a8599748564e1b3586eec8eff7057089051a"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/tree-1.8.0.high_sierra.bottle.tar.gz",
+              "sha256": "107d965994381d34e90b58a62f1c306c1b8a698db2696cdd905ba65c801ecc3b"
+            },
+            "sierra": {
+              "url": "https://homebrew.bintray.com/bottles/tree-1.8.0.sierra.bottle.tar.gz",
+              "sha256": "07d980571469a0cc699c69a8726eee338f782ba61c041e58f01ddb2924d08aeb"
+            }
+          }
+        }
+      }
     }
   },
   "system": {
@@ -598,7 +623,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.4.8",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "0e6317f0246ab1aea9342fbcca1f099740d784b2",
+        "Homebrew/homebrew-core": "4ab0917aa31e92ab15b0c54bde7ae45e5ad4547b",
         "CLT": "11.0.33.8",
         "Xcode": "11.6",
         "macOS": "10.15.6"
