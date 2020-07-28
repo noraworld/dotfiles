@@ -310,6 +310,27 @@
           }
         }
       },
+      "gnu-getopt": {
+        "version": "2.36",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.catalina.bottle.tar.gz",
+              "sha256": "729d02eac3c092be7dec5d8d3c0f0fc813e729a94a955f1bbc56d416fc410ef1"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.mojave.bottle.tar.gz",
+              "sha256": "080e1a67f6efa6ab711e300366969ae63d4b3b533bde7f5347b35c2337e20e2e"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.high_sierra.bottle.tar.gz",
+              "sha256": "4e9566ba6ef6f6bf8f3a261ae1802f621198122e227512c65ddd9bf5d2415ab4"
+            }
+          }
+        }
+      },
       "gnu-sed": {
         "version": "4.8",
         "bottle": {
@@ -415,27 +436,6 @@
             "high_sierra": {
               "url": "https://homebrew.bintray.com/bottles/libmagic-5.39.high_sierra.bottle.tar.gz",
               "sha256": "110d2db0b588dc5a379124d024b228e8ee8aae58c95a6a0510e68dc36426a86a"
-            }
-          }
-        }
-      },
-      "nginx": {
-        "version": "1.19.1",
-        "bottle": {
-          "cellar": "/usr/local/Cellar",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/nginx-1.19.1.catalina.bottle.tar.gz",
-              "sha256": "0c70950aa5eb51b432ecd5bc9f5d13cb9b4e583b946b8068b1250fe7205831e6"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/nginx-1.19.1.mojave.bottle.tar.gz",
-              "sha256": "de38ebc4e7e3196289215508f30de98458fdfa3da752d516916dcff676115b75"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/nginx-1.19.1.high_sierra.bottle.tar.gz",
-              "sha256": "aa42ffce60ab7b3b330fe997634d34b88ef4ecd5e3b3a3195854ae2731ad321b"
             }
           }
         }
@@ -561,7 +561,6 @@
           }
         }
       },
-      "rcmdnk/rcmdnkpac/rcmdnk-trash": null,
       "terminal-notifier": {
         "version": "2.0.0",
         "bottle": {
@@ -591,27 +590,7 @@
           }
         }
       },
-      "gnu-getopt": {
-        "version": "2.36",
-        "bottle": {
-          "cellar": ":any_skip_relocation",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.catalina.bottle.tar.gz",
-              "sha256": "729d02eac3c092be7dec5d8d3c0f0fc813e729a94a955f1bbc56d416fc410ef1"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.mojave.bottle.tar.gz",
-              "sha256": "080e1a67f6efa6ab711e300366969ae63d4b3b533bde7f5347b35c2337e20e2e"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.high_sierra.bottle.tar.gz",
-              "sha256": "4e9566ba6ef6f6bf8f3a261ae1802f621198122e227512c65ddd9bf5d2415ab4"
-            }
-          }
-        }
-      }
+      "rcmdnk/rcmdnkpac/rcmdnk-trash": null
     }
   },
   "system": {
