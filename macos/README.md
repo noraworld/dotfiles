@@ -11,8 +11,7 @@
 - [Google Photos Backup](https://photos.google.com/apps)
 - [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
 
-## Homebrew packages
-TBA (I am planning to share `Brewfile`)
+**TODO**: Manages with `Brewfile`.
 
 ## Special system preferences
 ### Change save location for screencaptures
