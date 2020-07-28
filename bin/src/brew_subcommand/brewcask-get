@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. $HOME/.dotpath &&
+/usr/local/bin/brew cask install $1 &&
+/usr/local/bin/brew bundle dump --force --global &&
+/usr/local/bin/brew bundle install --no-upgrade --file=${DOTPATH}/Brewfile &&
+echo "Installed $1 successfully! Do not forget to add and commit changes."
