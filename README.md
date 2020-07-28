@@ -46,6 +46,7 @@ $ cd path/to/dotfiles
 $ bash setup.sh
 $ source ~/.bash_profile
 $ git refresh
+$ gem install bundler -v '1.16.5'
 $ bundle install
 $ brew bundle install --global --no-lock
 ```
