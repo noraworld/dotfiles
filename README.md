@@ -47,9 +47,12 @@ $ bash setup.sh
 $ source ~/.bash_profile
 $ git refresh
 $ bundle install
+$ brew bundle install
 ```
 
 That’s all!
+
+**NOTE**: If you face a problem that most commands show `Killed: 9` and do not work after running `brew bundle install`, just type `exit` to exit a shell and reopen it again. The terminal process probably [terminates with exit code 137](https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch), but it can be ignored. This causes when bash is updated.
 
 ## Dependencies
 This dotfiles depends on the following.
