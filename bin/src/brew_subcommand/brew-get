@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. $HOME/.dotpath
+. $HOME/.dotpath &&
 brew install $1 &&
 brew bundle dump --force --global &&
 brew bundle install --no-upgrade --file=${DOTPATH}/Brewfile &&
