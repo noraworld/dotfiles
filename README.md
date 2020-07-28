@@ -62,20 +62,6 @@ This dotfiles depends on the following.
 * Ruby (version 2.5.1 or higher is recommended)
 * Homebrew
 
-## Dependencies
-The following libraries are used in this dotfiles. These dependencies will be fixed by preparing provisioning in the future...
-
-* coreutils (`brew install coreutils`)
-* binutils (`brew install binutils`)
-* findutils (`brew install findutils`)
-* peco (different between platforms)
-* git-completion (`sudo git clone https://github.com/git/git /usr/local/git`)
-* ghq (different between platforms)
-* source-highlight (`brew install source-highlight`)
-* direnv (`brew install direnv`)
-* getopt (`brew install gnu-getopt`)
-* sed (`brew install gnu-sed`)
-
 ## Others
 * It is recommended to run the setup script every time new files are added.
 * If you want to add your additional Git configuration, just add them to `gitconfig.local`.
