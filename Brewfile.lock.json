@@ -5,7 +5,7 @@
         "revision": "b4eb00f9b3af2b96a6362f041673fb487307494e"
       },
       "homebrew/cask": {
-        "revision": "a93a39d4f389c7a387af160761b992f6620fe6a8"
+        "revision": "9e38621389f297f7d01d3987f2753924da41c914"
       },
       "homebrew/core": {
         "revision": "4ab0917aa31e92ab15b0c54bde7ae45e5ad4547b"
@@ -590,7 +590,6 @@
           }
         }
       },
-      "rcmdnk/rcmdnkpac/rcmdnk-trash": null,
       "tree": {
         "version": "1.8.0",
         "bottle": {
@@ -614,6 +613,15 @@
               "sha256": "07d980571469a0cc699c69a8726eee338f782ba61c041e58f01ddb2924d08aeb"
             }
           }
+        }
+      },
+      "rcmdnk/rcmdnkpac/rcmdnk-trash": null
+    },
+    "cask": {
+      "slack": {
+        "version": "4.8.0",
+        "options": {
+          "full_name": "slack"
         }
       }
     }
