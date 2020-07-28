@@ -1,0 +1,8 @@
+rm ------------------> trash
+pushd ---------------> p
+popd ----------------> pop
+git commit ----------> git c
+brew install --------> brew get
+brew uninstall ------> brew discard
+brew cask install ---> brew cask get
+brew cask uninstall -> brew cask discard
