@@ -133,6 +133,8 @@ unlink $HOME/.setup.sh
 unlink $HOME/.README.md
 unlink $HOME/.LICENSE
 unlink $HOME/.gitconfig.local.sample
+unlink $HOME/.Brewfile.lock.json.macmini
+unlink $HOME/.Brewfile.macmini
 
 # install the Vim plugins
 install_vim_bundle
