@@ -55,12 +55,12 @@ if [ -e ~/.bash/bin.bash ]; then
 fi
 
 # Git completion config
-if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
-  . /usr/local/git/contrib/completion/git-prompt.sh
+if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+  . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
-if [ -e /usr/local/git/contrib/completion/git-completion.bash ]; then
-  . /usr/local/git/contrib/completion/git-completion.bash
+if [ -e /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
 # Set DOTPATH
@@ -73,7 +73,7 @@ if [ -f ~/.dir_colors ]; then
   eval $(dircolors -b ~/.dir_colors)
 fi
 
-if [ -e /usr/local/git/contrib/completion/git-prompt.sh ]; then
+if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
