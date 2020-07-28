@@ -47,7 +47,7 @@ $ bash setup.sh
 $ source ~/.bash_profile
 $ git refresh
 $ bundle install
-$ brew bundle install --global
+$ brew bundle install --global --no-lock
 ```
 
 That’s all!
