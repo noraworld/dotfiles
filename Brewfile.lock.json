@@ -8,7 +8,7 @@
         "revision": "a8f961d2c1b435d6754132959e6918459e170784"
       },
       "homebrew/core": {
-        "revision": "fa4ef188ad1685fb54407537b6d3189fe841fdc5"
+        "revision": "0e6317f0246ab1aea9342fbcca1f099740d784b2"
       },
       "homebrew/services": {
         "revision": "e68b1b8a05ee097338d2b21a0edbe1dda905c61e"
@@ -590,6 +590,27 @@
             }
           }
         }
+      },
+      "gnu-getopt": {
+        "version": "2.36",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.catalina.bottle.tar.gz",
+              "sha256": "729d02eac3c092be7dec5d8d3c0f0fc813e729a94a955f1bbc56d416fc410ef1"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.mojave.bottle.tar.gz",
+              "sha256": "080e1a67f6efa6ab711e300366969ae63d4b3b533bde7f5347b35c2337e20e2e"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-getopt-2.36.high_sierra.bottle.tar.gz",
+              "sha256": "4e9566ba6ef6f6bf8f3a261ae1802f621198122e227512c65ddd9bf5d2415ab4"
+            }
+          }
+        }
       }
     }
   },
@@ -598,7 +619,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.4.8",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "fa4ef188ad1685fb54407537b6d3189fe841fdc5",
+        "Homebrew/homebrew-core": "0e6317f0246ab1aea9342fbcca1f099740d784b2",
         "CLT": "11.0.33.8",
         "Xcode": "11.6",
         "macOS": "10.15.6"
