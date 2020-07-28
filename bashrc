@@ -25,6 +25,7 @@ alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
 alias up='cd ..'
 alias sc='cat $DOTPATH/SUBSTITUTE_COMMAND_LIST'
+alias del='trash'
 
 # Divide configs by OS
 case "${OSTYPE}" in
