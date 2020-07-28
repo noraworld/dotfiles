@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Separate options and files or directories
+for opt in "$@"
+do
+  case "$opt" in
+    -* )
+      options+="$opt "
+      shift
+    ;;
+    * )
+      files_or_directories+="$opt "
+      shift
+    ;;
+  esac
+done
+
+for file_or_directory in $files_or_directories
+do
+  if [ ! -e $file_or_directory ]; then
+    echo -e "$file_or_directory: No such file or directory"
+  elif [ -f $file_or_directory ]; then
+    bat $file_or_directory $options
+  elif [ -d $file_or_directory ]; then
+    ls $file_or_directory $options
+  fi
+done
