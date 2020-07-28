@@ -34,3 +34,5 @@
 	stash = false
 [diff]
 	compactionHeuristic = true
+[pull]
+	rebase = false
