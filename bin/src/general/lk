@@ -15,13 +15,17 @@ do
   esac
 done
 
+if [ -z $files_or_directories ]; then
+  lsd $options
+fi
+
 for file_or_directory in $files_or_directories
 do
   if [ ! -e $file_or_directory ]; then
     echo -e "$file_or_directory: No such file or directory"
   elif [ -f $file_or_directory ]; then
-    bat $file_or_directory $options
+    bat $options $file_or_directory
   elif [ -d $file_or_directory ]; then
-    ls $file_or_directory $options
+    lsd $options $file_or_directory
   fi
 done
