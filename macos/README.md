@@ -64,7 +64,7 @@ $ nvram -d boot-args
 
 **NOTE**: This setting goes back after [resetting NVRAM or PRAM on your Mac](https://support.apple.com/en-us/HT204063).
 
-**WARNING**: My Mac sometimes crashes and reboots after waking up when sleeping for a long time on my macOS environment.
+**WARNING**: My Mac sometimes crashes and reboots after waking up when sleeping for a long time on my macOS environment. For details on my macOS environment, see `"system"` property in [Brewfile.lock.json](/Brewfile.lock.json).
 
 ### Disable acceleration on a mouse
 1. Type the following command
