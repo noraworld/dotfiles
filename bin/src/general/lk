@@ -16,7 +16,7 @@ do
 done
 
 if [ -z $files_or_directories ]; then
-  lsd $options
+  lsd $options --icon=never
 fi
 
 for file_or_directory in $files_or_directories
@@ -26,6 +26,6 @@ do
   elif [ -f $file_or_directory ]; then
     bat $options $file_or_directory
   elif [ -d $file_or_directory ]; then
-    lsd $options $file_or_directory
+    lsd $options $file_or_directory --icon=never
   fi
 done
