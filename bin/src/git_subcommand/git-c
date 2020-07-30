@@ -6,6 +6,7 @@ require 'readline'
 NORMAL_CHARACTER = "\033[00m".freeze
 YELLOW_CHARACTER = "\033[1;93m".freeze
 RED_CHARACTER    = "\033[1;91m".freeze
+PROMPT           = '> '
 
 puts "Input a commit message\n\n"
 
@@ -22,12 +23,12 @@ puts 'For details on good commit messages, see https://chris.beams.io/posts/git-
 puts "\n"
 
 # show ruler
-puts "  *********1*********2*********3*********4*********5#{YELLOW_CHARACTER}*********6*********#{RED_CHARACTER}7*********#{NORMAL_CHARACTER}"
+puts "#{' ' * PROMPT.length}*********1*********2*********3*********4*********5#{YELLOW_CHARACTER}*********6*********#{RED_CHARACTER}7*********#{NORMAL_CHARACTER}"
 
 commit_message = ''
 
 begin
-  while line = Readline.readline('> ')
+  while line = Readline.readline(PROMPT)
     commit_message += "#{line}\n"
   end
 
