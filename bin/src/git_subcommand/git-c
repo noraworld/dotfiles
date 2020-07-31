@@ -13,8 +13,6 @@ puts "Input a commit message\n\n"
 puts 'Type ^D (ctrl+d) to quit input'
 puts "Type ^C (ctrl+c) to cancel commit\n\n"
 
-puts "Do not forget to escape \"\`\" (backquote) and \"\\\" (backslash)\n\n"
-
 puts 'Tips for good commit messages:'
 puts "  - try not to exceed #{YELLOW_CHARACTER}yellow line#{NORMAL_CHARACTER} to make commit summary easy to understand"
 puts "  - avoid exceeding #{RED_CHARACTER}red line#{NORMAL_CHARACTER} because commit summary cannot show on oneline on GitHub\n\n"
@@ -33,6 +31,9 @@ begin
   end
 
   puts ''
+
+  backquote_indexes = (0 ... commit_message.length).find_all { |i| commit_message[i, 1] == "`" }
+  backquote_indexes.each_with_index { |i, j| commit_message[i + j] = "\\" + commit_message[i + j] }
 
 system("git commit -F- << EOF
 #{commit_message}
