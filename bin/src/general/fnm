@@ -9,6 +9,11 @@ def main
   no_manual_commands = file_list("#{CUSTOM_COMMANDS_DIR}/**/*") - file_list("#{CUSTOM_MANUALS_DIR}/**/*").map { |s| s.delete_suffix(File.extname(s)) }
   longest_command_length = no_manual_commands.max_by(&:length).length
 
+  if ARGV.include?('--unrecognized-manual') || ARGV.include?('-u')
+    puts file_list("#{CUSTOM_MANUALS_DIR}/**/*").map { |s| s.delete_suffix(File.extname(s)) } - file_list("#{CUSTOM_COMMANDS_DIR}/**/*")
+    return
+  end
+
   no_manual_commands.each do |command|
     if ARGV.include?('--with-man-filename') || ARGV.include?('-f')
       puts "#{command}#{' ' * (longest_command_length - command.length + 1)}(#{CUSTOM_MANUALS_DIR}/man1/#{command}.1)"
