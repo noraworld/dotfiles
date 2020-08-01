@@ -197,7 +197,7 @@ precmd() {
   is_elapsed_time=true
   while read line
   do
-    if [[ $_tn_cmd = $line ]]; then
+    if [[ $_tn_cmd =~ ^$line([[:blank:]]+.*)*$ ]]; then
       is_elapsed_time=false
     fi
   done < $HOME/.elapsed_time_ignore_commands
