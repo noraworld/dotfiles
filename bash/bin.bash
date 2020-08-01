@@ -9,6 +9,8 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/git_subcommand:$PATH
   PATH=$HOME/.bin/brew_subcommand:$PATH
 
+  MANPATH=$DOTPATH/man:$MANPATH
+
   for script in $HOME/.bin/override/*
   do
     script=`basename ${script}`
