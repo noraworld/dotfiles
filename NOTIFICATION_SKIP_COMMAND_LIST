@@ -1,3 +1,9 @@
 git log
 g log
 git c
+vim
+less
+bat
+ssh
+rails s
+rails c
