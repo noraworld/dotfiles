@@ -161,16 +161,17 @@ autorun() {
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
-_tn_timestamp=`date +%s`
+_tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
 preexec() {
-  _tn_timestamp=`date +%s`
+  _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
 }
 precmd() {
   notification_period_threshold=180
-  now=`date +%s`
-  dur=$(( $now - $_tn_timestamp ))
+  now=`echo $EPOCHREALTIME`
+  dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
+  dur_int=`echo $dur_float | sed s/\.[0-9,]*$//g`
 
   if [[ $_tn_cmd == "" ]]; then
     return
@@ -189,16 +190,12 @@ precmd() {
   done < $HOME/.elapsed_time_ignore_commands
 
   if "${is_elapsed_time}"; then
-    if [[ $dur -gt notification_period_threshold ]]; then
+    if [[ $dur_int -gt notification_period_threshold ]]; then
       terminal-notifier -message "Finished: $_tn_cmd"
     fi
 
     echo
-    if [[ $dur -eq 1 ]]; then
-      echo elapsed time: $dur second
-    else
-      echo elapsed time: $dur seconds
-    fi
+    echo elapsed time: $dur_float seconds
   fi
 
   _tn_cmd=''
