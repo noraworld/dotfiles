@@ -8,17 +8,21 @@ YELLOW_CHARACTER = "\033[1;93m".freeze
 RED_CHARACTER    = "\033[1;91m".freeze
 PROMPT           = '> '
 
-puts "Input a commit message\n\n"
+def show_guideline
+  puts "Input a commit message\n\n"
 
-puts 'Type ^D (ctrl+d) to quit input'
-puts "Type ^C (ctrl+c) to cancel commit\n\n"
+  puts 'Type ^D (ctrl+d) to quit input'
+  puts "Type ^C (ctrl+c) to cancel commit\n\n"
 
-puts 'Tips for good commit messages:'
-puts "  - try not to exceed #{YELLOW_CHARACTER}yellow line#{NORMAL_CHARACTER} to make commit summary easy to understand"
-puts "  - avoid exceeding #{RED_CHARACTER}red line#{NORMAL_CHARACTER} because commit summary cannot show on oneline on GitHub\n\n"
+  puts 'Tips for good commit messages:'
+  puts "  - try not to exceed #{YELLOW_CHARACTER}yellow line#{NORMAL_CHARACTER} to make commit summary easy to understand"
+  puts "  - avoid exceeding #{RED_CHARACTER}red line#{NORMAL_CHARACTER} because commit summary cannot show on oneline on GitHub\n\n"
 
-puts 'For details on good commit messages, see https://chris.beams.io/posts/git-commit/'
-puts "\n"
+  puts 'For details on good commit messages, see https://chris.beams.io/posts/git-commit/'
+  puts "\n"
+end
+
+show_guideline if ARGV.include?('--with-guideline')
 
 # show ruler
 puts "#{' ' * PROMPT.length}*********1*********2*********3*********4*********5#{YELLOW_CHARACTER}*********6*********#{RED_CHARACTER}7*********#{NORMAL_CHARACTER}"
