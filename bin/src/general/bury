@@ -28,7 +28,7 @@ if "${is_confirmation}"; then
   echo -e "\033[1;93m"
   for i in `seq 1 ${#stopped_job_cmds_arr[@]}`
   do
-    echo "	${stopped_job_cmds_arr[$i-1]}"
+    echo "	${stopped_job_cmds_arr[$i-1]} (pid: ${stopped_job_pids_arr[$i-1]})"
   done
   echo -e "\033[00m"
 
