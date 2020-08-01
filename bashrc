@@ -38,7 +38,6 @@ alias ltla='lk --tree -la'
 
 ## Deprecation aliases
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
-alias pushd='echo -e "do not use pushd manually\nuse push instead" && pushd'
 alias popd='echo -e "do not use popd manually\nuse pop instead" && popd'
 
 # Divide configs by OS
@@ -166,6 +165,18 @@ _tn_cmd=''
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
+
+  if [[ $_tn_cmd == "pushd" ]]; then
+    echo -e "\033[1;33mWARNING:\033[00m Command \`$_tn_cmd' is not intended for use\n"
+
+    echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway"
+    echo -e "                 Do not forget to kill suspended sleep process after finishing command\033[00m"
+    echo -e "\033[1;32mRECOMMENDED:\033[00m     \033[1mSend SIGINT signal (^C) to abort\033[00m\n"
+
+    echo -en "Type signal: "
+
+    sleep infinity
+  fi
 }
 precmd() {
   notification_period_threshold=180
