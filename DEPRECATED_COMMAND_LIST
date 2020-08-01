@@ -1,0 +1,8 @@
+rm
+pushd
+popd
+git commit
+brew install
+brew uninstall
+brew cask install
+brew cask uninstall

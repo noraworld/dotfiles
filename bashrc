@@ -12,7 +12,6 @@ alias again='again=`history | sed "s/^ *[0-9]* *//g" | peco`; echo $again; comma
 alias laravel='php artisan'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
 alias up='cd ..'
-alias sc='cat $DOTPATH/SUBSTITUTE_COMMAND_LIST'
 alias del='trash'
 
 ## Abbreviation aliases
@@ -166,17 +165,20 @@ preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
 
-  if [[ $_tn_cmd == "pushd" ]]; then
-    echo -e "\033[1;33mWARNING:\033[00m Command \`$_tn_cmd' is not intended for use\n"
+  while read line
+  do
+    if [[ $_tn_cmd =~ ^$line([[:blank:]]+.*)*$ ]]; then
+      echo -e "\033[1;33mWARNING:\033[00m Command \`$_tn_cmd' is deprecated (see $DOTPATH/DEPRECATED_COMMAND_LIST)\n"
 
-    echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway"
-    echo -e "                 Do not forget to kill suspended sleep process after finishing command\033[00m"
-    echo -e "\033[1;32mRECOMMENDED:\033[00m     \033[1mSend SIGINT signal (^C) to abort\033[00m\n"
+      echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway"
+      echo -e "                 Do not forget to kill suspended sleep process after finishing command\033[00m"
+      echo -e "\033[1;32mRECOMMENDED:\033[00m     \033[1mSend SIGINT signal (^C) to abort\033[00m\n"
 
-    echo -en "Type signal: "
+      echo -en "Type signal: "
 
-    sleep infinity
-  fi
+      sleep infinity
+    fi
+  done < $DOTPATH/DEPRECATED_COMMAND_LIST
 }
 precmd() {
   notification_period_threshold=180
