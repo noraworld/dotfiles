@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+# fnm - find no man (manual)
+
+CUSTOM_COMMANDS_DIR = "#{ENV.fetch('DOTPATH')}/bin/src"
+CUSTOM_MANUALS_DIR  = "#{ENV.fetch('DOTPATH')}/man"
+
+def main
+  no_manual_commands = file_list("#{CUSTOM_COMMANDS_DIR}/**/*") - file_list("#{CUSTOM_MANUALS_DIR}/**/*").map { |s| s.delete_suffix(File.extname(s)) }
+  longest_command_length = no_manual_commands.max_by(&:length).length
+
+  no_manual_commands.each do |command|
+    if ARGV.include?('--with-man-filename') || ARGV.include?('-f')
+      puts "#{command}#{' ' * (longest_command_length - command.length + 1)}(#{CUSTOM_MANUALS_DIR}/man1/#{command}.1)"
+    else
+      puts command
+    end
+  end
+end
+
+def file_list(directory)
+  Dir.glob(directory).select { |path| File.file?(path) }.map { |path| File.basename(path) }
+end
+
+main
