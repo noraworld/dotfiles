@@ -32,6 +32,8 @@ begin
 
   puts ''
 
+  # Insert backslack before backquote so that you do not have to escape backquote
+  ## MEMO: somehow String#gsub does not work properly
   backquote_indexes = (0 ... commit_message.length).find_all { |i| commit_message[i, 1] == "`" }
   backquote_indexes.each_with_index { |i, j| commit_message[i + j] = "\\" + commit_message[i + j] }
 
