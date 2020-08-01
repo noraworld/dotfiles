@@ -190,17 +190,13 @@ precmd() {
     return
   fi
 
-  if [[ ! -e $HOME/.elapsed_time_ignore_commands ]]; then
-    touch $HOME/.elapsed_time_ignore_commands
-  fi
-
   is_elapsed_time=true
   while read line
   do
     if [[ $_tn_cmd =~ ^$line([[:blank:]]+.*)*$ ]]; then
       is_elapsed_time=false
     fi
-  done < $HOME/.elapsed_time_ignore_commands
+  done < $DOTPATH/NOTIFICATION_SKIP_COMMAND_LIST
 
   if "${is_elapsed_time}"; then
     if [[ $dur_int -gt notification_period_threshold ]]; then
@@ -212,7 +208,7 @@ precmd() {
     # Do not use colorecho because it is a bit late
     ## echo average time:      0.00843399999999999
     ## colorecho average time: 0.17544710000000002
-    echo -e "elapsed time: \033[1m$dur_float\033[00m seconds \033[2m(\033[3mecho '$_tn_cmd' >> ~/.elapsed_time_ignore_commands\033[00m \033[2mto ignore for this command)\033[00m"
+    echo -e "elapsed time: \033[1m$dur_float\033[00m seconds \033[2m(\033[3mecho '$_tn_cmd' >> $DOTPATH/NOTIFICATION_SKIP_COMMAND_LIST\033[00m \033[2mto skip notification)\033[00m"
   fi
 
   _tn_cmd=''
