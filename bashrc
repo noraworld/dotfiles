@@ -195,7 +195,11 @@ precmd() {
     fi
 
     echo
-    echo elapsed time: $dur_float seconds
+
+    # Do not use colorecho because it is a bit late
+    ## echo average time:      0.00843399999999999
+    ## colorecho average time: 0.17544710000000002
+    echo -e "elapsed time: \033[1m$dur_float\033[00m seconds"
   fi
 
   _tn_cmd=''
