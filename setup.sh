@@ -61,8 +61,8 @@ function install_vim_bundle() {
 }
 
 function copy_gitconfig_local() {
-  if [ ! -f $PWD/gitconfig.local ]; then
-    cp $PWD/gitconfig.local.sample $PWD/gitconfig.local
+  if [ ! -f $PWD/core/gitconfig.local ]; then
+    cp $PWD/core/gitconfig.local.sample $PWD/core/gitconfig.local
   fi
 }
 
@@ -95,7 +95,7 @@ copy_gitconfig_local
 make_dotfiles_path
 
 # link all files in current directory
-for src_path in $PWD/*
+for src_path in $PWD/core/*
 do
   if [ -f ${src_path} ]; then
     dst_path=${HOME}/.`basename ${src_path}`
@@ -119,7 +119,6 @@ link_directory ${PWD}/bash          $HOME/.bash
 link_directory $PWD/vim             $HOME/.vim/config
 link_directory $PWD/git_template    $HOME/.git_template
 link_directory $PWD/bin/src         $HOME/.bin
-link_directory $PWD/bash-preexec.sh $HOME/.bash-preexec.sh
 
 # link VS Code preferences
 # TODO: this depends on macOS, so support for Linux
@@ -132,12 +131,7 @@ do
 done
 
 # unlink unnecessary files
-unlink $HOME/.setup.sh
-unlink $HOME/.README.md
-unlink $HOME/.LICENSE
 unlink $HOME/.gitconfig.local.sample
-unlink $HOME/.Brewfile.lock.json.macmini
-unlink $HOME/.Brewfile.macmini
 
 # install the Vim plugins
 install_vim_bundle
