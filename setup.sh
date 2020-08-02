@@ -108,6 +108,8 @@ if [ ! -e $HOME/.vim ]; then
   mkdir $HOME/.vim
 fi
 
+# create VS Code preference directory if not exists
+# TODO: this depends on macOS, so support for Linux
 if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
   mkdir -p $HOME/Library/Application\ Support/Code/User
 fi
@@ -120,6 +122,7 @@ link_directory $PWD/bin/src         $HOME/.bin
 link_directory $PWD/bash-preexec.sh $HOME/.bash-preexec.sh
 
 # link VS Code preferences
+# TODO: this depends on macOS, so support for Linux
 for src_path in ${PWD}/vscode/*
 do
   if [ -f ${src_path} ]; then
