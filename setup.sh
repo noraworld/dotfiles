@@ -94,7 +94,7 @@ copy_gitconfig_local
 # set DOTPATH
 make_dotfiles_path
 
-# link all files in current directory
+# link all files in core/ directory
 for src_path in $PWD/core/*
 do
   if [ -f ${src_path} ]; then

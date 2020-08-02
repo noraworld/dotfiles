@@ -19,17 +19,7 @@ This repository supports the following configuration files.
 </dl>
 
 ## Before the setup
-You should move the following original dotfiles to somewhere else if they exist.
-
-* `.bash_profile`
-* `.bashrc`
-* `.emacs.el`
-* `.inputrc`
-* `.vimrc`
-* `.dir_colors`
-* `.gitconfig`
-* `.gitconfig.local`
-* `.gitignore_global`
+You should move the original dotfiles to somewhere else if they exist. The target dotfiles are all files in [`core/`](core/) directory.
 
 The following commands are used during the setup. Please install them.
 
