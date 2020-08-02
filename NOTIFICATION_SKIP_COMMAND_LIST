@@ -7,3 +7,5 @@ bat
 ssh
 rails s
 rails c
+irb
+pry
