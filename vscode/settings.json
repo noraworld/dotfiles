@@ -32,5 +32,5 @@
     "files.trimFinalNewlines": true,
     "ruby.intellisense": "rubyLocate",
     "editor.cursorBlinking": "solid",
-    "terminal.integrated.fontFamily": "Menlo, Hack Nerd Font"
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font"
 }
