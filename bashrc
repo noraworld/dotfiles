@@ -217,6 +217,8 @@ precmd() {
   _tn_cmd=''
 }
 
+eval "$(starship init bash)"
+
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then
