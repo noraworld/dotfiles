@@ -115,10 +115,10 @@ if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
 fi
 
 # link all files in bash, vim, git_template and bin directory
-link_directory ${PWD}/bash          $HOME/.bash
-link_directory $PWD/vim             $HOME/.vim/config
-link_directory $PWD/git_template    $HOME/.git_template
-link_directory $PWD/bin/src         $HOME/.bin
+link_directory ${PWD}/bash       $HOME/.bash
+link_directory $PWD/vim          $HOME/.vim/config
+link_directory $PWD/git_template $HOME/.git_template
+link_directory $PWD/bin/src      $HOME/.bin
 
 # link VS Code preferences
 # TODO: this depends on macOS, so support for Linux
