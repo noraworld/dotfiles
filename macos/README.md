@@ -42,6 +42,20 @@ $ killall Finder
 ```
 </details>
 
+### Do not create `.DS_Store` when using Finder.app
+```bash
+$ defaults write com.apple.desktopservices DSDontWriteNetworkStores True
+$ killall Finder
+```
+
+<details><summary>Rollback</summary>
+
+```bash
+$ defaults write com.apple.desktopservices DSDontWriteNetworkStores False
+$ killall Finder
+```
+</details>
+
 ### Disable clamshell mode for Mac notebook computer
 In order to disable clamshell mode, you need to use [macOS Recovery](https://support.apple.com/en-us/HT201314).
 
