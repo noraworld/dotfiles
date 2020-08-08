@@ -1,6 +1,6 @@
 AllCops:
   Exclude:
-    - 'Brewfile'
+    - 'core/Brewfile'
 
 Metrics/AbcSize:
   Enabled: false
