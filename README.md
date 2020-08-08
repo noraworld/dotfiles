@@ -36,9 +36,12 @@ $ cd path/to/dotfiles
 $ bash setup.sh
 $ source ~/.bash_profile
 $ git refresh
+$ brew bundle install --global --no-lock
+$ source ~/.bash_profile
+$ anyenv install rbenv
+$ rbenv install $(cat .ruby-version)
 $ gem install bundler -v '1.16.5'
 $ bundle install
-$ brew bundle install --global --no-lock
 ```
 
 That’s all!
