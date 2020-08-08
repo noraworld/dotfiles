@@ -5,4 +5,4 @@ brew uninstall $1 &&
 brew bundle dump --force --global &&
 trash ${DOTPATH}/core/Brewfile.lock.json &&
 brew bundle install --no-upgrade --file=${DOTPATH}/core/Brewfile &&
-echo "Installed $1 successfully! Do not forget to add and commit changes."
+echo "Uninstalled $1 successfully! Do not forget to add and commit changes."
