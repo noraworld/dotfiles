@@ -154,6 +154,8 @@ autorun() {
   AUTORUN_DIR="${PWD}"
 }
 
+eval "$(starship init bash)"
+
 # Load bash-preexec
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
@@ -218,8 +220,6 @@ precmd() {
   echo
   _tn_cmd=''
 }
-
-eval "$(starship init bash)"
 
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
