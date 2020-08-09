@@ -10,3 +10,4 @@ rails s
 rails c
 irb
 pry
+man
