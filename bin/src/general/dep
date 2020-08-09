@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'color_echo/get'
+
+LEFT_TITLE  = 'DEPRECATED'
+RIGHT_TITLE = 'SUBSTITUTE'
+
+def main
+  puts
+
+  deprecated_commands = []
+  substitute_commands = []
+
+  File.open("#{ENV.fetch('DOTPATH')}/DEPRECATED_COMMAND_LIST", 'r') do |file|
+    file.each_line do |line|
+      deprecated_commands.push(line.split(',').first)
+      substitute_commands.push(line.split(',').last)
+    end
+  end
+  substitute_commands.map(&:chomp!)
+
+  longest_deprecated_command_length = (deprecated_commands + [LEFT_TITLE]).max_by(&:length).length
+  longest_substitute_command_length = (substitute_commands + [RIGHT_TITLE]).max_by(&:length).length
+
+  left_title_space_length  = longest_deprecated_command_length - LEFT_TITLE.length
+  right_title_space_length = longest_substitute_command_length - RIGHT_TITLE.length
+  print "| #{' ' * (left_title_space_length / 2)}#{LEFT_TITLE}#{' ' * (left_title_space_length - left_title_space_length / 2)} ".to_even_decoration
+  puts  "| #{' ' * (right_title_space_length / 2)}#{RIGHT_TITLE}#{' ' * (right_title_space_length - right_title_space_length / 2)} |".to_even_decoration
+  puts  "| #{'-' * longest_deprecated_command_length} | #{'-' * longest_substitute_command_length} |".to_odd_decoration
+
+  if deprecated_commands.count == substitute_commands.count
+    deprecated_commands.each_with_index do |dc, i|
+      row = "| #{dc}#{' ' * (longest_deprecated_command_length - dc.length)} | #{substitute_commands[i]}#{' ' * (longest_substitute_command_length - substitute_commands[i].length)} |"
+      puts row.to_even_decoration if i.even?
+      puts row.to_odd_decoration  if i.odd?
+    end
+  end
+end
+
+class String
+  def to_even_decoration
+    self
+  end
+
+  def to_odd_decoration
+    CE.bg(:black).get(self)
+  end
+end
+
+main
