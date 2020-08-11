@@ -763,6 +763,12 @@
       "rcmdnk/rcmdnkpac/rcmdnk-trash": null
     },
     "cask": {
+      "alfred": {
+        "version": "4.1_1167",
+        "options": {
+          "full_name": "alfred"
+        }
+      },
       "font-fira-code-nerd-font": {
         "version": "2.1.0",
         "options": {
