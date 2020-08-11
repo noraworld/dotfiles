@@ -1,39 +1,4 @@
 # Setup for macOS
-## Untracked applications
-The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
-
-- [ ] Google IME
-- [ ] 1Password 7
-- [x] Alfred
-- [ ] Amphetamine
-- [ ] Atom
-- [ ] BetterSnapTool
-- [ ] Evernote
-- [ ] Firefox
-- [ ] Gifted
-- [ ] Google Chrome
-- [ ] Google Docs
-- [ ] Google Drive File Stream
-- [ ] Google Sheets
-- [ ] Google Slides
-- [ ] Google Photos Backup
-- [ ] Karabiner-Elements
-- [ ] Karabiner-EventViewer
-- [ ] Keybase
-- [ ] KeyboardCleanTool
-- [ ] Kindle
-- [ ] LINE
-- [ ] Lunar
-- [ ] PicGIF
-- [ ] Scroll Reverser
-- [ ] Shifty
-- [x] Slack
-- [ ] Steam
-- [ ] Tunnelblick
-- [ ] Visual Studio Code
-- [ ] Xcode
-- [ ] zoom.us
-
 ## Special system preferences
 ### Change save location for screencaptures to Google Photo’s backup folder
 1. Type the following command
@@ -121,3 +86,38 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 ```
 2. Log out and back in, or restart your Mac
 </details>
+
+## Untracked applications
+The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
+
+- [ ] Google IME
+- [ ] 1Password 7
+- [x] Alfred
+- [ ] Amphetamine
+- [ ] Atom
+- [ ] BetterSnapTool
+- [ ] Evernote
+- [ ] Firefox
+- [ ] Gifted
+- [ ] Google Chrome
+- [ ] Google Docs
+- [ ] Google Drive File Stream
+- [ ] Google Sheets
+- [ ] Google Slides
+- [ ] Google Photos Backup
+- [ ] Karabiner-Elements
+- [ ] Karabiner-EventViewer
+- [ ] Keybase
+- [ ] KeyboardCleanTool
+- [ ] Kindle
+- [ ] LINE
+- [ ] Lunar
+- [ ] PicGIF
+- [ ] Scroll Reverser
+- [ ] Shifty
+- [x] Slack
+- [ ] Steam
+- [ ] Tunnelblick
+- [ ] Visual Studio Code
+- [ ] Xcode
+- [ ] zoom.us
