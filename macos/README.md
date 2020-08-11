@@ -14,11 +14,16 @@
 **TODO**: Manages with `Brewfile`.
 
 ## Special system preferences
-### Change save location for screencaptures
+### Change save location for screencaptures to Google Photo’s backup folder
+1. Type the following command
 ```bash
-$ defaults write com.apple.screencapture location <SAVE_LOCATION_PATH>
+$ mkdir ~/Google\ Photos
+$ defaults write com.apple.screencapture location ~/Google\ Photos
 $ killall SystemUIServer
 ```
+2. Add or change target backup folder to `Google Photos` in Google Photos Backup app’s settings
+
+You can now back up any screencaptures automatically to Google Photos.
 
 <details><summary>Rollback</summary>
 
