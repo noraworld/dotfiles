@@ -93,12 +93,12 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Google IME
 - [ ] 1Password 7
 - [x] Alfred
-- [ ] Amphetamine
+- [ ] Amphetamine (Mac App Store)
 - [ ] Atom
-- [ ] BetterSnapTool
-- [ ] Evernote
+- [ ] BetterSnapTool (Mac App Store)
+- [ ] Evernote (Mac App Store)
 - [ ] Firefox
-- [ ] Gifted
+- [ ] Gifted (Mac App Store)
 - [ ] Google Chrome
 - [ ] Google Docs
 - [ ] Google Drive File Stream
@@ -110,14 +110,14 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Keybase
 - [ ] KeyboardCleanTool
 - [ ] Kindle
-- [ ] LINE
+- [ ] LINE (Mac App Store)
 - [ ] Lunar
-- [ ] PicGIF
+- [ ] PicGIF (Mac App Store)
 - [ ] Scroll Reverser
 - [ ] Shifty
 - [x] Slack
 - [ ] Steam
 - [ ] Tunnelblick
 - [ ] Visual Studio Code
-- [ ] Xcode
+- [ ] Xcode (Mac App Store)
 - [ ] zoom.us
