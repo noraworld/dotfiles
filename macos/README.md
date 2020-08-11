@@ -120,4 +120,4 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Tunnelblick
 - [ ] Visual Studio Code
 - [ ] Xcode (Mac App Store)
-- [ ] zoom.us
+- [x] zoom.us

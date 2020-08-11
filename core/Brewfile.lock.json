@@ -786,6 +786,12 @@
         "options": {
           "full_name": "slack"
         }
+      },
+      "zoomus": {
+        "version": "5.2.42634.0805",
+        "options": {
+          "full_name": "zoomus"
+        }
       }
     }
   },
