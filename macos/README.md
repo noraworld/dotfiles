@@ -1,17 +1,38 @@
 # Setup for macOS
-## Resident applications
-- [Lunar](https://lunar.fyi)
-- [Shifty](https://shifty.natethompson.io/en/)
-- [Amphetamine](https://apps.apple.com/jp/app/amphetamine/id937984704)
-- [Karabiner-Elements](https://karabiner-elements.pqrs.org)
-- [BetterSnapTool](https://apps.apple.com/jp/app/bettersnaptool/id417375580)
-- [1Password 7](https://1password.com/jp/downloads/mac/)
-- [Google IME](https://www.google.co.jp/ime/)
-- [Google Drive File Stream](https://support.google.com/drive/answer/7329379)
-- [Google Photos Backup](https://photos.google.com/apps)
-- [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
+## Untracked applications
+The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
 
-**TODO**: Manages with `Brewfile`.
+- [ ] Google IME
+- [ ] 1Password 7
+- [x] Alfred
+- [ ] Amphetamine
+- [ ] Atom
+- [ ] BetterSnapTool
+- [ ] Evernote
+- [ ] Firefox
+- [ ] Gifted
+- [ ] Google Chrome
+- [ ] Google Docs
+- [ ] Google Drive File Stream
+- [ ] Google Sheets
+- [ ] Google Slides
+- [ ] Google Photos Backup
+- [ ] Karabiner-Elements
+- [ ] Karabiner-EventViewer
+- [ ] Keybase
+- [ ] KeyboardCleanTool
+- [ ] Kindle
+- [ ] LINE
+- [ ] Lunar
+- [ ] PicGIF
+- [ ] Scroll Reverser
+- [ ] Shifty
+- [x] Slack
+- [ ] Steam
+- [ ] Tunnelblick
+- [ ] Visual Studio Code
+- [ ] Xcode
+- [ ] zoom.us
 
 ## Special system preferences
 ### Change save location for screencaptures to Google Photo’s backup folder
