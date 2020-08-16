@@ -27,6 +27,7 @@ brew "imagemagick@6"
 brew "jq"
 brew "libmagic"
 brew "lsd"
+brew "mas"
 brew "peco"
 brew "pkg-config"
 brew "ripgrep"
@@ -42,3 +43,15 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "slack"
 cask "zoomus"
+mas "Amphetamine", id: 937984704
+mas "BetterSnapTool", id: 417375580
+mas "Evernote", id: 406056744
+mas "GarageBand", id: 682658836
+mas "Gifted", id: 771955779
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LINE", id: 539883307
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "PicGIF", id: 784260229
+mas "Xcode", id: 497799835
