@@ -786,6 +786,12 @@
           "full_name": "alfred"
         }
       },
+      "evernote": {
+        "version": "7.14_458244",
+        "options": {
+          "full_name": "evernote"
+        }
+      },
       "font-fira-code-nerd-font": {
         "version": "2.1.0",
         "options": {
@@ -820,10 +826,6 @@
         "id": "417375580",
         "version": "1.9.3"
       },
-      "Evernote": {
-        "id": "406056744",
-        "version": "7.14"
-      },
       "GarageBand": {
         "id": "682658836",
         "version": "10.3.5"
@@ -842,7 +844,7 @@
       },
       "LINE": {
         "id": "539883307",
-        "version": "6.2.1"
+        "version": "6.2.2"
       },
       "Numbers": {
         "id": "409203825",
