@@ -1,7 +1,6 @@
 rm,del
 pushd,push
 popd,pop
-git commit,git c
 brew install,brew get
 brew uninstall,brew discard
 brew cask install,brew cask get
