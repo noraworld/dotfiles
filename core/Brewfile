@@ -8,7 +8,7 @@ brew "anyenv"
 brew "bash"
 brew "bash-completion"
 brew "bat"
-brew "binutils", link: true
+brew "binutils"
 brew "icu4c"
 brew "boost"
 brew "cmake"

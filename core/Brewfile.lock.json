@@ -140,9 +140,6 @@
               "sha256": "b361b8cf1de6cabdb990cdd2d8b1fc7e1cf7ad9b8190d7f9feb11bf2579ecadb"
             }
           }
-        },
-        "options": {
-          "link": true
         }
       },
       "icu4c": {
