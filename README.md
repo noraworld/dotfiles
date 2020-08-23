@@ -50,8 +50,9 @@ $ bundle install
 
 # Install Python
 $ brew discard binutils && pyenv install $(cat .python-version) && brew get binutils
+$ pyenv global $(cat .python-version)
 $ pip install pipenv
-$ pipenv install
+$ pipenv install --system
 ```
 
 That’s all!
