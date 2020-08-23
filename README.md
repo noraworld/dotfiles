@@ -38,10 +38,20 @@ $ source ~/.bash_profile
 $ git refresh
 $ brew bundle install --global --no-lock
 $ source ~/.bash_profile
+
+# Install **env
 $ anyenv install rbenv
+$ anyenv install pyenv
+
+# Install Ruby
 $ rbenv install $(cat .ruby-version)
 $ gem install bundler -v '1.16.5'
 $ bundle install
+
+# Install Python
+$ brew discard binutils && pyenv install $(cat .python-version) && brew get binutils
+$ pip install pipenv
+$ pipenv install
 ```
 
 That’s all!
