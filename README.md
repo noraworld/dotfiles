@@ -62,10 +62,12 @@ That’s all!
 ## Dependencies
 This dotfiles depends on the following.
 
-* Bash
-* Git version 2.8 or higher
-* Ruby (version 2.5.1 or higher is recommended)
-* Homebrew
+| Dependency | Version    |
+|------------|------------|
+| Bash       | `>= 5.0`   |
+| Git        | `>= 2.8`   |
+| Ruby       | `>= 2.5.1` |
+| Homebrew   | `any`      |
 
 ## Others
 * It is recommended to run the setup script every time new files are added.
