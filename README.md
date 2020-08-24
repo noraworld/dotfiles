@@ -62,12 +62,12 @@ That’s all!
 ## Dependencies
 This dotfiles depends on the following.
 
-| Dependency | Version    | Reason why this version needed              |
-|------------|------------|---------------------------------------------|
-| Bash       | `>= 5.0`   | Using `$EPOCHREALTIME` in `.bashrc`         |
-| Git        | `>= 2.8`   | Using `useConfigOnly` in `.gitconfig`       |
-| Ruby       | `>= 2.5.1` | No guarantee self-making commands work fine |
-| Homebrew   | `any`      | n/a                                         |
+| Dependency | Version    | Reason why this version needed                                      |
+|------------|------------|---------------------------------------------------------------------|
+| Bash       | `>= 5.0`   | Using `$EPOCHREALTIME` in `.bashrc`                                 |
+| Git        | `>= 2.8`   | Using `useConfigOnly` in `.gitconfig`                               |
+| Ruby       | `>= 2.5.1` | No guarantee self-making commands work fine under the lower version |
+| Homebrew   | `any`      | n/a                                                                 |
 
 ## Others
 * It is recommended to run the setup script every time new files are added.
