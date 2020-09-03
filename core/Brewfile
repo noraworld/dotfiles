@@ -42,6 +42,7 @@ cask "alfred"
 cask "evernote"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
+cask "keyboardcleantool"
 cask "slack"
 cask "zoomus"
 mas "Amphetamine", id: 937984704

@@ -104,7 +104,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Karabiner-Elements
 - [ ] Karabiner-EventViewer
 - [ ] Keybase
-- [ ] KeyboardCleanTool
+- [x] KeyboardCleanTool
 - [ ] Kindle
 - [ ] Lunar
 - [ ] Scroll Reverser

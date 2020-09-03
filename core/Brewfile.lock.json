@@ -801,6 +801,12 @@
           "full_name": "font-hack-nerd-font"
         }
       },
+      "keyboardcleantool": {
+        "version": "latest",
+        "options": {
+          "full_name": "keyboardcleantool"
+        }
+      },
       "slack": {
         "version": "4.8.0",
         "options": {
@@ -857,11 +863,11 @@
       },
       "Todoist": {
         "id": "585829637",
-        "version": "7.3.2"
+        "version": "7.3.3"
       },
       "Xcode": {
         "id": "497799835",
-        "version": "11.6"
+        "version": "11.7"
       }
     }
   },
@@ -872,7 +878,7 @@
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "013a769fb67e743da1cee5ec59f65c3d8e127d4f",
         "CLT": "11.0.33.8",
-        "Xcode": "11.6",
+        "Xcode": "11.7",
         "macOS": "10.15.6"
       }
     }
