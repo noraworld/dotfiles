@@ -813,6 +813,12 @@
           "full_name": "slack"
         }
       },
+      "streamlabs-obs": {
+        "version": "0.1.0",
+        "options": {
+          "full_name": "streamlabs-obs"
+        }
+      },
       "zoomus": {
         "version": "5.2.42634.0805",
         "options": {
