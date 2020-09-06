@@ -87,6 +87,11 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 2. Log out and back in, or restart your Mac
 </details>
 
+## Licensed applications list
+The list of applications whose license should be activate or deactivate before you use or disuse the Mac computer.
+
+- Alfred
+
 ## Untracked applications
 The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
 
