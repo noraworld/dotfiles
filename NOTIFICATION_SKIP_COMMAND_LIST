@@ -8,6 +8,8 @@ bat
 ssh
 rails s
 rails c
+bundle exec rails s
+bundle exec rails c
 irb
 pry
 man
