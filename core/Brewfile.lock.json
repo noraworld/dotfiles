@@ -807,6 +807,12 @@
           "full_name": "keyboardcleantool"
         }
       },
+      "scroll-reverser": {
+        "version": "1.7.6",
+        "options": {
+          "full_name": "scroll-reverser"
+        }
+      },
       "slack": {
         "version": "4.8.0",
         "options": {

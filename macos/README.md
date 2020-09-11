@@ -112,7 +112,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [x] KeyboardCleanTool
 - [ ] Kindle
 - [ ] Lunar
-- [ ] Scroll Reverser
+- [x] Scroll Reverser
 - [ ] Shifty
 - [x] Slack
 - [ ] Steam
