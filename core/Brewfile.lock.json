@@ -783,6 +783,12 @@
           "full_name": "alfred"
         }
       },
+      "appcleaner": {
+        "version": "3.5",
+        "options": {
+          "full_name": "appcleaner"
+        }
+      },
       "evernote": {
         "version": "7.14_458244",
         "options": {
