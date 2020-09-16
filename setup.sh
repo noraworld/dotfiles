@@ -131,6 +131,13 @@ do
   fi
 done
 
+# Automator workflows
+if [ ! -e $HOME/Library/Workflows ]; then
+  link_directory $PWD/macos/Workflows $HOME/Library/Workflows
+elif [ ! -L $HOME/Library/Workflows ] && [[ ${OSTYPE} =~ ^darwin.+ ]]; then
+  echo "WARNING: Automator workflows already exist. Move them to another location."
+fi
+
 # unlink unnecessary files
 unlink $HOME/.gitconfig.local.sample
 
