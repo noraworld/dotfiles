@@ -105,7 +105,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Google Photos Backup
 - [ ] Karabiner-Elements
 - [ ] Karabiner-EventViewer
-- [ ] Keybase
+- [x] Keybase
 - [x] KeyboardCleanTool
 - [ ] Kindle
 - [ ] Lunar

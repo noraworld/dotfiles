@@ -819,6 +819,12 @@
           "full_name": "font-hack-nerd-font"
         }
       },
+      "keybase": {
+        "version": "5.5.0-20200526170801,139bb348af",
+        "options": {
+          "full_name": "keybase"
+        }
+      },
       "keyboardcleantool": {
         "version": "latest",
         "options": {
