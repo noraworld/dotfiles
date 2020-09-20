@@ -98,7 +98,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [ ] Google IME
 - [ ] 1Password 7
 - [x] Alfred
-- [ ] Atom
+- [x] Atom
 - [x] Firefox
 - [ ] Google Chrome
 - [ ] Google Drive File Stream

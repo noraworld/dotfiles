@@ -789,6 +789,12 @@
           "full_name": "appcleaner"
         }
       },
+      "atom": {
+        "version": "1.49.0",
+        "options": {
+          "full_name": "atom"
+        }
+      },
       "evernote": {
         "version": "7.14_458244",
         "options": {
