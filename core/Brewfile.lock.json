@@ -795,6 +795,12 @@
           "full_name": "evernote"
         }
       },
+      "firefox": {
+        "version": "79.0",
+        "options": {
+          "full_name": "firefox"
+        }
+      },
       "font-fira-code-nerd-font": {
         "version": "2.1.0",
         "options": {
