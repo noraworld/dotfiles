@@ -112,7 +112,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [x] Scroll Reverser
 - [ ] Shifty
 - [x] Slack
-- [ ] Steam
+- [x] Steam
 - [ ] Tunnelblick
 - [ ] Visual Studio Code
 - [x] zoom.us

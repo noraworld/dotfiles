@@ -849,6 +849,12 @@
           "full_name": "soundflower"
         }
       },
+      "steam": {
+        "version": "latest",
+        "options": {
+          "full_name": "steam"
+        }
+      },
       "streamlabs-obs": {
         "version": "0.1.0",
         "options": {

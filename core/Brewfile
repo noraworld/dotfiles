@@ -50,6 +50,7 @@ cask "keyboardcleantool"
 cask "scroll-reverser"
 cask "slack"
 cask "soundflower"
+cask "steam"
 cask "streamlabs-obs"
 cask "zoomus"
 mas "Amphetamine", id: 937984704
