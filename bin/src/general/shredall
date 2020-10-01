@@ -1,0 +1,54 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+  echo "shredall: missing operand"
+  exit 1
+fi
+
+echo -en "Are you sure you want to shred? [Y/n]: "
+exec < /dev/tty
+read confirm
+if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+  echo -en ""
+else
+  echo -e "canceled"
+  exit 1
+fi
+echo -e ""
+
+function check() {
+  ok_flag=0
+
+  while read dir; do
+    if [ ! -d $dir ]; then
+      ok_flag=1
+    fi
+  done
+
+  echo $ok_flag
+  return 0
+}
+
+if [ -d $1 ]; then
+  find $1 -type f -print0 | xargs -0 shred -uvz
+  find $1 -type l -print0 | xargs -0 rm
+else
+  shred -uvz $1
+fi
+
+ok_flag=`find $1 -print | check`
+
+if [ $ok_flag = 0 ]; then
+  rm -rf $1
+  echo -e "\nshredall: shred successfully"
+elif [ $ok_flag = 1 ]; then
+  find $1 -print | while read dir; do
+    if [ ! -d $dir ]; then
+      echo -e "\nshredall: something went wrong: $dir is NOT a directory"
+    fi
+  done
+else
+  echo -e "\nshredall: wrong flag"
+fi
+
+exit 0
