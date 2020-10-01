@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+  echo "mksw: missing operand"
+  exit 1
+fi
+
+mkdir $1
+echo "file1" > $1/file1
+echo "file2" > $1/file2
+echo "file3" > $1/file3
+mkdir $1/dir1
+echo "file4" > $1/dir1/file4
+echo "file5" > $1/dir1/file5
+echo "file6" > $1/dir1/file6
+mkdir $1/dir2
+echo "file7" > $1/dir2/file7
+echo "file8" > $1/dir2/file8
+echo "file9" > $1/dir2/file9
+ln -s file1 $1/symlink_file
+ln -s dir1  $1/symlink_dir
+ln -s unknown $1/broken_symlink
+mkdir $1/empty_dir
+dd if=/dev/zero of=$1/dummy_file bs=1M count=10
+magick -size 400x300 canvas:tomato $1/image_file.png
+
+tree $1
+exit 0
