@@ -831,6 +831,12 @@
           "full_name": "keyboardcleantool"
         }
       },
+      "postman": {
+        "version": "7.29.1",
+        "options": {
+          "full_name": "postman"
+        }
+      },
       "scroll-reverser": {
         "version": "1.7.6",
         "options": {
