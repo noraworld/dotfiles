@@ -877,15 +877,15 @@
     "mas": {
       "Amphetamine": {
         "id": "937984704",
-        "version": "5.0.3"
+        "version": "5.1"
       },
       "BetterSnapTool": {
         "id": "417375580",
-        "version": "1.9.3"
+        "version": "1.9.4"
       },
       "GarageBand": {
         "id": "682658836",
-        "version": "10.3.5"
+        "version": "10.4.1"
       },
       "Gifted": {
         "id": "771955779",
@@ -893,11 +893,11 @@
       },
       "iMovie": {
         "id": "408981434",
-        "version": "10.1.16"
+        "version": "10.2.1"
       },
       "Keynote": {
         "id": "409183694",
-        "version": "10.2"
+        "version": "10.3.5"
       },
       "LadioCast": {
         "id": "411213048",
@@ -905,15 +905,15 @@
       },
       "LINE": {
         "id": "539883307",
-        "version": "6.3.2"
+        "version": "6.4.0"
       },
       "Numbers": {
         "id": "409203825",
-        "version": "10.2"
+        "version": "10.3.5"
       },
       "Pages": {
         "id": "409201541",
-        "version": "10.2"
+        "version": "10.3.5"
       },
       "PicGIF": {
         "id": "784260229",
@@ -921,7 +921,7 @@
       },
       "Todoist": {
         "id": "585829637",
-        "version": "7.3.4"
+        "version": "7.4"
       },
       "Xcode": {
         "id": "497799835",
