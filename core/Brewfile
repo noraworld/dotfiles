@@ -56,6 +56,7 @@ cask "streamlabs-obs"
 cask "zoomus"
 mas "Amphetamine", id: 937984704
 mas "BetterSnapTool", id: 417375580
+mas "Cyph", id: 1480070821
 mas "GarageBand", id: 682658836
 mas "Gifted", id: 771955779
 mas "iMovie", id: 408981434
