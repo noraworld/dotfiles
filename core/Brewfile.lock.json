@@ -795,6 +795,12 @@
           "full_name": "atom"
         }
       },
+      "blackhole": {
+        "version": "0.2.6",
+        "options": {
+          "full_name": "blackhole"
+        }
+      },
       "evernote": {
         "version": "7.14_458244",
         "options": {
