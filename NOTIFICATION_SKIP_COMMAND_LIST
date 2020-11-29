@@ -13,3 +13,4 @@ bundle exec rails c
 irb
 pry
 man
+ruby
