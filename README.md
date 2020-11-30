@@ -38,6 +38,7 @@ $ source ~/.bash_profile
 $ git refresh
 $ brew bundle install --global --no-lock
 $ source ~/.bash_profile
+$ vi # install neobundle plugin and exit
 
 # Install **env
 $ anyenv install rbenv
