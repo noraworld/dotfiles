@@ -795,6 +795,12 @@
           "full_name": "atom"
         }
       },
+      "balenaetcher": {
+        "version": "1.5.102",
+        "options": {
+          "full_name": "balenaetcher"
+        }
+      },
       "blackhole": {
         "version": "0.2.6",
         "options": {
