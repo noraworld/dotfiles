@@ -154,7 +154,9 @@ autorun() {
   AUTORUN_DIR="${PWD}"
 }
 
-eval "$(starship init bash)"
+if type starship 1>/dev/null 2>/dev/null; then
+  eval "$(starship init bash)"
+fi
 
 # Load bash-preexec
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
