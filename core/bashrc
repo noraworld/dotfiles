@@ -90,11 +90,23 @@ if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
+ssh_ps1() {
+  if [ -f /proc/$PPID/cmdline ]; then
+    if [ "$(command cut -d : -f1 < "/proc/$PPID/cmdline")" = "sshd" ] && [[ $- == *i* ]]; then
+      echo "\033[1;96m[SSH] \033[00m"
+    else
+      echo ""
+    fi
+  else
+    echo ""
+  fi
+}
+
 # Show Git branch on prompt
 if type __git_ps1 1>/dev/null 2>/dev/null; then
-  PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]'
+  PS1="$(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]"
 else
-  PS1='\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]'
+  PS1="$(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]"
 fi
 
 # Restore directory stack when shell session starts or restarts
