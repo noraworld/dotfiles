@@ -170,6 +170,10 @@ if type starship 1>/dev/null 2>/dev/null; then
   eval "$(starship init bash)"
 fi
 
+if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
+  pokemon -ss -d
+fi
+
 # Load bash-preexec
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 

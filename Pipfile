@@ -8,3 +8,7 @@ python_version = '3.8'
 
 [packages]
 atcoder-tools = '*'
+# I do not know how to install Pokemon-Terminal via Pipfile...
+# Refer to https://github.com/pypa/pipfile/tree/f9b2626f9d521b766873b58912405c0a2cb00a90#pipfile.
+# https://github.com/LazoCoder/Pokemon-Terminal
+#pokemon = { git = 'git+https://github.com/LazoCoder/Pokemon-Terminal.git' }
