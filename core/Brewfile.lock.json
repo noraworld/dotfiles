@@ -831,6 +831,12 @@
           "full_name": "font-hack-nerd-font"
         }
       },
+      "iterm2": {
+        "version": "3.3.12",
+        "options": {
+          "full_name": "iterm2"
+        }
+      },
       "keybase": {
         "version": "5.5.0-20200526170801,139bb348af",
         "options": {
