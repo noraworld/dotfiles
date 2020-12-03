@@ -126,8 +126,7 @@ FILE
     echo
   fi
 else
-  echo -e "$HOME/.directory_stack_store is not found"
-  echo -e "Skip"
+  # echo -e "$HOME/.directory_stack_store is not found"
 fi
 
 # Share the history for each tab or window
