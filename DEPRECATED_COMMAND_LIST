@@ -9,3 +9,4 @@ gem install,bundle install
 pip install,pipenv install --system
 pip2 install,pipenv install --system
 pip3 install,pipenv install --system
+script
