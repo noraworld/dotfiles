@@ -171,7 +171,7 @@ if type starship 1>/dev/null 2>/dev/null; then
 fi
 
 if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
-  pokemon -ss -d
+  pokemon -c && pokemon -ss -d
 fi
 
 # Load bash-preexec
