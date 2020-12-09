@@ -105,9 +105,9 @@ ssh_ps1() {
 script_ps1() {
   case "${OSTYPE}" in
     darwin*)
-      if [ "$(ps -e -o pid,command | grep $PPID | grep -v grep | awk '{ print $2 }')" = "script" ]; then
+      if [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "script" ]]; then
         echo "\033[1;92m[✔ RECORDED] \033[00m"
-      elif [ "$(ps -e -o pid,command | grep $PPID | grep -v grep | awk '{ print $2 }')" = "login" ]; then
+      elif [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "login" ]]; then
         echo "\033[1;91m[✗ NOT RECORDED!] \033[00m"
       else
         echo "\033[1;93m[? UNKNOWN] \033[00m"
@@ -188,7 +188,7 @@ autorun() {
 # fi
 
 if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
-  pokemon -c && pokemon -ss -d
+  pokemon -c && pokemon -ss 7 -d 0.5
 fi
 
 # Load bash-preexec
