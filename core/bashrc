@@ -188,7 +188,7 @@ autorun() {
 # fi
 
 if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
-  pokemon -c && pokemon -ss 7 -d 0.5
+  pokemon -c && pokemon -ss 7 -d 0.5 1>/dev/null
 fi
 
 # Load bash-preexec
