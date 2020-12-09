@@ -1,3 +1,13 @@
+# Record output in terminal
+case "${OSTYPE}" in
+  darwin*)
+    script -a -q -t 0 ~/typescript
+  ;;
+  linux*)
+    : # TODO (MEMO: use -f option instead of -t on GNU script command)
+  ;;
+esac
+
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
