@@ -1,17 +1,19 @@
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
 # Record output in terminal
 case "${OSTYPE}" in
   darwin*)
-    script -a -q -t 0 ~/typescript
+    if [ "$(ps -e -o pid,command | grep $PPID | grep -v grep | awk '{ print $2 }')" = "login" ]; then
+      script -a -q -t 0 ~/typescript
+    fi
   ;;
   linux*)
     : # TODO (MEMO: use -f option instead of -t on GNU script command)
   ;;
 esac
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
 
 # Export the environment variables
 export LSCOLORS=gxfxcxdxbxegedabagacad
