@@ -18,6 +18,7 @@ export IGNOREEOF=10000
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 export SCRIPT_PS1
+## TODO: add ability to add specific file to change values
 export NOTIFICATION_PERIOD_THRESHOLD=180
 export NOTIFICATION_SOUND=Funk
 
