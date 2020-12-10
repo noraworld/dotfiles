@@ -232,7 +232,6 @@ preexec() {
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 }
 precmd() {
-  notification_period_threshold=180
   now=`echo $EPOCHREALTIME`
   dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
   dur_int=`echo $dur_float | sed s/\.[0-9,]*$//g`
@@ -256,13 +255,13 @@ precmd() {
   echo -en "elapsed time: \033[1m$dur_float\033[00m seconds"
 
   if "${is_enabled_notification}"; then
-    if [[ $dur_int -ge notification_period_threshold ]]; then
+    if [[ $dur_int -ge $NOTIFICATION_PERIOD_THRESHOLD ]]; then
       if type terminal-notifier 1>/dev/null 2>/dev/null; then
         # I prefer "Basso", "Frog", or "Pop" for notification sound
         # because I wouldn’t be surprised to hear these sounds suddenly.
         # But they may be too soft to notice.
         # In that case, "Default" or "Funk" may be good.
-        terminal-notifier -message "Finished: $_tn_cmd" -sound Funk -ignoreDnD
+        terminal-notifier -message "Finished: $_tn_cmd" -sound $NOTIFICATION_SOUND -ignoreDnD
 
         # Tell the command is over by voice
         # Be careful the volume!
