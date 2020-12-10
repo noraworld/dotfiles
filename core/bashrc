@@ -204,15 +204,20 @@ preexec() {
 
   while read line
   do
-    deprecated_command=`echo $line | cut -d ',' -f 1`
-    substitute_command=`echo $line | cut -d ',' -f 2`
+    deprecated_command=`echo "$line," | cut -d ',' -f 1`
+    substitute_command=`echo "$line," | cut -d ',' -f 2`
+    reason=`echo "$line," | cut -d ',' -f 3`
     if [[ $_tn_cmd =~ ^$deprecated_command([[:blank:]]+.*)*$ ]]; then
-      if [[ "${deprecated_command}" != "${substitute_command}" ]]; then
+      if [[ "${substitute_command}" != "" ]]; then
         echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated. Use \`\033[1m$substitute_command\033[00m' command instead."
-      elif [[ "${deprecated_command}" = "${substitute_command}" ]]; then
+      elif [[ "${substitute_command}" = "" ]]; then
         echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated. It should not be used."
       else
         echo -e "Something went wrong!"
+      fi
+
+      if [[ "${reason}" != "" ]]; then
+        echo "         Reason: $reason."
       fi
       echo -e "         Use \`\033[1mdep\033[00m' command to list all deprecated and substitute commands.\n"
 
