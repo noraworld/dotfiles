@@ -106,11 +106,11 @@ script_ps1() {
   case "${OSTYPE}" in
     darwin*)
       if [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "script" ]]; then
-        echo "\033[1;92m[✔ RECORDED] \033[00m"
+        echo "\033[1;92m🔴 RECORDING\033[00m"
       elif [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "login" ]]; then
-        echo "\033[1;91m[✗ NOT RECORDED!] \033[00m"
+        echo "\033[1;91m❌ NOT RECORDING!!!\033[00m"
       else
-        echo "\033[1;93m[? UNKNOWN] \033[00m"
+        echo "\033[1;93m❓ UNKNOWN\033[00m"
       fi
     ;;
     linux*)
@@ -118,12 +118,13 @@ script_ps1() {
     ;;
   esac
 }
+SCRIPT_PS1=$(script_ps1)
 
 # Show Git branch on prompt
 if type __git_ps1 1>/dev/null 2>/dev/null; then
-  PS1="$(script_ps1)$(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]"
+  PS1="$(script_ps1) $(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]"
 else
-  PS1="$(script_ps1)$(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]"
+  PS1="$(script_ps1) $(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]"
 fi
 
 # Restore directory stack when shell session starts or restarts
@@ -183,9 +184,9 @@ autorun() {
   AUTORUN_DIR="${PWD}"
 }
 
-# if type starship 1>/dev/null 2>/dev/null; then
-#   eval "$(starship init bash)"
-# fi
+if type starship 1>/dev/null 2>/dev/null; then
+  eval "$(starship init bash)"
+fi
 
 if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
   pokemon -c && pokemon -ss 7 -d 0.5 1>/dev/null
