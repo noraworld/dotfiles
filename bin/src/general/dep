@@ -3,35 +3,44 @@
 
 require 'color_echo/get'
 
-LEFT_TITLE  = 'DEPRECATED'
-RIGHT_TITLE = 'SUBSTITUTE'
+FIRST_TITLE  = 'DEPRECATED'
+SECOND_TITLE = 'SUBSTITUTE'
+THIRD_TITLE  = 'REASON'
 
 def main
   puts
 
   deprecated_commands = []
   substitute_commands = []
+  reasons             = []
 
   File.open("#{ENV.fetch('DOTPATH')}/DEPRECATED_COMMAND_LIST", 'r') do |file|
     file.each_line do |line|
-      deprecated_commands.push(line.split(',').first)
-      substitute_commands.push(line.split(',').last)
+      deprecated_commands.push(line.split(',')[0])
+      substitute_commands.push(line.split(',')[1])
+      reasons.push(line.split(',')[2])
     end
   end
-  substitute_commands.map(&:chomp!)
 
-  longest_deprecated_command_length = (deprecated_commands + [LEFT_TITLE]).max_by(&:length).length
-  longest_substitute_command_length = (substitute_commands + [RIGHT_TITLE]).max_by(&:length).length
+  substitute_commands.map! { |sc| sc&.chomp || '' }
+  reasons.map! { |r| r&.chomp! || '' }
 
-  left_title_space_length  = longest_deprecated_command_length - LEFT_TITLE.length
-  right_title_space_length = longest_substitute_command_length - RIGHT_TITLE.length
-  print "| #{' ' * (left_title_space_length / 2)}#{LEFT_TITLE}#{' ' * (left_title_space_length - left_title_space_length / 2)} ".to_even_decoration
-  puts  "| #{' ' * (right_title_space_length / 2)}#{RIGHT_TITLE}#{' ' * (right_title_space_length - right_title_space_length / 2)} |".to_even_decoration
-  puts  "| #{'-' * longest_deprecated_command_length} | #{'-' * longest_substitute_command_length} |".to_odd_decoration
+  longest_deprecated_command_length = (deprecated_commands + [FIRST_TITLE]).max_by(&:length).length
+  longest_substitute_command_length = (substitute_commands + [SECOND_TITLE]).max_by(&:length).length
+  longest_reason_length             = (reasons + [THIRD_TITLE]).max_by(&:length).length
 
-  if deprecated_commands.count == substitute_commands.count
+  first_title_space_length  = longest_deprecated_command_length - FIRST_TITLE.length
+  second_title_space_length = longest_substitute_command_length - SECOND_TITLE.length
+  third_title_space_length  = longest_reason_length - THIRD_TITLE.length
+  print "| #{' ' * (first_title_space_length / 2)}#{FIRST_TITLE}#{' ' * (first_title_space_length - first_title_space_length / 2)} ".to_even_decoration
+  print "| #{' ' * (second_title_space_length / 2)}#{SECOND_TITLE}#{' ' * (second_title_space_length - second_title_space_length / 2)} ".to_even_decoration
+  puts  "| #{' ' * (third_title_space_length / 2)}#{THIRD_TITLE}#{' ' * (third_title_space_length - third_title_space_length / 2)} |".to_even_decoration
+  puts  "| #{'-' * longest_deprecated_command_length} | #{'-' * longest_substitute_command_length} | #{'-' * longest_reason_length} |".to_odd_decoration
+
+  if deprecated_commands.count == substitute_commands.count && deprecated_commands.count == reasons.count
     deprecated_commands.each_with_index do |dc, i|
-      row = "| #{dc}#{' ' * (longest_deprecated_command_length - dc.length)} | #{substitute_commands[i]}#{' ' * (longest_substitute_command_length - substitute_commands[i].length)} |"
+      row = "| #{dc}#{' ' * (longest_deprecated_command_length - dc.length)} | #{substitute_commands[i]}#{' ' * (longest_substitute_command_length - substitute_commands[i].length)} | #{reasons[i]}#{' ' * (longest_reason_length - reasons[i].length)} |"
+
       puts row.to_even_decoration if i.even?
       puts row.to_odd_decoration  if i.odd?
     end
