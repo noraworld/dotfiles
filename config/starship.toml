@@ -8,3 +8,8 @@ show_milliseconds = true
 variable = "SCRIPT_PS1"
 default = "???"
 style = "bold yellow"
+
+[time]
+disabled = false
+style = "white"
+time_format = "%F %T" # not work?
