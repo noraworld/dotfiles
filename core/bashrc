@@ -198,6 +198,7 @@ fi
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
+# _tn_caffeinate_pid=''
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
@@ -230,6 +231,9 @@ preexec() {
       sleep infinity
     fi
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
+
+  # caffeinate -d &
+  # _tn_caffeinate_pid=`echo $!`
 }
 precmd() {
   now=`echo $EPOCHREALTIME`
@@ -278,6 +282,9 @@ precmd() {
 
   echo
   _tn_cmd=''
+
+  # kill -SIGINT $_tn_caffeinate_pid
+  # _tn_caffeinate_pid=''
 }
 
 # Use direnv
