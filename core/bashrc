@@ -258,7 +258,15 @@ precmd() {
   if "${is_enabled_notification}"; then
     if [[ $dur_int -ge notification_period_threshold ]]; then
       if type terminal-notifier 1>/dev/null 2>/dev/null; then
-        terminal-notifier -message "Finished: $_tn_cmd"
+        # I prefer "Basso", "Frog", or "Pop" for notification sound
+        # because I wouldn’t be surprised to hear these sounds suddenly.
+        # But they may be too soft to notice.
+        # In that case, "Default" or "Funk" may be good.
+        terminal-notifier -message "Finished: $_tn_cmd" -sound Funk -ignoreDnD
+
+        # Tell the command is over by voice
+        # Be careful the volume!
+        # say "Finished: $_tn_cmd" -v Samantha
       else
         echo -en " \033[2m(terminal-notifier is not installed)\033[00m"
       fi
