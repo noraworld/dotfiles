@@ -1,12 +1,33 @@
 #!/bin/bash
 PROGNAME=$(basename $0)
 
+usage() {
+  echo -e "Usage: $PROGNAME [-h]"
+  echo -e "            [-y] [-p PID[,PID...]]"
+  echo -e "            [-y] [PNAME[,PNAME...]]"
+  echo
+  echo -e "  Kill all processes specified by its IDs, command names"
+  echo -e "  If neither process IDs nor process names given, all suspended processes will be killed"
+  echo -e
+  echo -e "Options:"
+  echo -e "  -h, --help"
+  echo -e "    Show this help message and exit"
+  echo -e "  -p PID[,PID...], --pid PID[,PID...]"
+  echo -e "    Specify process IDs"
+  echo -e "  -y, --yes"
+  echo -e "    No confirmation before killing all specified processes"
+}
+
 # parse options
 # https://qiita.com/b4b4r07/items/dcd6be0bb9c9185475bb
 is_confirmation=true
 for opt in "$@"
 do
   case "$opt" in
+    '-h' | '--help' )
+      usage
+      exit 0
+    ;;
     '-p' | '--pid' )
       if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
         echo "$PROGNAME: option requires an argument -- $1" 1>&2
@@ -38,8 +59,8 @@ do
 done
 
 if [[ "$param" =~ ^[0-9]+$ ]]; then
-  echo "The argument must be a command name, not process ID." 1>&2
-  echo "To specify a process ID you can use the option \`-p'." 1>&2
+  echo -e "The argument must be a command name, not process ID." 1>&2
+  echo -e "To specify a process ID you can use the option \`-p'." 1>&2
   exit 1
 fi
 
@@ -58,13 +79,13 @@ stopped_job_cmds_arr=(`echo $stopped_job_cmds_str`)
 stopped_job_pids_arr=(`echo $stopped_job_pids_str`)
 
 if [[ ${#stopped_job_cmds_arr[@]} -ne ${#stopped_job_pids_arr[@]} ]]; then
-  echo "The number of commands and pids are not same." 1>&2
-  echo "If you see this message it’s probably a bug." 1>&2
+  echo -e "The number of commands and pids are not same." 1>&2
+  echo -e "If you see this message it’s probably a bug." 1>&2
   exit 1
 fi
 
 if [[ $stopped_job_cmds_str = "" ]]; then
-  echo "No processes exist."
+  echo -e "No processes exist."
   exit 0
 fi
 
