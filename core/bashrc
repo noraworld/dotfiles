@@ -240,6 +240,18 @@ precmd() {
   dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
   dur_int=`echo $dur_float | sed s/\.[0-9,]*$//g`
 
+  # This below must be executed before [^1]
+  if [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
+    src_path=$SESSION_LOG_PATH/recording.log
+    dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
+
+    cp $src_path $dst_path
+    echo > $src_path
+    echo
+    echo -e "INFO: $src_path exceeds $SESSION_LOG_SIZE lines. Moved to $dst_path automatically."
+  fi
+
+  # [^1]
   if [[ $_tn_cmd == "" ]]; then
     return
   fi
