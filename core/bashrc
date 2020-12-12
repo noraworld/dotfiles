@@ -241,7 +241,7 @@ precmd() {
   dur_int=`echo $dur_float | sed s/\.[0-9,]*$//g`
 
   # This below must be executed before [^1]
-  if [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
+  if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
     src_path=$SESSION_LOG_PATH/recording.log
     dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
 
