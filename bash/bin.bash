@@ -11,13 +11,6 @@ if [ -e ~/.bin ]; then
 
   MANPATH=$DOTPATH/man:$MANPATH
 
-  for script in $HOME/.bin/override/*
-  do
-    script=`basename ${script}`
-    cmd=`echo ${script} | cut -c 2-`
-    alias ${cmd}="source ${script}"
-  done
-
   for cmd in $HOME/.bin/currentshell/*
   do
     cmd=`basename ${cmd}`
