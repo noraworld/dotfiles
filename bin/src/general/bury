@@ -3,6 +3,7 @@ PROGNAME=$(basename $0)
 
 usage() {
   echo -e "Usage: $PROGNAME [-h]"
+  echo -e "            [-j]"
   echo -e "            [-y] [-p PID[,PID...]]"
   echo -e "            [-y] [PNAME[,PNAME...]]"
   echo
@@ -12,6 +13,9 @@ usage() {
   echo -e "Options:"
   echo -e "  -h, --help"
   echo -e "    Show this help message and exit"
+  echo -e "  -j, --jobs"
+  echo -e "    Prints command to kill processes listed by \`jobs' command, and exit"
+  echo -e "    Execute \`eval \$(bury --jobs)' if you want to kill processes running and/or suspended processes in current shell"
   echo -e "  -p PID[,PID...], --pid PID[,PID...]"
   echo -e "    Specify process IDs"
   echo -e "  -y, --yes"
@@ -26,6 +30,10 @@ do
   case "$opt" in
     '-h' | '--help' )
       usage
+      exit 0
+    ;;
+    '-j' | '--jobs' )
+      echo "bury -p \$(echo \$(jobs -p) | sed \"s/ /,/g\")"
       exit 0
     ;;
     '-p' | '--pid' )
