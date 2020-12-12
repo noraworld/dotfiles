@@ -7,6 +7,14 @@ is_confirmation=true
 for opt in "$@"
 do
   case "$opt" in
+    '-p' | '--pid' )
+      if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+        echo "$PROGNAME: option requires an argument -- $1" 1>&2
+        exit 1
+      fi
+      PID=$2
+      shift 2
+    ;;
     '-y' | '--yes' )
       is_confirmation=false
       shift
@@ -15,11 +23,11 @@ do
       shift 1
       param+=( "$@" )
       break
-      ;;
+    ;;
     -* )
       echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
       exit 1
-      ;;
+    ;;
     * )
       if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
         param+=( "$1" )
@@ -29,12 +37,21 @@ do
   esac
 done
 
+if [[ "$param" =~ ^[0-9]+$ ]]; then
+  echo "The argument must be a command name, not process ID." 1>&2
+  echo "To specify a process ID you can use the option \`-p'." 1>&2
+  exit 1
+fi
+
 if [ -n "$param" ]; then
-  stopped_job_cmds_str=$(ps -e -o command     | grep $param | grep -v grep | grep -v $PROGNAME | awk '{print $1}')
-  stopped_job_pids_str=$(ps -e -o pid,command | grep $param | grep -v grep | grep -v $PROGNAME | awk '{print $1}')
+  stopped_job_cmds_str=$(ps -e -o command     | grep -e $(echo $param | sed "s/,/ -e /g") | grep -v grep | grep -v $PROGNAME | awk '{print $1}')
+  stopped_job_pids_str=$(ps -e -o pid,command | grep -e $(echo $param | sed "s/,/ -e /g") | grep -v grep | grep -v $PROGNAME | awk '{print $1}')
+elif [ -n "$PID" ]; then
+  stopped_job_cmds_str=$(ps -e -o pid,command | grep -e $(echo $PID | sed "s/,/ -e /g") | grep -v grep | grep -v $PROGNAME | awk '{print $2}')
+  stopped_job_pids_str=$(echo $PID | sed "s/,/\n/g")
 else
-  stopped_job_cmds_str=$(ps -o command -p $(echo $(jobs -p)) | grep -v COMMAND | awk '{print $1}')
-  stopped_job_pids_str=$(jobs -p)
+  stopped_job_cmds_str=$(ps -e -o stat,command | grep -e '^T' | awk '{print $2}')
+  stopped_job_pids_str=$(ps -e -o stat,pid     | grep -e '^T' | awk '{print $2}')
 fi
 
 stopped_job_cmds_arr=(`echo $stopped_job_cmds_str`)
