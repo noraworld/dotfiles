@@ -19,10 +19,13 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 export SCRIPT_PS1
 ## TODO: add ability to add specific file to change values
+## adapt them below
 export NOTIFICATION_PERIOD_THRESHOLD=180
 export NOTIFICATION_SOUND=Funk
 export SESSION_LOG_PATH=$HOME/.log/typescript
 export SESSION_LOG_SIZE=100000
+export POKEMON_SLIDESHOW_DURATION=7
+export POKEMON_DARK_THRESHOLD=0.5
 
 # Save the history in correct order
 shopt -u histappend
