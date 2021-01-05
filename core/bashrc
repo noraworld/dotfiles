@@ -13,7 +13,6 @@ alias del='trash'
 
 ## Overridden aliases
 alias grep='grep --color=always'
-alias less='less -iMNRS'
 alias vi='vim'
 
 ## Abbreviation aliases
