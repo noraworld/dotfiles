@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . $HOME/.dotpath &&
-/usr/local/bin/brew update &&
+# /usr/local/bin/brew update &&
 /usr/local/bin/brew cask install $1 &&
 /usr/local/bin/brew bundle dump --force --global &&
 rm ${DOTPATH}/core/Brewfile.lock.json &&
