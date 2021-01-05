@@ -208,7 +208,7 @@ preexec() {
     deprecated_command=`echo "$line," | cut -d ',' -f 1`
     substitute_command=`echo "$line," | cut -d ',' -f 2`
     reason=`echo "$line," | cut -d ',' -f 3`
-    if [[ $_tn_cmd =~ ^$deprecated_command([[:blank:]]+.*)*$ ]]; then
+    if [[ $_tn_cmd =~ ^([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]] || [[ $_tn_cmd =~ ^([[:blank:]]+.*)*sudo([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]]; then
       if [[ "${substitute_command}" != "" ]]; then
         echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated. Use \`\033[1m$substitute_command\033[00m' command instead."
       elif [[ "${substitute_command}" = "" ]]; then
