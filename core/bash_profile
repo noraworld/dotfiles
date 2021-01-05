@@ -7,7 +7,6 @@ export LSCOLORS=$(echo ${LSCOLORS-gxfxcxdxbxegedabagacad})
 export HISTCONTROL=$(echo ${HISTCONTROL-ignoredups})
 export HISTSIZE=$(echo ${HISTSIZE-1000000})
 export LESS=$(echo ${LESS-'-iMNRS+10'}) # DO EDIT IN VIM because verbatim insert is used
-export LESSOPEN=$(echo ${LESSOPEN-'| /usr/local/bin/src-hilite-lesspipe.sh  %s'})
 ## https://qiita.com/delphinus/items/b04752bb5b64e6cc4ea9
 export LESS_TERMCAP_mb=$(echo ${LESS_TERMCAP_mb-$'\E[01;31m'})      # Begins blinking.
 export LESS_TERMCAP_md=$(echo ${LESS_TERMCAP_md-$'\E[01;31m'})      # Begins bold.
@@ -26,6 +25,10 @@ export SESSION_LOG_PATH=$(echo ${SESSION_LOG_PATH-$HOME/.log/typescript})
 export SESSION_LOG_SIZE=$(echo ${SESSION_LOG_SIZE-100000})
 export POKEMON_SLIDESHOW_DURATION=$(echo ${POKEMON_SLIDESHOW_DURATION-7})
 export POKEMON_DARK_THRESHOLD=$(echo ${POKEMON_DARK_THRESHOLD-0.5})
+
+if type src-hilite-lesspipe.sh 1>/dev/null 2>/dev/null; then
+  export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
+fi
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
