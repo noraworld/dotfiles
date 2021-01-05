@@ -1,8 +1,17 @@
-# Export the environment variables (before loading bashrc)
-# These environment variables can be changed by ~/.env.preferences
 if [ -f ~/.env.preferences ]; then
   . ~/.env.preferences
 fi
+
+# These environment variables are changeable by ~/.env.preferences
+export LSCOLORS=$(echo ${LSCOLORS-gxfxcxdxbxegedabagacad})
+export HISTCONTROL=$(echo ${HISTCONTROL-ignoredups})
+export HISTSIZE=$(echo ${HISTSIZE-1000000})
+export LESSOPEN=$(echo ${LESSOPEN-'| /usr/local/bin/src-hilite-lesspipe.sh  %s'})
+export LESS=$(echo ${LESS-'-R'})
+export EDITOR=$(echo ${EDITOR-vim})
+export IGNOREEOF=$(echo ${IGNOREEOF-10000})
+export RUBY_CONFIGURE_OPTS=$(echo ${RUBY_CONFIGURE_OPTS-"--with-openssl-dir=/usr/local/opt/openssl@1.1"})
+export PKG_CONFIG_PATH=$(echo ${PKG_CONFIG_PATH-/usr/local/opt/imagemagick@6/lib/pkgconfig})
 export NOTIFICATION_PERIOD_THRESHOLD=$(echo ${NOTIFICATION_PERIOD_THRESHOLD-180})
 export NOTIFICATION_SOUND=$(echo ${NOTIFICATION_SOUND-Funk})
 export SESSION_LOG_PATH=$(echo ${SESSION_LOG_PATH-$HOME/.log/typescript})
@@ -10,25 +19,14 @@ export SESSION_LOG_SIZE=$(echo ${SESSION_LOG_SIZE-100000})
 export POKEMON_SLIDESHOW_DURATION=$(echo ${POKEMON_SLIDESHOW_DURATION-7})
 export POKEMON_DARK_THRESHOLD=$(echo ${POKEMON_DARK_THRESHOLD-0.5})
 
-# Get the aliases and functions
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-# Export the environment variables (after loading bashrc)
-export LSCOLORS=gxfxcxdxbxegedabagacad
-export HISTCONTROL=ignoredups
-export HISTSIZE=1000000
 export PATH
 export MANPATH
 export DOTPATH
-export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
-export LESS='-R'
 export PROMPT_COMMAND
-export EDITOR=vim
-export IGNOREEOF=10000
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
-export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 export SCRIPT_PS1
 
 # Save the history in correct order
