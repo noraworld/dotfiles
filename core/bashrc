@@ -1,6 +1,6 @@
 # Get the aliases
 ## General aliases
-alias sudo='sudo '
+alias sudo='sudo ' # enable all aliases also at sudo mode
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
 alias hist='history | tac | less | peco'
@@ -12,6 +12,7 @@ alias up='cd ..'
 alias del='trash'
 
 ## Overridden aliases
+### Some scripts may not work properly by overriding a existence command
 alias grep='grep --color=always'
 alias vi='vim'
 
