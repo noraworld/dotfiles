@@ -1,9 +1,21 @@
+# Export the environment variables (before loading bashrc)
+# These environment variables can be changed by ~/.env.preferences
+if [ -f ~/.env.preferences ]; then
+  . ~/.env.preferences
+fi
+export NOTIFICATION_PERIOD_THRESHOLD=$(echo ${NOTIFICATION_PERIOD_THRESHOLD-180})
+export NOTIFICATION_SOUND=$(echo ${NOTIFICATION_SOUND-Funk})
+export SESSION_LOG_PATH=$(echo ${SESSION_LOG_PATH-$HOME/.log/typescript})
+export SESSION_LOG_SIZE=$(echo ${SESSION_LOG_SIZE-100000})
+export POKEMON_SLIDESHOW_DURATION=$(echo ${POKEMON_SLIDESHOW_DURATION-7})
+export POKEMON_DARK_THRESHOLD=$(echo ${POKEMON_DARK_THRESHOLD-0.5})
+
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-# Export the environment variables
+# Export the environment variables (after loading bashrc)
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000000
@@ -18,14 +30,6 @@ export IGNOREEOF=10000
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 export SCRIPT_PS1
-## TODO: add ability to add specific file to change values
-## adapt them below
-export NOTIFICATION_PERIOD_THRESHOLD=180
-export NOTIFICATION_SOUND=Funk
-export SESSION_LOG_PATH=$HOME/.log/typescript
-export SESSION_LOG_SIZE=100000
-export POKEMON_SLIDESHOW_DURATION=7
-export POKEMON_DARK_THRESHOLD=0.5
 
 # Save the history in correct order
 shopt -u histappend
