@@ -3,16 +3,18 @@
 alias sudo='sudo '
 alias reload='source ~/.bash_profile'
 alias restart='exec -l $SHELL'
-alias grep='grep --color=always'
-alias less='less -iMNRS'
 alias hist='history | tac | less | peco'
-alias vi='vim'
-alias gosearch='cd $(ghq root)/$(ghq list | peco)'
-alias again='eval $(history | sed "s/^ *[0-9]* *//g" | peco)'
-alias laravel='php artisan'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
+alias again='eval $(history | sed "s/^ *[0-9]* *//g" | peco)'
+alias gosearch='cd $(ghq root)/$(ghq list | peco)'
+alias laravel='php artisan'
 alias up='cd ..'
 alias del='trash'
+
+## Overridden aliases
+alias grep='grep --color=always'
+alias less='less -iMNRS'
+alias vi='vim'
 
 ## Abbreviation aliases
 alias d='show_directory_stack'
@@ -35,7 +37,7 @@ alias lta='lk --tree -a'
 alias ltal='lk --tree -al'
 alias ltla='lk --tree -la'
 
-## Deprecation aliases
+## Deprecated aliases
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 
 # Divide configs by OS
