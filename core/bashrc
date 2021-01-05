@@ -122,6 +122,19 @@ script_ps1() {
 }
 SCRIPT_PS1=$(script_ps1)
 
+# avoids scp failure
+# scp fails when something is displayed to stdout at login
+# returns 'true' if not scp
+is_not_scp() {
+  if [ ! -f /proc/$PPID/cmdline ]; then # if not Linux
+    echo true
+  elif [ -f /proc/$PPID/cmdline ] && [[ "$(cat /proc/$PPID/cmdline | sed 's/\x0//g')" =~ sshd:([[:blank:]]+.*)@notty ]]; then # if scp; use sed to get rid of null bytes
+    echo false
+  else
+    echo true
+  fi
+}
+
 # Show Git branch on prompt
 if type __git_ps1 1>/dev/null 2>/dev/null; then
   PS1="$(script_ps1) $(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]"
@@ -153,9 +166,11 @@ FILE
     # delete directory of when shell session starts from stack
     command popd -0 1>/dev/null
 
-    echo -e "Restored directory stack"
-    show_directory_stack
-    echo
+    if "$(is_not_scp)"; then
+      echo -e "Restored directory stack"
+      show_directory_stack
+      echo
+    fi
   fi
 else
   # echo -e "$HOME/.directory_stack_store is not found"
