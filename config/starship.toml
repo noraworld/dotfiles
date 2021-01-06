@@ -7,7 +7,7 @@ show_milliseconds = true
 [env_var]
 variable = "SCRIPT_PS1"
 default = "???"
-style = "bold yellow"
+style = "bold green"
 
 [time]
 disabled = false
