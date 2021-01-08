@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # anyenv
 if type anyenv 1>/dev/null 2>/dev/null; then

@@ -31,8 +31,8 @@ if type src-hilite-lesspipe.sh 1>/dev/null 2>/dev/null; then
   export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
 fi
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
+if [ -f ~/.zshrc ]; then
+  . ~/.zshrc
 fi
 
 export PATH
@@ -40,29 +40,6 @@ export MANPATH
 export DOTPATH
 export PROMPT_COMMAND
 export SCRIPT_PS1
-
-# Save the history in correct order
-shopt -u histappend
-
-# Auto correct and continue to run cd command even if directory name is misspelled partly
-#
-# disable because this is rarely used
-#shopt -s cdspell
-
-# Change directories without `cd`
-# NOTE: bash version more than 4.0 is required
-#
-# On macOS, simply run:
-# $ brew install bash
-# $ echo /usr/local/bin/bash | sudo tee -a /etc/shells
-# $ chpass -s /usr/local/bin/bash
-# (Type your password, then reboot your shell application)
-#
-# somehow this does not work on bash 5.0.11
-# though trying above command
-# this works on company MacBook Pro
-# but does not work on personal MacBook Pro (bash 5.0.11)
-#shopt -s autocd
 
 # Record output in terminal
 case "${OSTYPE}" in

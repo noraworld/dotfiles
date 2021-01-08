@@ -1,5 +1,3 @@
-#!/bin/bash
-
 current_directory=$(pwd)
 
 store_directory_stack() {

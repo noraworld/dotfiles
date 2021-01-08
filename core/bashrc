@@ -43,30 +43,30 @@ alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 # Divide configs by OS
 case "${OSTYPE}" in
   darwin*)
-    if [ -e ~/.bash/macos.bash ]; then
-      . ~/.bash/macos.bash
+    if [ -e ~/.shenvs/macos.sh ]; then
+      . ~/.shenvs/macos.sh
     fi
   ;;
   linux*)
-    if [ -e ~/.bash/linux.bash ]; then
-      . ~/.bash/linux.bash
+    if [ -e ~/.shenvs/linux.sh ]; then
+      . ~/.shenvs/linux.sh
     fi
   ;;
 esac
 
 # For development configs
-if [ -e ~/.bash/development.bash ]; then
-  . ~/.bash/development.bash
+if [ -e ~/.shenvs/development.sh ]; then
+  . ~/.shenvs/development.sh
 fi
 
 # For production configs
-if [ -e ~/.bash/production.bash ]; then
-  . ~/.bash/production.bash
+if [ -e ~/.shenvs/production.sh ]; then
+  . ~/.shenvs/production.sh
 fi
 
 # Load self-making commands path
-if [ -e ~/.bash/bin.bash ]; then
-  . ~/.bash/bin.bash
+if [ -e ~/.shenvs/bin.sh ]; then
+  . ~/.shenvs/bin.sh
 fi
 
 # Git completion config

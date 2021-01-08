@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Set the self-making commands path to environment variables
 if [ -e ~/.bin ]; then

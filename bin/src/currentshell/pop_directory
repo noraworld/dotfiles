@@ -1,5 +1,3 @@
-#!/bin/bash
-
 current_directory=$(pwd)
 
 store_directory_stack() {
@@ -12,10 +10,10 @@ store_directory_stack() {
 }
 
 if [[ $1 =~ ^[0-9]+$ ]]; then
-  command popd "+$@" 1>/dev/null || echo
+  popd "+$@" 1>/dev/null || echo
   store_directory_stack
 else
-  command popd  "$@" 1>/dev/null || echo
+  popd  "$@" 1>/dev/null || echo
   store_directory_stack
 fi
 

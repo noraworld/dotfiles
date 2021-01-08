@@ -114,8 +114,8 @@ if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
   mkdir -p $HOME/Library/Application\ Support/Code/User
 fi
 
-# link all files in bash, vim, git_template and bin directory
-link_directory ${PWD}/bash       $HOME/.bash
+# link all files in shenvs, vim, git_template and bin directory
+link_directory ${PWD}/shenvs     $HOME/.shenvs
 link_directory $PWD/vim          $HOME/.vim/config
 link_directory $PWD/git_template $HOME/.git_template
 link_directory $PWD/bin/src      $HOME/.bin

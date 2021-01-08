@@ -1,7 +1,7 @@
 # Get the aliases
 ## General aliases
 alias sudo='sudo ' # enable all aliases also at sudo mode
-alias reload='source ~/.bash_profile'
+alias reload='source ~/.zprofile'
 alias restart='exec -l $SHELL'
 alias hist='history | tac | less | peco'
 alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
@@ -43,39 +43,30 @@ alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
 # Divide configs by OS
 case "${OSTYPE}" in
   darwin*)
-    if [ -e ~/.bash/macos.bash ]; then
-      . ~/.bash/macos.bash
+    if [ -e ~/.shenvs/macos.sh ]; then
+      . ~/.shenvs/macos.sh
     fi
   ;;
   linux*)
-    if [ -e ~/.bash/linux.bash ]; then
-      . ~/.bash/linux.bash
+    if [ -e ~/.shenvs/linux.sh ]; then
+      . ~/.shenvs/linux.sh
     fi
   ;;
 esac
 
 # For development configs
-if [ -e ~/.bash/development.bash ]; then
-  . ~/.bash/development.bash
+if [ -e ~/.shenvs/development.sh ]; then
+  . ~/.shenvs/development.sh
 fi
 
 # For production configs
-if [ -e ~/.bash/production.bash ]; then
-  . ~/.bash/production.bash
+if [ -e ~/.shenvs/production.sh ]; then
+  . ~/.shenvs/production.sh
 fi
 
 # Load self-making commands path
-if [ -e ~/.bash/bin.bash ]; then
-  . ~/.bash/bin.bash
-fi
-
-# Git completion config
-if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-  . /usr/local/etc/bash_completion.d/git-prompt.sh
-fi
-
-if [ -e /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  . /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -e ~/.shenvs/bin.sh ]; then
+  . ~/.shenvs/bin.sh
 fi
 
 # Set DOTPATH
@@ -86,10 +77,6 @@ fi
 # Set colors to ls command
 if [ -f ~/.dir_colors ]; then
   eval $(dircolors -b ~/.dir_colors)
-fi
-
-if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-  GIT_PS1_SHOWDIRTYSTATE=true
 fi
 
 ssh_ps1() {
@@ -135,17 +122,10 @@ is_not_scp() {
   fi
 }
 
-# Show Git branch on prompt
-if type __git_ps1 1>/dev/null 2>/dev/null; then
-  PS1="$(script_ps1) $(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[31m\]$(__git_ps1)\[\033[33m\] \$ \[\e[0m\]"
-else
-  PS1="$(script_ps1) $(ssh_ps1)\[\033[32m\]\h\[\033[33m\]:\[\033[35m\]\W\[\033[33m\] \$ \[\e[0m\]"
-fi
-
 # Restore directory stack when shell session starts or restarts
 # Also see function store_directory_stack() in ./bin/src/override/_pushd
 #
-# CAUTION: This should be loaded after ./bash/bin.bash is loaded
+# CAUTION: This should be loaded after ./shenvs/bin.sh is loaded
 if [[ -e $HOME/.directory_stack_store ]]; then
   if [[ $(dirs -v | wc -l) -eq 1 ]]; then
     while read line
@@ -158,13 +138,13 @@ if [[ -e $HOME/.directory_stack_store ]]; then
       #   because `/` overlaps with path expression
       file=$(echo $line | sed -e "s|^~|$HOME|g")
 
-      command pushd $file 1>/dev/null
+      pushd $file 1>/dev/null
     done << FILE
 $(tac $HOME/.directory_stack_store || tail -r $HOME/.directory_stack_store)
 FILE
 
     # delete directory of when shell session starts from stack
-    command popd -0 1>/dev/null
+    popd -0 1>/dev/null
 
     if "$(is_not_scp)"; then
       echo -e "Restored directory stack"
@@ -177,16 +157,6 @@ else
   :
 fi
 
-# Share the history for each tab or window
-if ! [[ "$PROMPT_COMMAND" =~ "history -a;history -c;history -r" ]]; then
-  PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
-fi
-
-# Run specific command automatically when changing directories
-if ! [[ "$PROMPT_COMMAND" =~ "autorun" ]]; then
-  PROMPT_COMMAND="autorun;$PROMPT_COMMAND"
-fi
-
 autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
     echo -e ""
@@ -195,22 +165,24 @@ autorun() {
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
     ls
-    echo ""
   fi
 
   AUTORUN_DIR="${PWD}"
 }
 
 if type starship 1>/dev/null 2>/dev/null; then
-  eval "$(starship init bash)"
+  eval "$(starship init zsh)"
 fi
 
-if [ "$TERM_PROGRAM" == "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
+if [ "$TERM_PROGRAM" = "iTerm.app" ] && type pokemon 1>/dev/null 2>/dev/null; then
   pokemon -c && pokemon -ss $POKEMON_SLIDESHOW_DURATION -d $POKEMON_DARK_THRESHOLD 1>/dev/null
 fi
 
-# Load bash-preexec
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+zmodload zsh/datetime
+bindkey -e
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 _tn_timestamp=`echo $EPOCHREALTIME`
@@ -255,7 +227,9 @@ preexec() {
 precmd() {
   now=`echo $EPOCHREALTIME`
   dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
-  dur_int=`echo $dur_float | sed s/\.[0-9,]*$//g`
+  dur_int=`echo $dur_float | sed 's/\.[0-9,]*$//g'`
+
+  autorun
 
   # This below must be executed before [^1]
   if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
@@ -319,5 +293,5 @@ precmd() {
 # Use direnv
 # It should appear even after shell extensions that manipulate the prompt like git-prompt
 if type direnv 1>/dev/null 2>/dev/null; then
-  eval "$(direnv hook bash)"
+  eval "$(direnv hook zsh)"
 fi
