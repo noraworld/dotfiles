@@ -27,34 +27,11 @@ export SESSION_LOG_SIZE=$(echo ${SESSION_LOG_SIZE-100000})
 export POKEMON_SLIDESHOW_DURATION=$(echo ${POKEMON_SLIDESHOW_DURATION-7})
 export POKEMON_DARK_THRESHOLD=$(echo ${POKEMON_DARK_THRESHOLD-0.5})
 
+export DOTPATH=""
+export SCRIPT_PS1=""
+export PATH
+export MANPATH
+
 if type src-hilite-lesspipe.sh 1>/dev/null 2>/dev/null; then
   export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
 fi
-
-if [ -f ~/.zshrc ]; then
-  . ~/.zshrc
-fi
-
-export PATH
-export MANPATH
-export DOTPATH
-export PROMPT_COMMAND
-export SCRIPT_PS1
-
-# Record output in terminal
-case "${OSTYPE}" in
-  darwin*)
-    if [ ! -d $SESSION_LOG_PATH ]; then
-      mkdir -p $SESSION_LOG_PATH
-    fi
-
-    if [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "login" ]]; then
-      script -a -F $SESSION_LOG_PATH/recording.log
-    fi
-  ;;
-  linux*)
-    : # TODO (MEMO: use -f option instead of -F on GNU script command)
-  ;;
-esac
-
-# Below here may not be executed because the command 'script' forks the shell
