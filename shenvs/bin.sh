@@ -9,7 +9,7 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/git_subcommand:$PATH
   PATH=$HOME/.bin/brew_subcommand:$PATH
 
-  MANPATH=$DOTPATH/man:$MANPATH
+  MANPATH="$DOTPATH/man:$MANPATH"
 
   for cmd in $HOME/.bin/currentshell/*
   do
