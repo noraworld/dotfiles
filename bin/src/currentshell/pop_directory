@@ -1,14 +1,5 @@
 current_directory=$(pwd)
 
-store_directory_stack() {
-  if [[ ! -e $HOME/.directory_stack_store ]]; then
-    echo -e "Create $HOME/.directory_stack_store"
-    touch $HOME/.directory_stack_store
-  fi
-
-  dirs -v | sed "s/^ *[0-9]* *//g" > $HOME/.directory_stack_store
-}
-
 if [[ $1 =~ ^[0-9]+$ ]]; then
   popd "+$@" 1>/dev/null || echo
   store_directory_stack
@@ -20,5 +11,5 @@ fi
 # output directory stack when directory which is not a current directory are popped
 # output directory stack at function autorun() in bashrc when current directory are popped
 if [[ $(pwd) = $current_directory ]]; then
-  dirs -v
+  show_directory_stack
 fi

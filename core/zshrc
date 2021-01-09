@@ -140,7 +140,7 @@ is_not_scp() {
 }
 
 # Restore directory stack when shell session starts or restarts
-# Also see function store_directory_stack() in ./bin/src/override/_pushd
+# Also see store_directory_stack
 #
 # CAUTION: This should be loaded after ./shenvs/bin.sh is loaded
 if [[ -e $HOME/.directory_stack_store ]]; then
@@ -176,6 +176,7 @@ fi
 
 autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
+    store_directory_stack
     echo -e ""
     echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
     show_directory_stack
