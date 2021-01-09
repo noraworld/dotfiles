@@ -204,7 +204,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
-# _tn_caffeinate_pid=''
+_tn_caffeinate_pid=''
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
@@ -238,8 +238,18 @@ preexec() {
     fi
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 
-  # caffeinate -d &
-  # _tn_caffeinate_pid=`echo $!`
+  # caffeinate (do not run when exit)
+  if [[ ! $_tn_cmd =~ ^([[:blank:]]+.*)*exit([[:blank:]]+.*)*$ ]]; then
+    # https://walkingmask.hatenablog.com/entry/2016/09/21/202509
+    (caffeinate -d & echo $!) | read _tn_caffeinate_pid
+  fi
+
+  # check if `caffeinate` command running
+  ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -qv grep
+  # prints warning message if `caffeinate` command not running, or `caffeinate` command running but caffeinate pid is wrong or missing
+  if ! { [ $? = 0 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
+    echo -e "\033[1;93mWARNING: Running out of caffeine! Computer may sleep while executing \`\033[1m$_tn_cmd\033[1;93m' if it takes long time\033[00m"
+  fi
 }
 precmd() {
   now=`echo $EPOCHREALTIME`
@@ -303,8 +313,21 @@ precmd() {
   echo
   _tn_cmd=''
 
-  # kill -SIGINT $_tn_caffeinate_pid
-  # _tn_caffeinate_pid=''
+  # stop caffeinate (do not run when exit)
+  if [[ ! $_tn_cmd =~ ^([[:blank:]]+.*)*exit([[:blank:]]+.*)*$ ]]; then
+    kill "$_tn_caffeinate_pid"
+  fi
+
+  # check if `caffeinate` command killed
+  ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -qv grep
+  # prints warning message if `caffeinate` command running yet, or `caffeinate` command running but caffeinate pid is wrong or missing
+  if ! { [ $? = 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
+    echo -e "\033[1;93mWARNING: Caffeine is out of control! Computer never sleeps forever! Please kill caffeinate process manually\033[00m"
+  elif [[ "$(ps aux | grep caffeinate | grep -cv grep)" -gt 0 ]]; then
+    echo -e "\033[1mWARNING: Caffeine works yet! If commands are running on other sessions, just ignore this message\033[00m"
+  fi
+
+  _tn_caffeinate_pid=''
 }
 
 # Use direnv
