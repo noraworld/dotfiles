@@ -285,8 +285,11 @@ preexec() {
 
   # check if `caffeinate` command running
   # prints warning message if `caffeinate` command not running, or `caffeinate` command running but caffeinate pid is wrong or missing
-  if ! { [ "$(ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -cv grep)" -eq 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
-    echo -e "\033[1;93mWARNING: Running out of caffeine! Computer may sleep while executing \`\033[1m$_tn_cmd\033[1;93m' if it takes long time\033[00m"
+  if "${need_caffeine}"; then
+    if ! { [ "$(ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -cv grep)" -eq 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
+      echo -e "\033[1;93mWARNING:\033[00m Running out of caffeine! Computer may sleep while executing \`\033[1m$_tn_cmd\033[00m' if it takes long time\033[00m"
+      echo
+    fi
   fi
 }
 precmd() {
