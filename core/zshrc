@@ -18,7 +18,7 @@ esac
 # Get the aliases
 ## General aliases
 alias sudo='sudo ' # enable all aliases also at sudo mode
-alias reload='source ~/.zprofile'
+alias reload='source ~/.zshrc'
 alias restart='exec -l $SHELL'
 alias hist='history 1 | tac | less | peco'
 alias histcpy='histcpy=`history 1 | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
