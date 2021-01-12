@@ -212,6 +212,12 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=2
 
+setopt +o nomatch
+setopt hist_ignore_dups
+setopt interactivecomments
+setopt inc_append_history
+setopt extended_history
+
 function fuzzy_history_search() {
   BUFFER=`history -n 1 | tac | fzf`
   CURSOR=$#BUFFER
