@@ -11,5 +11,6 @@ style = "bold yellow"
 
 [time]
 disabled = false
-style = "white"
-time_format = "%F %T" # not work?
+style = "#b0c4de"
+time_format = "%Y/%m/%d %T"
+format = "[$time]($style) "

@@ -1094,7 +1094,7 @@
         }
       },
       "starship": {
-        "version": "0.44.0",
+        "version": "0.48.0",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
