@@ -234,6 +234,7 @@ bindkey '^R' fuzzy_history_search
 _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
 _tn_caffeinate_pid=''
+need_caffeine=true
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
@@ -295,7 +296,6 @@ precmd() {
 
   autorun
 
-  # This below must be executed before [^1]
   if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
     src_path=$SESSION_LOG_PATH/recording.log
     dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
@@ -306,10 +306,22 @@ precmd() {
     echo -e "INFO: $src_path exceeds $SESSION_LOG_SIZE lines. Moved to $dst_path automatically."
   fi
 
-  # [^1]
+  # stop caffeinate
+  if "${need_caffeine}" && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; then
+    kill "$_tn_caffeinate_pid"
+  fi
+  _tn_caffeinate_pid=''
+
+  # reload prompt state
+  get_prompt_state
+
+  # above here is executed even if no command specified on prompt
+  ###################################################################
   if [[ $_tn_cmd == "" ]]; then
     return
   fi
+  ###################################################################
+  # below here is executed only when some kind of command is executed
 
   is_enabled_notification=true
   while read line
@@ -347,16 +359,9 @@ precmd() {
     echo -en " \033[2m(notification is disabled for this command)\033[00m"
   fi
 
-  echo
   _tn_cmd=''
 
-  # stop caffeinate
-  if "${need_caffeine}" && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; then
-    kill "$_tn_caffeinate_pid"
-  fi
-
-  get_prompt_state
-  _tn_caffeinate_pid=''
+  echo
 }
 
 # Use direnv
