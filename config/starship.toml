@@ -5,7 +5,7 @@ min_time = 0
 show_milliseconds = true
 
 [env_var]
-variable = "SCRIPT_PS1"
+variable = "PROMPT_STATE"
 default = "???"
 style = "bold yellow"
 

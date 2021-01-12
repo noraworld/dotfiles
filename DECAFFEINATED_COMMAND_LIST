@@ -1,0 +1,6 @@
+exit
+exec
+source
+reload
+restart
+ls

@@ -108,7 +108,7 @@ ssh_ps1() {
   fi
 }
 
-script_ps1() {
+recording_prompt() {
   case "${OSTYPE}" in
     darwin*)
       if [[ "$(ps -e -o pid,command | grep -E "^\s{0,}$PPID" | grep -v grep)" =~ "script" ]]; then
@@ -124,7 +124,15 @@ script_ps1() {
     ;;
   esac
 }
-SCRIPT_PS1=$(script_ps1)
+
+caffeine_count() {
+  echo -e "\033[38;05;172m$(ps aux | grep caffeinate | grep -cv grep)\033[00m"
+}
+
+get_prompt_state() {
+  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count)"
+}
+get_prompt_state
 
 # avoids scp failure
 # scp fails when something is displayed to stdout at login
@@ -241,16 +249,24 @@ preexec() {
     fi
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 
-  # caffeinate (do not run when exit)
-  if [[ ! $_tn_cmd =~ ^([[:blank:]]+.*)*exit([[:blank:]]+.*)*$ ]]; then
+  # do not caffeinate when command in DECAFFEINATED_COMMAND_LIST is executed
+  need_caffeine=true
+  while read line
+  do
+    if [[ $_tn_cmd =~ ^([[:blank:]]+.*)*$line([[:blank:]]+.*)*$ ]]; then
+      need_caffeine=false
+    fi
+  done < $DOTPATH/DECAFFEINATED_COMMAND_LIST
+
+  # caffeinate
+  if type caffeinate 1>/dev/null 2>/dev/null && "${need_caffeine}"; then
     # https://walkingmask.hatenablog.com/entry/2016/09/21/202509
     (caffeinate -d & echo $!) | read _tn_caffeinate_pid
   fi
 
   # check if `caffeinate` command running
-  ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -qv grep
   # prints warning message if `caffeinate` command not running, or `caffeinate` command running but caffeinate pid is wrong or missing
-  if ! { [ $? = 0 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
+  if ! { [ "$(ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -cv grep)" -eq 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
     echo -e "\033[1;93mWARNING: Running out of caffeine! Computer may sleep while executing \`\033[1m$_tn_cmd\033[1;93m' if it takes long time\033[00m"
   fi
 }
@@ -316,20 +332,12 @@ precmd() {
   echo
   _tn_cmd=''
 
-  # stop caffeinate (do not run when exit)
-  if [[ ! $_tn_cmd =~ ^([[:blank:]]+.*)*exit([[:blank:]]+.*)*$ ]]; then
+  # stop caffeinate
+  if "${need_caffeine}" && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; then
     kill "$_tn_caffeinate_pid"
   fi
 
-  # check if `caffeinate` command killed
-  ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -qv grep
-  # prints warning message if `caffeinate` command running yet, or `caffeinate` command running but caffeinate pid is wrong or missing
-  if ! { [ $? = 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
-    echo -e "\033[1;93mWARNING: Caffeine is out of control! Computer never sleeps forever! Please kill caffeinate process manually\033[00m"
-  elif [[ "$(ps aux | grep caffeinate | grep -cv grep)" -gt 0 ]]; then
-    echo -e "\033[1mWARNING: Caffeine works yet! If commands are running on other sessions, just ignore this message\033[00m"
-  fi
-
+  get_prompt_state
   _tn_caffeinate_pid=''
 }
 
