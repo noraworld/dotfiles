@@ -212,6 +212,15 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=2
 
+function fuzzy_history_search() {
+  BUFFER=`history -n 1 | tac | fzf`
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+
+zle -N fuzzy_history_search
+bindkey '^R' fuzzy_history_search
+
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
