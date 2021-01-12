@@ -20,9 +20,9 @@ esac
 alias sudo='sudo ' # enable all aliases also at sudo mode
 alias reload='source ~/.zprofile'
 alias restart='exec -l $SHELL'
-alias hist='history | tac | less | peco'
-alias histcpy='histcpy=`history | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
-alias again='eval $(history | sed "s/^ *[0-9]* *//g" | peco)'
+alias hist='history 1 | tac | less | peco'
+alias histcpy='histcpy=`history 1 | sed "s/^ *[0-9]* *//g" | tac | less | peco`; echo -n $histcpy | pbcopy; echo "Copied \`$histcpy\` to clipboard"'
+alias again='eval $(history 1 | sed "s/^ *[0-9]* *//g" | peco)'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 alias laravel='php artisan'
 alias up='cd ..'
