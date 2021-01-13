@@ -3,4 +3,5 @@ exec
 source
 reload
 restart
+script
 ls
