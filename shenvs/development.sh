@@ -1,7 +1,13 @@
 #!/bin/sh
 
-# anyenv
+# anyenv (Homebrew / macOS)
 if type anyenv 1>/dev/null 2>/dev/null; then
+  eval "$(anyenv init -)"
+fi
+
+# anyenv (Git / Ubuntu)
+if [[ -s ~/.anyenv ]]; then
+  PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
 fi
 
