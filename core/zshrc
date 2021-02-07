@@ -213,6 +213,7 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=2
 
 export HISTSIZE=10000
+export HISTFILE=~/.zsh_history
 export SAVEHIST=9999999999
 
 setopt +o nomatch
