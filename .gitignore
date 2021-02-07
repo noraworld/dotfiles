@@ -1,4 +1,6 @@
 gitconfig.local
 config/anyenv/
+config/pulse/
 
+# WIP
 config/karabiner/
