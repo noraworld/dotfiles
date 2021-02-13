@@ -46,6 +46,7 @@ $ anyenv install pyenv
 
 # Install Ruby
 $ rbenv install $(cat .ruby-version)
+$ rbenv global $(cat .ruby-version)
 $ gem install bundler -v '1.16.5'
 $ bundle install
 
