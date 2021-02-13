@@ -1,6 +1,8 @@
 gitconfig.local
+
 config/anyenv/
 config/pulse/
+config/iterm2/
 
 # WIP
 config/karabiner/
