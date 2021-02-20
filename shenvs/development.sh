@@ -11,6 +11,11 @@ if [[ -s ~/.anyenv ]]; then
   eval "$(anyenv init -)"
 fi
 
+# use node packages globally
+if type nodenv 1>/dev/null 2>/dev/null; then
+  PATH="$DOTPATH/node_modules/.bin:$PATH"
+fi
+
 # ndenv
 if [[ -s ~/.ndenv ]]; then
   PATH="$HOME/.ndenv/bin:$PATH"
