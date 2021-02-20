@@ -411,7 +411,7 @@
         }
       },
       "readline": {
-        "version": "8.0.4",
+        "version": "8.1",
         "bottle": {
           "cellar": ":any",
           "prefix": "/usr/local",
@@ -1393,7 +1393,7 @@
       },
       "Keynote": {
         "id": "409183694",
-        "version": "10.3.8"
+        "version": "10.3.9"
       },
       "LadioCast": {
         "id": "411213048",
@@ -1401,15 +1401,15 @@
       },
       "LINE": {
         "id": "539883307",
-        "version": "6.5.3"
+        "version": "6.6.0"
       },
       "Numbers": {
         "id": "409203825",
-        "version": "10.3.5"
+        "version": "10.3.9"
       },
       "Pages": {
         "id": "409201541",
-        "version": "10.3.5"
+        "version": "10.3.9"
       },
       "PicGIF": {
         "id": "784260229",
@@ -1421,7 +1421,7 @@
       },
       "Xcode": {
         "id": "497799835",
-        "version": "12.3"
+        "version": "12.4"
       }
     }
   },
@@ -1431,8 +1431,8 @@
         "HOMEBREW_VERSION": "2.7.3",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "18218c53db1b546f585b731dc81730703381b9eb",
-        "CLT": "11.0.33.8",
-        "Xcode": "12.3",
+        "CLT": "12.4.0.0.1.1610135815",
+        "Xcode": "12.4",
         "macOS": "11.1"
       }
     }
