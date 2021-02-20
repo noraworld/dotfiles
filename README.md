@@ -43,6 +43,7 @@ $ vi # install neobundle plugin and exit
 # Install **env
 $ anyenv install rbenv
 $ anyenv install pyenv
+$ anyenv install nodenv
 
 # Install Ruby
 $ rbenv install $(cat .ruby-version)
@@ -55,11 +56,18 @@ $ brew discard binutils && pyenv install $(cat .python-version) && brew get binu
 $ pyenv global $(cat .python-version)
 $ pip install pipenv
 $ pipenv install --system
+
+# Install Node
+$ nodenv install $(cat .node-version)
+$ nodenv global $(cat .node-version)
+$ npm install
 ```
 
 That’s all!
 
 **NOTE**: If you face a problem that most commands show `Killed: 9` and do not work after running `brew bundle install --global`, just type `exit` to exit a shell and reopen it again. The terminal process probably [terminates with exit code 137](https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch), but it can be ignored. This causes when bash is updated.
+
+**NOTE**: Node packages to be used globally are installed locally in `dotfiles/node_modules` and called from `dotfiles/node_modules/.bin` globally because npm cannot install packages globally from `package.json` (`npm install -g` is invalid). The option `-g` should not be added when new package will be installed because the package will not be added to `package.json`.
 
 ## Dependencies
 This dotfiles depends on the following.
