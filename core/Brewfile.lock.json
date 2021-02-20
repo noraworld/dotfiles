@@ -1360,6 +1360,10 @@
           }
         }
       },
+      "zplug": {
+        "version": "2.4.2",
+        "bottle": false
+      },
       "rcmdnk/rcmdnkpac/rcmdnk-trash": null
     },
     "mas": {
