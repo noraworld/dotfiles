@@ -105,6 +105,12 @@
           "full_name": "keyboardcleantool"
         }
       },
+      "ngrok": {
+        "version": "latest",
+        "options": {
+          "full_name": "ngrok"
+        }
+      },
       "postman": {
         "version": "7.29.1",
         "options": {
