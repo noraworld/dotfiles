@@ -1,6 +1,9 @@
 gitconfig.local
 node_modules/
 
+# Python library
+src/pokemon
+
 config/anyenv/
 config/pulse/
 config/iterm2/
