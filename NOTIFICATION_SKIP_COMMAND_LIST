@@ -16,3 +16,4 @@ man
 ruby
 bin/console
 zenn preview
+ngrok
