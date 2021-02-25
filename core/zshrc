@@ -247,9 +247,9 @@ preexec() {
     reason=`echo "$line," | cut -d ',' -f 3`
     if [[ $_tn_cmd =~ ^([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]] || [[ $_tn_cmd =~ ^([[:blank:]]+.*)*sudo([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]]; then
       if [[ "${substitute_command}" != "" ]]; then
-        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated. Use \`\033[1m$substitute_command\033[00m' command instead."
+        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated or dangerous. Use \`\033[1m$substitute_command\033[00m' command instead, or use it very carefully."
       elif [[ "${substitute_command}" = "" ]]; then
-        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated. It should not be used."
+        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated or dangerous. It should not be used, or should be used very carefully."
       else
         echo -e "Something went wrong!"
       fi
@@ -257,7 +257,7 @@ preexec() {
       if [[ "${reason}" != "" ]]; then
         echo "         Reason: $reason."
       fi
-      echo -e "         Use \`\033[1mdep\033[00m' command to list all deprecated and substitute commands.\n"
+      echo -e "         Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands.\n"
 
       echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway"
       echo -e "                 Do not forget to kill suspended sleep process after finishing command\033[00m"
