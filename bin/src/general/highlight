@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for args in "$@"
+do
+  cmd+="sed -r \"s/${args}/\x1b[38;5;9m${args}\x1b[0m/g\" | "
+done
+
+cmd=`echo ${cmd} | sed -E 's/\s?\|\s?$//g'`
+eval ${cmd}
