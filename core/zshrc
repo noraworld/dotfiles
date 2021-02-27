@@ -30,7 +30,7 @@ alias del='trash'
 
 ## Overridden aliases
 ### Some scripts may not work properly by overriding a existence command
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias vi='vim'
 
 ## Abbreviation aliases
