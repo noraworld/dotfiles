@@ -123,6 +123,12 @@
           "full_name": "scroll-reverser"
         }
       },
+      "skitch": {
+        "version": "2.9,265157",
+        "options": {
+          "full_name": "skitch"
+        }
+      },
       "slack": {
         "version": "4.8.0",
         "options": {
