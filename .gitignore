@@ -7,6 +7,7 @@ src/pokemon
 config/anyenv/
 config/pulse/
 config/iterm2/
+config/configstore/update-notifier-zenn-cli.json
 
 # WIP
 config/karabiner/
