@@ -236,6 +236,7 @@ _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
 _tn_caffeinate_pid=''
 need_caffeine=true
+bury_message=''
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
@@ -259,8 +260,7 @@ preexec() {
       fi
       echo -e "         Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands.\n"
 
-      echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway"
-      echo -e "                 Do not forget to kill suspended sleep process after finishing command\033[00m"
+      echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway\033[00m"
       echo -e "\033[1;32mRECOMMENDED:\033[00m     \033[1mSend SIGINT signal (^C) to abort\033[00m\n"
 
       echo -en "Type signal: "
@@ -319,6 +319,14 @@ precmd() {
     kill "$_tn_caffeinate_pid"
   fi
   _tn_caffeinate_pid=''
+
+  # stop sleep (for deprecated command stopper)
+  bury_message=`bury -y sleep`
+  if [[ $bury_message != "No processes exist." ]]; then
+    echo
+    echo $bury_message
+  fi
+  bury_message=''
 
   # reload prompt state
   get_prompt_state
