@@ -25,7 +25,8 @@
     "files.trimTrailingWhitespace": true,
     "files.associations": {
         "bashrc": "shellscript",
-        "bash_profile": "shellscript"
+        "bash_profile": "shellscript",
+        "**/bin/src/currentshell/**/*": "shellscript"
     },
     "window.zoomLevel": 0,
     "editor.multiCursorModifier": "ctrlCmd",
