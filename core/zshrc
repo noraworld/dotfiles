@@ -309,6 +309,22 @@ precmd() {
 
   autorun
 
+  if [[ -d .git ]]; then
+    # file name ".git-fetch-last-update" cannot be changeable because that should be written in gitignore_global
+    if [[ ! -f .git-fetch-last-update ]]; then
+      echo $now > .git-fetch-last-update
+    fi
+
+    _git_fetch_duration=$(echo "scale=10; $now - $(cat .git-fetch-last-update)" | bc | sed 's/^\./0./' | sed 's/\.[0-9,]*$//g')
+
+    if [[ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]]; then
+      echo
+      echo -e "Info: Execute \`git fetch\` in the background to synchronize with the remote branch."
+      (git fetch &)
+      echo $EPOCHREALTIME > .git-fetch-last-update
+    fi
+  fi
+
   if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
     src_path=$SESSION_LOG_PATH/recording.log
     dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
