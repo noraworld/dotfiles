@@ -319,7 +319,7 @@ precmd() {
 
     if [[ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]]; then
       echo
-      echo -e "Info: Execute \`git fetch\` in the background to synchronize with the remote branch."
+      echo -e "\033[1;33mInfo: Executing \`git fetch\` in the background to synchronize with the remote branch.\033[00m"
       (git fetch   > /dev/null 2>&1 &)
       (git refresh > /dev/null 2>&1 &) # on the way
       echo $EPOCHREALTIME > .git-fetch-last-update
