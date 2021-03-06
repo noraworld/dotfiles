@@ -173,7 +173,6 @@ FILE
     if "$(is_not_scp)"; then
       echo -e "Restored directory stack"
       show_directory_stack
-      echo
     fi
   fi
 else
@@ -339,6 +338,7 @@ precmd() {
   # above here is executed even if no command specified on prompt
   ###################################################################
   if [[ $_tn_cmd == "" ]]; then
+    echo
     return
   fi
   ###################################################################

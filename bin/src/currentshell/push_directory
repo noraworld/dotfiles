@@ -9,7 +9,7 @@ if [[ $# = 0 ]] && type fzf 1>/dev/null 2>/dev/null; then
   fi
 
   if [[ $selected_num = "0" ]]; then
-    echo -e "\nError: You are already in that directory"
+    echo -en "\nError: You are already in that directory"
     return 0
   fi
 
