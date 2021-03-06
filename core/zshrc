@@ -35,7 +35,6 @@ alias vi='vim'
 
 ## Abbreviation aliases
 alias d='show_directory_stack'
-alias p='push_directory'
 alias push='push_directory'
 alias pop='pop_directory'
 alias g='git'
@@ -227,9 +226,15 @@ function fuzzy_history_search() {
   CURSOR=$#BUFFER
   zle reset-prompt
 }
+function fuzzy_push_directory() {
+  push_directory
+  zle .accept-line
+}
 
 zle -N fuzzy_history_search
+zle -N fuzzy_push_directory
 bindkey '^R' fuzzy_history_search
+bindkey '^J' fuzzy_push_directory
 
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 _tn_timestamp=`echo $EPOCHREALTIME`

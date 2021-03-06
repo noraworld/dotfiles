@@ -1,6 +1,21 @@
 current_directory=$(pwd)
 
-if [[ $1 =~ ^[0-9]+$ ]]; then
+if [[ $# = 0 ]] && type fzf 1>/dev/null 2>/dev/null; then
+  selected_dir=$(dirs -v -l | fzf --tac --exact --no-sort)
+  selected_num=$(echo $selected_dir | awk '{print $1}')
+
+  if [[ $selected_num = "" ]]; then
+    return 0
+  fi
+
+  if [[ $selected_num = "0" ]]; then
+    echo -e "\nError: You are already in that directory"
+    return 0
+  fi
+
+  pushd "+${selected_num}" 1>/dev/null || echo
+  store_directory_stack
+elif [[ $1 =~ ^[0-9]+$ ]]; then
   pushd "+$@" 1>/dev/null || echo
   store_directory_stack
 else
