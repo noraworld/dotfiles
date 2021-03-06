@@ -1407,7 +1407,7 @@
       },
       "iMovie": {
         "id": "408981434",
-        "version": "10.2.2"
+        "version": "10.2.3"
       },
       "Keynote": {
         "id": "409183694",
@@ -1419,7 +1419,7 @@
       },
       "LINE": {
         "id": "539883307",
-        "version": "6.6.0"
+        "version": "6.7.0"
       },
       "Numbers": {
         "id": "409203825",
@@ -1449,7 +1449,7 @@
         "HOMEBREW_VERSION": "2.7.3",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "18218c53db1b546f585b731dc81730703381b9eb",
-        "CLT": "",
+        "CLT": "12.4.0.0.1.1610135815",
         "Xcode": "12.4",
         "macOS": "11.2.1"
       }
