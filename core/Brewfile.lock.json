@@ -63,6 +63,12 @@
           "full_name": "blackhole"
         }
       },
+      "dropbox": {
+        "version": "112.4.321",
+        "options": {
+          "full_name": "dropbox"
+        }
+      },
       "evernote": {
         "version": "7.14_458244",
         "options": {
