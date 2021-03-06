@@ -35,6 +35,7 @@ alias vi='vim'
 
 ## Abbreviation aliases
 alias d='show_directory_stack'
+alias p='push_directory'
 alias push='push_directory'
 alias pop='pop_directory'
 alias g='git'
