@@ -1,17 +1,24 @@
 #!/bin/bash
 
-if [ "$1" = "" ]; then
-  echo "shredall: missing operand"
+if [[ "$(whoami)" != "root" ]]; then
+  echo "shredall: requires root privilege" >&2
+  echo "shredall: cannot shred write-protected files without root privilege" >&2
   exit 1
 fi
 
-echo -en "Are you sure you want to shred? [Y/n]: "
+if [ "$1" = "" ]; then
+  echo "shredall: missing operand" >&2
+  exit 1
+fi
+
+echo -e "\033[1;91mThis will destroy all files in \"$1\" completely, and they won’t be restored!!!\033[00m"
+echo -en "Are you sure you want to shred all files in \"$1\"? [YES/no]: "
 exec < /dev/tty
 read confirm
-if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+if [ $confirm = "YES" ]; then
   echo -en ""
 else
-  echo -e "canceled"
+  echo -e "canceled" >&2
   exit 1
 fi
 echo -e ""
@@ -29,26 +36,36 @@ function check() {
   return 0
 }
 
-if [ -d $1 ]; then
-  find $1 -type f -print0 | xargs -0 shred -uvz
-  find $1 -type l -print0 | xargs -0 rm
-else
+if [ -d $1 ]; then # shred directory
+  # shred files if exists
+  if [[ "$(find $1 -type f -print0)" ]]; then
+    find $1 -type f -print0 | xargs -0 shred -uvz
+  fi
+
+  # remove symlinks if exists
+  # this uses "rm" command because "shred" command cannot symlinks
+  if [[ "$(find $1 -type l -print0)" ]]; then
+    find $1 -type l -print0 | xargs -0 rm
+  fi
+else # shred file
   shred -uvz $1
 fi
 
 ok_flag=`find $1 -print | check`
 
 if [ $ok_flag = 0 ]; then
+  # shred empty directory
   rm -rf $1
-  echo -e "\nshredall: shred successfully"
+  echo -e "\nshredall: shred all files in \"$1\" successfully"
 elif [ $ok_flag = 1 ]; then
   find $1 -print | while read dir; do
     if [ ! -d $dir ]; then
-      echo -e "\nshredall: something went wrong: $dir is NOT a directory"
+      echo -e "\nshredall: something went wrong: $dir is NOT a directory" >&2
     fi
   done
 else
-  echo -e "\nshredall: wrong flag"
+  echo -e "\nshredall: wrong flag" >&2
+  exit 2
 fi
 
 exit 0
