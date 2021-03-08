@@ -321,9 +321,16 @@ precmd() {
 
     _git_fetch_duration=$(echo "scale=10; $now - $(cat .git-fetch-last-update)" | bc | sed 's/^\./0./' | sed 's/\.[0-9,]*$//g')
 
-    if [[ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]]; then
+    _git_fetch_period_threshold=''
+    if [[ -f .git-fetch-period-threshold ]]; then
+      _git_fetch_period_threshold=$(cat .git-fetch-period-threshold)
+    else
+      _git_fetch_period_threshold=$GIT_FETCH_PERIOD_THRESHOLD
+    fi
+
+    if [[ $_git_fetch_duration -ge $_git_fetch_period_threshold ]]; then
       echo
-      echo -e "\033[1;33mInfo: Executing \`git fetch\` in the background to synchronize with the remote branch.\033[00m"
+      echo -e "\033[1;33mINFO: Executing \`git fetch\` in the background to synchronize with the remote branch.\033[00m"
       (git fetch   > /dev/null 2>&1 &)
       (git refresh > /dev/null 2>&1 &) # on the way
       echo $EPOCHREALTIME > .git-fetch-last-update
