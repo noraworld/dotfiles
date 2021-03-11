@@ -1,11 +1,46 @@
 #!/bin/bash
+PROGNAME=$(basename $0)
 
-if [ "$1" = "" ]; then
+function usage() {
+  echo "WIP"
+}
+
+verbose=false
+for opt in "$@"
+do
+  case "$opt" in
+    '-h' | '--help' )
+      usage
+      exit 0
+    ;;
+    '--verbose' )
+      verbose=true
+      shift
+    ;;
+    '--' | '-' )
+      shift 1
+      param+=( "$@" )
+      break
+    ;;
+    -* )
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+    ;;
+    * )
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        param+=( "$1" )
+        shift 1
+      fi
+    ;;
+  esac
+done
+
+if [ "$param" = "" ]; then
   echo "shredall: missing operand" >&2
   exit 1
 fi
 
-if [ ! -e "$1" ]; then
+if [ ! -e "$param" ]; then
   echo "shredall: no such file or directory" >&2
   exit 1
 fi
@@ -16,8 +51,14 @@ if [[ "$(whoami)" != "root" ]]; then
   exit 1
 fi
 
-echo -e "\033[1;91mThis will destroy all files in \"$1\" completely, and they won’t be restored!!!\033[00m"
-echo -en "Are you sure you want to shred all files in \"$1\"? [YES/no]: "
+echo -e  "\033[1;91m"
+echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo -e  "@@@                                                                                                  @@@"
+echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
+echo -e  "@@@                                                                                                  @@@"
+echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo -e  "\033[00m"
+echo -en "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m? [YES/no]: "
 exec < /dev/tty
 read confirm
 if [ $confirm = "YES" ]; then
@@ -32,7 +73,7 @@ function check() {
   ok_flag=0
 
   while read dir; do
-    if [ ! -d $dir ]; then
+    if [ ! -d "$dir" ]; then
       ok_flag=1
     fi
   done
@@ -41,29 +82,43 @@ function check() {
   return 0
 }
 
-if [ -d $1 ]; then # shred directory
+if [ -d "$param" ]; then # shred directory
   # shred files if exists
-  if [[ "$(find $1 -type f -print0)" ]]; then
-    find $1 -type f -print0 | xargs -0 shred -uvz
+  if [[ "$(find "$param" -type f -print0)" ]]; then
+    if $verbose; then
+      find "$param" -type f -print0 | xargs -0 shred -uvz
+    else
+      find "$param" -type f -print0 | xargs -0 shred -uz
+    fi
   fi
 
   # remove symlinks if exists
-  # this uses "rm" command because "shred" command cannot symlinks
-  if [[ "$(find $1 -type l -print0)" ]]; then
-    find $1 -type l -print0 | xargs -0 rm
+  # this uses "rm" command because "shred" command cannot delete symlinks
+  if [[ "$(find "$param" -type l -print0)" ]]; then
+    find "$param" -type l -print0 | xargs -0 rm
   fi
 else # shred file
-  shred -uvz $1
+  if $verbose; then
+    shred -uvz "$param"
+  else
+    shred -uz "$param"
+  fi
 fi
 
-ok_flag=`find $1 -print | check`
+ok_flag=`find "$param" -print | check`
 
 if [ $ok_flag = 0 ]; then
-  # shred empty directory
-  rm -rf $1
-  echo -e "\nshredall: shred all files in \"$1\" successfully"
+  # shred empty directories
+  rm -rf "$param"
+
+  if [ ! -d "$param" ]; then
+    echo -e "Shredded all files in \"$(realpath "$param")\" successfully"
+  else
+    echo -e "Something went wrong! ("$param" even exists)" >&2
+    exit 2
+  fi
 elif [ $ok_flag = 1 ]; then
-  find $1 -print | while read dir; do
+  find "$param" -print | while read dir; do
     if [ ! -d $dir ]; then
       echo -e "\nshredall: something went wrong: $dir is NOT a directory" >&2
     fi
