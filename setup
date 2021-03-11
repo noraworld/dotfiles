@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # raise error if this script is not executed in this directory
-if [ ${0} != "setup.sh" ]; then
+if [[ ${0} != "./setup" && ${0} != "setup" ]]; then
   echo -e "FATAL: this script must be executed in dotfiles directory."
   echo -e "You need to change directories so you can execure this script by"
   echo -e "typing the following command."

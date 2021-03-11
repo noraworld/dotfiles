@@ -33,7 +33,7 @@ Run the setup script. You need to change directories so you can run it in dotfil
 
 ```bash
 $ cd path/to/dotfiles
-$ bash setup.sh
+$ ./setup
 $ source ~/.bash_profile
 $ git refresh
 $ brew bundle install --global --no-lock
