@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # raise error if this script is not executed in this directory
 if [ ${0} != "setup.sh" ]; then
@@ -12,36 +12,19 @@ if [ ${0} != "setup.sh" ]; then
   exit 1
 fi
 
-function link_file() {
-  # if the filename that is about to link is
-  # already exists and is a directory
-  # or a file but not a link file
-  # or a link file but another file linking, then
-  if [ -d "${2}" ] || [ -f "${2}" ] && [ ! -L "${2}" ] || [ -L "${2}" ] && [ "`readlink \"${2}\"`" != "${1}" ]; then
-    echo -e "\"${2}\" already exists. You need to rename or move \"${2}\" to another filename or directory."
-    echo -e "Skipping.\n"
-  # else if the filename is not created,
-  # so this script has not been executed yet or
-  # unlink these files, then
-  elif [ ! -e "${2}" ]; then
-    ln -s "${1}" "${2}"
-  fi
-}
+function link_file_or_directory() {
+  if [ -L "${2}" ]; then
+    if [ "$(readlink "$2")" != "$1" ]; then
+      echo "INFO: \"$2\" already links other file \"$(readlink "$2")\". Unlinked."
+    fi
 
-function link_directory() {
-  # if the filename that is about to link is
-  # already exists and is a file
-  # or a directory but not a link directory
-  # or a link directory but another directory linking, then
-  if [ -f "${2}" ] || [ -d "${2}" ] && [ ! -L "${2}" ] || [ -L "${2}" ] && [ "`readlink \"${2}\"`" != "${1}" ]; then
-    echo -e "\"${2}\" already exists. You need to rename or move \"${2}\" to another filename or directory."
-    echo -e "Skipping.\n"
-  # else if the filename is not created,
-  # so this script has not been executed yet or
-  # unlink these directories, then
-  elif [ ! -e "${2}" ]; then
-    ln -s "${1}" "${2}"
+    unlink "$2"
+  elif [ -e "$2" ]; then
+    echo "INFO: \"$2\" already exists. Moved this file as \"$2.backup_$(date '+%Y%m%d_%H%M%S')\"."
+    mv $2 "$2.backup_$(date '+%Y%m%d_%H%M%S')"
   fi
+
+  ln -s "${1}" "${2}"
 }
 
 function install_vim_bundle() {
@@ -99,7 +82,7 @@ for src_path in $PWD/core/*
 do
   if [ -f ${src_path} ]; then
     dst_path=${HOME}/.`basename ${src_path}`
-    link_file ${src_path} ${dst_path}
+    link_file_or_directory ${src_path} ${dst_path}
   fi
 done
 
@@ -115,25 +98,25 @@ if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
 fi
 
 # link all files in shenvs, vim, git_template and bin directory
-link_directory ${PWD}/shenvs     $HOME/.shenvs
-link_directory $PWD/vim          $HOME/.vim/config
-link_directory $PWD/git_template $HOME/.git_template
-link_directory $PWD/bin/src      $HOME/.bin
-link_directory $PWD/config       $HOME/.config
+link_file_or_directory ${PWD}/shenvs     $HOME/.shenvs
+link_file_or_directory $PWD/vim          $HOME/.vim/config
+link_file_or_directory $PWD/git_template $HOME/.git_template
+link_file_or_directory $PWD/bin/src      $HOME/.bin
+link_file_or_directory $PWD/config       $HOME/.config
 
 # link VS Code preferences
 # TODO: this depends on macOS, so support for Linux
 for src_path in ${PWD}/vscode/*
 do
   if [ -f ${src_path} ]; then
-    dst_path=$HOME/Library/Application\ Support/Code/User/`basename ${src_path}`
-    link_file "${src_path}" "${dst_path}"
+    dst_path="$HOME/Library/Application Support/Code/User/`basename ${src_path}`"
+    link_file_or_directory "${src_path}" "${dst_path}"
   fi
 done
 
 # Automator workflows
 if [ ! -e $HOME/Library/Workflows ]; then
-  link_directory $PWD/macos/Workflows $HOME/Library/Workflows
+  link_file_or_directory $PWD/macos/Workflows $HOME/Library/Workflows
 elif [ ! -L $HOME/Library/Workflows ] && [[ ${OSTYPE} =~ ^darwin.+ ]]; then
   echo "WARNING: Automator workflows already exist. Move them to another location."
 fi
