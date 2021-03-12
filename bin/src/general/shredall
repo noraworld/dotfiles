@@ -110,6 +110,18 @@ if [ -d "$param" ]; then # shred directory
   # MEMO: special file (block special and character special) is /dev/null, /dev/zero, /dev/random, /dev/urandom, etc.
   #       named pipe (FIFO) can be created by "mkfifo" command, and cannot be deleted by "shred" command.
 
+  # remove block special files if exists
+  # this uses "rm" command because "shred" command cannot delete special files
+  if [[ "$(find "$param" -type b -print0)" ]]; then
+    find "$param" -type b -print0 | xargs -0 rm
+  fi
+
+  # remove character special files if exists
+  # this uses "rm" command because "shred" command cannot delete special files
+  if [[ "$(find "$param" -type c -print0)" ]]; then
+    find "$param" -type c -print0 | xargs -0 rm
+  fi
+
   # remove named pipe (FIFO) if exists
   # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
   if [[ "$(find "$param" -type p -print0)" ]]; then
