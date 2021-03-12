@@ -1,7 +1,17 @@
 #!/bin/bash
 
 if [ "$1" = "" ]; then
-  echo "mksw: missing operand"
+  echo "mksw: missing operand" >&2
+  exit 1
+fi
+
+if [ -e "$1" ]; then
+  echo "mksw: cannot create directory because file exists" >&2
+  exit 1
+fi
+
+if [[ "$(whoami)" != "root" ]]; then
+  echo "mksw: requires root privilege to create special files" >&2
   exit 1
 fi
 
@@ -26,6 +36,13 @@ mkdir $1/empty_dir
 dd if=/dev/zero of=$1/dummy_file bs=1M count=10
 magick -size 400x300 canvas:tomato $1/image_file.png
 echo "dotfile" > $1/.dotfile
+# https://linuxcommand.net/mknod/
+mknod $1/block_special_file b 100 100
+mknod $1/character_special_file c 100 100
+mkfifo $1/fifo
+# TODO: create socket file
+# https://www.geekpage.jp/programming/linux-network/socket.php
 
+echo
 tree $1
 exit 0
