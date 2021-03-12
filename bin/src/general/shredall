@@ -83,6 +83,39 @@ function check() {
 }
 
 if [ -d "$param" ]; then # shred directory
+  # below is description about "-type" referenced from `man find`
+  #
+  #   -type c
+  #          File is of type c:
+  #
+  #          b      block (buffered) special
+  #
+  #          c      character (unbuffered) special
+  #
+  #          d      directory
+  #
+  #          p      named pipe (FIFO)
+  #
+  #          f      regular file
+  #
+  #          l      symbolic link; this is never true if the -L option or the
+  #                 -follow  option is in effect, unless the symbolic link is
+  #                 broken.  If you want to search for symbolic links when -L
+  #                 is in effect, use -xtype.
+  #
+  #          s      socket
+  #
+  #          D      door (Solaris)
+
+  # MEMO: special file (block special and character special) is /dev/null, /dev/zero, /dev/random, /dev/urandom, etc.
+  #       named pipe (FIFO) can be created by "mkfifo" command, and cannot be deleted by "shred" command.
+
+  # remove named pipe (FIFO) if exists
+  # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
+  if [[ "$(find "$param" -type p -print0)" ]]; then
+    find "$param" -type p -print0 | xargs -0 rm
+  fi
+
   # shred files if exists
   if [[ "$(find "$param" -type f -print0)" ]]; then
     if $verbose; then
@@ -93,9 +126,15 @@ if [ -d "$param" ]; then # shred directory
   fi
 
   # remove symlinks if exists
-  # this uses "rm" command because "shred" command cannot delete symlinks
+  # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
   if [[ "$(find "$param" -type l -print0)" ]]; then
     find "$param" -type l -print0 | xargs -0 rm
+  fi
+
+  # remove socket files if exists
+  # this uses "rm" command because "shred" command cannot delete socket files
+  if [[ "$(find "$param" -type s -print0)" ]]; then
+    find "$param" -type s -print0 | xargs -0 rm
   fi
 else # shred file
   if $verbose; then
