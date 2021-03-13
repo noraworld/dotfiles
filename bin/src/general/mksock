@@ -12,9 +12,20 @@ sys.argv.pop(0) # sys.argv[0] is a program name
 if not sys.argv:
   raise Exception("Missing operand. Specify filenames as arguments.")
 
+option_pop_list = [i for i, x in enumerate(sys.argv) if x == '--verbose']
+
+verbose = False
+if option_pop_list:
+  verbose = True
+
+for option in sorted(option_pop_list, reverse = True):
+  sys.argv.pop(option)
+
 for filename in sys.argv:
   if os.path.exists(filename):
     print(f"Error: file \"{filename}\" already exists.", file = sys.stderr)
   else:
     s.socket(s.AF_UNIX).bind(filename)
-    print(f"Created \"{filename}\" as a socket file successfully.")
+
+    if verbose:
+      print(f"Created \"{filename}\" as a socket file successfully.")
