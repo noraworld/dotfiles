@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+import os
+import socket as s
+import sys
+
+if sys.version_info.major != 3:
+  raise Exception("You are using Python version under 3. You must use Python version 3 or higher.")
+
+sys.argv.pop(0) # sys.argv[0] is a program name
+
+if not sys.argv:
+  raise Exception("Missing operand. Specify filenames as arguments.")
+
+for filename in sys.argv:
+  if os.path.exists(filename):
+    print(f"Error: file \"{filename}\" already exists.", file = sys.stderr)
+  else:
+    s.socket(s.AF_UNIX).bind(filename)
+    print(f"Created \"{filename}\" as a socket file successfully.")
