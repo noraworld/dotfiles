@@ -34,5 +34,12 @@
     "ruby.intellisense": "rubyLocate",
     "editor.cursorBlinking": "solid",
     "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font",
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "python.showStartPage": false
 }
