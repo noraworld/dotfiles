@@ -40,10 +40,7 @@ echo "dotfile" > $1/.dotfile
 mknod $1/block_special_file b 100 100
 mknod $1/character_special_file c 100 100
 mkfifo $1/fifo
-# TODO: create socket file
-# https://www.geekpage.jp/programming/linux-network/socket.php
-# or
-# https://thr3a.hatenablog.com/entry/20190623/1561289566
+mksock $1/socket_file
 
 echo
 tree $1
