@@ -149,10 +149,19 @@ if [ -d "$param" ]; then # shred directory
     find "$param" -type s -print0 | xargs -0 rm
   fi
 else # shred file
-  if $verbose; then
-    shred -uvz "$param"
-  else
-    shred -uz "$param"
+  if [[ -b "$param" || -c "$param" || -p "$param" || -L "$param" || -S "$param" ]]; then
+    rm "$param"
+  elif [[ -f "$param" ]]; then
+    if $verbose; then
+      shred -uvz "$param"
+    else
+      shred -uz "$param"
+    fi
+  fi
+
+  if [ ! -e "$param" ]; then
+    echo -e "Shredded a file \""$param"\" successfully"
+    exit 0
   fi
 fi
 
