@@ -17,3 +17,4 @@ ruby
 bin/console
 zenn preview
 ngrok
+docker-compose up
