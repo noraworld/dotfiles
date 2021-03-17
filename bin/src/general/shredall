@@ -58,10 +58,11 @@ echo -e  "@@@   This will DESTROY all files in specified directory completely, a
 echo -e  "@@@                                                                                                  @@@"
 echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 echo -e  "\033[00m"
-echo -en "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m? [YES/no]: "
+echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
+echo -en "Type file or directory name: "
 exec < /dev/tty
 read confirm
-if [ $confirm = "YES" ]; then
+if [ $confirm = $(basename "$param") ]; then
   echo -en ""
 else
   echo -e "canceled" >&2
