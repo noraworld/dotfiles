@@ -17,6 +17,10 @@ do
       verbose=true
       shift
     ;;
+    '-y' | '--yes' )
+      echo "This option must not be implemented because this script does very dangerous operation!" >&2
+      exit 1
+    ;;
     '--' | '-' )
       shift 1
       param+=( "$@" )
