@@ -18,3 +18,5 @@ bin/console
 zenn preview
 ngrok
 docker-compose up
+docker attach
+docker-server
