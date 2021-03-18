@@ -1,0 +1,56 @@
+#!/bin/sh
+
+docker-compose up -d
+echo
+
+# this must be executed after "docker-compose up -d"
+# avoid making "docker ps" executed over and over again
+DOCKER_PS=$(docker ps)
+
+select_container() {
+  echo "$DOCKER_PS" | fzf --tac --exact --no-sort | awk '{print $1}'
+}
+
+if [ -n "$1" ]; then
+  if [ "$(echo "$DOCKER_PS" | awk '{print $2}' | grep -c $1)" -eq 0 ]; then
+    echo "No such container"
+    echo "Select a container manually after a few seconds..."
+    echo
+    sleep 2
+    container_id=$(select_container $1)
+  elif [ "$(echo "$DOCKER_PS" | awk '{print $2}' | grep -c $1)" -ge 2 ]; then
+    echo "Too many containers found"
+    echo "Select a container manually after a few seconds..."
+    echo
+    sleep 2
+    container_id=$(select_container $1)
+  else
+    while read line
+    do
+      image=$(echo $line | awk '{print $2}' | grep $1)
+
+      if [ -n "$image" ]; then
+        container_id=$(echo $line | awk '{print $1}')
+      fi
+    done <<< "$(echo "$DOCKER_PS")"
+  fi
+else
+  container_id=$(select_container $1)
+fi
+
+if [ -z "$container_id" ]; then
+  echo "Canceled" >&2
+  exit 1
+elif [[ ! "$container_id" =~ ^[0-9a-f]+$ ]]; then
+  echo "Error: Invalid container ID" >&2
+  exit 2
+fi
+
+echo "Selected container info:"
+echo "$DOCKER_PS" | head -1
+echo "$DOCKER_PS" | grep $container_id
+echo
+echo "Attaching container $container_id"
+echo
+
+docker attach $container_id
