@@ -12,3 +12,5 @@ pip3 install,pipenv install --system
 script,,Executing this command without option '-a' may overwrite existing file
 shred,,This command is not a deprecation just a confirmation because it destroys a file or a disk completely
 docker-compose up,docker-server,This command ignores stdin such as binding.pry
+apt install,,
+apt -y install,,
