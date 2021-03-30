@@ -1,63 +1,119 @@
 #!/bin/bash
 
+PROGNAME=$(basename $0)
 BACKUP_PATH=$HOME/.backup
 BACKUP_LIST=$HOME/.backup_list
 BACKUP_IGNORE_LIST=$HOME/.backup_ignore_list
 
-# do nothing if backup path is already exists and is not a directory
-if [ -e "${BACKUP_PATH}" ] && [ ! -d "${BACKUP_PATH}" ]; then
-  echo -e "FATAL: \""${BACKUP_PATH}"\" is not a directory."
-  exit 2
-fi
+for opt in "$@"
+do
+  case "$opt" in
+    '-h' | '--help' )
+      usage
+      exit 0
+    ;;
+    '--' | '-' )
+      shift 1
+      argv+=( "$@" )
+      break
+    ;;
+    -* )
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+    ;;
+    * )
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        argv+=( "$1" )
+        shift 1
+      fi
+    ;;
+  esac
+done
 
-if [ ! -e "${BACKUP_LIST}" ]; then
-  echo -e "ERROR: No backup list found."
-  exit 2
-fi
-
-# create a backup directory if it doesn't exists
-if [ ! -e "${BACKUP_PATH}" ]; then
-  mkdir "${BACKUP_PATH}"
-fi
-
-# check if symlinks are safe (safe means already backed up by other method)
-while read -d $'\0' file; do
-  if [ -L "${file}" ] && [[ "$(readlink "${file}" | grep -cv "dotfiles")" -ne 0 ]]; then
-    echo -e "WARNING: \""${file}"\" is a symlink, but the destination is not a dotfiles directory."
-    ls -al "${file}"
-    echo
-  fi
-done < <(find ~ -mindepth 1 -maxdepth 1 -print0)
-
-while read line; do
-  # trim comments
-  line=$(echo "${line}" | awk '{ sub("#.*$", ""); print $0; }' | sed -e 's/[ \t]*$//')
-
-  # skip empty line and comment line
-  if [[ "${line}" = "" ]]; then
-    continue
+function backup() {
+  # do nothing if backup path is already exists and is not a directory
+  if [ -e "${BACKUP_PATH}" ] && [ ! -d "${BACKUP_PATH}" ]; then
+    echo -e "FATAL: \""${BACKUP_PATH}"\" is not a directory."
+    exit 2
   fi
 
-  if [[ -e "${BACKUP_PATH}/${line}" ]]; then
-    if [[ "$(readlink "${BACKUP_PATH}/${line}")" != "$HOME/${line}" ]] || [[ "$(diff "${BACKUP_PATH}/${line}" "$HOME/${line}")" != "" ]]; then
-      echo -e "WARNING: \""$HOME/${line}"\" and \""${BACKUP_PATH}/${line}"\" are different. Skip."
+  if [ ! -e "${BACKUP_LIST}" ]; then
+    echo -e "ERROR: No backup list found."
+    exit 2
+  fi
+
+  # create a backup directory if it doesn't exists
+  if [ ! -e "${BACKUP_PATH}" ]; then
+    mkdir "${BACKUP_PATH}"
+  fi
+
+  # check if symlinks are safe (safe means already backed up by other method)
+  while read -d $'\0' file; do
+    if [ -L "${file}" ] && [[ "$(readlink "${file}" | grep -cv "dotfiles")" -ne 0 ]]; then
+      echo -e "WARNING: \""${file}"\" is a symlink, but the destination is not a dotfiles directory."
+      ls -al "${file}"
+      echo
+    fi
+  done < <(find ~ -mindepth 1 -maxdepth 1 -print0)
+
+  while read line; do
+    # trim comments
+    line=$(echo "${line}" | awk '{ sub("#.*$", ""); print $0; }' | sed -e 's/[ \t]*$//')
+
+    # skip empty line and comment line
+    if [[ "${line}" = "" ]]; then
       continue
     fi
+
+    if [[ -e "${BACKUP_PATH}/${line}" ]]; then
+      if [[ "$(readlink "${BACKUP_PATH}/${line}")" != "$HOME/${line}" ]] || [[ "$(diff "${BACKUP_PATH}/${line}" "$HOME/${line}")" != "" ]]; then
+        echo -e "WARNING: \""$HOME/${line}"\" and \""${BACKUP_PATH}/${line}"\" are different. Skip."
+        continue
+      fi
+    fi
+
+    if [ ! -L "$HOME/${line}" ] && [ -e "$HOME/${line}" ] && [ ! -e "${BACKUP_PATH}/${line}" ]; then
+      ln -s "$HOME/${line}" "${BACKUP_PATH}/${line}"
+    fi
+
+    if [[ "$(readlink "${BACKUP_PATH}/${line}")" != "$HOME/${line}" ]] || [[ "$(diff "${BACKUP_PATH}/${line}" "$HOME/${line}")" != "" ]]; then
+      echo "WARNING: \""$HOME/${line}"\" and \""${BACKUP_PATH}/${line}"\" are different."
+    fi
+  done < $BACKUP_LIST
+
+  echo -e "Backed up successfully!"
+  echo -e "The following files or directories are not backed up. Check if these are really unnecessary."
+  echo
+  # change delimiter to "@" in sed because env $HOME includes "/"
+  ls --color=always -1ad $(echo -e "$(ls -1ad $(find $HOME -maxdepth 1 -mindepth 1 -not -type l) | sed -e "s@$HOME/@@g")\n$(ls -1A "${BACKUP_PATH}")\n$(cat "${BACKUP_IGNORE_LIST}")" | sort | uniq -u | sed "s@^@$HOME/@g") | sed -e "s@$HOME/@@g"
+}
+
+
+function restore() {
+  while read -d $'\0' file; do
+    if [ -L "${file}" ]; then
+      # echo -e "\""${file}" cannot be restored because it's a symlink. Skip."
+      continue
+    fi
+
+    rm -r "$HOME/$(basename "${file}")"
+    mv -f "${file}" "$HOME"
+    ln -s "$HOME/$(basename "${file}")" "${file}"
+  done < <(find "${BACKUP_PATH}" -mindepth 1 -maxdepth 1 -print0)
+
+  if [[ "$(find ~/.backup -maxdepth 1 -mindepth 1 -not -type l)" = "" ]]; then
+    echo -e "Restored successfully!"
+  else
+    echo -e "Not symlink files exist in "${BACKUP_PATH}". Something went wrong!" >&2
   fi
+}
 
-  if [ ! -L "$HOME/${line}" ] && [ -e "$HOME/${line}" ] && [ ! -e "${BACKUP_PATH}/${line}" ]; then
-    ln -s "$HOME/${line}" "${BACKUP_PATH}/${line}"
-  fi
 
-  if [[ "$(readlink "${BACKUP_PATH}/${line}")" != "$HOME/${line}" ]] || [[ "$(diff "${BACKUP_PATH}/${line}" "$HOME/${line}")" != "" ]]; then
-    echo "WARNING: \""$HOME/${line}"\" and \""${BACKUP_PATH}/${line}"\" are different."
-  fi
-done < $BACKUP_LIST
-
-echo -e "Backed up successfully!"
-echo -e "The following files or directories are not backed up. Check if these are really unnecessary."
-echo
-# change delimiter to "@" in sed because env $HOME includes "/"
-ls --color=always -1ad $(echo -e "$(ls -1ad $(find $HOME -maxdepth 1 -mindepth 1 -not -type l) | sed -e "s@$HOME/@@g")\n$(ls -1A "${BACKUP_PATH}")\n$(cat "${BACKUP_IGNORE_LIST}")" | sort | uniq -u | sed "s@^@$HOME/@g") | sed -e "s@$HOME/@@g"
-
-exit 0
+if [[ "${argv[0]}" = "" ]]; then
+  echo -e "Please tell me what you want me to do." >&2
+  exit 1
+elif [[ "${argv[0]}" = "backup" ]]; then
+  backup
+elif [[ "${argv[0]}" = "restore" ]]; then
+  restore
+fi
