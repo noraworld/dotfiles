@@ -222,7 +222,7 @@ setopt inc_append_history
 setopt extended_history
 
 function fuzzy_history_search() {
-  BUFFER=`history -n 1 | tac | fzf`
+  BUFFER=`history -n 1 | tac | fzf --no-sort`
   CURSOR=$#BUFFER
   zle reset-prompt
 }
