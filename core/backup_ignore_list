@@ -1,0 +1,8 @@
+.anyenv
+.backup
+.cache
+.fzf
+.local
+.vim
+.vimshell
+.zcompdump

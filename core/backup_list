@@ -1,0 +1,11 @@
+.asoundrc
+.bash_history
+.directory_stack_store
+.dotpath
+.env.preferences
+.lesshst
+.marlin_aliases
+.ssh
+.sudo_as_admin_successful
+.viminfo
+.zsh_history
