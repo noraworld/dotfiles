@@ -14,3 +14,7 @@ shred,,This command is not a deprecation just a confirmation because it destroys
 docker-compose up,docker-server,This command ignores stdin such as binding.pry
 apt install,,
 apt -y install,,
+apt remove,,
+apt -y remove,,
+apt purge,,
+apt -y purge,,
