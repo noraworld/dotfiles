@@ -20,6 +20,9 @@ set ignorecase
 set hlsearch
 set virtualedit=onemore
 set cursorline
+"" https://github.com/vim/vim/issues/2506
+"" https://vim-jp.org/vimdoc-ja/options.html
+set backupcopy=yes
 
 " Syntax highlight on
 if has("syntax")
