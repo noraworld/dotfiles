@@ -1,0 +1,81 @@
+#!/bin/bash
+
+PROGNAME=$(basename $0)
+
+function main() {
+  if [ -e /etc/lsb-release ]; then
+    if [[ "$(cat /etc/lsb-release | grep -c "Ubuntu")" -gt 0 ]]; then
+      if [[ "$(whoami)" != "root" ]]; then
+        echo -e "ERROR: Requires root privilege to install packages." >&2
+        exit 1
+      fi
+
+      if [[ "$HOME" = "/root" ]]; then
+        echo -e "EROOR: The environment variables are root's one. Specify option \"-E\" to \"sudo\" command." >&2
+        exit 1
+      fi
+
+      if [[ ! -e "$HOME/.Aptfile" ]]; then
+        echo -e "ERROR: Aptfile is missing." >&2
+        exit 1
+      fi
+
+      if [[ "${argv[@]:1}" = "" ]]; then
+        echo -e "ERROR: The packages name missing." >&2
+        exit 1
+      fi
+
+      if [[ "${argv[0]}" = "install" ]]; then
+        apt -y install "${argv[@]:1}"
+      elif [[ "${argv[0]}" = "uninstall" ]]; then
+        echo "TODO!"
+      elif [[ "${argv[0]}" = "list" ]]; then
+        cat $HOME/.Aptfile
+      else
+        echo -e "ERROR: Unknown command: "${argv[0]}"" >&2
+        exit 1
+      fi
+      #
+      # DO NOT EXECUTE ANY COMMAND HERE!!
+      # because it reads the exit status code of the apt command
+      #
+      if [[ "$(echo $?)" -ne 0 ]]; then
+        echo
+        echo "ERROR: Installing packages failed." >&2
+        exit 1
+      fi
+
+      echo "${argv[@]:1}" | sed -e "s/ /\n/g" >> $HOME/.Aptfile
+      # TODO: sort and uniq .Aptfile
+      echo
+      echo -e "Add packages "${argv[@]:1}" to $HOME/.Aptfile successfully."
+    fi
+  fi
+}
+
+for opt in "$@"
+do
+  case "$opt" in
+    '-h' | '--help' )
+      usage
+      exit 0
+    ;;
+    '--' | '-' )
+      shift 1
+      argv+=( "$@" )
+      break
+    ;;
+    -* )
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+    ;;
+    * )
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        argv+=( "$1" )
+        shift 1
+      fi
+    ;;
+  esac
+done
+
+main
