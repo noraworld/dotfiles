@@ -1,2 +1,9 @@
 zsh
 fzf
+pulseaudio
+pulseaudio-utils
+alsa-base
+alsa-utils
+bluetooth
+bluez
+pulseaudio-module-bluetooth
