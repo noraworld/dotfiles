@@ -5,53 +5,110 @@ PROGNAME=$(basename $0)
 function main() {
   if [ -e /etc/lsb-release ]; then
     if [[ "$(cat /etc/lsb-release | grep -c "Ubuntu")" -gt 0 ]]; then
-      if [[ "$(whoami)" != "root" ]]; then
-        echo -e "ERROR: Requires root privilege to install packages." >&2
-        exit 1
-      fi
+      case "${argv[0]}" in
+        install)
+          require_root
+          require_general_env
+          require_aptfile
+          require_packages
 
-      if [[ "$HOME" = "/root" ]]; then
-        echo -e "EROOR: The environment variables are root's one. Specify option \"-E\" to \"sudo\" command." >&2
-        exit 1
-      fi
+          apt -y install "${argv[@]:1}"
 
-      if [[ ! -e "$HOME/.Aptfile" ]]; then
-        echo -e "ERROR: Aptfile is missing." >&2
-        exit 1
-      fi
+          check_command_success
+          update_packages $HOME/.Aptfile
+          ;;
+        uninstall)
+          require_root
+          require_general_env
+          require_aptfile
+          require_packages
 
-      if [[ "${argv[@]:1}" = "" ]]; then
-        echo -e "ERROR: The packages name missing." >&2
-        exit 1
-      fi
+          echo "TODO!"
 
-      if [[ "${argv[0]}" = "install" ]]; then
-        apt -y install "${argv[@]:1}"
-      elif [[ "${argv[0]}" = "uninstall" ]]; then
-        echo "TODO!"
-      elif [[ "${argv[0]}" = "list" ]]; then
-        cat $HOME/.Aptfile
-      else
-        echo -e "ERROR: Unknown command: "${argv[0]}"" >&2
-        exit 1
-      fi
-      #
-      # DO NOT EXECUTE ANY COMMAND HERE!!
-      # because it reads the exit status code of the apt command
-      #
-      if [[ "$(echo $?)" -ne 0 ]]; then
-        echo
-        echo "ERROR: Installing packages failed." >&2
-        exit 1
-      fi
+          check_command_success
+          update_packages $HOME/.Aptfile
+          ;;
+        list)
+          list_packages $HOME/.Aptfile
+          exit 0
+          ;;
+        edit)
+          $EDITOR $HOME/.Aptfile
+          exit 0
+          ;;
+        restore)
+          require_root
+          require_general_env
+          require_aptfile
 
-      echo "${argv[@]:1}" | sed -e "s/ /\n/g" >> $HOME/.Aptfile
-      # TODO: sort and uniq .Aptfile
-      echo
-      echo -e "Add packages "${argv[@]:1}" to $HOME/.Aptfile successfully."
+          packages=( $(list_packages $HOME/.Aptfile) )
+          apt -y install "${packages[@]}"
+
+          check_command_success
+          ;;
+        *)
+          echo -e "ERROR: Unknown command: "${argv[0]}"" >&2
+          exit 1
+          ;;
+      esac
     fi
   fi
 }
+
+
+function require_root() {
+  if [[ "$(whoami)" != "root" ]]; then
+    echo -e "ERROR: Requires root privilege to install packages." >&2
+    exit 1
+  fi
+}
+
+
+function require_general_env() {
+  if [[ "$HOME" = "/root" ]]; then
+    echo -e "EROOR: The environment variables are root's one. Specify option \"-E\" to \"sudo\" command." >&2
+    exit 1
+  fi
+}
+
+
+function require_aptfile() {
+  if [[ ! -e "$HOME/.Aptfile" ]]; then
+    echo -e "ERROR: Aptfile is missing." >&2
+    exit 1
+  fi
+}
+
+
+function require_packages() {
+  if [[ "${argv[@]:1}" = "" ]]; then
+    echo -e "ERROR: The packages name missing." >&2
+    exit 1
+  fi
+}
+
+
+function check_command_success() {
+  if [[ "$(echo $?)" -ne 0 ]]; then
+    echo
+    echo "ERROR: "${argv[0]}" failed." >&2
+    exit 1
+  fi
+}
+
+
+function list_packages {
+  # trim comment, delete empty line, and sort packages
+  cat "${1}" | awk '{ sub("#.*$", ""); print $0; }' | sed -e 's/[ \t]*$//' | sed -e '/^$/d' | sort
+}
+
+
+function update_packages {
+  echo "${argv[@]:1}" | sed -e "s/ /\n/g" >> ${1}
+  echo
+  echo -e "Update ${1} successfully."
+}
+
 
 for opt in "$@"
 do
