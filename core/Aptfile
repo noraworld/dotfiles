@@ -1,6 +1,7 @@
 # Utils
 zsh
 fzf
+ripgrep
 
 # PulseAudio & Bluetooth
 pulseaudio
