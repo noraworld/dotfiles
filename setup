@@ -162,6 +162,12 @@ function install_node() {
   npm install
 }
 
+function change_default_shell() {
+  if [[ "$(basename $(echo $SHELL))" != "zsh" ]]; then
+    chsh -s $(which zsh)
+  fi
+}
+
 # copy gitconfig.local.sample to gitconfig.local
 copy_gitconfig_local
 
@@ -231,6 +237,8 @@ install_anyenv
 install_ruby
 install_python
 install_node
+
+change_default_shell
 
 echo -e "Done! Check warnings if they exist."
 exit 0

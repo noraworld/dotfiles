@@ -34,7 +34,6 @@ Run the setup script. You need to change directories so you can run it in dotfil
 ```bash
 cd dotfiles
 ./setup
-chsh -s $(which zsh)
 ```
 
 That’s all!
