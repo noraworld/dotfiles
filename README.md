@@ -32,38 +32,14 @@ It is recommended to install Git `2.8` or higher.
 Run the setup script. You need to change directories so you can run it in dotfiles directory.
 
 ```bash
-$ cd path/to/dotfiles
-$ ./setup
-$ source ~/.bash_profile
-$ git refresh
-$ brew bundle install --global --no-lock
-$ source ~/.bash_profile
-$ vi # install neobundle plugin and exit
-
-# Install **env
-$ anyenv install rbenv
-$ anyenv install pyenv
-$ anyenv install nodenv
-
-# Install Ruby
-$ rbenv install $(cat .ruby-version)
-$ rbenv global $(cat .ruby-version)
-$ gem install bundler -v '1.16.5'
-$ bundle install
-
-# Install Python
-$ brew discard binutils && pyenv install $(cat .python-version) && brew get binutils
-$ pyenv global $(cat .python-version)
-$ pip install pipenv
-$ pipenv install --system
-
-# Install Node
-$ nodenv install $(cat .node-version)
-$ nodenv global $(cat .node-version)
-$ npm install
+cd dotfiles
+./setup
+chsh -s $(which zsh)
 ```
 
 That’s all!
+
+**NOTE**: You should install Vim plugins and quit it when it’s started up while executing a setup script.
 
 **NOTE**: If you face a problem that most commands show `Killed: 9` and do not work after running `brew bundle install --global`, just type `exit` to exit a shell and reopen it again. The terminal process probably [terminates with exit code 137](https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch), but it can be ignored. This causes when bash is updated.
 

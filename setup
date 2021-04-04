@@ -71,6 +71,97 @@ function make_dotfiles_path() {
   echo -e "DOTPATH=$PWD" > $HOME/.dotpath
 }
 
+function reload_profile() {
+  case "$(basename $(echo $SHELL))" in
+    bash)
+      source ~/.bash_profile
+      ;;
+    zsh)
+      source ~/.zprofile
+      ;;
+  esac
+}
+
+function install_packages() {
+  case "${OSTYPE}" in
+    darwin*)
+      brew bundle install --global --no-lock
+      ;;
+    linux*)
+      # package install --all
+      :
+      ;;
+  esac
+}
+
+function install_anyenv() {
+  if ! type anyenv 1>/dev/null 2>/dev/null; then
+    # assumes anyenv has already been installed via Homebrew on macOS
+    if [[ "${OSTYPE}" =~ "^linux" ]]; then
+      git clone https://github.com/anyenv/anyenv ~/.anyenv
+    fi
+
+    #exec $SHELL
+
+    anyenv init
+    anyenv install --init
+  fi
+
+  if ! type rbenv 1>/dev/null 2>/dev/null; then
+    anyenv install rbenv
+    #exec $SHELL
+  fi
+
+  if ! type pyenv 1>/dev/null 2>/dev/null; then
+    anyenv install pyenv
+    #exec $SHELL
+  fi
+
+  if ! type nodenv 1>/dev/null 2>/dev/null; then
+    anyenv install nodenv
+    #exec $SHELL
+  fi
+}
+
+function install_ruby() {
+  if [[ "$(ruby -v)" =~ "$(cat .ruby-version)" ]]; then
+    return
+  fi
+
+  rbenv install $(cat .ruby-version)
+  rbenv global $(cat .ruby-version)
+  gem install bundler -v '1.16.5'
+  bundle install
+}
+
+function install_python() {
+  if [[ "$(python -V)" =~ "$(cat .python-version)" ]]; then
+    return
+  fi
+
+  if [[ "${OSTYPE}" =~ "^darwin" ]]; then
+    brew discard binutils
+    pyenv install $(cat .python-version)
+    brew get binutils
+  else
+    pyenv install $(cat .python-version)
+  fi
+
+  pyenv global $(cat .python-version)
+  pip install pipenv
+  pipenv install --system
+}
+
+function install_node() {
+  if [[ "$(node -v)" =~ "$(cat .node-version)" ]]; then
+    return
+  fi
+
+  nodenv install $(cat .node-version)
+  nodenv global $(cat .node-version)
+  npm install
+}
+
 # copy gitconfig.local.sample to gitconfig.local
 copy_gitconfig_local
 
@@ -129,6 +220,17 @@ install_vim_bundle
 
 # check Git version
 check_git_version
+
+reload_profile
+
+git refresh
+vi
+
+install_packages
+install_anyenv
+install_ruby
+install_python
+install_node
 
 echo -e "Done! Check warnings if they exist."
 exit 0
