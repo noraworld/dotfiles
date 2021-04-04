@@ -88,8 +88,7 @@ function install_packages() {
       brew bundle install --global --no-lock
       ;;
     linux*)
-      # package install --all
-      :
+      package restore
       ;;
   esac
 }
