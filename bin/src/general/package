@@ -3,6 +3,11 @@
 PROGNAME=$(basename $0)
 
 
+function operate_brew() {
+  echo "WIP!"
+}
+
+
 function operate_apt() {
   case "${argv[0]}" in
     install)
@@ -54,10 +59,13 @@ function operate_apt() {
 
 
 function main() {
-  if [ -e /etc/lsb-release ]; then
-    if [[ "$(cat /etc/lsb-release | grep -c "Ubuntu")" -gt 0 ]]; then
-      operate_apt
-    fi
+  if type brew 1>/dev/null 2>/dev/null; then
+    operate_brew
+  elif type apt 1>/dev/null 2>/dev/null; then
+    operate_apt
+  else
+    echo "Your operating system is not be supported." >&2
+    exit 2
   fi
 }
 
