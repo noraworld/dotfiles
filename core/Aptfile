@@ -1,5 +1,8 @@
+# Utils
 zsh
 fzf
+
+# PulseAudio & Bluetooth
 pulseaudio
 pulseaudio-utils
 alsa-base
@@ -7,6 +10,8 @@ alsa-utils
 bluetooth
 bluez
 pulseaudio-module-bluetooth
+
+# Python
 libsqlite3-dev
 libreadline6-dev
 libbz2-dev
@@ -20,4 +25,6 @@ zlib1g-dev
 liblzma-dev
 libgdbm-dev
 libmpdec-dev
+
+# General
 build-essential
