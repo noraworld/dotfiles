@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PROGNAME=$(basename $0)
+APTFILE=$(readlink $HOME/.Aptfile)
 
 
 function operate_brew() {
@@ -11,42 +12,36 @@ function operate_brew() {
 function operate_apt() {
   case "${argv[0]}" in
     install)
-      require_root
-      require_general_env
-      require_aptfile
+      require_package_file $APTFILE
       require_packages
 
-      apt -y install "${argv[@]:1}"
+      sudo apt -y install "${argv[@]:1}"
 
       check_command_success
-      update_packages $HOME/.Aptfile
+      add_packages_to_file $APTFILE
       ;;
     uninstall)
-      require_root
-      require_general_env
-      require_aptfile
+      require_package_file $APTFILE
       require_packages
 
-      echo "TODO!"
+      sudo apt -y purge "${argv[@]:1}"
 
       check_command_success
-      update_packages $HOME/.Aptfile
+      delete_packages_from_file $APTFILE
       ;;
     list)
-      list_packages $HOME/.Aptfile
+      list_packages $APTFILE
       exit 0
       ;;
     edit)
-      $EDITOR $HOME/.Aptfile
+      $EDITOR $APTFILE
       exit 0
       ;;
     restore)
-      require_root
-      require_general_env
-      require_aptfile
+      require_package_file $APTFILE
 
-      packages=( $(list_packages $HOME/.Aptfile) )
-      apt -y install "${packages[@]}"
+      packages=( $(list_packages $APTFILE) )
+      sudo apt -y install "${packages[@]}"
 
       check_command_success
       ;;
@@ -70,25 +65,9 @@ function main() {
 }
 
 
-function require_root() {
-  if [[ "$(whoami)" != "root" ]]; then
-    echo -e "ERROR: Requires root privilege to install packages." >&2
-    exit 1
-  fi
-}
-
-
-function require_general_env() {
-  if [[ "$HOME" = "/root" ]]; then
-    echo -e "EROOR: The environment variables are root's one. Specify option \"-E\" to \"sudo\" command." >&2
-    exit 1
-  fi
-}
-
-
-function require_aptfile() {
-  if [[ ! -e "$HOME/.Aptfile" ]]; then
-    echo -e "ERROR: Aptfile is missing." >&2
+function require_package_file() {
+  if [[ ! -e "${1}" ]]; then
+    echo -e "ERROR: "${1}" is missing." >&2
     exit 1
   fi
 }
@@ -111,16 +90,26 @@ function check_command_success() {
 }
 
 
-function list_packages {
+function list_packages() {
   # trim comment, delete empty line, and sort packages
   cat "${1}" | awk '{ sub("#.*$", ""); print $0; }' | sed -e 's/[ \t]*$//' | sed -e '/^$/d' | sort
 }
 
 
-function update_packages {
+function add_packages_to_file() {
   echo "${argv[@]:1}" | sed -e "s/ /\n/g" >> ${1}
   echo
-  echo -e "Update ${1} successfully."
+  echo -e "Add packages to ${1} successfully."
+}
+
+
+function delete_packages_from_file() {
+  for package in "${argv[@]:1}"; do
+    sed -i "/^${package}$/d" "${1}"
+  done
+
+  echo
+  echo -e "Delete packages from ${1} successfully."
 }
 
 
