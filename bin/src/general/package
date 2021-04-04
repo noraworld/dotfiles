@@ -2,55 +2,61 @@
 
 PROGNAME=$(basename $0)
 
+
+function operate_apt() {
+  case "${argv[0]}" in
+    install)
+      require_root
+      require_general_env
+      require_aptfile
+      require_packages
+
+      apt -y install "${argv[@]:1}"
+
+      check_command_success
+      update_packages $HOME/.Aptfile
+      ;;
+    uninstall)
+      require_root
+      require_general_env
+      require_aptfile
+      require_packages
+
+      echo "TODO!"
+
+      check_command_success
+      update_packages $HOME/.Aptfile
+      ;;
+    list)
+      list_packages $HOME/.Aptfile
+      exit 0
+      ;;
+    edit)
+      $EDITOR $HOME/.Aptfile
+      exit 0
+      ;;
+    restore)
+      require_root
+      require_general_env
+      require_aptfile
+
+      packages=( $(list_packages $HOME/.Aptfile) )
+      apt -y install "${packages[@]}"
+
+      check_command_success
+      ;;
+    *)
+      echo -e "ERROR: Unknown command: "${argv[0]}"" >&2
+      exit 1
+      ;;
+  esac
+}
+
+
 function main() {
   if [ -e /etc/lsb-release ]; then
     if [[ "$(cat /etc/lsb-release | grep -c "Ubuntu")" -gt 0 ]]; then
-      case "${argv[0]}" in
-        install)
-          require_root
-          require_general_env
-          require_aptfile
-          require_packages
-
-          apt -y install "${argv[@]:1}"
-
-          check_command_success
-          update_packages $HOME/.Aptfile
-          ;;
-        uninstall)
-          require_root
-          require_general_env
-          require_aptfile
-          require_packages
-
-          echo "TODO!"
-
-          check_command_success
-          update_packages $HOME/.Aptfile
-          ;;
-        list)
-          list_packages $HOME/.Aptfile
-          exit 0
-          ;;
-        edit)
-          $EDITOR $HOME/.Aptfile
-          exit 0
-          ;;
-        restore)
-          require_root
-          require_general_env
-          require_aptfile
-
-          packages=( $(list_packages $HOME/.Aptfile) )
-          apt -y install "${packages[@]}"
-
-          check_command_success
-          ;;
-        *)
-          echo -e "ERROR: Unknown command: "${argv[0]}"" >&2
-          exit 1
-          ;;
-      esac
+      operate_apt
     fi
   fi
 }
@@ -116,22 +122,22 @@ do
     '-h' | '--help' )
       usage
       exit 0
-    ;;
+      ;;
     '--' | '-' )
       shift 1
       argv+=( "$@" )
       break
-    ;;
+      ;;
     -* )
       echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
       exit 1
-    ;;
+      ;;
     * )
       if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
         argv+=( "$1" )
         shift 1
       fi
-    ;;
+      ;;
   esac
 done
 
