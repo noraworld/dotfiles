@@ -1,0 +1,27 @@
+#compdef package
+
+_package() {
+  local -a operations
+  operations=( install uninstall list edit restore )
+
+  local -a installed_packages
+  installed_packages=( ${(uf)"$(cat "$HOME/.Aptfile" | awk '{ sub("#.*$", ""); print $0; }' | sed -e 's/[ \t]*$//' | sed -e '/^$/d')"} )
+
+  _arguments '1: :->operation' '*: :->packages'
+
+  case "$state" in
+    operation)
+      _values $state $operations
+      ;;
+    packages)
+      case "${line[1]}" in
+        uninstall)
+          _values $state $installed_packages
+          ;;
+      esac
+
+      ;;
+  esac
+}
+
+compdef _package package
