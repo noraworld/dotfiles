@@ -1,7 +1,7 @@
 current_directory=$(pwd)
 
 if [[ $# = 0 ]] && type fzf 1>/dev/null 2>/dev/null; then
-  selected_dir=$(dirs -v -l | fzf --tac --exact --no-sort)
+  selected_dir=$(dirs -v -l | fzf --tac --no-sort)
   selected_num=$(echo $selected_dir | awk '{print $1}')
 
   if [[ $selected_num = "" ]]; then
