@@ -7,3 +7,17 @@ alsa-utils
 bluetooth
 bluez
 pulseaudio-module-bluetooth
+libsqlite3-dev
+libreadline6-dev
+libbz2-dev
+libssl-dev
+libsqlite3-dev
+libncursesw5-dev
+libffi-dev
+libdb-dev
+libexpat1-dev
+zlib1g-dev
+liblzma-dev
+libgdbm-dev
+libmpdec-dev
+build-essential
