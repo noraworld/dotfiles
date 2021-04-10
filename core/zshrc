@@ -243,7 +243,7 @@ _tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
 _tn_caffeinate_pid=''
 need_caffeine=true
-bury_message=''
+_bury_message=''
 preexec() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
@@ -356,12 +356,12 @@ precmd() {
   _tn_caffeinate_pid=''
 
   # stop sleep (for deprecated command stopper)
-  bury_message=`bury -y sleep`
-  if [[ $bury_message != "No processes exist." ]]; then
+  _bury_message=`bury -y sleep`
+  if [[ $_bury_message != "No processes exist." ]]; then
     echo
-    echo $bury_message
+    echo $_bury_message
   fi
-  bury_message=''
+  _bury_message=''
 
   # reload prompt state
   get_prompt_state
