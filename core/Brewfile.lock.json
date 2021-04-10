@@ -1412,7 +1412,7 @@
     "mas": {
       "Amphetamine": {
         "id": "937984704",
-        "version": "5.1.1"
+        "version": "5.2"
       },
       "BetterSnapTool": {
         "id": "417375580",
@@ -1424,11 +1424,11 @@
       },
       "Cyph": {
         "id": "1480070821",
-        "version": "1.0.80"
+        "version": "1.0.86"
       },
       "GarageBand": {
         "id": "682658836",
-        "version": "10.4.2"
+        "version": "10.4.3"
       },
       "Gifted": {
         "id": "771955779",
@@ -1440,7 +1440,7 @@
       },
       "Keynote": {
         "id": "409183694",
-        "version": "10.3.9"
+        "version": "11.0.1"
       },
       "LadioCast": {
         "id": "411213048",
@@ -1448,15 +1448,15 @@
       },
       "LINE": {
         "id": "539883307",
-        "version": "6.7.0"
+        "version": "6.7.2"
       },
       "Numbers": {
         "id": "409203825",
-        "version": "10.3.9"
+        "version": "11.0"
       },
       "Pages": {
         "id": "409201541",
-        "version": "10.3.9"
+        "version": "11.0"
       },
       "PicGIF": {
         "id": "784260229",
