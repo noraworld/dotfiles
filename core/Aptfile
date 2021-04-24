@@ -30,3 +30,4 @@ libmpdec-dev
 # General
 build-essential
 colordiff
+ofono
