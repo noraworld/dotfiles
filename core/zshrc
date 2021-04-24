@@ -211,6 +211,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:sudo:*' command-path $path
+zstyle ':completion:*' format '%B%d%b'
 
 export HISTSIZE=10000
 export HISTFILE=~/.zsh_history
