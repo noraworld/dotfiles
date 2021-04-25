@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/noraworld/dotfiles#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.77"
+    "zenn-cli": "^0.1.79"
   }
 }
