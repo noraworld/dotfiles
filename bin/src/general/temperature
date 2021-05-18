@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# TODO: No colors option
 # TODO: Changing colors, temperature threshold for colors option
-# TODO: Support watch mode
 
 # The default temperature threshold for colors
 #
@@ -14,22 +12,81 @@
 # | 38;05;1   |   75 - 100 °C | Very hot     |
 # | 48;05;196 | >      100 °C | Dangerous!   |
 
-temperature_with_unit=$((istats cpu temp --no-graphs --no-labels 2>/dev/null || sensors 2>/dev/null) | grep --color=none -oE "[0-9]+\.[0-9]+°C") # like "62.8°C"
-temperature_int=$(echo $temperature_with_unit | sed -r "s/\.[0-9]+°C$//g")                                                                       # like "62"
+PROGNAME=$(basename $0)
 
-if [ $temperature_int -lt 30 ]; then
-  color="38;05;33"
-elif [ $temperature_int -ge 30 ] && [ $temperature_int -lt 50 ]; then
-  color="38;05;3"
-elif [ $temperature_int -ge 50 ] && [ $temperature_int -lt 75 ]; then
-  color="38;05;5"
-elif [ $temperature_int -ge 75 ] && [ $temperature_int -lt 100 ]; then
-  color="38;05;1"
-elif [ $temperature_int -ge 100 ]; then
-  color="48;05;196"
-else
-  echo "Fatal: temperature threshold does not match!" >&2
-  exit 2
-fi
+function main() {
+  temperature_float=$((istats cpu temp --value-only 2>/dev/null || sensors 2>/dev/null) | grep --color=none -oE "[0-9]+\.[0-9]+" | xargs printf "%.2f\n") # like "62.80"
+  temperature_int=$(echo $temperature_float | sed -r "s/\.[0-9]+$//g")                                                                                    # like "62"
 
-echo -e "\033[${color}m${temperature_with_unit}\033[00m"
+  if $watch_flag; then
+    watch -d -n 1 "eval $PROGNAME --color none"
+    exit 0
+  fi
+
+  if [[ "$color_flag" = "auto" ]] || [[ "$color_flag" = "always" ]]; then
+    set_color
+    echo -e "\033[${color}m${temperature_float}°C\033[00m"
+  elif [[ "$color_flag" = "none" ]]; then
+    echo -e "${temperature_float}°C"
+  fi
+}
+
+function set_color() {
+  if [ $temperature_int -lt 30 ]; then
+    color="38;05;33"
+  elif [ $temperature_int -ge 30 ] && [ $temperature_int -lt 50 ]; then
+    color="38;05;3"
+  elif [ $temperature_int -ge 50 ] && [ $temperature_int -lt 75 ]; then
+    color="38;05;5"
+  elif [ $temperature_int -ge 75 ] && [ $temperature_int -lt 100 ]; then
+    color="38;05;1"
+  elif [ $temperature_int -ge 100 ]; then
+    color="48;05;196"
+  else
+    echo "Fatal: temperature threshold does not match!" >&2
+    exit 2
+  fi
+}
+
+watch_flag=false
+color_flag=auto
+
+for opt in "$@"
+do
+  case "$opt" in
+    '-h' | '--help' )
+      usage
+      exit 0
+      ;;
+    '-c' | '--color' )
+      if [[ "$2" != "auto" ]] && [[ "$2" != "always" ]] && [[ "$2" != "none" ]]; then
+        echo "$PROGNAME: option requires an argument -- $1" 1>&2
+        exit 1
+      fi
+
+      color_flag=$2
+      shift 2
+      ;;
+    '-w' | '--watch' )
+      watch_flag=true
+      shift
+      ;;
+    '--' | '-' )
+      shift 1
+      argv+=( "$@" )
+      break
+      ;;
+    -* )
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+      ;;
+    * )
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        argv+=( "$1" )
+        shift 1
+      fi
+      ;;
+  esac
+done
+
+main
