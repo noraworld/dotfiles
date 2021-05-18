@@ -121,6 +121,7 @@ recording_prompt() {
     ;;
     linux*)
       : # TODO (perhaps same as macOS, but not confirmed yet)
+      echo "\033[1;91m❌ NOT SUPPORTED\033[00m"
     ;;
   esac
 }
@@ -130,7 +131,7 @@ caffeine_count() {
 }
 
 get_prompt_state() {
-  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count)"
+  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count) with 🌡  $(temperature)"
 }
 get_prompt_state
 
