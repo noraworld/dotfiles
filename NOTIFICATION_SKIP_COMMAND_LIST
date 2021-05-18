@@ -21,3 +21,4 @@ docker-compose up
 docker attach
 docker-server
 jekyll s
+r vi
