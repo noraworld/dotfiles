@@ -23,6 +23,10 @@
     },
     "editor.tabSize": 2,
     "files.trimTrailingWhitespace": true,
+    // Ignores trimming trailing space on Markdown for newline, but it is not recommended
+    // "[markdown]": {
+    //     "files.trimTrailingWhitespace": false
+    // },
     "files.associations": {
         "bashrc": "shellscript",
         "bash_profile": "shellscript",
