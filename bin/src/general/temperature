@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# TODO: No colors option
+# TODO: Changing colors, temperature threshold for colors option
+# TODO: Support macOS
+# TODO: Support watch mode
+
+# The default temperature threshold for colors
+#
+# | Color     | Temperature   | Description  |
+# | --------- | ------------- | ------------ |
+# | 38;05;33  | < 30       °C | Very cool    |
+# | 38;05;3   |   30 -  50 °C | Normally     |
+# | 38;05;5   |   50 -  75 °C | A little hot |
+# | 38;05;1   |   75 - 100 °C | Very hot     |
+# | 48;05;196 | >      100 °C | Dangerous!   |
+
+temperature_with_unit=$(sensors | grep --color=none "temp" | sed -r "s/temp[0-9]?: *\+?//g" | sed -r "s/ *$//g") # like "62.8°C"
+temperature_int=$(echo $temperature_with_unit | sed -r "s/\.[0-9]+°C$//g")                                       # like "62"
+
+if [ $temperature_int -lt 30 ]; then
+  color="38;05;33"
+elif [ $temperature_int -ge 30 ] && [ $temperature_int -lt 50 ]; then
+  color="38;05;3"
+elif [ $temperature_int -ge 50 ] && [ $temperature_int -lt 75 ]; then
+  color="38;05;5"
+elif [ $temperature_int -ge 75 ] && [ $temperature_int -lt 100 ]; then
+  color="38;05;1"
+elif [ $temperature_int -ge 100 ]; then
+  color="48;05;196"
+else
+  echo "Fatal: temperature threshold does not match!" >&2
+  exit 2
+fi
+
+echo -e "\033[${color}m${temperature_with_unit}\033[00m"
