@@ -3,6 +3,7 @@ zsh
 fzf
 ripgrep
 colordiff
+bat
 
 # PulseAudio & Bluetooth
 pulseaudio

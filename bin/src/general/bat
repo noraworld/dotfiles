@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if type batcat 1>/dev/null 2>/dev/null; then
+  batcat $@
+else
+  bat $@
+fi
