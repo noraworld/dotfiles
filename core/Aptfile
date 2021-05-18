@@ -2,6 +2,7 @@
 zsh
 fzf
 ripgrep
+colordiff
 
 # PulseAudio & Bluetooth
 pulseaudio
@@ -11,6 +12,7 @@ alsa-utils
 bluetooth
 bluez
 pulseaudio-module-bluetooth
+ofono
 
 # Python
 libsqlite3-dev
@@ -29,5 +31,6 @@ libmpdec-dev
 
 # General
 build-essential
-colordiff
-ofono
+lm-sensors
+
+# Unclassified yet
