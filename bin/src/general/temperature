@@ -2,7 +2,6 @@
 
 # TODO: No colors option
 # TODO: Changing colors, temperature threshold for colors option
-# TODO: Support macOS
 # TODO: Support watch mode
 
 # The default temperature threshold for colors
@@ -15,8 +14,8 @@
 # | 38;05;1   |   75 - 100 °C | Very hot     |
 # | 48;05;196 | >      100 °C | Dangerous!   |
 
-temperature_with_unit=$(sensors | grep --color=none "temp" | sed -r "s/temp[0-9]?: *\+?//g" | sed -r "s/ *$//g") # like "62.8°C"
-temperature_int=$(echo $temperature_with_unit | sed -r "s/\.[0-9]+°C$//g")                                       # like "62"
+temperature_with_unit=$((istats cpu temp 2>/dev/null | sensors 2>/dev/null) | grep --color=none -oE "[0-9]+\.[0-9]+°C") # like "62.8°C"
+temperature_int=$(echo $temperature_with_unit | sed -r "s/\.[0-9]+°C$//g")                                              # like "62"
 
 if [ $temperature_int -lt 30 ]; then
   color="38;05;33"
