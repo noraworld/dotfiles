@@ -36,13 +36,11 @@ cd dotfiles
 ./setup
 ```
 
-That’s all!
+**IMPORTANT NOTE 1**: You should install Vim plugins and quit it when it’s started up while executing a setup script.
 
-**NOTE**: You should install Vim plugins and quit it when it’s started up while executing a setup script.
+**IMPORTANT NOTE 2**: If you face a problem that most commands show `Killed: 9` and do not work after running `brew bundle install --global`, just type `exit` to exit a shell and reopen it again. The terminal process probably [terminates with exit code 137](https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch), but it can be ignored. This causes when bash is updated.
 
-**NOTE**: If you face a problem that most commands show `Killed: 9` and do not work after running `brew bundle install --global`, just type `exit` to exit a shell and reopen it again. The terminal process probably [terminates with exit code 137](https://code.visualstudio.com/docs/supporting/troubleshoot-terminal-launch), but it can be ignored. This causes when bash is updated.
-
-**NOTE**: Node packages to be used globally are installed locally in `dotfiles/node_modules` and called from `dotfiles/node_modules/.bin` globally because npm cannot install packages globally from `package.json` (`npm install -g` is invalid). The option `-g` should not be added when new package will be installed because the package will not be added to `package.json`.
+**IMPORTANT NOTE 3**: Node packages to be used globally are installed locally in `dotfiles/node_modules` and called from `dotfiles/node_modules/.bin` globally because npm cannot install packages globally from `package.json` (`npm install -g` is invalid). The option `-g` should not be added when new package will be installed because the package will not be added to `package.json`.
 
 ## Dependencies
 This dotfiles depends on the following.
