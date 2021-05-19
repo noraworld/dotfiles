@@ -1,13 +1,12 @@
 # dotfiles
 This repository supports the following configuration files.
 
-| Type             | Fully supported | Partially supported | No longer supported                                            |
-|------------------|:---------------:|:-------------------:|:--------------------------------------------------------------:|
-| Shells           | Zsh             |                     | Bash                                                           |
-| Editors          | Vim<br>VS Code  |                     | Emacs<br>[Sublime Text 3](https://github.com/noraworld/sublrc) |
-| SCM              | Git             |                     |                                                                |
-| OS               | macOS           | Windows<br>Linux    |                                                                |
-| Package managers | Homebrew        |                     |                                                                |
+| Type             | Fully supported | Partially supported      | No longer supported                                            |
+| ---------------- | :-------------: | :----------------------: | :------------------------------------------------------------: |
+| Shells           | Zsh             |                          | Bash                                                           |
+| Editors          | Vim<br>VS Code  |                          | Emacs<br>[Sublime Text 3](https://github.com/noraworld/sublrc) |
+| OS               | macOS           | Windows<br>Ubuntu Server |                                                                |
+| Package managers | Homebrew<br>APT |                          |                                                                |
 
 <dl>
   <dt>Fully supported</dt>
