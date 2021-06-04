@@ -1,4 +1,9 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
+#!/usr/bin/env bash
 
-puts ARGV.map(&:upcase)
+if type pbcopy 1>/dev/null 2>/dev/null; then
+  echo -n $@ | tr '[:lower:]' '[:upper:]' | pbcopy
+  echo -n $@ | tr '[:lower:]' '[:upper:]'
+  echo " (Copied to clipboard)"
+else
+  echo $@ | tr '[:lower:]' '[:upper:]'
+fi
