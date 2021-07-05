@@ -1,0 +1,44 @@
+tap "rcmdnk/rcmdnkpac"
+brew "bash"
+brew "bash-completion"
+brew "ext4fuse"
+brew "fd"
+brew "ffmpeg"
+brew "fish"
+brew "rmtrash"
+brew "youtube-dl"
+brew "zplug"
+brew "rcmdnk/rcmdnkpac/rcmdnk-trash"
+cask "4k-video-downloader"
+cask "atom"
+cask "balenaetcher"
+cask "blackhole"
+cask "evernote"
+cask "firefox"
+cask "keybase"
+cask "launchrocket"
+cask "lingon-x"
+cask "ngrok"
+cask "osxfuse"
+cask "postman"
+cask "scroll-reverser"
+cask "skitch"
+cask "soundflower"
+cask "steam"
+cask "streamlabs-obs"
+cask "zoomus"
+mas "Amphetamine", id: 937984704
+mas "BetterSnapTool", id: 417375580
+mas "Create File Menu", id: 1440519779
+mas "Cyph", id: 1480070821
+mas "GarageBand", id: 682658836
+mas "Gifted", id: 771955779
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LadioCast", id: 411213048
+mas "LINE", id: 539883307
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "PicGIF", id: 784260229
+mas "Todoist", id: 585829637
+mas "Xcode", id: 497799835
