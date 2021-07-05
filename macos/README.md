@@ -96,16 +96,16 @@ The list of applications whose license should be activate or deactivate before y
 ## Untracked applications
 The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
 
-- [ ] Google IME
-- [ ] 1Password 7
+- [x] Google IME
+- [x] 1Password 7
 - [x] Alfred
 - [x] Atom
 - [x] Firefox
 - [ ] Google Chrome
 - [ ] Google Drive File Stream
 - [ ] Google Photos Backup
-- [ ] Karabiner-Elements
-- [ ] Karabiner-EventViewer
+- [x] Karabiner-Elements
+- [x] Karabiner-EventViewer
 - [x] Keybase
 - [x] KeyboardCleanTool
 - [ ] Kindle
@@ -115,5 +115,5 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [x] Slack
 - [x] Steam
 - [ ] Tunnelblick
-- [ ] Visual Studio Code
+- [x] Visual Studio Code
 - [x] zoom.us
