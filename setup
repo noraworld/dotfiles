@@ -82,6 +82,14 @@ function reload_profile() {
   esac
 }
 
+function install_brew() {
+  if [[ "${OSTYPE}" =~ "^darwin" ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    sudo chown -R $(whoami) /usr/local/Cellar
+    sudo chown -R $(whoami) /usr/local/Caskroom
+  fi
+}
+
 function install_packages() {
   case "${OSTYPE}" in
     darwin*)
@@ -94,17 +102,15 @@ function install_packages() {
 }
 
 function install_anyenv() {
-  if ! type anyenv 1>/dev/null 2>/dev/null; then
-    # assumes anyenv has already been installed via Homebrew on macOS
-    if [[ "${OSTYPE}" =~ "^linux" ]]; then
-      git clone https://github.com/anyenv/anyenv ~/.anyenv
-    fi
-
-    #exec $SHELL
-
-    anyenv init
-    anyenv install --init
+  # assumes anyenv has already been installed via Homebrew on macOS
+  if [[ "${OSTYPE}" =~ "^linux" ]]; then
+    git clone https://github.com/anyenv/anyenv ~/.anyenv
   fi
+
+  #exec $SHELL
+
+  anyenv init
+  anyenv install --init
 
   if ! type rbenv 1>/dev/null 2>/dev/null; then
     anyenv install rbenv
@@ -231,6 +237,7 @@ reload_profile
 git refresh
 vi
 
+install_brew
 install_packages
 install_anyenv
 install_ruby
