@@ -101,7 +101,7 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [x] Alfred
 - [x] Atom
 - [x] Firefox
-- [ ] Google Chrome
+- [x] Google Chrome
 - [ ] Google Drive File Stream
 - [ ] Google Photos Backup
 - [x] Karabiner-Elements
