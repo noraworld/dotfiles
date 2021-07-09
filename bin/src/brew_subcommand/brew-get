@@ -1,9 +1,79 @@
 #!/bin/bash
 
-. $HOME/.dotpath &&
-# brew update &&
-brew install $1 &&
-brew bundle dump --force --global &&
-trash ${DOTPATH}/core/Brewfile.lock.json &&
-brew bundle install --no-upgrade --file=${DOTPATH}/core/Brewfile &&
-echo "Installed $1 successfully! Do not forget to add and commit changes."
+PROGNAME=$(basename $0)
+
+cask=false
+
+function main() {
+  # load env $DOTPATH
+  . $HOME/.dotpath
+  if [ ${DOTPATH} = "" ]; then
+    echo -e "The env DOTPATH is missing" >&2
+    exit 2
+  fi
+
+  # select target Brewfile directory
+  target_brewfile_directory=$(ls -1d ${DOTPATH}/brewfile/* | fzf)
+  if [[ ${target_brewfile_directory} = "" ]]; then
+    echo -e "The target brewfile directory is missing. You probably quit select mode without selecting it" >&2
+    exit 2
+  fi
+
+  # install formula
+  brewfile_output=""
+  if $cask; then
+    brewfile_output="cask \"$argv\""
+    brew install --cask $argv
+    # do not do anything here because the value of $? can be changed!
+  else
+    brewfile_output="brew \"$argv\""
+    brew install $argv
+    # do not do anything here because the value of $? can be changed!
+  fi
+  # do not do anything here because the value of $? can be changed!
+  if [ $? -ne 0 ]; then
+    echo -e "Installing $argv failed" >&2
+    exit 2
+  fi
+
+  echo -en "Would you like to add $argv to Brewfile as a shared formula? [y/n]: "
+  exec < /dev/tty
+  read confirm
+  if [ $confirm = "y" ] || [ $confirm = "Y" ] || [ $confirm = "yes" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+    echo "${brewfile_output}" >> ${DOTPATH}/brewfile/share/Brewfile_base
+  else
+    echo "${brewfile_output}" >> ${target_brewfile_directory}/Brewfile_base
+  fi
+
+  brew bundle dump --force --file=${target_brewfile_directory}/Brewfile &&
+  trash ${target_brewfile_directory}/Brewfile.lock.json &&
+  brew bundle install --no-upgrade --file=${target_brewfile_directory}/Brewfile &&
+  echo "Installed $argv successfully! Do not forget to add and commit changes."
+}
+
+for opt in "$@"
+do
+  case "$opt" in
+    '--cask' )
+      shift 1
+      cask=true
+    ;;
+    '--' | '-' )
+      shift 1
+      param+=( "$@" )
+      break
+    ;;
+    -* )
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+    ;;
+    * )
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        argv+=( "$1" )
+        shift 1
+      fi
+    ;;
+  esac
+done
+
+main
