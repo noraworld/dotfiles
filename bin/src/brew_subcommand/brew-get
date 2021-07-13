@@ -13,7 +13,7 @@ function main() {
   fi
 
   # select target Brewfile directory
-  target_brewfile_directory=$(ls -1d ${DOTPATH}/brewfile/* | fzf)
+  target_brewfile_directory=$(ls -1d ${DOTPATH}/brewfile/* | sed "/brewfile\/share$/d" | fzf)
   if [[ ${target_brewfile_directory} = "" ]]; then
     echo -e "The target brewfile directory is missing. You probably quit select mode without selecting it" >&2
     exit 2
