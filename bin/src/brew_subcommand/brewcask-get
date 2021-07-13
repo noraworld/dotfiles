@@ -1,9 +1,0 @@
-#!/bin/bash
-
-. $HOME/.dotpath &&
-# /usr/local/bin/brew update &&
-/usr/local/bin/brew install --cask $1 &&
-/usr/local/bin/brew bundle dump --force --global &&
-rm ${DOTPATH}/core/Brewfile.lock.json &&
-/usr/local/bin/brew bundle install --no-upgrade --file=${DOTPATH}/core/Brewfile &&
-echo "Installed $1 successfully! Do not forget to add and commit changes."
