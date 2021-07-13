@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo -e "WIP"
+exit 2
+
 . $HOME/.dotpath &&
 brew bundle dump --force --global &&
 trash ${DOTPATH}/core/Brewfile.lock.json &&
