@@ -50,9 +50,10 @@ let &t_te.="\e[0 q"
 :command Hard set noexpandtab
 
 " Config for each filetype
-autocmd BufNewFile,BufRead *.conf set tabstop=4 shiftwidth=4
-autocmd BufNewFile,BufRead bash_profile set filetype=sh
-autocmd BufNewFile,BufRead dir_colors set filetype=dircolors
+autocmd BufNewFile,BufRead *.conf               set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead bash_profile         set filetype=sh
+autocmd BufNewFile,BufRead dir_colors           set filetype=dircolors
+autocmd BufNewFile,BufRead ~/.ssh/conf.d/*.conf set filetype=sshconfig
 
 function! s:remove_dust()
   let cursor = getpos(".")
