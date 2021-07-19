@@ -1,11 +1,22 @@
 #!/bin/sh
 
 if [ -z "`git config --local user.name`" ]; then
-  echo "fatal: user.name is not set locally"
+  echo "fatal: user.name is not set locally" >&2
   exit 1
 fi
 
 if [ -z "`git config --local user.email`" ]; then
-  echo "fatal: user.email is not set locally"
+  echo "fatal: user.email is not set locally" >&2
+  exit 1
+fi
+
+# https://codehero.jp/git/3258243/check-if-pull-needed-in-git
+UPSTREAM=${1:-'@{u}'}
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse "$UPSTREAM")
+BASE=$(git merge-base @ "$UPSTREAM")
+
+if [ $LOCAL != $REMOTE ] && [ $LOCAL = $BASE ]; then
+  echo "fatal: you need to pull from upstream before you commit" >&2
   exit 1
 fi
