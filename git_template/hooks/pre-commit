@@ -12,9 +12,10 @@ fi
 
 # https://codehero.jp/git/3258243/check-if-pull-needed-in-git
 UPSTREAM=${1:-'@{u}'}
-LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse "$UPSTREAM")
-BASE=$(git merge-base @ "$UPSTREAM")
+## ignore an error that no upstream configured by discarding a standard error
+LOCAL=$(git rev-parse @ 2>/dev/null)
+REMOTE=$(git rev-parse "$UPSTREAM" 2>/dev/null)
+BASE=$(git merge-base @ "$UPSTREAM" 2>/dev/null)
 
 if [ $LOCAL != $REMOTE ] && [ $LOCAL = $BASE ]; then
   echo "fatal: you need to pull from upstream before you commit" >&2
