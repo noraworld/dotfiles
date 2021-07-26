@@ -42,5 +42,7 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "python.showStartPage": false,
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "ruby.rubocop.useBundler": true,
+    "ruby.rubocop.suppressRubocopWarnings": true
 }
