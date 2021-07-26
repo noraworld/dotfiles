@@ -1,1 +1,3 @@
 brew "fd"
+brew "xdotool"
+cask "xquartz"
