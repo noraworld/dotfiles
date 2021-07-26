@@ -10,6 +10,9 @@
       "homebrew/cask-fonts": {
         "revision": "886001a57001947543c5c2069e8f1f85d36f91a4"
       },
+      "homebrew/cask-versions": {
+        "revision": "8331afd268dc2b190d9697ff4f26fe833de10493"
+      },
       "homebrew/core": {
         "revision": "315cc355c095b13c473295da99acedff3f6b8a52"
       },
@@ -1584,6 +1587,12 @@
         "version": "91.0.4472.114",
         "options": {
           "full_name": "google-chrome"
+        }
+      },
+      "google-chrome-beta": {
+        "version": "92.0.4515.107",
+        "options": {
+          "full_name": "google-chrome-beta"
         }
       },
       "google-japanese-ime": {
