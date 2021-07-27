@@ -1,0 +1,17 @@
+#!/bin/zsh
+#compdef bury
+
+_bury() {
+  local -a operations
+  operations=( caffeinate )
+
+  _arguments '1: :->operation'
+
+  case "$state" in
+    operation)
+      _values $state $operations
+    ;;
+  esac
+}
+
+compdef _bury bury
