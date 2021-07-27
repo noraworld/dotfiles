@@ -25,7 +25,6 @@ cask "scroll-reverser"
 cask "skitch"
 cask "soundflower"
 cask "steam"
-cask "streamlabs-obs"
 cask "zoomus"
 mas "Amphetamine", id: 937984704
 mas "BetterSnapTool", id: 417375580

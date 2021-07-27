@@ -1,3 +1,4 @@
 brew "fd"
 brew "xdotool"
 cask "xquartz"
+cask "streamlabs-obs"

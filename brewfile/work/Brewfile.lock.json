@@ -1631,6 +1631,12 @@
           "full_name": "slack"
         }
       },
+      "streamlabs-obs": {
+        "version": "1.1.2",
+        "options": {
+          "full_name": "streamlabs-obs"
+        }
+      },
       "visual-studio-code": {
         "version": "1.58.0",
         "options": {
