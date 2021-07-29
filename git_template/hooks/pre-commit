@@ -17,7 +17,7 @@ LOCAL=$(git rev-parse @ 2>/dev/null)
 REMOTE=$(git rev-parse "$UPSTREAM" 2>/dev/null)
 BASE=$(git merge-base @ "$UPSTREAM" 2>/dev/null)
 
-if [ $LOCAL != $REMOTE ] && [ $LOCAL = $BASE ]; then
+if [ "$LOCAL" != "$REMOTE" ] && [ "$LOCAL" = "$BASE" ]; then
   echo "fatal: you need to pull from upstream before you commit" >&2
   exit 1
 fi
