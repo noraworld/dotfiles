@@ -5,15 +5,41 @@
     // - Change modifier key of the option that follows link
     //   - I want to use cmd+click, but multi-cursor overlaps
 
+    // security
+    "security.workspace.trust.untrustedFiles": "open",
+
+    // workbench
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+
+    // editor
     "editor.wordWrap": "on",
-    "terminal.integrated.scrollback": 100000,
-    "files.insertFinalNewline": true,
     "editor.renderWhitespace": "boundary",
     "editor.renderControlCharacters": true,
     "editor.fontSize": 13,
+    "editor.tabSize": 2,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.cursorBlinking": "solid",
+    "editor.minimap.enabled": false,
 
-    // Ruby extension preferences
+    // files
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.associations": {
+        "bashrc": "shellscript",
+        "bash_profile": "shellscript",
+        "**/bin/src/currentshell/**/*": "shellscript",
+        "*env*": "dotenv"
+    },
+
+    // terminal
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font",
+
+    // ruby
     "ruby.useBundler": true,
     "ruby.useLanguageServer": true,
     "ruby.lint": {
@@ -21,29 +47,15 @@
             "useBundler": true
         }
     },
-    "editor.tabSize": 2,
-    "files.trimTrailingWhitespace": true,
-    // Ignores trimming trailing space on Markdown for newline, but it is not recommended
+    "ruby.intellisense": "rubyLocate",
+    "ruby.rubocop.useBundler": true,
+    "ruby.rubocop.suppressRubocopWarnings": true,
+
+    // python
+    "python.showStartPage": false
+
+    // ignores trimming trailing space on Markdown for newline, but it is not recommended
     // "[markdown]": {
     //     "files.trimTrailingWhitespace": false
     // },
-    "files.associations": {
-        "bashrc": "shellscript",
-        "bash_profile": "shellscript",
-        "**/bin/src/currentshell/**/*": "shellscript",
-        "*env*": "dotenv"
-    },
-    "editor.multiCursorModifier": "ctrlCmd",
-    "files.trimFinalNewlines": true,
-    "ruby.intellisense": "rubyLocate",
-    "editor.cursorBlinking": "solid",
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font",
-    "editor.minimap.enabled": false,
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "python.showStartPage": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "ruby.rubocop.useBundler": true,
-    "ruby.rubocop.suppressRubocopWarnings": true
 }
