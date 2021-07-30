@@ -30,7 +30,8 @@
     "files.associations": {
         "bashrc": "shellscript",
         "bash_profile": "shellscript",
-        "**/bin/src/currentshell/**/*": "shellscript"
+        "**/bin/src/currentshell/**/*": "shellscript",
+        "*env*": "dotenv"
     },
     "editor.multiCursorModifier": "ctrlCmd",
     "files.trimFinalNewlines": true,
