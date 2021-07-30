@@ -32,7 +32,8 @@
         "bashrc": "shellscript",
         "bash_profile": "shellscript",
         "**/bin/src/currentshell/**/*": "shellscript",
-        "*env*": "dotenv"
+        "*env*": "dotenv",
+        "Schemafile": "ruby" // for Ridgepole
     },
 
     // terminal
