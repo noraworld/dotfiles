@@ -1582,6 +1582,12 @@
           "full_name": "appcleaner"
         }
       },
+      "balenaetcher": {
+        "version": "1.5.120",
+        "options": {
+          "full_name": "balenaetcher"
+        }
+      },
       "cyberduck": {
         "version": "7.10.0,35184",
         "options": {
