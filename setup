@@ -43,6 +43,13 @@ function install_vim_bundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 1>/dev/null 2>/dev/null
 }
 
+function install_vim_plugin() {
+  if [ ! -e ~/.is_installed_vim_plugin ]; then
+    vi
+    echo "true" > ~/.is_installed_vim_plugin
+  fi
+}
+
 function copy_gitconfig_local() {
   if [ ! -f $PWD/core/gitconfig.local ]; then
     cp $PWD/core/gitconfig.local.sample $PWD/core/gitconfig.local
@@ -230,16 +237,11 @@ fi
 # unlink unnecessary files
 unlink $HOME/.gitconfig.local.sample
 
-# install the Vim plugins
 install_vim_bundle
-
-# check Git version
 check_git_version
-
 reload_profile
-
 git refresh
-vi
+install_vim_plugin
 
 install_brew
 install_packages
