@@ -103,7 +103,7 @@ function install_packages() {
 
 function install_anyenv() {
   # assumes anyenv has already been installed via Homebrew on macOS
-  if [[ "${OSTYPE}" =~ "^linux" ]]; then
+  if [[ "${OSTYPE}" =~ "linux" ]]; then
     git clone https://github.com/anyenv/anyenv ~/.anyenv
   fi
 
@@ -169,6 +169,10 @@ function install_node() {
 
 function change_default_shell() {
   if [[ "$(basename $(echo $SHELL))" != "zsh" ]]; then
+    if [[ "$(cat /etc/shells | grep -c $(which zsh))" = 0 ]]; then
+      echo $(which zsh) | sudo tee -a /etc/shells
+    fi
+
     chsh -s $(which zsh)
   fi
 }
