@@ -34,4 +34,7 @@ libmpdec-dev
 build-essential
 lm-sensors
 
+# Network
+dnsmasq
+
 # The below is the unclassified packages yet
