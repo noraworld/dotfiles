@@ -32,6 +32,7 @@
         "bashrc": "shellscript",
         "bash_profile": "shellscript",
         "**/bin/src/currentshell/**/*": "shellscript",
+        "**/developers-blog-content-ja/articles/**/*": "markdown", // workaround
         "*env*": "dotenv",
         "Schemafile": "ruby" // for Ridgepole
     },
