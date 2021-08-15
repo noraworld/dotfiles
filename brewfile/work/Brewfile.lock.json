@@ -1588,6 +1588,18 @@
           "full_name": "balenaetcher"
         }
       },
+      "blackhole-16ch": {
+        "version": "0.2.9",
+        "options": {
+          "full_name": "blackhole-16ch"
+        }
+      },
+      "blackhole-2ch": {
+        "version": "0.2.9",
+        "options": {
+          "full_name": "blackhole-2ch"
+        }
+      },
       "cyberduck": {
         "version": "7.10.0,35184",
         "options": {
