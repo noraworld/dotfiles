@@ -66,9 +66,11 @@ cask "iterm2"
 cask "karabiner-elements"
 cask "keyboardcleantool"
 cask "launchcontrol"
+cask "lunar"
 cask "slack"
 cask "soundflower"
 cask "streamlabs-obs"
 cask "visual-studio-code"
 cask "xquartz"
+mas "Be Focused", id: 973134470
 mas "LadioCast", id: 411213048

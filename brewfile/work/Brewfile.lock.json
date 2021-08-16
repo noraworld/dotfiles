@@ -1672,6 +1672,12 @@
           "full_name": "launchcontrol"
         }
       },
+      "lunar": {
+        "version": "4.2.3",
+        "options": {
+          "full_name": "lunar"
+        }
+      },
       "slack": {
         "version": "4.17.0",
         "options": {
@@ -1704,6 +1710,10 @@
       }
     },
     "mas": {
+      "Be Focused": {
+        "id": "973134470",
+        "version": "2.1.1"
+      },
       "LadioCast": {
         "id": "411213048",
         "version": "000013000"
