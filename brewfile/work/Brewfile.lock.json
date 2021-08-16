@@ -1678,6 +1678,12 @@
           "full_name": "slack"
         }
       },
+      "soundflower": {
+        "version": "2.0b2",
+        "options": {
+          "full_name": "soundflower"
+        }
+      },
       "streamlabs-obs": {
         "version": "1.1.2",
         "options": {
@@ -1695,6 +1701,12 @@
         "options": {
           "full_name": "xquartz"
         }
+      }
+    },
+    "mas": {
+      "LadioCast": {
+        "id": "411213048",
+        "version": "000013000"
       }
     }
   },

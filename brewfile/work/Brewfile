@@ -67,6 +67,8 @@ cask "karabiner-elements"
 cask "keyboardcleantool"
 cask "launchcontrol"
 cask "slack"
+cask "soundflower"
 cask "streamlabs-obs"
 cask "visual-studio-code"
 cask "xquartz"
+mas "LadioCast", id: 411213048
