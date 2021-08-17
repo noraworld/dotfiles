@@ -29,6 +29,7 @@
 	root = ~/.ghq/src
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [pager]
 	log = less --no-init
 	stash = false
