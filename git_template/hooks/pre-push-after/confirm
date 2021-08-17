@@ -9,14 +9,20 @@ echo -e  "The remote URL is:\n"
 echo -e  "	\033[1;93m${remoteurl}\033[00m\n"
 echo -en "Are you sure? [Y/n]: "
 
-exec < /dev/tty  # it needs to read STDIN
-read confirm
+echo $(tty)
+if [ "$(tty)" =~ "/dev/tty" ]; then
+  exec < /dev/tty  # it needs to read STDIN
+  read confirm
 
-echo -e ""
-if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
-  echo -e "Pushing to \033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m"
-  exit 0  # it needs because of `exec < /dev/tty`
-else
-  echo -e "\033[1;91mCanceled\033[00m"
-  exit 1
+  echo -e ""
+  if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
+    echo -e "Pushing to \033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m"
+    exit 0  # it needs because of `exec < /dev/tty`
+  else
+    echo -e "\033[1;91mCanceled\033[00m"
+    exit 1
+  fi
 fi
+
+echo "debug end"
+exit 1
