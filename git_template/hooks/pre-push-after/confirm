@@ -9,8 +9,7 @@ echo -e  "The remote URL is:\n"
 echo -e  "	\033[1;93m${remoteurl}\033[00m\n"
 echo -en "Are you sure? [Y/n]: "
 
-echo $(tty)
-if [ "$(tty)" =~ "/dev/tty" ]; then
+if [ "$TERM_PROGRAM" != "" ]; then
   exec < /dev/tty  # it needs to read STDIN
   read confirm
 
@@ -23,6 +22,3 @@ if [ "$(tty)" =~ "/dev/tty" ]; then
     exit 1
   fi
 fi
-
-echo "debug end"
-exit 1
