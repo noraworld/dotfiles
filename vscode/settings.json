@@ -54,10 +54,15 @@
     "ruby.rubocop.suppressRubocopWarnings": true,
 
     // python
-    "python.showStartPage": false
+    "python.showStartPage": false,
+
+    // git
+    "git.autofetch": true
 
     // ignores trimming trailing space on Markdown for newline, but it is not recommended
     // "[markdown]": {
     //     "files.trimTrailingWhitespace": false
     // },
+
+    // not classified yet
 }
