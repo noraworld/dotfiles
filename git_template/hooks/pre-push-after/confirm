@@ -3,13 +3,14 @@
 reponame=$1
 remoteurl=$2
 
-echo -e  "You are about to push:\n"
-echo -e  "	\033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m\n"
-echo -e  "The remote URL is:\n"
-echo -e  "	\033[1;93m${remoteurl}\033[00m\n"
-echo -en "Are you sure? [Y/n]: "
-
+# skip confirmation so that Git on VS Code can push to remote repository
 if [ "$TERM_PROGRAM" != "" ]; then
+  echo -e  "You are about to push:\n"
+  echo -e  "	\033[1;93m${local_ref##refs/heads/}\033[00m -> \033[1;93m${reponame}/${remote_ref##refs/heads/}\033[00m\n"
+  echo -e  "The remote URL is:\n"
+  echo -e  "	\033[1;93m${remoteurl}\033[00m\n"
+  echo -en "Are you sure? [Y/n]: "
+
   exec < /dev/tty  # it needs to read STDIN
   read confirm
 
