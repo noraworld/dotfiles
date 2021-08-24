@@ -1610,6 +1610,12 @@
           "full_name": "blackhole-2ch"
         }
       },
+      "browserosaurus": {
+        "version": "15.1.2",
+        "options": {
+          "full_name": "browserosaurus"
+        }
+      },
       "cyberduck": {
         "version": "7.10.1,35318",
         "options": {
