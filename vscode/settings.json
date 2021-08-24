@@ -23,6 +23,17 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.cursorBlinking": "solid",
     "editor.minimap.enabled": false,
+    // https://github.com/microsoft/vscode/issues/54312#issuecomment-583654497
+    "editor.rulers": [
+        {
+            "column": 120, // it is generally recommended that the line length does not exceed this value
+            "color": "#252525"
+        },
+        {
+            "column": 163, // this value is where the ruler just hides itself and the word wrapping occurs if the line length exceeds 160
+            "color": "#ff4081"
+        }
+    ],
 
     // files
     "files.insertFinalNewline": true,
