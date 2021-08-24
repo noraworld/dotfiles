@@ -1732,6 +1732,10 @@
       }
     },
     "mas": {
+      "Amphetamine": {
+        "id": "937984704",
+        "version": "5.2.2"
+      },
       "Be Focused": {
         "id": "973134470",
         "version": "2.1.1"
