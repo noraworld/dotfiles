@@ -68,7 +68,11 @@
     "python.showStartPage": false,
 
     // git
-    "git.autofetch": true
+    "git.autofetch": true,
+
+    "[markdown]": {
+        "editor.tabSize": 4
+    }
 
     // ignores trimming trailing space on Markdown for newline, but it is not recommended
     // "[markdown]": {
