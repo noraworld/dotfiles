@@ -23,6 +23,8 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.cursorBlinking": "solid",
     "editor.minimap.enabled": false,
+    "editor.folding": true,
+    "editor.foldingStrategy": "indentation",
     // https://github.com/microsoft/vscode/issues/54312#issuecomment-583654497
     "editor.rulers": [
         {
