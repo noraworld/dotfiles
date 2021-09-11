@@ -38,3 +38,5 @@ lm-sensors
 dnsmasq
 
 # The below is the unclassified packages yet
+radvdump
+radvd
