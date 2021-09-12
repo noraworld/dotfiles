@@ -1694,6 +1694,12 @@
           "full_name": "keyboardcleantool"
         }
       },
+      "kindle": {
+        "version": "1.32.61174",
+        "options": {
+          "full_name": "kindle"
+        }
+      },
       "launchcontrol": {
         "version": "1.52.3,1509",
         "options": {
