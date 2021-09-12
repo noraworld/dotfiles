@@ -77,5 +77,6 @@ cask "visual-studio-code"
 cask "xquartz"
 mas "Amphetamine", id: 937984704
 mas "Be Focused", id: 973134470
+mas "Be Focused Pro", id: 961632517
 mas "LadioCast", id: 411213048
 mas "Session", id: 1521432881
