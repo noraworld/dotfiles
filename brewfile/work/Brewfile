@@ -11,7 +11,6 @@ brew "binutils"
 brew "icu4c"
 brew "boost"
 brew "freetype"
-brew "openssl@1.1"
 brew "readline"
 brew "glib"
 brew "pkg-config"
@@ -20,16 +19,19 @@ brew "colordiff"
 brew "coreutils"
 brew "direnv"
 brew "fd"
+brew "nghttp2"
+brew "unbound"
+brew "harfbuzz"
 brew "ffmpeg"
 brew "findutils"
 brew "fzf"
 brew "ghq"
 brew "git"
-brew "gnu-getopt"
 brew "gnu-sed"
 brew "hyperfine"
 brew "imagemagick"
 brew "imagemagick@6"
+brew "iproute2mac"
 brew "isl"
 brew "jq"
 brew "libmagic"
@@ -81,5 +83,6 @@ mas "Amphetamine", id: 937984704
 mas "Be Focused", id: 973134470
 mas "Be Focused Pro", id: 961632517
 mas "BetterSnapTool", id: 417375580
+mas "Keynote", id: 409183694
 mas "LadioCast", id: 411213048
 mas "Session", id: 1521432881
