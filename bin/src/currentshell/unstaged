@@ -6,6 +6,6 @@ for working_dir in $(dirs -l); do
   if [[ $stat ]]; then
     echo
     echo "\033[38;05;14m${working_dir}\033[00m:"
-    echo "	\033[38;05;9m$stat\033[00m"
+    echo "\033[38;05;9m$stat\033[00m"
   fi
 done
