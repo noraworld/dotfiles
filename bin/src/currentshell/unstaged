@@ -1,11 +1,33 @@
 #!/bin/sh
 
 for working_dir in $(dirs -l); do
+  #
+  # Check untracked, not committed, etc.
+  #
+
   stat=$(git -C "$working_dir" status --porcelain)
 
   if [[ $stat ]]; then
     echo
     echo "\033[38;05;14m${working_dir}\033[00m:"
     echo "\033[38;05;9m$stat\033[00m"
+  fi
+
+  #
+  # Check not pushed
+  #
+
+  upstream=${1:-'@{u}'}
+  local=$(git -C "$working_dir" rev-parse @ 2>/dev/null)
+  remote=$(git -C "$working_dir" rev-parse "$upstream" 2>/dev/null)
+  base=$(git -C "$working_dir" merge-base @ "$upstream" 2>/dev/null)
+
+  if [ $local != $remote ] && [ $remote = $base ]; then
+    if ! [[ $stat ]]; then
+      echo
+      echo "\033[38;05;14m${working_dir}\033[00m:"
+    fi
+
+    echo "\033[38;05;9m⇡\033[00m"
   fi
 done
