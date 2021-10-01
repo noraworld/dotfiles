@@ -2,6 +2,17 @@
 
 for working_dir in $(dirs -l); do
   #
+  # Check Git directory
+  #
+
+  if [ "$(git -C "$working_dir" rev-parse --git-dir 2> /dev/null)" = "" ]; then
+    echo                                               >&2
+    echo "\033[38;05;14m${working_dir}\033[00m:"       >&2
+    echo "\033[38;05;9m   Not a Git directory\033[00m" >&2
+    continue
+  fi
+
+  #
   # Check untracked, not committed, etc.
   #
 
@@ -21,6 +32,13 @@ for working_dir in $(dirs -l); do
   local=$(git -C "$working_dir" rev-parse @ 2>/dev/null)
   remote=$(git -C "$working_dir" rev-parse "$upstream" 2>/dev/null)
   base=$(git -C "$working_dir" merge-base @ "$upstream" 2>/dev/null)
+
+  if [ -z $remote ] || [ -z $base ]; then
+    echo                                                          >&2
+    echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
+    echo "\033[38;05;9m   Not having a remote repository\033[00m" >&2
+    continue
+  fi
 
   if [ $local != $remote ] && [ $remote = $base ]; then
     if ! [[ $stat ]]; then
