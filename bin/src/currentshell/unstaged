@@ -1,14 +1,37 @@
 #!/bin/sh
 
+PROGNAME=$(basename $0)
+VERBOSE=0
+
+while (( $# > 0 )); do
+  case $1 in
+    -v | --verbose)
+      VERBOSE=1
+      ;;
+    -*)
+      echo "$PROGNAME: Invalid option" >&2
+      return 1
+      ;;
+    *)
+      :
+      ;;
+  esac
+
+  shift
+done
+
 for working_dir in $(dirs -l); do
   #
   # Check Git directory
   #
 
   if [ "$(git -C "$working_dir" rev-parse --git-dir 2> /dev/null)" = "" ]; then
-    echo                                               >&2
-    echo "\033[38;05;14m${working_dir}\033[00m:"       >&2
-    echo "\033[38;05;9m   Not a Git directory\033[00m" >&2
+    if [ "$VERBOSE" -eq 1 ]; then
+      echo                                               >&2
+      echo "\033[38;05;14m${working_dir}\033[00m:"       >&2
+      echo "\033[38;05;9m   Not a Git directory\033[00m" >&2
+    fi
+
     continue
   fi
 
@@ -34,9 +57,12 @@ for working_dir in $(dirs -l); do
   base=$(git -C "$working_dir" merge-base @ "$upstream" 2>/dev/null)
 
   if [ -z $remote ] || [ -z $base ]; then
-    echo                                                          >&2
-    echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
-    echo "\033[38;05;9m   Not having a remote repository\033[00m" >&2
+    if [ "$VERBOSE" -eq 1 ]; then
+      echo                                                          >&2
+      echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
+      echo "\033[38;05;9m   Not having a remote repository\033[00m" >&2
+    fi
+
     continue
   fi
 
