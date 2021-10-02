@@ -29,7 +29,7 @@ for working_dir in $(dirs -l); do
     if [ "$VERBOSE" -eq 1 ]; then
       echo                                               >&2
       echo "\033[38;05;14m${working_dir}\033[00m:"       >&2
-      echo "\033[38;05;9m   Not a Git directory\033[00m" >&2
+      echo "\033[38;05;9m!! Not a Git directory\033[00m" >&2
     fi
 
     continue
@@ -58,9 +58,12 @@ for working_dir in $(dirs -l); do
 
   if [ -z $remote ] || [ -z $base ]; then
     if [ "$VERBOSE" -eq 1 ]; then
-      echo                                                          >&2
-      echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
-      echo "\033[38;05;9m   Not having a remote repository\033[00m" >&2
+      if ! [[ $stat ]]; then
+        echo                                                          >&2
+        echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
+      fi
+
+      echo "\033[38;05;9m!! Not having a remote repository\033[00m" >&2
     fi
 
     continue
