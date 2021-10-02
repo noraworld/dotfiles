@@ -54,6 +54,7 @@ alias lta='lk --tree -a'
 alias ltal='lk --tree -al'
 alias ltla='lk --tree -la'
 alias be='bundle exec'
+alias x='xargs -n 1 -o'
 
 ## Deprecated aliases
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
