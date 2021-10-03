@@ -55,6 +55,7 @@ alias ltal='lk --tree -al'
 alias ltla='lk --tree -la'
 alias be='bundle exec'
 alias x='xargs -n 1 -o'
+alias ca='cron-apply'
 
 ## Deprecated aliases
 alias rm='echo -e "rm command should not be used\ncommand ignored: rm"'
