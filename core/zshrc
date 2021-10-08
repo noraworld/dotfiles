@@ -233,11 +233,6 @@ setopt inc_append_history
 setopt extended_history
 setopt IGNOREEOF
 
-function fuzzy_history_search() {
-  BUFFER=`history -n 1 | tac | fzf --no-sort`
-  CURSOR=$#BUFFER
-  zle reset-prompt
-}
 function fuzzy_push_directory() {
   push_directory
 
@@ -248,9 +243,7 @@ function fuzzy_push_directory() {
   fi
 }
 
-zle -N fuzzy_history_search
 zle -N fuzzy_push_directory
-bindkey '^R' fuzzy_history_search
 bindkey '^J' fuzzy_push_directory
 
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
