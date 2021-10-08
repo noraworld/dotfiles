@@ -240,7 +240,12 @@ function fuzzy_history_search() {
 }
 function fuzzy_push_directory() {
   push_directory
-  zle .accept-line
+
+  if [ $? = "0" ]; then
+    zle .accept-line
+  else
+    zle reset-prompt
+  fi
 }
 
 zle -N fuzzy_history_search

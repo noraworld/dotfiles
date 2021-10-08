@@ -5,12 +5,11 @@ if [[ $# = 0 ]] && type fzf 1>/dev/null 2>/dev/null; then
   selected_num=$(echo $selected_dir | awk '{print $1}')
 
   if [[ $selected_num = "" ]]; then
-    return 0
+    return 1
   fi
 
   if [[ $selected_num = "0" ]]; then
-    echo -en "\nError: You are already in that directory"
-    return 0
+    return 2
   fi
 
   pushd "+${selected_num}" 1>/dev/null || echo
