@@ -25,7 +25,6 @@ alias histcpy='histcpy=`history 1 | sed "s/^ *[0-9]* *//g" | tac | less | peco`;
 alias again='eval $(history 1 | sed "s/^ *[0-9]* *//g" | peco)'
 alias gosearch='cd $(ghq root)/$(ghq list | peco)'
 alias laravel='php artisan'
-alias up='cd ..'
 alias del='trash'
 
 ## Overridden aliases

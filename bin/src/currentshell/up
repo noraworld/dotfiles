@@ -1,0 +1,11 @@
+if [ "$1" = "" ]; then
+  cd ../
+else
+  upstairs=""
+
+  for i in {1..$1}; do
+    upstairs="${upstairs}../"
+  done
+
+  cd $upstairs
+fi
