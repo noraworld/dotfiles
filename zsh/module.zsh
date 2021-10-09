@@ -18,8 +18,6 @@ add-zsh-hook precmd __decaffeinate
 add-zsh-hook precmd __wakeup
 add-zsh-hook precmd __get_prompt_state
 add-zsh-hook precmd __return_when_nop # order is important; it must be here
-add-zsh-hook precmd __get_notified
-add-zsh-hook precmd __print_elapsed_time
 add-zsh-hook precmd __postprocessing
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

@@ -169,46 +169,6 @@ function __return_when_nop() {
   # below here is executed only when some kind of command is executed
 }
 
-function __get_notified() {
-  is_enabled_notification=true
-  while read line
-  do
-    if [[ $_tn_cmd =~ ^$line([[:blank:]]+.*)*$ ]]; then
-      is_enabled_notification=false
-    fi
-  done < $DOTPATH/NOTIFICATION_SKIP_COMMAND_LIST
-
-  if "${is_enabled_notification}"; then
-    if [[ $dur_int -ge $NOTIFICATION_PERIOD_THRESHOLD ]]; then
-      if type terminal-notifier 1>/dev/null 2>/dev/null; then
-        # I prefer "Basso", "Frog", or "Pop" for notification sound
-        # because I wouldn’t be surprised to hear these sounds suddenly.
-        # But they may be too soft to notice.
-        # In that case, "Default" or "Funk" may be good.
-        terminal-notifier -message "Finished: $_tn_cmd" -sound $NOTIFICATION_SOUND -ignoreDnD
-
-        # Tell the command is over by voice
-        # Be careful the volume!
-        # say "Finished: $_tn_cmd" -v Samantha
-      else
-        echo -en " \033[2m(terminal-notifier is not installed)\033[00m"
-      fi
-
-      echo -en " \033[2m(\033[3mecho '$_tn_cmd' >> $DOTPATH/NOTIFICATION_SKIP_COMMAND_LIST\033[00m \033[2mto disable notification for this command)\033[00m"
-    fi
-  else
-    echo -en " \033[2m(notification is disabled for this command)\033[00m"
-  fi
-}
-
-function __print_elapsed_time() {
-  # Do not use colorecho because it is a bit late
-  ## echo average time:      0.00843399999999999
-  ## colorecho average time: 0.17544710000000002
-  echo
-  echo -en "elapsed time: \033[1m$dur_float\033[00m seconds"
-}
-
 function __postprocessing() {
   _tn_cmd=''
 
