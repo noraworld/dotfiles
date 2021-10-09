@@ -1,5 +1,5 @@
 rm,del,This command deletes a file or a directory and it won’t be restored
-pushd,push
+pushd,p
 popd,pop
 brew install,brew get
 brew uninstall,brew discard
