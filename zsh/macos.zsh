@@ -2,11 +2,6 @@
 
 alias gmacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 
-# Load bash_completion
-# if [ -f `brew --prefix`/etc/bash_completion ]; then
-#   . `brew --prefix`/etc/bash_completion
-# fi
-
 # Set the environment variables
 PATH="/usr/local/sbin:$PATH"                                # Homebrew
 
