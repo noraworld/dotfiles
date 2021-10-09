@@ -1,17 +1,19 @@
 #!/usr/bin/env zsh
 
-# Get the aliases
-## General aliases
+# General
 alias sudo='sudo ' # enable all aliases also at sudo mode
 alias restart='exec -l $SHELL'
 alias del='trash'
 
-## Overridden aliases
-### WARNING: Some scripts may not work properly by overriding a existence command
+# Overridden
 alias ls='ls --color=auto -N'
 alias grep='grep --color=auto'
+# WARNING:
+#   Do not override commands unduly
+#   because some commands may not work properly
+#   by overriding the default behaviors
 
-## Abbreviation aliases
+# Abbreviation
 alias d='show_directory_stack'
 alias p='push_directory'
 alias pop='pop_directory'
