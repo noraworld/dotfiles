@@ -1,19 +1,5 @@
 #!/usr/bin/env zsh
 
-autorun() {
-  if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
-    store_directory_stack
-    echo -e ""
-    echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
-    show_directory_stack
-    echo -e ""
-    echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
-    ls
-  fi
-
-  AUTORUN_DIR="${PWD}"
-}
-
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 
 _tn_timestamp=`echo $EPOCHREALTIME`
@@ -22,10 +8,12 @@ _tn_caffeinate_pid=''
 need_caffeine=true
 _bury_message=''
 
-preexec() {
+function __set_preexec_variable() {
   _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
+}
 
+function __warn_deprecated_command() {
   while read line
   do
     deprecated_command=`echo "$line," | cut -d ',' -f 1`
@@ -53,7 +41,9 @@ preexec() {
       sleep infinity
     fi
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
+}
 
+function __caffeinate() {
   if [[ ${OSTYPE} =~ darwin* ]]; then
     # do not caffeinate when command in DECAFFEINATED_COMMAND_LIST is executed
     need_caffeine=true
@@ -83,13 +73,27 @@ preexec() {
   fi
 }
 
-precmd() {
+function __set_precmd_variable() {
   now=`echo $EPOCHREALTIME`
   dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
   dur_int=`echo $dur_float | sed 's/\.[0-9,]*$//g'`
+}
 
-  autorun
+function __autorun() {
+  if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
+    store_directory_stack
+    echo -e ""
+    echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
+    show_directory_stack
+    echo -e ""
+    echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
+    ls
+  fi
 
+  AUTORUN_DIR="${PWD}"
+}
+
+function __git_autofetch() {
   if [[ -d .git ]]; then
     # file name ".git-fetch-last-update" cannot be changeable because that should be written in gitignore_global
     if [[ ! -f .git-fetch-last-update ]]; then
@@ -117,7 +121,9 @@ precmd() {
       echo $EPOCHREALTIME > .git-fetch-last-update
     fi
   fi
+}
 
+function __split_record_logfile() {
   if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
     src_path=$SESSION_LOG_PATH/recording.log
     dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
@@ -127,13 +133,17 @@ precmd() {
     echo
     echo -e "INFO: $src_path exceeds $SESSION_LOG_SIZE lines. Moved to $dst_path automatically."
   fi
+}
 
+function __decaffeinate() {
   # stop caffeinate
   if "${need_caffeine}" && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; then
     kill "$_tn_caffeinate_pid"
   fi
   _tn_caffeinate_pid=''
+}
 
+function __wakeup() {
   # stop sleep (for deprecated command stopper)
   _bury_message=`bury -y sleep`
   if [[ $_bury_message != "No processes exist." ]]; then
@@ -141,10 +151,14 @@ precmd() {
     echo $_bury_message
   fi
   _bury_message=''
+}
 
-  # reload prompt state
-  get_prompt_state
+# reload prompt state
+function __get_prompt_state() {
+  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count) with 🌡  $(temperature)"
+}
 
+function __return_when_nop() {
   # above here is executed even if no command specified on prompt
   ###################################################################
   if [[ $_tn_cmd == "" ]]; then
@@ -153,7 +167,9 @@ precmd() {
   fi
   ###################################################################
   # below here is executed only when some kind of command is executed
+}
 
+function __get_notified() {
   is_enabled_notification=true
   while read line
   do
@@ -161,12 +177,6 @@ precmd() {
       is_enabled_notification=false
     fi
   done < $DOTPATH/NOTIFICATION_SKIP_COMMAND_LIST
-
-  # Do not use colorecho because it is a bit late
-  ## echo average time:      0.00843399999999999
-  ## colorecho average time: 0.17544710000000002
-  echo
-  echo -en "elapsed time: \033[1m$dur_float\033[00m seconds"
 
   if "${is_enabled_notification}"; then
     if [[ $dur_int -ge $NOTIFICATION_PERIOD_THRESHOLD ]]; then
@@ -189,7 +199,17 @@ precmd() {
   else
     echo -en " \033[2m(notification is disabled for this command)\033[00m"
   fi
+}
 
+function __print_elapsed_time() {
+  # Do not use colorecho because it is a bit late
+  ## echo average time:      0.00843399999999999
+  ## colorecho average time: 0.17544710000000002
+  echo
+  echo -en "elapsed time: \033[1m$dur_float\033[00m seconds"
+}
+
+function __postprocessing() {
   _tn_cmd=''
 
   echo

@@ -21,9 +21,3 @@ recording_prompt() {
 caffeine_count() {
   echo -e "\033[38;05;172m$(ps aux | grep caffeinate | grep -cv grep)\033[00m"
 }
-
-get_prompt_state() {
-  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count) with 🌡  $(temperature)"
-}
-
-get_prompt_state
