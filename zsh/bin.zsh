@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # Set the self-making commands path to environment variables
 if [ -e ~/.bin ]; then

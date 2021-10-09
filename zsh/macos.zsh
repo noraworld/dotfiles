@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # Get the aliases
 alias ls='ls --color=auto -N'

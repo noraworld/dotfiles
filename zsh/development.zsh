@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # anyenv (Homebrew / macOS)
 if type anyenv 1>/dev/null 2>/dev/null; then
