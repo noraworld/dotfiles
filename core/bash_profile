@@ -24,8 +24,6 @@ export NOTIFICATION_PERIOD_THRESHOLD=$(echo ${NOTIFICATION_PERIOD_THRESHOLD-180}
 export NOTIFICATION_SOUND=$(echo ${NOTIFICATION_SOUND-Funk})
 export SESSION_LOG_PATH=$(echo ${SESSION_LOG_PATH-$HOME/.log/typescript})
 export SESSION_LOG_SIZE=$(echo ${SESSION_LOG_SIZE-100000})
-export POKEMON_SLIDESHOW_DURATION=$(echo ${POKEMON_SLIDESHOW_DURATION-7})
-export POKEMON_DARK_THRESHOLD=$(echo ${POKEMON_DARK_THRESHOLD-0.5})
 
 if type src-hilite-lesspipe.sh 1>/dev/null 2>/dev/null; then
   export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
