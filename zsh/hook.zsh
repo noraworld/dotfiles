@@ -43,36 +43,6 @@ function __warn_deprecated_command() {
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 }
 
-function __caffeinate() {
-  if [[ ${OSTYPE} =~ darwin* ]]; then
-    # do not caffeinate when command in DECAFFEINATED_COMMAND_LIST is executed
-    need_caffeine=true
-    while read line
-    do
-      if [[ $_tn_cmd =~ ^([[:blank:]]+.*)*$line([[:blank:]]+.*)*$ ]]; then
-        need_caffeine=false
-      fi
-    done < $DOTPATH/DECAFFEINATED_COMMAND_LIST
-
-    # caffeinate
-    if type caffeinate 1>/dev/null 2>/dev/null && "${need_caffeine}"; then
-      # https://walkingmask.hatenablog.com/entry/2016/09/21/202509
-      (caffeinate -d & echo $!) | read _tn_caffeinate_pid
-    fi
-
-    # check if `caffeinate` command running
-    # prints warning message if `caffeinate` command not running, or `caffeinate` command running but caffeinate pid is wrong or missing
-    if "${need_caffeine}"; then
-      if ! { [ "$(ps aux | grep caffeinate | grep "$_tn_caffeinate_pid" | grep -cv grep)" -eq 1 ] && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; } then
-        echo -e "\033[1;93mWARNING:\033[00m Running out of caffeine! Computer may sleep while executing \`\033[1m$_tn_cmd\033[00m' if it takes long time\033[00m"
-        echo
-      fi
-    fi
-  else
-    need_caffeine=false
-  fi
-}
-
 function __set_precmd_variable() {
   now=`echo $EPOCHREALTIME`
   dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
@@ -133,14 +103,6 @@ function __split_record_logfile() {
     echo
     echo -e "INFO: $src_path exceeds $SESSION_LOG_SIZE lines. Moved to $dst_path automatically."
   fi
-}
-
-function __decaffeinate() {
-  # stop caffeinate
-  if "${need_caffeine}" && [[ "$_tn_caffeinate_pid" =~ ^[0-9]+$ ]]; then
-    kill "$_tn_caffeinate_pid"
-  fi
-  _tn_caffeinate_pid=''
 }
 
 function __wakeup() {

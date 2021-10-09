@@ -8,13 +8,11 @@ autoload -Uz add-zsh-hook
 
 add-zsh-hook preexec __set_preexec_variable
 add-zsh-hook preexec __warn_deprecated_command
-add-zsh-hook preexec __caffeinate
 
 add-zsh-hook precmd __set_precmd_variable
 add-zsh-hook precmd __autorun
 add-zsh-hook precmd __git_autofetch
 add-zsh-hook precmd __split_record_logfile
-add-zsh-hook precmd __decaffeinate
 add-zsh-hook precmd __wakeup
 add-zsh-hook precmd __get_prompt_state
 add-zsh-hook precmd __return_when_nop # order is important; it must be here
