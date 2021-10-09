@@ -1,18 +1,5 @@
 #!/usr/bin/env zsh
 
-# avoids scp failure
-# scp fails when something is displayed to stdout at login
-# returns 'true' if not scp
-is_not_scp() {
-  if [ ! -f /proc/$PPID/cmdline ]; then # if not Linux
-    echo true
-  elif [ -f /proc/$PPID/cmdline ] && [[ "$(cat /proc/$PPID/cmdline | sed 's/\x0//g')" =~ sshd:([[:blank:]]+.*)@notty ]]; then # if scp; use sed to get rid of null bytes
-    echo false
-  else
-    echo true
-  fi
-}
-
 # Restore directory stack when shell session starts or restarts
 # Also see store_directory_stack
 #
@@ -36,11 +23,6 @@ FILE
 
     # delete directory of when shell session starts from stack
     popd -0 1>/dev/null
-
-    if "$(is_not_scp)"; then
-      echo -e "Restored directory stack"
-      show_directory_stack
-    fi
   fi
 else
   # echo -e "$HOME/.directory_stack_store is not found"
