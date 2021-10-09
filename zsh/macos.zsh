@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-alias gmacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-
 PATH="/usr/local/sbin:$PATH"                               # Homebrew
 
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"       # GNU coreutils
