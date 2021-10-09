@@ -2,7 +2,7 @@
 
 # General
 alias sudo='sudo ' # enable all aliases also at sudo mode
-alias restart='exec -l $SHELL'
+alias reload='exec -l $SHELL'
 alias del='trash'
 
 # Overridden
