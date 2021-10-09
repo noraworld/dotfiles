@@ -24,7 +24,4 @@ FILE
     # delete directory of when shell session starts from stack
     popd -0 1>/dev/null
   fi
-else
-  # echo -e "$HOME/.directory_stack_store is not found"
-  :
 fi
