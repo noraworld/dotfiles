@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function fuzzy_push_directory() {
+function __fuzzy_push_directory() {
   push_directory
 
   if [ $? = "0" ]; then
@@ -10,5 +10,5 @@ function fuzzy_push_directory() {
   fi
 }
 
-zle -N fuzzy_push_directory
-bindkey '^J' fuzzy_push_directory
+zle -N __fuzzy_push_directory
+bindkey '^J' __fuzzy_push_directory
