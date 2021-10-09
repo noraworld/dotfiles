@@ -1,10 +1,7 @@
 . ~/.zsh/record.zsh
 . ~/.zsh/alias.zsh
-
-# Set DOTPATH
 . ~/.dotpath
 
-# Divide configs by OS
 case "${OSTYPE}" in
   darwin*)
     . ~/.zsh/macos.zsh
@@ -14,34 +11,12 @@ case "${OSTYPE}" in
     ;;
 esac
 
-# For development configs
 . ~/.zsh/development.zsh
-
-# For production configs
 . ~/.zsh/production.zsh
-
-# Load self-making commands path
 . ~/.zsh/bin.zsh
-
 . ~/.zsh/prompt.zsh
-
-# This should be loaded after bin.zsh
-. ~/.zsh/dstack.zsh
-
+. ~/.zsh/dstack.zsh # after: bin.zsh
 . ~/.zsh/module.zsh
 . ~/.zsh/zle.zsh
 . ~/.zsh/pre.zsh
-
-# order seems to be important
-# this should appear after these settings, or history-search-multi-word will not work
-#
-#   * zmodload
-#   * bindkey -e
-#   * autoload
-#   * zstyle
-#   * export
-#   * setopt
-#
-# I have not noticed which setting history-search-multi-word depends on yet, so this should appear the end of .zshrc
-#
-. ~/.zsh/load.zsh
+. ~/.zsh/load.zsh # should be: last
