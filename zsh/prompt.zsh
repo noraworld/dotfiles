@@ -1,17 +1,5 @@
 #!/usr/bin/env zsh
 
-ssh_ps1() {
-  if [ -f /proc/$PPID/cmdline ]; then
-    if [ "$(command cut -d : -f1 < "/proc/$PPID/cmdline")" = "sshd" ] && [[ $- == *i* ]]; then
-      echo "\033[1;96m[SSH] \033[00m"
-    else
-      echo ""
-    fi
-  else
-    echo ""
-  fi
-}
-
 recording_prompt() {
   case "${OSTYPE}" in
     darwin*)
