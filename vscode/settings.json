@@ -75,7 +75,9 @@
     "[markdown]": {
         "editor.tabSize": 4
     },
-    "markdown.extension.list.indentationSize": "inherit"
+    "markdown.extension.list.indentationSize": "inherit",
+    "workbench.colorTheme": "One Dark Pro",
+    "git.autofetchPeriod": 3600
 
     // ignores trimming trailing space on Markdown for newline, but it is not recommended
     // "[markdown]": {
