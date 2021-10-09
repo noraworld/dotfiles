@@ -13,7 +13,8 @@ alias laravel='php artisan'
 alias del='trash'
 
 ## Overridden aliases
-### Some scripts may not work properly by overriding a existence command
+### WARNING: Some scripts may not work properly by overriding a existence command
+alias ls='ls --color=auto -N'
 alias grep='grep --color=auto'
 alias vi='vim'
 
@@ -38,7 +39,7 @@ alias lta='lk --tree -a'
 alias ltal='lk --tree -al'
 alias ltla='lk --tree -la'
 alias be='bundle exec'
-alias x='xargs -n 1 -o'
+alias x='xargs -n 1 -o' # usage: which cat | x file
 alias ca='cron-apply'
 
 ## Deprecated aliases

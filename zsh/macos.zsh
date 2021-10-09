@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Get the aliases
-alias ls='ls --color=auto -N'
 alias gmacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 
 # Load bash_completion
