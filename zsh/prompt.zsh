@@ -17,7 +17,3 @@ recording_prompt() {
     ;;
   esac
 }
-
-caffeine_count() {
-  echo -e "\033[38;05;172m$(ps aux | grep caffeinate | grep -cv grep)\033[00m"
-}

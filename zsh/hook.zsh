@@ -117,7 +117,7 @@ function __wakeup() {
 
 # reload prompt state
 function __get_prompt_state() {
-  PROMPT_STATE="$(recording_prompt) with ☕️ $(caffeine_count) with 🌡  $(temperature)"
+  PROMPT_STATE="$(recording_prompt) with 🌡  $(temperature)"
 }
 
 function __return_when_nop() {
