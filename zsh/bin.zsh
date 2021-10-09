@@ -9,13 +9,11 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/git_subcommand:$PATH
   PATH=$HOME/.bin/brew_subcommand:$PATH
 
-  if [[ "$(basename $(echo $SHELL))" = "zsh" ]]; then
-    fpath=( $HOME/.bin/zsh_completions "${fpath[@]}" )
-
-    while read line; do
-      autoload -Uz ${line}
-    done < $HOME/.bin/zsh_completions
-  fi
+  # Load completions
+  fpath=( $HOME/.bin/zsh_completions "${fpath[@]}" )
+  while read line; do
+    autoload -Uz ${line}
+  done < $HOME/.bin/zsh_completions
 
   MANPATH="$DOTPATH/man:$MANPATH"
 
