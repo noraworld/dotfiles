@@ -4,11 +4,6 @@ add_newline = false
 min_time = 0
 show_milliseconds = true
 
-[env_var]
-variable = "PROMPT_STATE"
-default = "???"
-style = "bold yellow"
-
 [time]
 disabled = false
 style = "#b0c4de"

@@ -103,11 +103,6 @@ function __wakeup() {
   _bury_message=''
 }
 
-# reload prompt state
-function __get_prompt_state() {
-  PROMPT_STATE="🌡  $(temperature)"
-}
-
 function __postprocessing() {
   _tn_cmd=''
 

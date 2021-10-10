@@ -13,7 +13,6 @@ add-zsh-hook precmd __set_precmd_variable
 add-zsh-hook precmd __autorun
 add-zsh-hook precmd __git_autofetch
 add-zsh-hook precmd __wakeup
-add-zsh-hook precmd __get_prompt_state
 add-zsh-hook precmd __postprocessing
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

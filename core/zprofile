@@ -23,7 +23,6 @@ export PKG_CONFIG_PATH=$(echo ${PKG_CONFIG_PATH-/usr/local/opt/imagemagick@6/lib
 export GIT_FETCH_PERIOD_THRESHOLD=$(echo ${GIT_FETCH_PERIOD_THRESHOLD-3600})
 
 export DOTPATH=""
-export PROMPT_STATE=""
 export PATH
 export MANPATH
 
