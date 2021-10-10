@@ -45,8 +45,6 @@ function __warn_deprecated_command() {
 
 function __set_precmd_variable() {
   now=`echo $EPOCHREALTIME`
-  dur_float=`echo "scale=10; $now - $_tn_timestamp" | bc | sed 's/^\./0./'`
-  dur_int=`echo $dur_float | sed 's/\.[0-9,]*$//g'`
 }
 
 function __autorun() {
