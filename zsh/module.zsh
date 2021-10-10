@@ -9,7 +9,6 @@ autoload -Uz add-zsh-hook
 add-zsh-hook preexec __set_preexec_variable
 add-zsh-hook preexec __warn_deprecated_command
 
-add-zsh-hook precmd __set_precmd_variable
 add-zsh-hook precmd __autorun
 add-zsh-hook precmd __git_autofetch
 add-zsh-hook precmd __postprocessing

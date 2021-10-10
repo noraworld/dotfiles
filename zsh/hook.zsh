@@ -43,10 +43,6 @@ function __warn_deprecated_command() {
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 }
 
-function __set_precmd_variable() {
-  now=`echo $EPOCHREALTIME`
-}
-
 function __autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
     store_directory_stack
