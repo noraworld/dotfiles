@@ -120,17 +120,6 @@ function __get_prompt_state() {
   PROMPT_STATE="$(recording_prompt) with 🌡  $(temperature)"
 }
 
-function __return_when_nop() {
-  # above here is executed even if no command specified on prompt
-  ###################################################################
-  if [[ $_tn_cmd == "" ]]; then
-    echo
-    return
-  fi
-  ###################################################################
-  # below here is executed only when some kind of command is executed
-}
-
 function __postprocessing() {
   _tn_cmd=''
 

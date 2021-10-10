@@ -15,7 +15,6 @@ add-zsh-hook precmd __git_autofetch
 add-zsh-hook precmd __split_record_logfile
 add-zsh-hook precmd __wakeup
 add-zsh-hook precmd __get_prompt_state
-add-zsh-hook precmd __return_when_nop # order is important; it must be here
 add-zsh-hook precmd __postprocessing
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
