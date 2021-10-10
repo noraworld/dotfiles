@@ -3,7 +3,6 @@
 #   because the order from which file should be loaded is important
 
 . ~/.dotpath
-. ~/.zsh/record.zsh
 . ~/.zsh/alias.zsh
 
 case "${OSTYPE}" in
@@ -18,7 +17,6 @@ esac
 . ~/.zsh/development.zsh
 . ~/.zsh/production.zsh
 . ~/.zsh/bin.zsh
-. ~/.zsh/prompt.zsh
 . ~/.zsh/dstack.zsh # after: bin.zsh
 . ~/.zsh/module.zsh
 . ~/.zsh/zle.zsh

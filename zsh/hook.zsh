@@ -93,18 +93,6 @@ function __git_autofetch() {
   fi
 }
 
-function __split_record_logfile() {
-  if [[ -d $SESSION_LOG_PATH ]] && [[ $(cat $SESSION_LOG_PATH/recording.log | wc -l) -ge $SESSION_LOG_SIZE ]]; then
-    src_path=$SESSION_LOG_PATH/recording.log
-    dst_path=$SESSION_LOG_PATH/typescript_$(date '+%Y-%m-%d_%H-%M-%S').log
-
-    cp $src_path $dst_path
-    echo > $src_path
-    echo
-    echo -e "INFO: $src_path exceeds $SESSION_LOG_SIZE lines. Moved to $dst_path automatically."
-  fi
-}
-
 function __wakeup() {
   # stop sleep (for deprecated command stopper)
   _bury_message=`bury -y sleep`
@@ -117,7 +105,7 @@ function __wakeup() {
 
 # reload prompt state
 function __get_prompt_state() {
-  PROMPT_STATE="$(recording_prompt) with 🌡  $(temperature)"
+  PROMPT_STATE="🌡  $(temperature)"
 }
 
 function __postprocessing() {
