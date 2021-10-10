@@ -62,7 +62,7 @@ function __autorun() {
 }
 
 function __git_autofetch() {
-  if [[ -d .git ]]; then
+  if [ -e "$(git rev-parse --git-dir 2> /dev/null)" ]; then
     # file name ".git-fetch-last-update" cannot be changeable because that should be written in gitignore_global
     if [[ ! -f .git-fetch-last-update ]]; then
       echo
