@@ -95,6 +95,4 @@ function __git_autofetch() {
 
 function __postprocessing() {
   _tn_cmd=''
-
-  echo
 }
