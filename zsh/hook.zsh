@@ -62,32 +62,30 @@ function __autorun() {
 }
 
 function __git_autofetch() {
-  if [ -e "$(git rev-parse --git-dir 2> /dev/null)" ]; then
-    # file name ".git-fetch-last-update" cannot be changeable because that should be written in gitignore_global
-    if [[ ! -f .git-fetch-last-update ]]; then
-      echo
-      echo -e "\033[1;33mInfo: Executing \`git fetch\` in the background to synchronize with the remote branch.\033[00m"
-      (git fetch   > /dev/null 2>&1 &)
-      (git refresh > /dev/null 2>&1 &) # on the way
-      echo $now > .git-fetch-last-update
-    fi
+  # Return if the current directory is not under the Git project
+  if [ ! -e "$(git rev-parse --git-dir 2> /dev/null)" ]; then
+    return
+  fi
 
-    _git_fetch_duration=$(echo "scale=10; $now - $(cat .git-fetch-last-update)" | bc | sed 's/^\./0./' | sed 's/\.[0-9,]*$//g')
+  # NOTE: The file name ".git-fetch-last-update" cannot be changeable easily
+  #       because it should be written in gitignore_global
+  _last_update_file="$(git rev-parse --show-toplevel)/.git-fetch-last-update"
 
-    _git_fetch_period_threshold=''
-    if [[ -f .git-fetch-period-threshold ]]; then
-      _git_fetch_period_threshold=$(cat .git-fetch-period-threshold)
-    else
-      _git_fetch_period_threshold=$GIT_FETCH_PERIOD_THRESHOLD
-    fi
+  # Fetch, create a last update file, and return if a last update file does not exist
+  if [ ! -f $_last_update_file ]; then
+    (git fetch   > /dev/null 2>&1 &)
+    (git refresh > /dev/null 2>&1 &) # on the way
+    (echo $EPOCHREALTIME > $_last_update_file &)
 
-    if [[ $_git_fetch_duration -ge $_git_fetch_period_threshold ]]; then
-      echo
-      echo -e "\033[1;33mINFO: Executing \`git fetch\` in the background to synchronize with the remote branch.\033[00m"
-      (git fetch   > /dev/null 2>&1 &)
-      (git refresh > /dev/null 2>&1 &) # on the way
-      echo $EPOCHREALTIME > .git-fetch-last-update
-    fi
+    return
+  fi
+
+  _git_fetch_duration=$(echo "scale=10; $EPOCHREALTIME - $(cat $_last_update_file)" | bc | sed 's/^\./0./' | sed 's/\.[0-9,]*$//g')
+
+  if [ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]; then
+    (git fetch   > /dev/null 2>&1 &)
+    (git refresh > /dev/null 2>&1 &) # on the way
+    (echo $EPOCHREALTIME > $_last_update_file &)
   fi
 }
 
