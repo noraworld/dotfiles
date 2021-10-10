@@ -9,3 +9,15 @@ disabled = false
 style = "#b0c4de"
 time_format = "%Y/%m/%d %T"
 format = "[$time]($style) "
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
