@@ -1,0 +1,16 @@
+#compdef pop_directory
+
+_pop_directory() {
+  local -a current_directory_stack
+  current_directory_stack=( "${(uf)"$(dirs -lv | sed -r 's/^([0-9]+).(.*?)/\1[\2]/')"}" )
+
+  _arguments '1: :->current_directory_stack'
+
+  case "$state" in
+    current_directory_stack)
+      _values $state $current_directory_stack
+      ;;
+  esac
+}
+
+compdef _pop_directory pop_directory
