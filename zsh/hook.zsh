@@ -93,16 +93,6 @@ function __git_autofetch() {
   fi
 }
 
-function __wakeup() {
-  # stop sleep (for deprecated command stopper)
-  _bury_message=`bury -y sleep`
-  if [[ $_bury_message != "No processes exist." ]]; then
-    echo
-    echo $_bury_message
-  fi
-  _bury_message=''
-}
-
 function __postprocessing() {
   _tn_cmd=''
 
