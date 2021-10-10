@@ -2,14 +2,9 @@
 
 # Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
 
-_tn_timestamp=`echo $EPOCHREALTIME`
 _tn_cmd=''
-_tn_caffeinate_pid=''
-need_caffeine=true
-_bury_message=''
 
 function __set_preexec_variable() {
-  _tn_timestamp=`echo $EPOCHREALTIME`
   _tn_cmd=$1
 }
 
