@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Refer to https://bearmini.hatenablog.com/entry/2016/02/16/222057. Thanks a lot!
-
 _tn_cmd=''
 
 function __set_preexec_variable() {
