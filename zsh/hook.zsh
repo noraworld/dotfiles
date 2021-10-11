@@ -41,9 +41,7 @@ function __warn_deprecated_command() {
 function __autorun() {
   if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
     store_directory_stack
-    echo -e ""
-    echo -e "\033[1;92mDIRECTORY STACK:\033[00m"
-    show_directory_stack
+
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
     ls
