@@ -38,8 +38,8 @@ function __warn_deprecated_command() {
   done < $DOTPATH/DEPRECATED_COMMAND_LIST
 }
 
-function __autorun() {
-  if [[ -n $AUTORUN_DIR ]] && [[ $AUTORUN_DIR != $PWD ]]; then
+function __autols() {
+  if [ -n "$AUTOLS_DIR" ] && [ "$AUTOLS_DIR" != "$PWD" ]; then
     store_directory_stack
 
     echo -e ""
@@ -47,7 +47,7 @@ function __autorun() {
     ls
   fi
 
-  AUTORUN_DIR="${PWD}"
+  AUTOLS_DIR="${PWD}"
 }
 
 function __git_autofetch() {

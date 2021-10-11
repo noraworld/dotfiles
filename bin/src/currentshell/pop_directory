@@ -9,7 +9,7 @@ else
 fi
 
 # output directory stack when directory which is not a current directory are popped
-# output directory stack at function autorun() in bashrc when current directory are popped
+# output directory stack at function autols() when current directory are popped
 if [[ $(pwd) = $current_directory ]]; then
   show_directory_stack
 fi
