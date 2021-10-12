@@ -14,6 +14,7 @@ alias grep='grep --color=auto'
 #   by overriding the default behaviors
 
 # Abbreviation
+alias d='show_directory_stack'
 alias p='push_directory'
 alias pop='pop_directory'
 alias be='bundle exec'
