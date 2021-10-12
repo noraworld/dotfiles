@@ -24,7 +24,8 @@ function operate_apt() {
       require_package_file $APTFILE
       require_packages
 
-      sudo apt -y purge "${argv[@]:1}"
+      sudo apt -y --purge remove "${argv[@]:1}"
+      sudo apt -y autoremove
 
       check_command_success
       delete_packages_from_file $APTFILE
