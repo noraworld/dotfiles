@@ -6,7 +6,7 @@ if [[ ${0} != "./setup" && ${0} != "setup" ]]; then
   echo -e "You need to change directories so you can execure this script by"
   echo -e "typing the following command."
   echo -e "=== EXECUTE BELOW ==="
-  echo -e "$ bash setup.sh"
+  echo -e "$ ./setup"
   echo -e "=== EXECUTE ABOVE ==="
   echo -e "Aborted."
   exit 1

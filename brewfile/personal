@@ -1,6 +1,4 @@
 tap "rcmdnk/rcmdnkpac"
-brew "bash"
-brew "bash-completion"
 brew "ext4fuse"
 brew "fd"
 brew "ffmpeg"

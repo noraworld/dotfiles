@@ -42,8 +42,6 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "files.associations": {
-        "bashrc": "shellscript",
-        "bash_profile": "shellscript",
         "**/bin/src/currentshell/**/*": "shellscript",
         "**/developers-blog-content-ja/articles/**/*": "markdown", // workaround
         "*env*": "dotenv",

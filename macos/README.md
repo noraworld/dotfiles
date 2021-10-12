@@ -2,7 +2,7 @@
 ## Special system preferences
 ### Change save location for screencaptures to Google Photo’s backup folder
 1. Type the following command
-```bash
+```shell
 $ mkdir ~/Google\ Photos
 $ defaults write com.apple.screencapture location ~/Google\ Photos
 $ killall SystemUIServer
@@ -13,35 +13,35 @@ You can now back up any screencaptures automatically to Google Photos.
 
 <details><summary>Rollback</summary>
 
-```bash
+```shell
 $ defaults delete com.apple.screencapture location
 $ killall SystemUIServer
 ```
 </details>
 
 ### Add "Quit Finder" to Finder.app menu bar
-```bash
+```shell
 $ defaults write com.apple.Finder QuitMenuItem -boolean true
 $ killall Finder
 ```
 
 <details><summary>Rollback</summary>
 
-```bash
+```shell
 $ defaults delete com.apple.Finder QuitMenuItem
 $ killall Finder
 ```
 </details>
 
 ### Do not create `.DS_Store` when using Finder.app
-```bash
+```shell
 $ defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 $ killall Finder
 ```
 
 <details><summary>Rollback</summary>
 
-```bash
+```shell
 $ defaults write com.apple.desktopservices DSDontWriteNetworkStores False
 $ killall Finder
 ```
@@ -54,7 +54,7 @@ In order to disable clamshell mode, you need to use [macOS Recovery](https://sup
 2. Hold `⌘-R` until displaying the Apple logo
 3. Open the Terminal app from the utility menu
 4. Type the following command
-```bash
+```shell
 $ nvram boot-args="niog=1"
 ```
 
@@ -62,7 +62,7 @@ $ nvram boot-args="niog=1"
 
 1. Same as the setup procedure 1-3
 2. Type the following command
-```bash
+```shell
 $ nvram -d boot-args
 ```
 </details>
@@ -73,7 +73,7 @@ $ nvram -d boot-args
 
 ### Disable acceleration on a mouse
 1. Type the following command
-```bash
+```shell
 $ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 ```
 2. Log out and back in, or restart your Mac
@@ -81,7 +81,7 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 <details><summary>Rollback</summary>
 
 1. Type the following command
-```bash
+```shell
 $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 ```
 2. Log out and back in, or restart your Mac
