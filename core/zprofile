@@ -21,6 +21,7 @@ export IGNOREEOF=$(echo ${IGNOREEOF-10000})
 export RUBY_CONFIGURE_OPTS=$(echo ${RUBY_CONFIGURE_OPTS-"--with-openssl-dir=/usr/local/opt/openssl@1.1"})
 export PKG_CONFIG_PATH=$(echo ${PKG_CONFIG_PATH-/usr/local/opt/imagemagick@6/lib/pkgconfig})
 export GIT_FETCH_PERIOD_THRESHOLD=$(echo ${GIT_FETCH_PERIOD_THRESHOLD-3600})
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 export DOTPATH=""
 export PATH
