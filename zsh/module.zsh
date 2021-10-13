@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 zmodload zsh/datetime # $EPOCHREALTIME
-bindkey -e
 
 autoload -Uz compinit && compinit
 autoload -Uz add-zsh-hook

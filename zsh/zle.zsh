@@ -11,4 +11,3 @@ function __fuzzy_push_directory() {
 }
 
 zle -N __fuzzy_push_directory
-bindkey '^J' __fuzzy_push_directory

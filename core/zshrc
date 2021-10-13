@@ -20,5 +20,6 @@ esac
 . ~/.zsh/dstack.zsh # after: bin.zsh
 . ~/.zsh/module.zsh
 . ~/.zsh/zle.zsh
+. ~/.zsh/bindkey.zsh
 . ~/.zsh/hook.zsh
 . ~/.zsh/load.zsh # should be: last
