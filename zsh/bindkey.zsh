@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-bindkey -e
+bindkey -e # use emacs-like key bindings
 
 bindkey '^J' __fuzzy_push_directory
