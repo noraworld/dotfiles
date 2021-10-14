@@ -8,6 +8,7 @@ runtime! config/*/*.vim
 scriptencoding utf-8
 set encoding=utf-8
 set number
+set ruler
 set title
 set expandtab
 set tabstop=2
@@ -20,6 +21,7 @@ set ignorecase
 set hlsearch
 set virtualedit=onemore
 set cursorline
+set laststatus=2
 "" https://github.com/vim/vim/issues/2506
 "" https://vim-jp.org/vimdoc-ja/options.html
 set backupcopy=yes
