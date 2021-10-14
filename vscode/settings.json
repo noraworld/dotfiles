@@ -41,6 +41,7 @@
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
+    "files.defaultLanguage": "markdown",
     "files.associations": {
         "**/bin/src/currentshell/**/*": "shellscript",
         "**/developers-blog-content-ja/articles/**/*": "markdown", // workaround
