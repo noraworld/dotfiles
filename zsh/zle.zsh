@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+zle -N __fuzzy_push_directory
+zle -N __smart_forward
+
 function __fuzzy_push_directory() {
   push_directory
 
@@ -9,8 +12,6 @@ function __fuzzy_push_directory() {
     zle reset-prompt
   fi
 }
-
-zle -N __fuzzy_push_directory
 
 function __smart_forward() {
   if [ -n "$POSTDISPLAY" ]; then
@@ -23,5 +24,3 @@ function __smart_forward() {
     zle forward-char
   fi
 }
-
-zle -N __smart_forward
