@@ -32,7 +32,7 @@
             "color": "#ffff0022"
         },
         {
-            "column": 163, // this value is where the ruler just hides itself and the word wrapping occurs if the line length exceeds 160
+            "column": 160,
             "color": "#ff408144"
         }
     ],
