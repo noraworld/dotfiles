@@ -34,5 +34,10 @@
         "key": "ctrl+j",
         "command": "-editor.action.joinLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {   // To avoid collision with Clipboard Ring
+        "key": "shift+cmd+v",
+        "command": "-markdown.extension.togglePreview",
+        "when": "!terminalFocus"
     }
 ]
