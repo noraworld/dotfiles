@@ -7,6 +7,7 @@ function __fuzzy_push_directory() {
   push_directory
 
   if [ $? = "0" ]; then
+    BUFFER=""
     zle .accept-line
   else
     zle reset-prompt
