@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case $1 in
+  install)
+    __alarm "brew install" "brew get" ""
+    ;;
+  uninstall)
+    __alarm "brew uninstall" "brew discard" ""
+    ;;
+  cask)
+    case $2 in
+      install)
+        __alarm "brew cask install" "brew cask get" ""
+        ;;
+      uninstall)
+        __alarm "brew cask uninstall" "brew cask discard" ""
+        ;;
+      *)
+        command brew "$@"
+        ;;
+    esac
+    ;;
+  *)
+    command brew "$@"
+    ;;
+esac

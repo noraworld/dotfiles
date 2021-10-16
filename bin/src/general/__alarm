@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ "$#" -ne 3 ]; then
+  echo "Error: The number of arguments must be 3"      >&2
+  echo "           Argument 1: The target command"     >&2
+  echo "           Argument 2: The substitute command" >&2
+  echo "           Argument 3: The reason"             >&2
+
+  exit 1
+fi
+
+TARGET_COMMAND="$1"
+SUBSTITUTE_COMMAND="$2"
+REASON="$3"
+
+if [ "$SUBSTITUTE_COMMAND" != "" ]; then
+  echo "\033[1;33mWARNING:\033[00m Command \`\033[1m$TARGET_COMMAND\033[00m' is deprecated or dangerous. Use \`\033[1m$SUBSTITUTE_COMMAND\033[00m' command instead, or use it very carefully."
+else
+  echo "\033[1;33mWARNING:\033[00m Command \`\033[1m$TARGET_COMMAND\033[00m' is deprecated or dangerous. It should not be used, or should be used very carefully."
+fi
+
+if [ "$REASON" != "" ]; then
+  echo "         Reason: $REASON."
+fi
+
+echo "         Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands."

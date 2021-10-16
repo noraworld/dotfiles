@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case $1 in
+  install)
+    __alarm "pip2 install" "pipenv install --system" ""
+    ;;
+  *)
+    command gem "$@"
+    ;;
+esac

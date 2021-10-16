@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case $1 in
+  install)
+    __alarm "apt install" "package install" ""
+    ;;
+  remove)
+    __alarm "apt remove" "package remove" ""
+    ;;
+  purge)
+    __alarm "apt purge" "package purge" ""
+    ;;
+  *)
+    command apt "$@"
+    ;;
+esac

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case $1 in
+  up)
+    __alarm "docker-compose up" "docker-server" "This command ignores stdin such as binding.pry"
+    ;;
+  *)
+    command docker-compose "$@"
+    ;;
+esac

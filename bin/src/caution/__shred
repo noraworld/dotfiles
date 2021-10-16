@@ -1,0 +1,3 @@
+#!/bin/sh
+
+__alarm "shred" "" "This command destroys a file, a directory, or a disk completely"

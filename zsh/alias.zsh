@@ -9,6 +9,7 @@ alias del='trash'
 # Overridden
 alias ls='ls --color=auto -N'
 alias grep='grep --color=auto'
+alias script='script -a'
 # WARNING:
 #   Do not override commands unduly
 #   because some commands may not work properly

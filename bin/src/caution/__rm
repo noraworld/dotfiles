@@ -1,0 +1,3 @@
+#!/bin/sh
+
+__alarm "rm" "del" "This command deletes a file or a directory and it won’t be restored"
