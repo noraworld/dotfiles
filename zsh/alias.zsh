@@ -21,3 +21,8 @@ alias pop='pop_directory'
 alias be='bundle exec'
 alias x='xargs -n 1 -o' # usage: which cat | x file
 alias ca='cron-apply'
+
+if [[ "${OSTYPE}" =~ "linux*" ]]; then
+  # https://github.com/sharkdp/bat/blob/994c21a5e14588dd252f1503ae06683baf8f3ffa/README.md#:~:text=Important%3A%20If%20you,with%20other%20distributions
+  alias bat='batcat'
+fi

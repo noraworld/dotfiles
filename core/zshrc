@@ -9,9 +9,6 @@ case "${OSTYPE}" in
   darwin*)
     . ~/.zsh/macos.zsh
     ;;
-  linux*)
-    . ~/.zsh/linux.zsh
-    ;;
 esac
 
 . ~/.zsh/development.zsh
