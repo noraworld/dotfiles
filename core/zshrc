@@ -4,13 +4,7 @@
 
 . ~/.dotpath
 . ~/.zsh/alias.zsh
-
-case "${OSTYPE}" in
-  darwin*)
-    . ~/.zsh/macos.zsh
-    ;;
-esac
-
+. ~/.zsh/path.zsh
 . ~/.zsh/development.zsh
 . ~/.zsh/production.zsh
 . ~/.zsh/bin.zsh
