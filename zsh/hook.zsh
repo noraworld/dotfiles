@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+function __arm() {
+  CURRENT_COMMAND="$1"
+}
+
 function __autols() {
   if [ -n "$AUTOLS_DIR" ] && [ "$AUTOLS_DIR" != "$PWD" ]; then
     store_directory_stack
@@ -38,4 +42,8 @@ function __git_autofetch() {
     (git refresh > /dev/null 2>&1 &) # on the way
     (echo $EPOCHREALTIME > $_last_update_file &)
   fi
+}
+
+function __unarm() {
+  CURRENT_COMMAND=""
 }

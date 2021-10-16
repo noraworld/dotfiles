@@ -1,4 +1,9 @@
-#!/bin/sh
+if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*apt[[:blank:]]*')" -eq 0 ] &&
+   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*apt[[:blank:]]*')" -eq 0 ]
+then
+  \apt "$@"
+  return $?
+fi
 
 case $1 in
   install)

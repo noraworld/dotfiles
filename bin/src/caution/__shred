@@ -1,3 +1,8 @@
-#!/bin/sh
+if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*shred[[:blank:]]*')" -eq 0 ] &&
+   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*shred[[:blank:]]*')" -eq 0 ]
+then
+  \shred "$@"
+  return $?
+fi
 
 __alarm "shred" "" "This command destroys a file, a directory, or a disk completely"

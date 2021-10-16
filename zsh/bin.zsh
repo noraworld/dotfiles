@@ -28,6 +28,12 @@ if [ -e ~/.bin ]; then
     _cmd=$(basename ${_cmd})
 
     # e.g. alias rm='__rm'
-    alias ${_cmd:2}="${_cmd}"
+    #
+    # deprecated or dangerous commands
+    # should be executed in a current shell
+    # to load the environment variable
+    # "$CURRENT_COMMAND" in those commands
+    #
+    alias ${_cmd:2}="source ${_cmd}"
   done
 fi

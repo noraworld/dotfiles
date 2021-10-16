@@ -1,3 +1,8 @@
-#!/bin/sh
+if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*pushd[[:blank:]]*')" -eq 0 ] &&
+   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*pushd[[:blank:]]*')" -eq 0 ]
+then
+  \pushd "$@"
+  return $?
+fi
 
 __alarm "pushd" "p" ""

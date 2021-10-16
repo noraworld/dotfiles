@@ -1,4 +1,9 @@
-#!/bin/sh
+if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*gem[[:blank:]]*')" -eq 0 ] &&
+   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*gem[[:blank:]]*')" -eq 0 ]
+then
+  \gem "$@"
+  return $?
+fi
 
 case $1 in
   install)
