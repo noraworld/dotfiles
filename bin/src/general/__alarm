@@ -13,14 +13,16 @@ TARGET_COMMAND="$1"
 SUBSTITUTE_COMMAND="$2"
 REASON="$3"
 
+echo "\033[1;31mERROR:\033[00m Command \`\033[1m$TARGET_COMMAND\033[00m' is deprecated or dangerous."
+
 if [ "$SUBSTITUTE_COMMAND" != "" ]; then
-  echo "\033[1;33mWARNING:\033[00m Command \`\033[1m$TARGET_COMMAND\033[00m' is deprecated or dangerous. Use \`\033[1m$SUBSTITUTE_COMMAND\033[00m' command instead, or use it very carefully."
+  echo "       Use \`\033[1m$SUBSTITUTE_COMMAND\033[00m' command instead."
 else
-  echo "\033[1;33mWARNING:\033[00m Command \`\033[1m$TARGET_COMMAND\033[00m' is deprecated or dangerous. It should not be used, or should be used very carefully."
+  echo "       It should not be used, or should be used very carefully."
 fi
 
 if [ "$REASON" != "" ]; then
-  echo "         Reason: $REASON."
+  echo "\n       Reason: $REASON."
 fi
 
-echo "         Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands."
+echo "\n       Tip: Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands."
