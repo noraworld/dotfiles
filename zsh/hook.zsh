@@ -1,41 +1,5 @@
 #!/usr/bin/env zsh
 
-_tn_cmd=''
-
-function __set_preexec_variable() {
-  _tn_cmd=$1
-}
-
-function __warn_deprecated_command() {
-  while read line
-  do
-    deprecated_command=`echo "$line," | cut -d ',' -f 1`
-    substitute_command=`echo "$line," | cut -d ',' -f 2`
-    reason=`echo "$line," | cut -d ',' -f 3`
-    if [[ $_tn_cmd =~ ^([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]] || [[ $_tn_cmd =~ ^([[:blank:]]+.*)*sudo([[:blank:]]+.*)*$deprecated_command([[:blank:]]+.*)*$ ]]; then
-      if [[ "${substitute_command}" != "" ]]; then
-        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated or dangerous. Use \`\033[1m$substitute_command\033[00m' command instead, or use it very carefully."
-      elif [[ "${substitute_command}" = "" ]]; then
-        echo -e "\033[1;33mWARNING:\033[00m Command \`\033[1m$deprecated_command\033[00m' is deprecated or dangerous. It should not be used, or should be used very carefully."
-      else
-        echo -e "Something went wrong!"
-      fi
-
-      if [[ "${reason}" != "" ]]; then
-        echo "         Reason: $reason."
-      fi
-      echo -e "         Use \`\033[1mdep\033[00m' command to list all deprecated (or dangerous) and substitute commands.\n"
-
-      echo -e "\033[1;31mNOT RECOMMENDED:\033[00m \033[2mSend STOP signal (^Z) to continue anyway\033[00m"
-      echo -e "\033[1;32mRECOMMENDED:\033[00m     \033[1mSend SIGINT signal (^C) to abort\033[00m\n"
-
-      echo -en "Type signal: "
-
-      sleep infinity
-    fi
-  done < $DOTPATH/DEPRECATED_COMMAND_LIST
-}
-
 function __autols() {
   if [ -n "$AUTOLS_DIR" ] && [ "$AUTOLS_DIR" != "$PWD" ]; then
     store_directory_stack
@@ -74,8 +38,4 @@ function __git_autofetch() {
     (git refresh > /dev/null 2>&1 &) # on the way
     (echo $EPOCHREALTIME > $_last_update_file &)
   fi
-}
-
-function __postprocessing() {
-  _tn_cmd=''
 }
