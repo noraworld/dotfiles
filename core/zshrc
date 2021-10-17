@@ -2,15 +2,19 @@
 #   Do not change the order of files to load unduly
 #   because the order from which file should be loaded is important
 
-. ~/.dotpath
-. ~/.zsh/alias.zsh
-. ~/.zsh/path.zsh
-. ~/.zsh/development.zsh
-. ~/.zsh/production.zsh
-. ~/.zsh/bin.zsh
-. ~/.zsh/dstack.zsh # after: bin.zsh
-. ~/.zsh/module.zsh
-. ~/.zsh/zle.zsh
-. ~/.zsh/bindkey.zsh
-. ~/.zsh/hook.zsh
-. ~/.zsh/load.zsh # should be: last
+_dotfiles=(
+  ". ~/.dotpath;"
+  ". ~/.zsh/alias.zsh;"
+  ". ~/.zsh/path.zsh;"
+  ". ~/.zsh/development.zsh;"
+  ". ~/.zsh/production.zsh;"
+  ". ~/.zsh/bin.zsh;"
+  ". ~/.zsh/dstack.zsh;" # after: bin.zsh
+  ". ~/.zsh/module.zsh;"
+  ". ~/.zsh/zle.zsh;"
+  ". ~/.zsh/bindkey.zsh;"
+  ". ~/.zsh/hook.zsh;"
+  ". ~/.zsh/load.zsh;" # should be: last
+)
+
+eval ${_dotfiles[@]}
