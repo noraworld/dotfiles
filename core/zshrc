@@ -3,18 +3,18 @@
 #   because the order from which file should be loaded is important
 
 _dotfiles=(
-  ". ~/.dotpath;"
-  ". ~/.zsh/alias.zsh;"
-  ". ~/.zsh/path.zsh;"
-  ". ~/.zsh/development.zsh;"
-  ". ~/.zsh/production.zsh;"
-  ". ~/.zsh/bin.zsh;"
-  ". ~/.zsh/dstack.zsh;" # after: bin.zsh
-  ". ~/.zsh/module.zsh;"
-  ". ~/.zsh/zle.zsh;"
-  ". ~/.zsh/bindkey.zsh;"
-  ". ~/.zsh/hook.zsh;"
-  ". ~/.zsh/load.zsh;" # should be: last
+  ". $HOME/.dotpath;"
+  ". $HOME/.zsh/alias.zsh;"
+  ". $HOME/.zsh/path.zsh;"
+  ". $HOME/.zsh/development.zsh;"
+  ". $HOME/.zsh/production.zsh;"
+  ". $HOME/.zsh/bin.zsh;"
+  ". $HOME/.zsh/dstack.zsh;" # after: bin.zsh
+  ". $HOME/.zsh/module.zsh;"
+  ". $HOME/.zsh/zle.zsh;"
+  ". $HOME/.zsh/bindkey.zsh;"
+  ". $HOME/.zsh/hook.zsh;"
+  ". $HOME/.zsh/load.zsh;" # should be: last
 )
 
 eval ${_dotfiles[@]}
