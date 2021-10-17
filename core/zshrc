@@ -9,11 +9,11 @@ _dotfiles=(
   ". $HOME/.zsh/production.zsh;"
   ". $HOME/.zsh/bin.zsh;"
   ". $HOME/.zsh/dstack.zsh;" # after: bin.zsh
+  ". $HOME/.zsh/module.zsh;"
   ". $HOME/.zsh/zle.zsh;"
   ". $HOME/.zsh/bindkey.zsh;"
   ". $HOME/.zsh/hook.zsh;"
-  ". $HOME/.zsh/load.zsh;"
-  ". $HOME/.zsh/module.zsh;" # after: load.zsh
+  ". $HOME/.zsh/load.zsh;" # should be: last
 )
 
 eval ${_dotfiles[@]}

@@ -45,3 +45,5 @@ if [ "$(uname -i)" = "aarch64" ] && [ "$OSTYPE" =~ "linux-gnu" ]; then
   zinit ice from"gh-r" as"program" bpick"*aarch64-unknown-linux-gnu*" pick"rg"
   zinit light microsoft/ripgrep-prebuilt
 fi
+
+autoload -Uz compinit && compinit
