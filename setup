@@ -108,72 +108,6 @@ function install_packages() {
   esac
 }
 
-function install_anyenv() {
-  # assumes anyenv has already been installed via Homebrew on macOS
-  if [[ "${OSTYPE}" =~ "linux" ]]; then
-    git clone https://github.com/anyenv/anyenv ~/.anyenv
-  fi
-
-  #exec $SHELL
-
-  anyenv init
-  anyenv install --init
-
-  if ! type rbenv 1>/dev/null 2>/dev/null; then
-    anyenv install rbenv
-    #exec $SHELL
-  fi
-
-  if ! type pyenv 1>/dev/null 2>/dev/null; then
-    anyenv install pyenv
-    #exec $SHELL
-  fi
-
-  if ! type nodenv 1>/dev/null 2>/dev/null; then
-    anyenv install nodenv
-    #exec $SHELL
-  fi
-}
-
-function install_ruby() {
-  if [[ "$(ruby -v)" =~ "$(cat .ruby-version)" ]]; then
-    return
-  fi
-
-  rbenv install $(cat .ruby-version)
-  rbenv global $(cat .ruby-version)
-  gem install bundler -v '1.16.5'
-  bundle install
-}
-
-function install_python() {
-  if [[ "$(python -V)" =~ "$(cat .python-version)" ]]; then
-    return
-  fi
-
-  if [[ "${OSTYPE}" =~ "^darwin" ]]; then
-    brew discard binutils
-    pyenv install $(cat .python-version)
-    brew get binutils
-  else
-    pyenv install $(cat .python-version)
-  fi
-
-  pyenv global $(cat .python-version)
-  pip install pipenv
-  pipenv install --system
-}
-
-function install_node() {
-  if [[ "$(node -v)" =~ "$(cat .node-version)" ]]; then
-    return
-  fi
-
-  nodenv install $(cat .node-version)
-  nodenv global $(cat .node-version)
-  npm install
-}
-
 function change_default_shell() {
   if [[ "$(basename $(echo $SHELL))" != "zsh" ]]; then
     if [[ "$(cat /etc/shells | grep -c $(which zsh))" = 0 ]]; then
@@ -244,10 +178,6 @@ install_vim_plugin
 
 install_brew
 install_packages
-install_anyenv
-install_ruby
-install_python
-install_node
 
 change_default_shell
 

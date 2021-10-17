@@ -6,7 +6,6 @@ _dotfiles=(
   ". $HOME/.dotpath;"
   ". $HOME/.zsh/alias.zsh;"
   ". $HOME/.zsh/path.zsh;"
-  ". $HOME/.zsh/development.zsh;"
   ". $HOME/.zsh/production.zsh;"
   ". $HOME/.zsh/bin.zsh;"
   ". $HOME/.zsh/dstack.zsh;" # after: bin.zsh
