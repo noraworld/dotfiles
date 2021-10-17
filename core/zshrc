@@ -18,3 +18,25 @@ _dotfiles=(
 )
 
 eval ${_dotfiles[@]}
+
+# For performance measurements
+#
+#   Make sure eval command above is commented out when you use this
+#
+# zmodload zsh/datetime
+# _time_sum="0"
+# for _dotfile in ${_dotfiles[@]}; do
+#   echo
+
+#   _start="$EPOCHREALTIME"
+#   eval $_dotfile
+#   _end="$EPOCHREALTIME"
+
+#   basename $_dotfile | sed -r "s/;$/:/g" | sed -r "s/^\.//g"
+#   _time=$(echo "$_end - $_start" | bc | sed 's/^\./0./')
+#   _time_sum="$(echo "$_time_sum + $_time" | bc | sed 's/^\./0./')"
+#   echo $_time
+# done
+
+# echo "\nTotal time:"
+# echo $_time_sum
