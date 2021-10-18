@@ -3,4 +3,4 @@ if [[ ! -e $HOME/.directory_stack_store ]]; then
   touch $HOME/.directory_stack_store
 fi
 
-dirs -v | sed "s/^ *[0-9]* *//g" > $HOME/.directory_stack_store
+dirs -lv > $HOME/.directory_stack_store
