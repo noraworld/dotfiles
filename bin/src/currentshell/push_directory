@@ -22,8 +22,4 @@ else
   store_directory_stack
 fi
 
-# output directory stack when same directory are pushed
-# output directory stack at function autols() when different directory are pushed
-if [[ $(pwd) = $current_directory ]]; then
-  show_directory_stack
-fi
+show_directory_stack

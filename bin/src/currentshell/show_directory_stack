@@ -1,2 +1,3 @@
+echo -e "\n\033[1;92mDIRECTORY STACK:\033[00m"
 echo -e "\033[1;96m$(dirs -l -v | head -1) (you are here)\033[00m"
 dirs -l -v | sed -r '1d'
