@@ -44,6 +44,7 @@
     "files.defaultLanguage": "markdown",
     "files.associations": {
         "**/bin/src/currentshell/**/*": "shellscript",
+        "**/bin/src/zsh_completions/**/*": "shellscript",
         "**/developers-blog-content-ja/articles/**/*": "markdown", // workaround
         "*env*": "dotenv",
         "Schemafile": "ruby" // for Ridgepole
