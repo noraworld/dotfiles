@@ -55,16 +55,18 @@
     "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font",
 
     // ruby
+    //   https://github.com/rubyide/vscode-ruby/blob/main/packages/vscode-ruby-client/README.md#example-initial-configuration
+    //   https://github.com/rubyide/vscode-ruby/blob/330dcd2af212a336eba791ac0bd185f1c78042d7/packages/vscode-ruby-client/README.md#example-initial-configuration
     "ruby.useBundler": true,
     "ruby.useLanguageServer": true,
     "ruby.lint": {
-        "reek": {
-            "useBundler": true
+        "rubocop": {
+            "useBundler": true,
+            "except": ["Metrics"] // because it is annoying that it puts wavy lines to all lines in those methods
         }
     },
+    "ruby.format": "rubocop",
     "ruby.intellisense": "rubyLocate",
-    "ruby.rubocop.useBundler": true,
-    "ruby.rubocop.suppressRubocopWarnings": true,
 
     // python
     "python.showStartPage": false,
