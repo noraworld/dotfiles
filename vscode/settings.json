@@ -5,16 +5,14 @@
     // - Change modifier key of the option that follows link
     //   - I want to use cmd+click, but multi-cursor overlaps
 
-    // security
     "security.workspace.trust.untrustedFiles": "open",
 
-    // workbench
     "workbench.startupEditor": "newUntitledFile",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
+    "workbench.colorTheme": "One Dark Pro",
 
-    // editor
     "editor.wordWrap": "on",
     "editor.renderWhitespace": "boundary",
     "editor.renderControlCharacters": true,
@@ -37,7 +35,6 @@
         }
     ],
 
-    // files
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
@@ -50,11 +47,9 @@
         "Schemafile": "ruby" // for Ridgepole
     },
 
-    // terminal
     "terminal.integrated.scrollback": 100000,
     "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Hack Nerd Font",
 
-    // ruby
     //   https://github.com/rubyide/vscode-ruby/blob/main/packages/vscode-ruby-client/README.md#example-initial-configuration
     //   https://github.com/rubyide/vscode-ruby/blob/330dcd2af212a336eba791ac0bd185f1c78042d7/packages/vscode-ruby-client/README.md#example-initial-configuration
     "ruby.useBundler": true,
@@ -68,23 +63,13 @@
     "ruby.format": "rubocop",
     "ruby.intellisense": "rubyLocate",
 
-    // python
     "python.showStartPage": false,
 
-    // git
     "git.autofetch": true,
+    "git.autofetchPeriod": 3600,
 
     "[markdown]": {
         "editor.tabSize": 4
     },
-    "markdown.extension.list.indentationSize": "inherit",
-    "workbench.colorTheme": "One Dark Pro",
-    "git.autofetchPeriod": 3600
-
-    // ignores trimming trailing space on Markdown for newline, but it is not recommended
-    // "[markdown]": {
-    //     "files.trimTrailingWhitespace": false
-    // },
-
-    // not classified yet
+    "markdown.extension.list.indentationSize": "inherit"
 }
