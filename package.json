@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/noraworld/dotfiles#readme",
   "dependencies": {
-    "trash-cli": "^4.0.0",
-    "zenn-cli": "^0.1.79"
+    "trash-cli": "*"
   }
 }
