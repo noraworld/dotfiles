@@ -10,6 +10,6 @@ case $1 in
     __alarm "pip2 install" "pipenv install --system" ""
     ;;
   *)
-    command gem "$@"
+    command pip "$@"
     ;;
 esac
