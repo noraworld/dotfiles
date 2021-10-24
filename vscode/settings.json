@@ -43,8 +43,6 @@
         "**/bin/src/currentshell/**/*": "shellscript",
         "**/bin/src/zsh_completions/**/*": "shellscript",
         "**/bin/src/caution/**/*": "shellscript",
-        "**/developers-blog-content-ja/articles/**/*": "markdown", // workaround
-        "*env*": "dotenv",
         "Schemafile": "ruby" // for Ridgepole
     },
 
