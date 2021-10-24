@@ -33,6 +33,22 @@ Run the setup script. You need to change directories so you can run it in dotfil
 ```shell
 cd dotfiles
 ./setup
+
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby $(cat .ruby-version)
+gem install bundler
+bundle install
+
+asdf plugin-add python
+asdf install python $(cat .python-version)
+pip install pipenv
+asdf reshim python
+pipenv install --target python_modules
+asdf reshim python
+
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs $(cat .node-version)
+npm install
 ```
 
 **IMPORTANT NOTE 1**: You should install Vim plugins and quit it when it’s started up while executing a setup script.
