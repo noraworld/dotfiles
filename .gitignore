@@ -13,3 +13,5 @@ config/systemd/
 
 # WIP
 config/karabiner/
+
+vendor/
