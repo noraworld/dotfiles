@@ -25,6 +25,7 @@ set laststatus=2
 "" https://github.com/vim/vim/issues/2506
 "" https://vim-jp.org/vimdoc-ja/options.html
 set backupcopy=yes
+set notitle
 
 " Syntax highlight on
 if has("syntax")
