@@ -7,7 +7,11 @@ fi
 
 case $1 in
   install)
-    __alarm "gem install" "bundle install" ""
+    if ! [ "$2" =~ "bundler*" ]; then
+      __alarm "gem install" "bundle install" ""
+    else
+      command gem "$@"
+    fi
     ;;
   *)
     command gem "$@"
