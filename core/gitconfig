@@ -35,6 +35,7 @@
 	stash = false
 [diff]
 	compactionHeuristic = true
+	wsErrorHighlight = all
 [pull]
 	rebase = false
 [filter "lfs"]
