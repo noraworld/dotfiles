@@ -1,5 +1,5 @@
-if [ -f ~/.env.preferences ]; then
-  . ~/.env.preferences
+if [ -d ~/.env.preferences ]; then
+  for FILE in ~/.env.preferences/*; do . $FILE; done
 fi
 
 # These environment variables are changeable by ~/.env.preferences
