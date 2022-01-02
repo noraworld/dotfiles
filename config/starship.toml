@@ -10,6 +10,9 @@ style = "#b0c4de"
 time_format = "%Y/%m/%d %T"
 format = "[$time]($style) "
 
+[hostname]
+style = "bold #ffa833"
+
 [username]
 disabled = true
 
