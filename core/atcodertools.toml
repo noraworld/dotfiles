@@ -1,6 +1,3 @@
 [codestyle]
-workspace_dir='~/Workspace/competitive_programming/atcoder/'
+workspace_dir='~/Workspace/competitive-programming/atcoder/'
 lang='python'
-
-[etc]
-download_without_login=true
