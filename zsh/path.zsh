@@ -17,3 +17,5 @@ if [[ "${OSTYPE}" =~ "darwin*" ]]; then
 
   PATH="/usr/local/opt/openssl/bin:$PATH" # OpenSSL; otherwise LibreSSL
 fi
+
+PATH="$HOME/.local/bin:$PATH"
