@@ -71,5 +71,6 @@
         "editor.tabSize": 4
     },
     "markdown.extension.list.indentationSize": "inherit",
-    "markdown.extension.print.absoluteImgPath": false
+    "markdown.extension.print.absoluteImgPath": false,
+    "editor.unicodeHighlight.nonBasicASCII": false
 }
