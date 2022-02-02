@@ -72,5 +72,8 @@
     },
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.print.absoluteImgPath": false,
-    "editor.unicodeHighlight.nonBasicASCII": false
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "cSpell.enableFiletypes": [
+        "ruby"
+    ]
 }
