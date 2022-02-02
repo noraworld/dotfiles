@@ -75,5 +75,14 @@
     "editor.unicodeHighlight.nonBasicASCII": false,
     "cSpell.enableFiletypes": [
         "ruby"
+    ],
+    "cSpell.userWords": [
+        "activerecord",
+        "attachinary",
+        "dotfiles",
+        "influencers",
+        "instagramer",
+        "saas",
+        "specialities"
     ]
 }
