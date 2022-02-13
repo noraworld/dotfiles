@@ -122,9 +122,29 @@ set_target_directory() {
   fi
 }
 
+usage() {
+  echo "Usage:"
+
+  echo "	-h | --help"
+  echo "		Show help message and exit"
+  echo
+
+  echo "	-s | --strict"
+  echo "		Detect all Git repositories under \"\$HOME\""
+  echo "		Typically under \"\$HOME/workspace\""
+  echo
+
+  echo "	-v | --verbose"
+  echo "		Output verbosely"
+}
+
 parse_options() {
   while (( $# > 0 )); do
     case $1 in
+      -h | --help)
+        usage
+        return 1
+        ;;
       -s | --strict)
         STRICT=1
         ;;
