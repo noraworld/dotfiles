@@ -9,10 +9,12 @@ main() {
   [ "$?" -eq 0 ] || return "$?"
 
   # Assuming all working directories are under $HOME/workspace
+  strict=1
   for working_dir in $HOME/workspace/*; do
     check
   done
 
+  strict=0
   for working_dir in $(dirs -l); do
     # Avoid duplicate detection
     [ "$(echo $working_dir | grep -i "^$HOME/workspace")" != "" ] || check
@@ -25,7 +27,7 @@ check() {
   #
 
   if [ "$(git -C "$working_dir" rev-parse --git-dir 2> /dev/null)" = "" ]; then
-    if [ "$VERBOSE" -eq 1 ]; then
+    if [ "$VERBOSE" -eq 1 ] || [ "$strict" -eq 1 ]; then
       echo                                               >&2
       echo "\033[38;05;3m${working_dir}\033[00m:"        >&2
       echo "\033[38;05;9m!! Not a Git directory\033[00m" >&2
