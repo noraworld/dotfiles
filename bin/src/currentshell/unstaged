@@ -13,7 +13,7 @@ main() {
     check
   done
 
-  for working_dir in $(dirs -l); do
+  for working_dir in $(dirs -lv | sed "s/^[0-9]*\s*//g"); do
     # Avoid duplicate detection
     [ "$(echo $working_dir | grep -i "^$HOME/workspace")" != "" ] || check
   done
