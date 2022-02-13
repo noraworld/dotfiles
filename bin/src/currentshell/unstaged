@@ -3,24 +3,23 @@
 PROGNAME=$(basename $0)
 VERBOSE=0
 
-while (( $# > 0 )); do
-  case $1 in
-    -v | --verbose)
-      VERBOSE=1
-      ;;
-    -*)
-      echo "$PROGNAME: Invalid option" >&2
-      return 1
-      ;;
-    *)
-      :
-      ;;
-  esac
+main() {
+  parse_options "$@"
+  # Do not execute anything between them because "$?" is changed!
+  [ "$?" -eq 0 ] || return "$?"
 
-  shift
-done
+  # Assuming all working directories are under $HOME/workspace
+  for working_dir in $HOME/workspace/*; do
+    check
+  done
 
-for working_dir in $(dirs -l); do
+  for working_dir in $(dirs -l); do
+    # Avoid duplicate detection
+    [ "$(echo $working_dir | grep -i "^$HOME/workspace")" != "" ] || check
+  done
+}
+
+check() {
   #
   # Check Git directory
   #
@@ -28,7 +27,7 @@ for working_dir in $(dirs -l); do
   if [ "$(git -C "$working_dir" rev-parse --git-dir 2> /dev/null)" = "" ]; then
     if [ "$VERBOSE" -eq 1 ]; then
       echo                                               >&2
-      echo "\033[38;05;14m${working_dir}\033[00m:"       >&2
+      echo "\033[38;05;3m${working_dir}\033[00m:"        >&2
       echo "\033[38;05;9m!! Not a Git directory\033[00m" >&2
     fi
 
@@ -43,8 +42,8 @@ for working_dir in $(dirs -l); do
 
   if [[ $stat ]]; then
     echo
-    echo "\033[38;05;14m${working_dir}\033[00m:"
-    echo "\033[38;05;9m$stat\033[00m"
+    echo "\033[38;05;3m${working_dir}\033[00m:"
+    echo "$stat"
   fi
 
   #
@@ -59,8 +58,8 @@ for working_dir in $(dirs -l); do
   if [ -z $remote ] || [ -z $base ]; then
     if [ "$VERBOSE" -eq 1 ]; then
       if ! [[ $stat ]]; then
-        echo                                                          >&2
-        echo "\033[38;05;14m${working_dir}\033[00m:"                  >&2
+        echo                                        >&2
+        echo "\033[38;05;3m${working_dir}\033[00m:" >&2
       fi
 
       echo "\033[38;05;9m!! Not having a remote repository\033[00m" >&2
@@ -72,9 +71,30 @@ for working_dir in $(dirs -l); do
   if [ $local != $remote ] && [ $remote = $base ]; then
     if ! [[ $stat ]]; then
       echo
-      echo "\033[38;05;14m${working_dir}\033[00m:"
+      echo "\033[38;05;3m${working_dir}\033[00m:"
     fi
 
-    echo "\033[38;05;9m⇡\033[00m"
+    echo "⇡"
   fi
-done
+}
+
+parse_options() {
+  while (( $# > 0 )); do
+    case $1 in
+      -v | --verbose)
+        VERBOSE=1
+        ;;
+      -*)
+        echo "$PROGNAME: Invalid option" >&2
+        return 1
+        ;;
+      *)
+        :
+        ;;
+    esac
+
+    shift
+  done
+}
+
+main "$@"
