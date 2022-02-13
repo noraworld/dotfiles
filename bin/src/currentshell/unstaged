@@ -1,6 +1,7 @@
 #!/bin/sh
 
 PROGNAME=$(basename $0)
+STRICT=0
 VERBOSE=0
 
 main() {
@@ -8,14 +9,16 @@ main() {
   # Do not execute anything between them because "$?" is changed!
   [ "$?" -eq 0 ] || return "$?"
 
-  # Assuming all working directories are under $HOME/workspace
-  for working_dir in $(find $HOME/workspace -name '.git' 2>/dev/null | xargs -n 1 dirname); do
+  set_target_directory
+
+  # Assuming all working directories are under $TARGET_DIRECTORY
+  for working_dir in $(find $TARGET_DIRECTORY -name '.git' 2>/dev/null | xargs -n 1 dirname); do
     check
   done
 
   for working_dir in $(dirs -lv | sed "s/^[0-9]*\s*//g"); do
     # Avoid duplicate detection
-    [ "$(echo $working_dir | grep -i "^$HOME/workspace")" != "" ] || check
+    [ "$(echo $working_dir | grep -i "^$TARGET_DIRECTORY")" != "" ] || check
   done
 }
 
@@ -111,9 +114,20 @@ check() {
   fi
 }
 
+set_target_directory() {
+  if [ "$STRICT" -eq 1 ]; then
+    TARGET_DIRECTORY=$HOME
+  else
+    TARGET_DIRECTORY=$HOME/workspace
+  fi
+}
+
 parse_options() {
   while (( $# > 0 )); do
     case $1 in
+      -s | --strict)
+        STRICT=1
+        ;;
       -v | --verbose)
         VERBOSE=1
         ;;
