@@ -78,6 +78,21 @@ check() {
 
     echo "⇡"
   fi
+
+  #
+  # Check stashes
+  #
+
+  stashes=$(git -C "$working_dir" stash list)
+
+  if [[ $stashes ]]; then
+    if ! [[ $stat ]]; then
+      echo
+      echo "\033[38;05;3m${working_dir}\033[00m:"
+    fi
+
+    echo "\033[38;05;9m!! One or more stashes detected\033[00m"
+  fi
 }
 
 parse_options() {
