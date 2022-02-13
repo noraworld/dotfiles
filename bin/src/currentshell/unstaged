@@ -82,6 +82,9 @@ check() {
   #
   # Check stashes
   #
+  # MEMO:
+  #   We do not need to check the branches
+  #   because the stashes are shared across branches
 
   stashes=$(git -C "$working_dir" stash list)
 
@@ -92,6 +95,21 @@ check() {
     fi
 
     echo "\033[38;05;9m!! One or more stashes detected\033[00m"
+  fi
+
+  #
+  # Check the number of branches
+  #
+
+  branches=$(git -C "$working_dir" branch | wc -l)
+
+  if [ $branches -ne 1 ]; then
+    if ! [[ $stat ]]; then
+      echo
+      echo "\033[38;05;3m${working_dir}\033[00m:"
+    fi
+
+    echo "\033[38;05;9m!! More than or equal to two branches detected\033[00m"
   fi
 }
 
