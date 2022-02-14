@@ -1,0 +1,103 @@
+#!/usr/bin/env sh
+
+main() {
+  parse_options "$@"
+
+  commits=$(git log --pretty=%H ${options[@]} ${argv[0]})
+  # do not execute anything here because "$?" is changed!
+  [ "$?" -eq 0 ] || exit $?
+  picked_commits=$(echo "$commits" | fzf --no-sort --tac --layout=reverse-list --multi --preview 'git show {}' --preview-window right:$(expr $(tput cols) - 50))
+
+  if [ "$picked_commits" = "" ]; then
+    echo "Nothing was selected" >&2
+    exit 1
+  fi
+
+  if $merges; then
+    cmd="git cherry-pick -m 1 $picked_commits"
+  elif $no_merges; then
+    cmd="git cherry-pick $picked_commits"
+  fi
+
+  if $dry_run; then
+    echo $cmd
+  else
+    echo $cmd
+    echo
+    echo "\033[38;05;9mMake sure you are in the branch you want to cherry-pick\033[00m"
+    printf "Are you sure you want to execute the above command? [yes/no]: "
+    exec < /dev/tty
+    read confirm
+
+    if [ "$confirm" = 'yes' ] || [ "$confirm" = 'Yes' ] || [ "$confirm" = 'YES' ]; then
+      $cmd
+    else
+      echo "Canceled" >&2
+      exit 1
+    fi
+  fi
+}
+
+parse_options() {
+  dry_run=false
+  merges=false
+  no_merges=false
+
+  while (( $# > 0 )); do
+    case $1 in
+      -d | --dry-run)
+        dry_run=true
+        ;;
+      --merges)
+        merges=true
+        options=("${options[@]}" "$1")
+        ;;
+      --no-merges)
+        no_merges=true
+        options=("${options[@]}" "$1")
+        ;;
+      -*)
+        options=("${options[@]}" "$1")
+        ;;
+      *)
+        argv=("${argv[@]}" "$1")
+        ;;
+    esac
+
+    shift
+  done
+
+  # check the number of arguments
+  if [ "${#argv[@]}" -lt 1 ]; then
+    echo "Error: Please specify target branches like main..develop" >&2
+    exit 1
+  elif [ "${#argv[@]}" -ge 2 ]; then
+    echo "Error: Too many arguments" >&2
+    exit 1
+  fi
+
+  # check if two branches exist
+  branch1=$(echo ${argv[0]} | awk '{ gsub(/\.\./, " ", $0); print $1 }')
+  branch2=$(echo ${argv[0]} | awk '{ gsub(/\.\./, " ", $0); print $2 }')
+  if [ ! $(git rev-parse --verify refs/heads/$branch1 2>/dev/null) ] && [ ! $(git rev-parse --verify refs/heads/$branch2 2>/dev/null) ]; then
+    echo "Error: \"$branch1\" and \"$branch2\" do not exist" >&2
+    exit 1
+  elif [ ! $(git rev-parse --verify refs/heads/$branch1 2>/dev/null) ]; then
+    echo "Error: \"$branch1\" does not exist" >&2
+    exit 1
+  elif [ ! $(git rev-parse --verify refs/heads/$branch2 2>/dev/null) ]; then
+    echo "Error: \"$branch2\" does not exist" >&2
+    exit 1
+  fi
+
+  # check if --merges or --no-merges exists
+  if $merges && $no_merges; then
+    echo "Error: Both \"--merges\" and \"--no-merges\" are specified" >&2
+    exit 1
+  elif ! $merges && ! $no_merges; then
+    echo "Error: Neither \"--merges\" nor \"--no-merges\" are specified" >&2
+    exit 1
+  fi
+}
+
+main "$@"
