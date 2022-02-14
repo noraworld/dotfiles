@@ -10,6 +10,7 @@ config/iterm2/
 config/configstore/update-notifier-zenn-cli.json
 config/configstore/update-notifier-npm.json
 config/systemd/
+config/gh/
 
 # WIP
 config/karabiner/
