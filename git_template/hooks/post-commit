@@ -1,10 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-if [ "$(expr "$(git reflog -n 1)" : '^.*cherry-pick:')" -eq 0 ]; then
-  git log
+# MEMO:
+#   Just before the operation was...
+#     commit:                               afb8378 (HEAD -> main, origin/main) HEAD@{0}: commit: 2022-02-15
+#     pull:                                 4ea1572 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: pull: Fast-forward
+#     cherry-pick (before --continue):      09410850a (HEAD -> release/app-20220214-2) HEAD@{0}: commit (cherry-pick): Fix RSpec failures
+#     cherry-pick (--continue in progress): 04f16f396 HEAD@{0}: commit (cherry-pick): Fix RSpec failures
+#     cherry-pick (after --continue):       119e7db53 (HEAD -> release/app-20220214-2) HEAD@{0}: cherry-pick: Add tests for recent_comment_counts
 
-  echo -e "Committed as:"
-  echo -e "  (use \"git reset --soft HEAD^\" to undo)\n"
-  echo -e "	\033[1;93m`git config --local user.name` <`git config --local user.email`>\033[00m\n"
-  echo -e "\033[1;95mCheck if they are correct\033[00m\n"
+# Skip if cherry-picking
+if [ "$(git reflog -n 1 | egrep '\(?cherry-pick\)?:')" ]; then
+  exit 0
 fi
+
+git log
+
+echo "Committed as:"
+echo "  (use \"git reset --soft HEAD^\" to undo)\n"
+echo "	\033[1;93m`git config --local user.name` <`git config --local user.email`>\033[00m\n"
+echo "\033[1;95mCheck if they are correct\033[00m\n"
