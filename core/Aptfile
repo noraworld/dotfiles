@@ -36,6 +36,10 @@ lm-sensors
 # Network
 dnsmasq
 
+# MP3 player
+sox
+libsox-fmt-all
+
 # The below is the unclassified packages yet
 radvdump
 radvd
