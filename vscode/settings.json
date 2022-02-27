@@ -78,11 +78,17 @@
     ],
     "cSpell.userWords": [
         "activerecord",
+        "alsa",
+        "aplay",
+        "AquesTalk",
+        "aquestalkpi",
+        "ASMR",
         "attachinary",
         "Codecov",
         "Dnsmasq",
         "dotfiles",
         "DWANGO",
+        "endraw",
         "ethernets",
         "hankaku",
         "influencers",
@@ -91,12 +97,18 @@
         "netplan",
         "networkd",
         "noraworld",
+        "Ponta",
+        "Qiita",
         "raspberrypi",
         "RuboCop",
         "saas",
         "selectize",
+        "sidekiq",
+        "Siri",
         "specialities",
         "UUUM",
-        "xspecify"
+        "xspecify",
+        "zcat",
+        "Zenn"
     ]
 }
