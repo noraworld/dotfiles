@@ -24,8 +24,10 @@
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
 
-# Do not show line numbers because they are already shown by $LESS
---style=plain
+# plain: Do not show line numbers because they are already shown by
+#        $LESS
+# changes: Show Git diff
+--style=plain,changes
 
 # Always output with `less` style
 --paging=always
