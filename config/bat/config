@@ -23,3 +23,9 @@
 #   Example 2: Use ".gitignore"-style highlighting for ".ignore" files
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
+
+# Do not show line numbers because they are already shown by $LESS
+--style=plain
+
+# Always output with `less` style
+--paging=always
