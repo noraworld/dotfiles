@@ -6,6 +6,7 @@ function usage() {
 }
 
 quiet=false
+without_confirmation=false
 for opt in "$@"
 do
   case "$opt" in
@@ -17,9 +18,9 @@ do
       quiet=true
       shift
     ;;
-    '-y' | '--yes' )
-      echo "This option must not be implemented because this script does very dangerous operation!" >&2
-      exit 1
+    '--without-confirmation' )
+      without_confirmation=true
+      shift
     ;;
     '--' | '-' )
       shift 1
@@ -55,24 +56,26 @@ if [[ "$(whoami)" != "root" ]]; then
   exit 1
 fi
 
-echo -e  "\033[1;91m"
-echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-echo -e  "@@@                                                                                                  @@@"
-echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
-echo -e  "@@@                                                                                                  @@@"
-echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-echo -e  "\033[00m"
-echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
-echo -en "Type file or directory name: "
-exec < /dev/tty
-read confirm
-if [ $confirm = $(basename "$param") ]; then
-  echo -en ""
-else
-  echo -e "canceled" >&2
-  exit 1
+if ! $without_confirmation; then
+  echo -e  "\033[1;91m"
+  echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  echo -e  "@@@                                                                                                  @@@"
+  echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
+  echo -e  "@@@                                                                                                  @@@"
+  echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  echo -e  "\033[00m"
+  echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
+  echo -en "Type file or directory name: "
+  exec < /dev/tty
+  read confirm
+  if [ $confirm = $(basename "$param") ]; then
+    echo -en ""
+  else
+    echo -e "canceled" >&2
+    exit 1
+  fi
+  echo -e ""
 fi
-echo -e ""
 
 function check() {
   ok_flag=0
