@@ -5,7 +5,7 @@ function usage() {
   echo "WIP"
 }
 
-verbose=false
+quiet=false
 for opt in "$@"
 do
   case "$opt" in
@@ -13,8 +13,8 @@ do
       usage
       exit 0
     ;;
-    '--verbose' )
-      verbose=true
+    '-q' | '--quiet' )
+      quiet=true
       shift
     ;;
     '-y' | '--yes' )
@@ -118,73 +118,73 @@ if [ -d "$param" ]; then # shred directory
   # remove block special files if exists
   # this uses "rm" command because "shred" command cannot delete special files
   if [[ "$(find "$param" -type b -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type b -print0 | xargs -0 rm -v
-    else
+    if $quiet; then
       find "$param" -type b -print0 | xargs -0 rm
+    else
+      find "$param" -type b -print0 | xargs -0 rm -v
     fi
   fi
 
   # remove character special files if exists
   # this uses "rm" command because "shred" command cannot delete special files
   if [[ "$(find "$param" -type c -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type c -print0 | xargs -0 rm -v
-    else
+    if $quiet; then
       find "$param" -type c -print0 | xargs -0 rm
+    else
+      find "$param" -type c -print0 | xargs -0 rm -v
     fi
   fi
 
   # remove named pipe (FIFO) if exists
   # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
   if [[ "$(find "$param" -type p -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type p -print0 | xargs -0 rm -v
-    else
+    if $quiet; then
       find "$param" -type p -print0 | xargs -0 rm
+    else
+      find "$param" -type p -print0 | xargs -0 rm -v
     fi
   fi
 
   # shred files if exists
   if [[ "$(find "$param" -type f -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type f -print0 | xargs -0 shred -uvz
-    else
+    if $quiet; then
       find "$param" -type f -print0 | xargs -0 shred -uz
+    else
+      find "$param" -type f -print0 | xargs -0 shred -uvz
     fi
   fi
 
   # remove symlinks if exists
   # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
   if [[ "$(find "$param" -type l -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type l -print0 | xargs -0 rm -v
-    else
+    if $quiet; then
       find "$param" -type l -print0 | xargs -0 rm
+    else
+      find "$param" -type l -print0 | xargs -0 rm -v
     fi
   fi
 
   # remove socket files if exists
   # this uses "rm" command because "shred" command cannot delete socket files
   if [[ "$(find "$param" -type s -print0)" ]]; then
-    if $verbose; then
-      find "$param" -type s -print0 | xargs -0 rm -v
-    else
+    if $quiet; then
       find "$param" -type s -print0 | xargs -0 rm
+    else
+      find "$param" -type s -print0 | xargs -0 rm -v
     fi
   fi
 else # shred file
   if [[ -b "$param" || -c "$param" || -p "$param" || -L "$param" || -S "$param" ]]; then
-    if $verbose; then
-      rm -v "$param"
-    else
+    if $quiet; then
       rm "$param"
+    else
+      rm -v "$param"
     fi
   elif [[ -f "$param" ]]; then
-    if $verbose; then
-      shred -uvz "$param"
-    else
+    if $quiet; then
       shred -uz "$param"
+    else
+      shred -uvz "$param"
     fi
   fi
 
@@ -198,10 +198,10 @@ ok_flag=`find "$param" -print | check`
 
 if [ $ok_flag = 0 ]; then
   # shred empty directories
-  if $verbose; then
-    rm -rfv "$param"
-  else
+  if $quiet; then
     rm -rf "$param"
+  else
+    rm -rfv "$param"
   fi
 
   if [ ! -d "$param" ]; then
