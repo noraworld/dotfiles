@@ -84,11 +84,16 @@
         "aquestalkpi",
         "ASMR",
         "attachinary",
+        "Beastars",
         "bluez",
-        "buildpacks", // Heroku
-        "cleardb", // Heroku
+        // Heroku
+        "buildpacks",
+        // Heroku
+        "cleardb",
         "Codecov",
+        "colordiff",
         "Dnsmasq",
+        "Dotenv",
         "dotfiles",
         "DWANGO",
         "endraw",
@@ -96,14 +101,18 @@
         "hankaku",
         "influencers",
         "instagramer",
-        "jawsdb", // Heroku
+        // Heroku
+        "jawsdb",
         "LMND",
         "netplan",
         "networkd",
         "noraworld",
         "Ponta",
-        "postdeploy", // Heroku
-        "precompile", // Rails
+        // Heroku
+        "postdeploy",
+        // Rails
+        "precompile",
+        "publishment",
         "pulseaudio",
         "Qiita",
         "raspberrypi",
