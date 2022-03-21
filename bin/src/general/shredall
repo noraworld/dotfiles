@@ -57,6 +57,10 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 if ! $without_confirmation; then
+  if ! $quiet; then
+    echo -e "\033[1;93mWARNING: This may show tons of output. Consider adding --quiet option to suppress output.\033[00m"
+  fi
+
   echo -e  "\033[1;91m"
   echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
   echo -e  "@@@                                                                                                  @@@"
