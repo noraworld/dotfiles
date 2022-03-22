@@ -86,9 +86,7 @@
         "attachinary",
         "Beastars",
         "bluez",
-        // Heroku
         "buildpacks",
-        // Heroku
         "cleardb",
         "Codecov",
         "colordiff",
@@ -101,16 +99,14 @@
         "hankaku",
         "influencers",
         "instagramer",
-        // Heroku
         "jawsdb",
+        "kitefin",
         "LMND",
         "netplan",
         "networkd",
         "noraworld",
         "Ponta",
-        // Heroku
         "postdeploy",
-        // Rails
         "precompile",
         "publishment",
         "pulseaudio",
