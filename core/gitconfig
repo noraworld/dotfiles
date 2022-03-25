@@ -16,15 +16,6 @@
 	deleted = 167 normal
 	changed = 167 normal
 	untracked = 167 normal
-[alias]
-	up = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
-	alias = !git config --global --list | grep --color=auto \"alias\"
-	count = !git log --oneline | wc -l
-	s = status
-	a = add --all
-	d = diff
-	refresh = !touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
-	co = checkout
 [ghq]
 	root = ~/.ghq/src
 [init]
