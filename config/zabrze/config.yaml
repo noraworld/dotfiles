@@ -1,0 +1,58 @@
+abbrevs:
+  - name: git
+    abbr: g
+    snippet: git
+
+  - name: git add
+    abbr: ga
+    snippet: git add
+
+  - name: git add --all
+    abbr: gaa
+    snippet: git add --all
+
+  - name: git commit
+    abbr: gc
+    snippet: git commit
+
+  - name: git status
+    abbr: gs
+    snippet: git status
+
+  - name: git diff
+    abbr: gd
+    snippet: git diff
+
+  - name: git checkout
+    abbr: gco
+    snippet: git checkout
+
+  - name: git cherry-pick
+    abbr: gcp
+    snippet: git cherry-pick
+
+  - name: git count
+    abbr: count
+    snippet: log --oneline | wc -l
+    global: true
+    context: '^git\s'
+
+  - name: git up
+    abbr: up
+    snippet: push -u origin $(git rev-parse --abbrev-ref HEAD)
+    global: true
+    context: '^git\s'
+
+  - name: git refresh
+    abbr: gref
+    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
+
+  - name: git alias
+    abbr: alias
+    snippet: config --global --list | grep --color=auto "alias"
+    global: true
+    context: '^git\s'
+
+  - name: docker-compose
+    abbr: dc
+    snippet: docker-compose
