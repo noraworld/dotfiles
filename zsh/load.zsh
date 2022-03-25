@@ -45,5 +45,8 @@ if [ "$(uname -i)" = "aarch64" ] && [ "$OSTYPE" =~ "linux-gnu" ]; then
   zinit ice from"gh-r" as"program" bpick"*aarch64-unknown-linux-gnu*" pick"rg"
   zinit light microsoft/ripgrep-prebuilt
 fi
+zinit blockf light-mode as"program" from"gh-r" for \
+    atload'eval "$(zabrze init --bind-keys)"' \
+    Ryooooooga/zabrze
 
 autoload -Uz compinit && compinit
