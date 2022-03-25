@@ -1,8 +1,0 @@
-if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*rm[[:blank:]]*')" -eq 0 ] &&
-   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*rm[[:blank:]]*')" -eq 0 ]
-then
-  \rm "$@"
-  return $?
-fi
-
-__alarm "rm" "del" "This command deletes a file or a directory and it won’t be restored"

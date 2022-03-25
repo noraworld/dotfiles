@@ -7,7 +7,7 @@ abbrevs:
     evaluate: true
 
   - name: trash
-    abbr: del
+    abbr: rm
     snippet: trash
 
   - name: ls
