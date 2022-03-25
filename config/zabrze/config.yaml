@@ -1,4 +1,56 @@
 abbrevs:
+  # general
+  - name: exec -l $SHELL
+    abbr: reload
+    snippet: exec -l $SHELL
+
+  - name: trash
+    abbr: del
+    snippet: trash
+
+  - name: ls
+    abbr: ls
+    snippet: ls --color=auto --literal
+
+  - name: grep
+    abbr: grep
+    snippet: grep --color=auto
+
+  - name: script
+    abbr: script
+    snippet: script -a
+
+  - name: dirs
+    abbr: d
+    snippet: show_directory_stack
+
+  - name: pushd
+    abbr: p
+    snippet: push_directory
+
+  - name: popd
+    abbr: pop
+    snippet: pop_directory
+
+  - name: bundle exec
+    abbr: be
+    snippet: bundle exec
+
+  ## usage: usage: which cat | xargs -n 1 -o file
+  - name: xargs
+    abbr: xx
+    snippet: xargs -n 1 -o
+    global: true
+
+  - name: cron-apply
+    abbr: ca
+    snippet: cron-apply
+
+  - name: internet-fasting-period
+    abbr: ifp
+    snippet: internet-fasting-period
+
+  # git
   - name: git
     abbr: g
     snippet: git
@@ -53,6 +105,7 @@ abbrevs:
     global: true
     context: '^git\s'
 
+  # docker
   - name: docker-compose
     abbr: dc
     snippet: docker-compose
