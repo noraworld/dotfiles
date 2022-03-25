@@ -1,5 +1,6 @@
 abbrevs:
   # general
+  ## What does '-l' stand for?
   - name: exec -l $SHELL
     abbr: reload
     snippet: exec -l $SHELL
@@ -17,6 +18,8 @@ abbrevs:
     abbr: grep
     snippet: grep --color=auto
 
+  ## Do not replace '-a' with '--append' because BSD script command
+  ## does not support a long option
   - name: script
     abbr: script
     snippet: script -a
@@ -40,7 +43,7 @@ abbrevs:
   ## usage: usage: which cat | xargs -n 1 -o file
   - name: xargs
     abbr: xx
-    snippet: xargs -n 1 -o
+    snippet: xargs --max-args=1 --open-tty
     global: true
 
   - name: cron-apply
@@ -86,20 +89,20 @@ abbrevs:
 
   - name: git count
     abbr: count
-    snippet: log --oneline | wc -l
+    snippet: log --oneline | wc --lines
     global: true
     context: '^git\s'
 
   - name: git up
     abbr: up
-    snippet: push -u origin $(git rev-parse --abbrev-ref HEAD)
+    snippet: push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
     evaluate: true
     global: true
     context: '^git\s'
 
   - name: git refresh
     abbr: gref
-    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
+    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm --recursive $(git rev-parse --git-dir)/hooks/* && git init
     evaluate: true
 
   - name: git alias
