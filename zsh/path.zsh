@@ -19,3 +19,4 @@ if [[ "${OSTYPE}" =~ "darwin*" ]]; then
 fi
 
 PATH="$HOME/.local/bin:$PATH"
+PATH="$DOTPATH/node_modules/.bin:$PATH"
