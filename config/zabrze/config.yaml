@@ -6,10 +6,6 @@ abbrevs:
     snippet: exec -l $SHELL
     evaluate: true
 
-  - name: trash
-    abbr: rm
-    snippet: trash
-
   - name: ls
     abbr: ls
     snippet: ls --color=auto --literal
@@ -53,6 +49,17 @@ abbrevs:
   - name: internet-fasting-period
     abbr: ifp
     snippet: internet-fasting-period
+
+
+
+  # deprecated
+  - name: trash
+    abbr: rm
+    snippet: trash
+
+  - name: pushd
+    abbr: pushd
+    snippet: push_directory
 
 
 
