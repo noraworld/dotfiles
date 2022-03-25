@@ -1,8 +1,0 @@
-if [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*popd[[:blank:]]*')" -eq 0 ] &&
-   [ "$(expr "$CURRENT_COMMAND" : '^[[:blank:]]*sudo[[:blank:]]*popd[[:blank:]]*')" -eq 0 ]
-then
-  \popd "$@"
-  return $?
-fi
-
-__alarm "popd" "pop" ""

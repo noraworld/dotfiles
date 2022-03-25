@@ -61,6 +61,10 @@ abbrevs:
     abbr: pushd
     snippet: push_directory
 
+  - name: popd
+    abbr: popd
+    snippet: pop_directory
+
 
 
   # git
