@@ -92,7 +92,7 @@ abbrevs:
     context: '^git\s'
 
   - name: git status
-    abbr: gs
+    abbr: gst
     snippet: git status
 
   - name: git status
