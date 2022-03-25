@@ -39,7 +39,7 @@ abbrevs:
   ## usage: usage: which cat | xargs -n 1 -o file
   - name: xargs
     abbr: xx
-    snippet: xargs --max-args=1 --open-tty
+    snippet: "| xargs --max-args=1 --open-tty"
     global: true
 
   - name: cron-apply
