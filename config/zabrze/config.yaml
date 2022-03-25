@@ -54,6 +54,8 @@ abbrevs:
     abbr: ifp
     snippet: internet-fasting-period
 
+
+
   # git
   - name: git
     abbr: g
@@ -63,33 +65,69 @@ abbrevs:
     abbr: ga
     snippet: git add
 
+  - name: git add
+    abbr: a
+    snippet: add
+    global: true
+    context: '^git\s'
+
   - name: git add --all
     abbr: gaa
     snippet: git add --all
+
+  - name: git add --all
+    abbr: aa
+    snippet: add --all
+    global: true
+    context: '^git\s'
 
   - name: git commit
     abbr: gc
     snippet: git commit
 
+  - name: git commit
+    abbr: c
+    snippet: commit
+    global: true
+    context: '^git\s'
+
   - name: git status
     abbr: gs
     snippet: git status
+
+  - name: git status
+    abbr: s
+    snippet: status
+    global: true
+    context: '^git\s'
 
   - name: git diff
     abbr: gd
     snippet: git diff
 
+  - name: git diff
+    abbr: d
+    snippet: diff
+    global: true
+    context: '^git\s'
+
   - name: git checkout
     abbr: gco
     snippet: git checkout
+
+  - name: git checkout
+    abbr: co
+    snippet: checkout
+    global: true
+    context: '^git\s'
 
   - name: git cherry-pick
     abbr: gcp
     snippet: git cherry-pick
 
-  - name: git count
-    abbr: count
-    snippet: log --oneline | wc --lines
+  - name: git cherry-pick
+    abbr: cp
+    snippet: cherry-pick
     global: true
     context: '^git\s'
 
@@ -100,16 +138,24 @@ abbrevs:
     global: true
     context: '^git\s'
 
-  - name: git refresh
-    abbr: gref
-    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm --recursive $(git rev-parse --git-dir)/hooks/* && git init
-    evaluate: true
+  - name: git count
+    abbr: count
+    snippet: log --oneline | wc --lines
+    global: true
+    context: '^git\s'
 
   - name: git alias
     abbr: alias
     snippet: config --global --list | grep --color=auto "alias"
     global: true
     context: '^git\s'
+
+  - name: git refresh
+    abbr: gref
+    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm --recursive $(git rev-parse --git-dir)/hooks/* && git init
+    evaluate: true
+
+
 
   # docker
   - name: docker-compose
