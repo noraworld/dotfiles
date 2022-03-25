@@ -65,6 +65,10 @@ abbrevs:
     abbr: popd
     snippet: pop_directory
 
+  - name: shred
+    abbr: shred
+    snippet: shredall
+
 
 
   # git
