@@ -3,6 +3,7 @@ abbrevs:
   - name: exec -l $SHELL
     abbr: reload
     snippet: exec -l $SHELL
+    evaluate: true
 
   - name: trash
     abbr: del
@@ -92,12 +93,14 @@ abbrevs:
   - name: git up
     abbr: up
     snippet: push -u origin $(git rev-parse --abbrev-ref HEAD)
+    evaluate: true
     global: true
     context: '^git\s'
 
   - name: git refresh
     abbr: gref
     snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
+    evaluate: true
 
   - name: git alias
     abbr: alias
