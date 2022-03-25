@@ -144,12 +144,6 @@ abbrevs:
     global: true
     context: '^git\s'
 
-  - name: git alias
-    abbr: alias
-    snippet: config --global --list | grep --color=auto "alias"
-    global: true
-    context: '^git\s'
-
   - name: git refresh
     abbr: gref
     snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm --recursive $(git rev-parse --git-dir)/hooks/* && git init
