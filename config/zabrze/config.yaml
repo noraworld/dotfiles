@@ -45,6 +45,7 @@ abbrevs:
   - name: cron-apply
     abbr: ca
     snippet: cron-apply
+    global: true
 
   - name: internet-fasting-period
     abbr: ifp
