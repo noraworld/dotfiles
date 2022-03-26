@@ -124,5 +124,6 @@
         "xspecify",
         "zcat",
         "Zenn"
-    ]
+    ],
+    "git.confirmSync": false
 }
