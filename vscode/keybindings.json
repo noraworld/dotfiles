@@ -44,6 +44,10 @@
         "key": "shift+cmd+c",
         "command": "copyRelativeFilePath"
     },
+    {
+        "key": "ctrl+cmd+j",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
 
 
 
