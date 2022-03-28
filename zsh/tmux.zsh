@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
 # Log terminal outputs with tmux
+# cf. https://memo.laughk.org/articles/2014-12-09-tmux-ssh-logging/
+# cf. https://q4a.hatenadiary.org/entry/20101029/1288359658
 
 # NOTE 1:
 #   Do nothing if it is a SSH session

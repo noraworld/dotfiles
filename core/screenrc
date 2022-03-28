@@ -1,6 +1,8 @@
 # TODO: https://qiita.com/kamykn/items/9939b67e923dbb87f39c
 
 # Automatically log session input to files
+# cf. https://www.machu.jp/diary/20110527.html
+# cf. https://hkobayash.hatenadiary.org/entry/20110912/1315845060
 logfile "$HOME/.log/screen_temp/screen-%Y%m%d-%n.log"
 deflog on
 
