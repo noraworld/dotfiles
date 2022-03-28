@@ -1,0 +1,9 @@
+# TODO: https://qiita.com/kamykn/items/9939b67e923dbb87f39c
+
+# Automatically log session input to files
+logfile "$HOME/.log/screen_temp/screen-%Y%m%d-%n.log"
+deflog on
+
+# Avoid turning light colors (like a command  completion) into normal colors
+defbce on
+term xterm-256color
