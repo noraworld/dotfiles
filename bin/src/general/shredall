@@ -1,85 +1,191 @@
 #!/bin/bash
 PROGNAME=$(basename $0)
 
-function usage() {
-  echo "WIP"
-}
-
 quiet=false
 without_confirmation=false
-for opt in "$@"
-do
-  case "$opt" in
-    '-h' | '--help' )
-      usage
-      exit 0
-    ;;
-    '-q' | '--quiet' )
-      quiet=true
-      shift
-    ;;
-    '--without-confirmation' )
-      without_confirmation=true
-      shift
-    ;;
-    '--' | '-' )
-      shift 1
-      param+=( "$@" )
-      break
-    ;;
-    -* )
-      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
-      exit 1
-    ;;
-    * )
-      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
-        param+=( "$1" )
-        shift 1
+
+function main() {
+  if [ -d "$param" ]; then # shred directory
+    # below is description about "-type" referenced from `man find`
+    #
+    #   -type c
+    #          File is of type c:
+    #
+    #          b      block (buffered) special
+    #
+    #          c      character (unbuffered) special
+    #
+    #          d      directory
+    #
+    #          p      named pipe (FIFO)
+    #
+    #          f      regular file
+    #
+    #          l      symbolic link; this is never true if the -L option or the
+    #                 -follow  option is in effect, unless the symbolic link is
+    #                 broken.  If you want to search for symbolic links when -L
+    #                 is in effect, use -xtype.
+    #
+    #          s      socket
+    #
+    #          D      door (Solaris)
+
+    # MEMO: special file (block special and character special) is /dev/null, /dev/zero, /dev/random, /dev/urandom, etc.
+    #       named pipe (FIFO) can be created by "mkfifo" command, and cannot be deleted by "shred" command.
+
+    # remove block special files if exists
+    # this uses "rm" command because "shred" command cannot delete special files
+    if [[ "$(find "$param" -type b -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type b -print0 | xargs -0 rm
+      else
+        find "$param" -type b -print0 | xargs -0 rm -v
       fi
-    ;;
-  esac
-done
+    fi
 
-if [ "$param" = "" ]; then
-  echo "shredall: missing operand" >&2
-  exit 1
-fi
+    # remove character special files if exists
+    # this uses "rm" command because "shred" command cannot delete special files
+    if [[ "$(find "$param" -type c -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type c -print0 | xargs -0 rm
+      else
+        find "$param" -type c -print0 | xargs -0 rm -v
+      fi
+    fi
 
-if [ ! -e "$param" ]; then
-  echo "shredall: no such file or directory" >&2
-  exit 1
-fi
+    # remove named pipe (FIFO) if exists
+    # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
+    if [[ "$(find "$param" -type p -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type p -print0 | xargs -0 rm
+      else
+        find "$param" -type p -print0 | xargs -0 rm -v
+      fi
+    fi
 
-if [[ "$(whoami)" != "root" ]]; then
-  echo "shredall: requires root privilege" >&2
-  echo "shredall: cannot shred write-protected files without root privilege" >&2
-  exit 1
-fi
+    # shred files if exists
+    if [[ "$(find "$param" -type f -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type f -print0 | xargs -0 shred -uz
+      else
+        find "$param" -type f -print0 | xargs -0 shred -uvz
+      fi
+    fi
 
-if ! $without_confirmation; then
-  if ! $quiet; then
-    echo -e "\033[1;93mWARNING: This may show tons of output. Consider adding --quiet option to suppress output.\033[00m"
+    # remove symlinks if exists
+    # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
+    if [[ "$(find "$param" -type l -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type l -print0 | xargs -0 rm
+      else
+        find "$param" -type l -print0 | xargs -0 rm -v
+      fi
+    fi
+
+    # remove socket files if exists
+    # this uses "rm" command because "shred" command cannot delete socket files
+    if [[ "$(find "$param" -type s -print0)" ]]; then
+      if $quiet; then
+        find "$param" -type s -print0 | xargs -0 rm
+      else
+        find "$param" -type s -print0 | xargs -0 rm -v
+      fi
+    fi
+  else # shred file
+    if [[ -b "$param" || -c "$param" || -p "$param" || -L "$param" || -S "$param" ]]; then
+      if $quiet; then
+        rm "$param"
+      else
+        rm -v "$param"
+      fi
+    elif [[ -f "$param" ]]; then
+      if $quiet; then
+        shred -uz "$param"
+      else
+        shred -uvz "$param"
+      fi
+    fi
+
+    if [ ! -e "$param" ]; then
+      echo -e "Shredded a file \""$param"\" successfully"
+      exit 0
+    fi
   fi
+}
 
-  echo -e  "\033[1;91m"
-  echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-  echo -e  "@@@                                                                                                  @@@"
-  echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
-  echo -e  "@@@                                                                                                  @@@"
-  echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-  echo -e  "\033[00m"
-  echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
-  echo -en "Type file or directory name: "
-  exec < /dev/tty
-  read confirm
-  if [ $confirm = $(basename "$param") ]; then
-    echo -en ""
-  else
-    echo -e "canceled" >&2
+function confirm() {
+  if ! $without_confirmation; then
+    if ! $quiet; then
+      echo -e "\033[1;93mWARNING: This may show tons of output. Consider adding --quiet option to suppress output.\033[00m"
+    fi
+
+    echo -e  "\033[1;91m"
+    echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e  "@@@                                                                                                  @@@"
+    echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
+    echo -e  "@@@                                                                                                  @@@"
+    echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e  "\033[00m"
+    echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
+    echo -en "Type file or directory name: "
+    exec < /dev/tty
+    read confirm
+    if [ $confirm = $(basename "$param") ]; then
+      echo -en ""
+    else
+      echo -e "canceled" >&2
+      exit 1
+    fi
+    echo -e ""
+  fi
+}
+
+function before_validate() {
+  if [ "$param" = "" ]; then
+    echo "shredall: missing operand" >&2
     exit 1
   fi
-  echo -e ""
-fi
+
+  if [ ! -e "$param" ]; then
+    echo "shredall: no such file or directory" >&2
+    exit 1
+  fi
+
+  if [[ "$(whoami)" != "root" ]]; then
+    echo "shredall: requires root privilege" >&2
+    echo "shredall: cannot shred write-protected files without root privilege" >&2
+    exit 1
+  fi
+}
+
+function after_validate() {
+  ok_flag=`find "$param" -print | check`
+
+  if [ $ok_flag = 0 ]; then
+    # shred empty directories
+    if $quiet; then
+      rm -rf "$param"
+    else
+      rm -rfv "$param"
+    fi
+
+    if [ ! -d "$param" ]; then
+      echo -e "Shredded all files in \"$(realpath "$param")\" successfully"
+    else
+      echo -e "Something went wrong! ("$param" even exists)" >&2
+      exit 2
+    fi
+  elif [ $ok_flag = 1 ]; then
+    find "$param" -print | while read dir; do
+      if [ ! -d $dir ]; then
+        echo -e "\nshredall: something went wrong: $dir is NOT a directory" >&2
+      fi
+    done
+  else
+    echo -e "\nshredall: wrong flag" >&2
+    exit 2
+  fi
+}
 
 function check() {
   ok_flag=0
@@ -94,138 +200,49 @@ function check() {
   return 0
 }
 
-if [ -d "$param" ]; then # shred directory
-  # below is description about "-type" referenced from `man find`
-  #
-  #   -type c
-  #          File is of type c:
-  #
-  #          b      block (buffered) special
-  #
-  #          c      character (unbuffered) special
-  #
-  #          d      directory
-  #
-  #          p      named pipe (FIFO)
-  #
-  #          f      regular file
-  #
-  #          l      symbolic link; this is never true if the -L option or the
-  #                 -follow  option is in effect, unless the symbolic link is
-  #                 broken.  If you want to search for symbolic links when -L
-  #                 is in effect, use -xtype.
-  #
-  #          s      socket
-  #
-  #          D      door (Solaris)
-
-  # MEMO: special file (block special and character special) is /dev/null, /dev/zero, /dev/random, /dev/urandom, etc.
-  #       named pipe (FIFO) can be created by "mkfifo" command, and cannot be deleted by "shred" command.
-
-  # remove block special files if exists
-  # this uses "rm" command because "shred" command cannot delete special files
-  if [[ "$(find "$param" -type b -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type b -print0 | xargs -0 rm
-    else
-      find "$param" -type b -print0 | xargs -0 rm -v
-    fi
-  fi
-
-  # remove character special files if exists
-  # this uses "rm" command because "shred" command cannot delete special files
-  if [[ "$(find "$param" -type c -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type c -print0 | xargs -0 rm
-    else
-      find "$param" -type c -print0 | xargs -0 rm -v
-    fi
-  fi
-
-  # remove named pipe (FIFO) if exists
-  # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
-  if [[ "$(find "$param" -type p -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type p -print0 | xargs -0 rm
-    else
-      find "$param" -type p -print0 | xargs -0 rm -v
-    fi
-  fi
-
-  # shred files if exists
-  if [[ "$(find "$param" -type f -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type f -print0 | xargs -0 shred -uz
-    else
-      find "$param" -type f -print0 | xargs -0 shred -uvz
-    fi
-  fi
-
-  # remove symlinks if exists
-  # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
-  if [[ "$(find "$param" -type l -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type l -print0 | xargs -0 rm
-    else
-      find "$param" -type l -print0 | xargs -0 rm -v
-    fi
-  fi
-
-  # remove socket files if exists
-  # this uses "rm" command because "shred" command cannot delete socket files
-  if [[ "$(find "$param" -type s -print0)" ]]; then
-    if $quiet; then
-      find "$param" -type s -print0 | xargs -0 rm
-    else
-      find "$param" -type s -print0 | xargs -0 rm -v
-    fi
-  fi
-else # shred file
-  if [[ -b "$param" || -c "$param" || -p "$param" || -L "$param" || -S "$param" ]]; then
-    if $quiet; then
-      rm "$param"
-    else
-      rm -v "$param"
-    fi
-  elif [[ -f "$param" ]]; then
-    if $quiet; then
-      shred -uz "$param"
-    else
-      shred -uvz "$param"
-    fi
-  fi
-
-  if [ ! -e "$param" ]; then
-    echo -e "Shredded a file \""$param"\" successfully"
-    exit 0
-  fi
-fi
-
-ok_flag=`find "$param" -print | check`
-
-if [ $ok_flag = 0 ]; then
-  # shred empty directories
-  if $quiet; then
-    rm -rf "$param"
-  else
-    rm -rfv "$param"
-  fi
-
-  if [ ! -d "$param" ]; then
-    echo -e "Shredded all files in \"$(realpath "$param")\" successfully"
-  else
-    echo -e "Something went wrong! ("$param" even exists)" >&2
-    exit 2
-  fi
-elif [ $ok_flag = 1 ]; then
-  find "$param" -print | while read dir; do
-    if [ ! -d $dir ]; then
-      echo -e "\nshredall: something went wrong: $dir is NOT a directory" >&2
-    fi
+function parse_options() {
+  for opt in "$@"
+  do
+    case "$opt" in
+      '-h' | '--help' )
+        usage
+        exit 0
+      ;;
+      '-q' | '--quiet' )
+        quiet=true
+        shift
+      ;;
+      '--without-confirmation' )
+        without_confirmation=true
+        shift
+      ;;
+      '--' | '-' )
+        shift 1
+        param+=( "$@" )
+        break
+      ;;
+      -* )
+        echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+        exit 1
+      ;;
+      * )
+        if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+          param+=( "$1" )
+          shift 1
+        fi
+      ;;
+    esac
   done
-else
-  echo -e "\nshredall: wrong flag" >&2
-  exit 2
-fi
+}
+
+function usage() {
+  echo "WIP"
+}
+
+parse_options "$@"
+before_validate
+confirm
+main
+after_validate
 
 exit 0
