@@ -236,7 +236,15 @@ function parse_options() {
 }
 
 function usage() {
-  echo "WIP"
+  echo "$PROGNAME"
+  echo "	-h, --help"
+  echo "		Show this message and exit"
+  echo
+  echo "	-q, --quiet"
+  echo "		Suppress outputs"
+  echo
+  echo "	--without-confirmation"
+  echo "		Do not confirm before shredding files or directories"
 }
 
 parse_options "$@"
