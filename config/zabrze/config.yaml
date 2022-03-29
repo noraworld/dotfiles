@@ -94,7 +94,11 @@ abbrevs:
 
   - name: shred
     abbr: shred
-    snippet: shredall
+    snippet: sudo shredall
+
+  - name: shredall
+    abbr: shredall
+    snippet: sudo shredall
 
 
 
