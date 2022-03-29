@@ -115,27 +115,32 @@ function main() {
 
 function confirm() {
   if ! $without_confirmation; then
+    echo -e "\033[1;91m"
+    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e "@@@                                                                                                 @@@"
+    echo -e "@@@   This will DESTROY all files in specific directory completely, and they won't be RESTORED!!!   @@@"
+    echo -e "@@@                                                                                                 @@@"
+    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e "\033[00m"
+
     if ! $quiet; then
       echo -e "\033[1;93mWARNING: This may show tons of output. Consider adding --quiet option to suppress output.\033[00m"
+      echo
     fi
 
-    echo -e  "\033[1;91m"
-    echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    echo -e  "@@@                                                                                                  @@@"
-    echo -e  "@@@   This will DESTROY all files in specified directory completely, and they won’t be RESTORED!!!   @@@"
-    echo -e  "@@@                                                                                                  @@@"
-    echo -e  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    echo -e  "\033[00m"
     echo -e  "Are you sure you want to shred all files in \033[1;93m$(realpath "$param")\033[00m?"
     echo -en "Type file or directory name: "
+
     exec < /dev/tty
     read confirm
+
     if [ $confirm = $(basename "$param") ]; then
       echo -en ""
     else
       echo -e "canceled" >&2
       exit 1
     fi
+
     echo -e ""
   fi
 }
