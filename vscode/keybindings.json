@@ -48,6 +48,15 @@
         "key": "ctrl+cmd+j",
         "command": "workbench.action.toggleMaximizedPanel"
     },
+    {
+        // press ctrl+v, then press tab to insert hard tab
+        "key": "ctrl+v tab",
+        "command": "type",
+        "args": {
+            "text": "\t"
+        },
+        "when": "editorTextFocus"
+    },
 
 
 
