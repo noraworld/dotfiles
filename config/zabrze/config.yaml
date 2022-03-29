@@ -60,6 +60,22 @@ abbrevs:
     abbr: reload-tmux
     snippet: ps aux | grep tmux | grep -v grep | awk '{ print $2 }' | xargs kill -2
 
+  - name: zenn
+    abbr: zenn
+    snippet: npx zenn
+
+  - name: zenn new
+    abbr: new
+    snippet: new:article --slug
+    global: true
+    context: '^npx zenn\s'
+
+  - name: zenn preview
+    abbr: p
+    snippet: preview
+    global: true
+    context: '^npx zenn\s'
+
 
 
   # deprecated
