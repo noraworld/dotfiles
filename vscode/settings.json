@@ -74,7 +74,8 @@
     "markdown.extension.print.absoluteImgPath": false,
     "editor.unicodeHighlight.nonBasicASCII": false,
     "cSpell.enableFiletypes": [
-        "ruby"
+        "ruby",
+        "shellscript"
     ],
     "cSpell.userWords": [
         "activerecord",
