@@ -118,5 +118,14 @@
         "key": "shift+cmd+v",
         "command": "-markdown.extension.togglePreview",
         "when": "!terminalFocus"
-    }
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenView"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
+        "when": "inQuickOpen && inViewsPicker"
+      }
 ]
