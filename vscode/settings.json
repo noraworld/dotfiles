@@ -130,5 +130,6 @@
         "Zenn"
     ],
     "git.confirmSync": false,
-    "terminal.integrated.enableMultiLinePasteWarning": false
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.cursorStyle": "line"
 }
