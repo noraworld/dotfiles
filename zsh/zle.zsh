@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Do not change background color when pasting
+# cf. https://www.reddit.com/r/zsh/comments/c160o2/command_line_pasted_text/#t1_erbg6hy
+zle_highlight=('paste:none')
+
 zle -N __fuzzy_push_directory
 zle -N __smart_forward
 
