@@ -101,10 +101,10 @@
         "key": "cmd+numpad0",
         "command": "-workbench.action.zoomReset"
     },
-    {
-        "key": "cmd+w",
-        "command": "-workbench.action.closeActiveEditor"
-    },
+    // {
+    //     "key": "cmd+w",
+    //     "command": "-workbench.action.closeActiveEditor"
+    // },
     {
         "key": "cmd+q",
         "command": "-workbench.action.quit"
