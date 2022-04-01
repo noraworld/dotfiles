@@ -10,7 +10,7 @@ function __autols() {
 
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
-    ls
+    ls --color=auto --literal
   fi
 
   AUTOLS_DIR="${PWD}"
