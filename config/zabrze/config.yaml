@@ -45,7 +45,12 @@ abbrevs:
   - name: cron-apply
     abbr: ca
     snippet: cron-apply
+
+  - name: cron-apply
+    abbr: ca
+    snippet: cron-apply
     global: true
+    context: '^sudo\s'
 
   - name: internet-fasting-period
     abbr: ifp
