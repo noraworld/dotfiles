@@ -2183,12 +2183,6 @@
           "full_name": "appcleaner"
         }
       },
-      "background-music": {
-        "version": "0.3.2",
-        "options": {
-          "full_name": "background-music"
-        }
-      },
       "balenaetcher": {
         "version": "1.7.8",
         "options": {
