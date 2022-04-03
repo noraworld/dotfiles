@@ -2333,6 +2333,12 @@
           "full_name": "visual-studio-code"
         }
       },
+      "witch": {
+        "version": "4.5,3526",
+        "options": {
+          "full_name": "witch"
+        }
+      },
       "xquartz": {
         "version": "2.8.1",
         "options": {

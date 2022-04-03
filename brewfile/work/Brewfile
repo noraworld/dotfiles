@@ -85,6 +85,7 @@ cask "lunar"
 cask "soundflower"
 cask "streamlabs-obs"
 cask "visual-studio-code"
+cask "witch"
 cask "xquartz"
 cask "youtube-to-mp3"
 mas "Amphetamine", id: 937984704
