@@ -92,6 +92,7 @@ The list of applications whose license should be activate or deactivate before y
 
 - Alfred
 - Lunar
+- Witch
 
 ## Untracked applications
 The following macOS applications (not chcked) have not been tracked in Homebrew Cask (`Brewfile` and `Brewfile.lock.json`) yet. These will be managed with Homebrew Cask in the future.
