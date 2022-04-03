@@ -6,6 +6,7 @@
 	path = .gitconfig.local
 [user]
 	useConfigOnly = true
+	signingkey = 482CAD94D37AF0D1
 [color]
 	ui = auto
 [color "diff"]
@@ -34,3 +35,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[commit]
+	gpgsign = true
