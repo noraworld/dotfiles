@@ -2,6 +2,7 @@
 	excludesfile = ~/.gitignore_global
 	editor = vim
 	pager = cat
+	quotepath = false
 [include]
 	path = .gitconfig.local
 [user]
