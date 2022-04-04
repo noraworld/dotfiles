@@ -21,6 +21,6 @@ fi
 git config user.name  $GIT_NAME
 git config user.email $GIT_EMAIL
 
-if [ "$(git count 2>/dev/null)" = "0" ]; then
+if [ "$(git log --oneline 2>/dev/null | wc --lines)" = "0" ]; then
   git commit --allow-empty -m "Initial commit"
 fi
