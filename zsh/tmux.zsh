@@ -11,11 +11,13 @@
 #   For example, a tty name of a terminal in VS Code is "/Applications/Visual"
 
 _tty_name=$(ps -eo pid,command | grep "$PPID" | grep -v grep | awk '{ print $2 }')
+_record_filename="$(date +%Y%m%d_%H%M%S).log"
 
 if [ "$(echo $_tty_name | grep "tmux")" ]; then
   [ -d $SESSION_LOG_PATH ] || mkdir -p $SESSION_LOG_PATH
-  tmux pipe-pane "cat >> $SESSION_LOG_PATH/$(date +%Y%m%d_%H%M%S)"
+  tmux pipe-pane "cat >> $SESSION_LOG_PATH/../$_record_filename"
 elif [ ! "$(echo $_tty_name | grep "sshd")" ]; then
   tmux
+  mv $SESSION_LOG_PATH/../$_record_filename $SESSION_LOG_PATH/$_record_filename
   exit
 fi
