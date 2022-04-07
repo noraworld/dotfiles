@@ -125,6 +125,7 @@
         "realpath",
         "RuboCop",
         "saas",
+        "Schemafile",
         "selectize",
         "SHURE",
         "sidekiq",
