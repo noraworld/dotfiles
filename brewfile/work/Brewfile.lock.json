@@ -2207,6 +2207,12 @@
           "full_name": "browserosaurus"
         }
       },
+      "chromedriver": {
+        "version": "99.0.4844.51",
+        "options": {
+          "full_name": "chromedriver"
+        }
+      },
       "cyberduck": {
         "version": "8.2.3,36880",
         "options": {
