@@ -63,6 +63,9 @@
     "ruby.intellisense": "rubyLocate",
 
     "python.showStartPage": false,
+    "[python]": {
+        "editor.tabSize": 4
+    },
 
     "git.autofetch": true,
     "git.autofetchPeriod": 180,
