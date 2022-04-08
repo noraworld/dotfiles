@@ -115,6 +115,7 @@
         "netplan",
         "networkd",
         "noraworld",
+        "pipenv",
         "Ponta",
         "postdeploy",
         "precompile",
