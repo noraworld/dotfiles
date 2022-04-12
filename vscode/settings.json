@@ -120,6 +120,7 @@
         "noraworld",
         "pipenv",
         "Ponta",
+        "POSIX",
         "postdeploy",
         "precompile",
         "publishment",
