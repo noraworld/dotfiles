@@ -48,5 +48,7 @@ fi
 zinit blockf light-mode as"program" from"gh-r" for \
     atload'eval "$(zabrze init --bind-keys)"' \
     Ryooooooga/zabrze
+zinit ice as"program" cp"whatshell.sh -> whatshell" pick"whatshell"
+zinit snippet https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh
 
 autoload -Uz compinit && compinit
