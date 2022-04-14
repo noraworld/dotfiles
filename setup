@@ -21,7 +21,7 @@ function link_file_or_directory() {
     unlink "$2"
   elif [ -e "$2" ]; then
     echo "INFO: \"$2\" already exists. Moved this file as \"$2.backup_$(date '+%Y%m%d_%H%M%S')\"."
-    mv $2 "$2.backup_$(date '+%Y%m%d_%H%M%S')"
+    mv "$2" "$2.backup_$(date '+%Y%m%d_%H%M%S')"
   fi
 
   ln -s "${1}" "${2}"
