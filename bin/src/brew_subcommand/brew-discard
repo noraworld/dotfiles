@@ -1,79 +1,62 @@
 #!/bin/bash
 
-PROGNAME=$(basename $0)
+set -eu
+
+PROG_NAME=$(basename "$0")
 
 cask=false
 
-function main() {
-  # load env $DOTPATH
+main() {
+  parse_options "$@"
+
   . $HOME/.dotpath
-  if [ ${DOTPATH} = "" ]; then
-    echo -e "The env DOTPATH is missing" >&2
+
+  if [ "$DOTPATH" = "" ]; then
+    echo "The env DOTPATH is missing" >&2
     exit 2
   fi
 
-  # select target Brewfile directory
-  target_brewfile_directory=$(ls -1d ${DOTPATH}/brewfile/* | sed "/brewfile\/share$/d" | fzf)
-  if [[ ${target_brewfile_directory} = "" ]]; then
-    echo -e "The target brewfile directory is missing. You probably quit select mode without selecting it" >&2
-    exit 2
-  fi
-
-  # install formula
-  brewfile_output=""
   if $cask; then
-    brewfile_output="cask \"$argv\""
-    brew uninstall --cask $argv
-    # do not do anything here because the value of $? can be changed!
+    brew uninstall --cask "$argv"
   else
-    brewfile_output="brew \"$argv\""
-    brew uninstall $argv
-    # do not do anything here because the value of $? can be changed!
-  fi
-  # do not do anything here because the value of $? can be changed!
-  if [ $? -ne 0 ]; then
-    echo -e "Uninstalling $argv failed" >&2
-    exit 2
+    brew uninstall "$argv"
   fi
 
-  echo -en "Would you like to remove $argv from Brewfile as a shared formula? [y/n]: "
-  exec < /dev/tty
-  read confirm
-  if [ $confirm = "y" ] || [ $confirm = "Y" ] || [ $confirm = "yes" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
-    sed -i "/^${brewfile_output}$/d" ${DOTPATH}/brewfile/share/Brewfile_base
-  else
-    sed -i "/^${brewfile_output}$/d" ${target_brewfile_directory}/Brewfile_base
-  fi
+  # Force update Brewfile by current Mac's installed packages
+  brew bundle dump --force --file="$DOTPATH/core/Brewfile"
+  # Delete existing Brewfile.lock.json to clean up
+  rm "$DOTPATH/core/Brewfile.lock.json"
+  # Update Brewfile.lock.json
+  brew bundle install --no-upgrade --file="$DOTPATH/core/Brewfile"
 
-  brew bundle dump --force --file=${target_brewfile_directory}/Brewfile &&
-  rm ${target_brewfile_directory}/Brewfile.lock.json &&
-  brew bundle install --no-upgrade --file=${target_brewfile_directory}/Brewfile &&
   echo "Uninstalled $argv successfully! Do not forget to add and commit changes."
 }
 
-for opt in "$@"
-do
-  case "$opt" in
-    '--cask' )
-      shift 1
-      cask=true
-    ;;
-    '--' | '-' )
-      shift 1
-      param+=( "$@" )
-      break
-    ;;
-    -* )
-      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
-      exit 1
-    ;;
-    * )
-      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
-        argv+=( "$1" )
+parse_options() {
+  for opt in "$@"
+  do
+    case "$opt" in
+      '--cask')
         shift 1
-      fi
-    ;;
-  esac
-done
+        cask=true
+      ;;
+      '--' | '-')
+        shift 1
+        param+=( "$@" )
+        break
+      ;;
+      -*)
+        echo "$PROG_NAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+        exit 1
+      ;;
+      *)
+        if [[ -n "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+          argv+=( "$1" )
+          shift 1
+        fi
+      ;;
+    esac
+  done
+}
 
-main
+main "$@"
