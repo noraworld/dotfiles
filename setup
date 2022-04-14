@@ -173,7 +173,7 @@ unlink $HOME/.gitconfig.local.sample
 install_vim_bundle
 check_git_version
 reload_profile
-git refresh
+touch .git/hooks/tmp && rm --recursive .git/hooks/* && git init
 install_vim_plugin
 
 install_brew
