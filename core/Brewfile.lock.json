@@ -2438,12 +2438,6 @@
           "full_name": "lunar"
         }
       },
-      "slack": {
-        "version": "4.25.0",
-        "options": {
-          "full_name": "slack"
-        }
-      },
       "soundflower": {
         "version": "2.0b2",
         "options": {
