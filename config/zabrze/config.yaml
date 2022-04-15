@@ -216,3 +216,24 @@ abbrevs:
     snippet: compose
     global: true
     context: '^docker\s'
+
+
+
+  # Ruby on Rails
+  - name: console
+    abbr: c
+    snippet: console
+    global: true
+    context: '^(bundle exec\s)?rails\s'
+
+  - name: generate
+    abbr: g
+    snippet: generate
+    global: true
+    context: '^(bundle exec\s)?rails\s'
+
+  - name: server
+    abbr: s
+    snippet: server
+    global: true
+    context: '^(bundle exec\s)?rails\s'
