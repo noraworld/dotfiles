@@ -100,7 +100,7 @@ function install_brew() {
 function install_packages() {
   case "${OSTYPE}" in
     darwin*)
-      brew bundle install --global --no-lock
+      : # brew bundle install --global --no-lock
       ;;
     linux*)
       package restore
