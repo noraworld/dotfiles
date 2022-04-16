@@ -52,6 +52,7 @@
     //   https://github.com/rubyide/vscode-ruby/blob/main/packages/vscode-ruby-client/README.md#example-initial-configuration
     //   https://github.com/rubyide/vscode-ruby/blob/330dcd2af212a336eba791ac0bd185f1c78042d7/packages/vscode-ruby-client/README.md#example-initial-configuration
     "ruby.useBundler": true,
+    "window.zoomLevel": 0,
     "ruby.useLanguageServer": true,
     "ruby.lint": {
         "rubocop": {
