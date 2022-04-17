@@ -108,7 +108,7 @@ abbrevs:
 
   # deprecated
   - name: trash
-    abbr: rm
+    abbr: del
     snippet: ASDF_NODEJS_VERSION=$(cat $DOTPATH/.node-version) trash
     evaluate: true
 
