@@ -91,6 +91,21 @@ abbrevs:
 
 
 
+  # for safe operations
+  - name: rm
+    abbr: rm
+    snippet: rm -i
+
+  - name: mv
+    abbr: mv
+    snippet: mv -i
+
+  - name: cp
+    abbr: cp
+    snippet: cp -i
+
+
+
   # deprecated
   - name: trash
     abbr: rm
