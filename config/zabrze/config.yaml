@@ -10,6 +10,14 @@ abbrevs:
     abbr: ls
     snippet: ls --color=auto --literal
 
+  - name: lal
+    abbr: lal
+    snippet: ls --color=auto --literal -al
+
+  - name: lla
+    abbr: lla
+    snippet: ls --color=auto --literal -al
+
   - name: grep
     abbr: grep
     snippet: grep --color=auto
