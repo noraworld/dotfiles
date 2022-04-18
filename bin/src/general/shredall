@@ -33,38 +33,12 @@ function main() {
     # MEMO: special file (block special and character special) is /dev/null, /dev/zero, /dev/random, /dev/urandom, etc.
     #       named pipe (FIFO) can be created by "mkfifo" command, and cannot be deleted by "shred" command.
 
-    # remove block special files if exists
-    # this uses "rm" command because "shred" command cannot delete special files
-    if [[ "$(find "$param" -type b -print0)" ]]; then
-      if $quiet; then
-        find "$param" -type b -print0 | xargs -0 rm
-      else
-        find "$param" -type b -print0 | xargs -0 rm -v
-      fi
-    fi
-
-    # remove character special files if exists
-    # this uses "rm" command because "shred" command cannot delete special files
-    if [[ "$(find "$param" -type c -print0)" ]]; then
-      if $quiet; then
-        find "$param" -type c -print0 | xargs -0 rm
-      else
-        find "$param" -type c -print0 | xargs -0 rm -v
-      fi
-    fi
-
-    # remove named pipe (FIFO) if exists
-    # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
-    if [[ "$(find "$param" -type p -print0)" ]]; then
-      if $quiet; then
-        find "$param" -type p -print0 | xargs -0 rm
-      else
-        find "$param" -type p -print0 | xargs -0 rm -v
-      fi
-    fi
+    # MEMO: The order which to delete is important!
+    #       Files and symlinks are found soon, but others are not found that soon, which means finding other types of
+    #       files first makes the performance very very slow. So files and symlinks should come first than others
 
     # shred files if exists
-    if [[ "$(find "$param" -type f -print0)" ]]; then
+    if [[ "$(find "$param" -type f 2>/dev/null | head -1)" ]]; then
       if $quiet; then
         find "$param" -type f -print0 | xargs -0 shred -uz
       else
@@ -74,7 +48,7 @@ function main() {
 
     # remove symlinks if exists
     # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
-    if [[ "$(find "$param" -type l -print0)" ]]; then
+    if [[ "$(find "$param" -type l 2>/dev/null | head -1)" ]]; then
       if $quiet; then
         find "$param" -type l -print0 | xargs -0 rm
       else
@@ -82,9 +56,39 @@ function main() {
       fi
     fi
 
+    # remove block special files if exists
+    # this uses "rm" command because "shred" command cannot delete special files
+    if [[ "$(find "$param" -type b 2>/dev/null | head -1)" ]]; then
+      if $quiet; then
+        find "$param" -type b -print0 | xargs -0 rm
+      else
+        find "$param" -type b -print0 | xargs -0 rm -v
+      fi
+    fi
+
+    # remove character special files if exists
+    # this uses "rm" command because "shred" command cannot delete special files
+    if [[ "$(find "$param" -type c 2>/dev/null | head -1)" ]]; then
+      if $quiet; then
+        find "$param" -type c -print0 | xargs -0 rm
+      else
+        find "$param" -type c -print0 | xargs -0 rm -v
+      fi
+    fi
+
+    # remove named pipe (FIFO) if exists
+    # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
+    if [[ "$(find "$param" -type p 2>/dev/null | head -1)" ]]; then
+      if $quiet; then
+        find "$param" -type p -print0 | xargs -0 rm
+      else
+        find "$param" -type p -print0 | xargs -0 rm -v
+      fi
+    fi
+
     # remove socket files if exists
     # this uses "rm" command because "shred" command cannot delete socket files
-    if [[ "$(find "$param" -type s -print0)" ]]; then
+    if [[ "$(find "$param" -type s 2>/dev/null | head -1)" ]]; then
       if $quiet; then
         find "$param" -type s -print0 | xargs -0 rm
       else
