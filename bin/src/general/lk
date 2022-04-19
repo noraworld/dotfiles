@@ -16,7 +16,7 @@ do
 done
 
 if [ -z $files_or_directories ]; then
-  lsd $options
+  lsd --color=always $options
 fi
 
 for file_or_directory in $files_or_directories
@@ -24,8 +24,8 @@ do
   if [ ! -e $file_or_directory ]; then
     echo -e "$file_or_directory: No such file or directory"
   elif [ -f $file_or_directory ]; then
-    bat $options $file_or_directory
+    bat --color=always $options $file_or_directory
   elif [ -d $file_or_directory ]; then
-    lsd $options $file_or_directory
+    lsd --color=always $options $file_or_directory
   fi
 done
