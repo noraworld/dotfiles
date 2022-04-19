@@ -16,6 +16,9 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:sudo:*' command-path $path
 zstyle ':completion:*' format '%B%d%b'
+zstyle ':fzf-tab:complete:*' fzf-flags --preview-window=right:$(expr $(tput cols) - 45) --height=100%
+zstyle ':fzf-tab:complete:git:*' fzf-preview 'git diff --color=always $realpath'
+zstyle ':fzf-tab:complete:*' fzf-bindings 'ctrl-space:toggle+down'
 
 export HISTSIZE=10000
 export HISTFILE=~/.zsh_history

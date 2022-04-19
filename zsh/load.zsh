@@ -53,3 +53,6 @@ zinit ice as"program" cp"whatshell.sh -> whatshell" pick"whatshell"
 zinit snippet https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh
 
 autoload -Uz compinit && compinit
+
+# It should be after compinit
+zinit light Aloxaf/fzf-tab
