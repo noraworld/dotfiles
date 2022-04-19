@@ -260,3 +260,43 @@ abbrevs:
     snippet: server
     global: true
     context: '^(bundle exec\s)?rails\s'
+
+
+
+  # awk
+  ## https://github.com/Ryooooooga/dotfiles/blob/ff15a59e260d87ac04c8ebdaf375336e0e188d3e/config/zabrze/config.yaml#L286-L305
+  - name: '.1'
+    abbr: '.1'
+    snippet: awk '{ print $1 }'
+
+  - name: '.2'
+    abbr: '.2'
+    snippet: awk '{ print $2 }'
+
+  - name: '.3'
+    abbr: '.3'
+    snippet: awk '{ print $3 }'
+
+  - name: '.4'
+    abbr: '.4'
+    snippet: awk '{ print $4 }'
+
+  - name: '.5'
+    abbr: '.5'
+    snippet: awk '{ print $5 }'
+
+  - name: '.6'
+    abbr: '.6'
+    snippet: awk '{ print $6 }'
+
+  - name: '.7'
+    abbr: '.7'
+    snippet: awk '{ print $7 }'
+
+  - name: '.8'
+    abbr: '.8'
+    snippet: awk '{ print $8 }'
+
+  - name: '.9'
+    abbr: '.9'
+    snippet: awk '{ print $9 }'
