@@ -99,6 +99,7 @@
         "cleardb",
         "Codecov",
         "colordiff",
+        "datetime",
         "Dnsmasq",
         "Dotenv",
         "dotfiles",
