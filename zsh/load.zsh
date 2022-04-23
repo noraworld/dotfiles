@@ -42,7 +42,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light asdf-vm/asdf
 # TODO: Uninstall Starship from both Mac and Raspberry Pi, and manage it with Zinit
 #       Because on Ubuntu it cannot be installed via apt
-if [ "$(uname -i)" = "aarch64" ] && [ "$OSTYPE" =~ "linux-gnu" ]; then
+if [ "$OSTYPE" =~ "linux-gnu" ] && [ "$(uname -i)" = "aarch64" ]; then
   zinit ice from"gh-r" as"program" bpick"*aarch64-unknown-linux-gnu*" pick"rg"
   zinit light microsoft/ripgrep-prebuilt
 fi
