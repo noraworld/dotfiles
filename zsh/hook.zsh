@@ -10,7 +10,14 @@ function __autols() {
 
     echo -e ""
     echo -e "\033[1;92mFILES AND DIRECTORIES:\033[00m"
-    ls --color=auto --literal
+
+    if [ "$(echo $OSTYPE | grep -c -e "^darwin")" -ne 1 ]; then
+      ls --color=auto --literal
+    elif type gls 1>/dev/null 2>/dev/null; then
+      gls --color=auto --literal
+    else
+      ls -G
+    fi
   fi
 
   AUTOLS_DIR="${PWD}"
