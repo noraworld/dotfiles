@@ -6,6 +6,11 @@ abbrevs:
     snippet: exec -l $SHELL
     evaluate: true
 
+  - name: gls
+    abbr: ls
+    snippet: gls --color=auto --literal
+    if: (( ${+commands[gls]} ))
+
   - name: ls
     abbr: ls
     snippet: ls --color=auto --literal
@@ -92,13 +97,28 @@ abbrevs:
 
 
   # for safe operations
+  - name: grm
+    abbr: rm
+    snippet: grm -i
+    if: (( ${+commands[grm]} ))
+
   - name: rm
     abbr: rm
     snippet: rm -i
 
+  - name: gmv
+    abbr: mv
+    snippet: gmv -i
+    if: (( ${+commands[gmv]} ))
+
   - name: mv
     abbr: mv
     snippet: mv -i
+
+  - name: gcp
+    abbr: cp
+    snippet: gcp -i
+    if: (( ${+commands[gcp]} ))
 
   - name: cp
     abbr: cp
