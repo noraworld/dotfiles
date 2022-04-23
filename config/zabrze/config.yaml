@@ -151,10 +151,6 @@ abbrevs:
 
 
   # git
-  - name: git
-    abbr: g
-    snippet: git
-
   - name: git add
     abbr: ga
     snippet: git add
