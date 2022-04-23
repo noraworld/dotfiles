@@ -90,31 +90,15 @@ abbrevs:
 
   # for safe operations
   - name: grm
-    abbr: rm
-    snippet: grm -i
-    if: (( ${+commands[grm]} ))
+    abbr-pattern: ^(rm|mv|cp)$
+    snippet: g${current_abbr} -i
+    evaluate: true
+    if: '[[ -e "$(brew --prefix)/opt/coreutils/bin/g$current_abbr" ]]'
 
   - name: rm
-    abbr: rm
-    snippet: rm -i
-
-  - name: gmv
-    abbr: mv
-    snippet: gmv -i
-    if: (( ${+commands[gmv]} ))
-
-  - name: mv
-    abbr: mv
-    snippet: mv -i
-
-  - name: gcp
-    abbr: cp
-    snippet: gcp -i
-    if: (( ${+commands[gcp]} ))
-
-  - name: cp
-    abbr: cp
-    snippet: cp -i
+    abbr-pattern: ^(rm|mv|cp)$
+    evaluate: true
+    snippet: $current_abbr -i
 
 
 
