@@ -3,7 +3,7 @@
 #   because the order from which file should be loaded is important
 
 _dotfiles=(
-  # ". $HOME/.zsh/tmux.zsh;"
+  ". $HOME/.zsh/tmux.zsh;"
   ". $HOME/.dotpath;"
   ". $HOME/.zsh/alias.zsh;"
   ". $HOME/.zsh/path.zsh;"
