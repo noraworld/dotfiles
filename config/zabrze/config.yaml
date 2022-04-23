@@ -300,3 +300,21 @@ abbrevs:
   - name: '.9'
     abbr: '.9'
     snippet: awk '{ print $9 }'
+
+  - name: GNU getopt for macOS
+    abbr: getopt
+    snippet: $(brew --prefix)/opt/gnu-getopt/bin/getopt
+    evaluate: true
+    if: '[[ -e $(brew --prefix)/opt/gnu-getopt/bin/getopt ]]'
+
+  - name: OpenSSL for macOS
+    abbr: openssl
+    snippet: $(brew --prefix)/opt/openssl/bin/openssl
+    evaluate: true
+    if: '[[ -e "$(brew --prefix)/opt/openssl/bin/openssl" ]]'
+
+  - name: GNU commands for macOS
+    abbr-pattern: '' # matches all commands
+    snippet: g${current_abbr}
+    evaluate: true
+    if: '[[ -e "$(brew --prefix)/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "$(brew --prefix)/opt/findutils/bin/g$current_abbr" ]] || [[ -e "$(brew --prefix)/opt/gnu-sed/bin/g$current_abbr" ]]'
