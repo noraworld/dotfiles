@@ -1,9 +1,12 @@
-if [[ $1 =~ ^[0-9]+$ ]]; then
-  popd "+$@" 1>/dev/null || return
-  store_directory_stack
-else
-  popd "$@" 1>/dev/null || return
-  store_directory_stack
-fi
+while read -r _args; do
+  if [[ "$_args" =~ ^[0-9]+$ ]]; then
+    popd "+$_args" 1>/dev/null || return
+    store_directory_stack
+  else
+    popd "$_args" 1>/dev/null || return
+    store_directory_stack
+  fi
+# Need to pop directory from the bottom (bigger number)
+done < <(sort -nr <(printf "%s\n" "${@}"))
 
 show_directory_stack
