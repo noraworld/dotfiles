@@ -2,7 +2,7 @@
 
 _pop_directory() {
   local -a current_directory_stack
-  current_directory_stack=( "${(uf)"$(dirs -lv | sed -r 's/^([0-9]+).(.*?)/\1[\2]/')"}" )
+  current_directory_stack=( "${(uf)"$(dirs -lv | sed -r 's/^([0-9]+).(.*)/\1[\2]/')"}" )
 
   _arguments '1: :->current_directory_stack'
 
