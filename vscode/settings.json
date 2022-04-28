@@ -155,5 +155,6 @@
     ],
     "git.confirmSync": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "terminal.integrated.cursorStyle": "line"
+    "terminal.integrated.cursorStyle": "line",
+    "explorer.confirmDragAndDrop": false
 }
