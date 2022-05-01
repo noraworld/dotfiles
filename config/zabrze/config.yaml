@@ -99,7 +99,7 @@ abbrevs:
     abbr-pattern: ^(rm|mv|cp)$
     snippet: g${current_abbr} -i
     evaluate: true
-    if: '[[ -e "$(brew --prefix)/opt/coreutils/bin/g$current_abbr" ]]'
+    if: '[[ -e "/usr/local/opt/coreutils/bin/g$current_abbr" ]]'
 
   - name: rm
     abbr-pattern: ^(rm|mv|cp)$
@@ -298,16 +298,16 @@ abbrevs:
     abbr: getopt
     snippet: $(brew --prefix)/opt/gnu-getopt/bin/getopt
     evaluate: true
-    if: '[[ -e $(brew --prefix)/opt/gnu-getopt/bin/getopt ]]'
+    if: '[[ -e "/usr/local/opt/gnu-getopt/bin/getopt" ]]'
 
   - name: OpenSSL for macOS
     abbr: openssl
     snippet: $(brew --prefix)/opt/openssl/bin/openssl
     evaluate: true
-    if: '[[ -e "$(brew --prefix)/opt/openssl/bin/openssl" ]]'
+    if: '[[ -e "/usr/local/opt/openssl/bin/openssl" ]]'
 
   - name: GNU commands for macOS
     abbr-pattern: '' # matches all commands
     snippet: g${current_abbr}
     evaluate: true
-    if: '[[ -e "$(brew --prefix)/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "$(brew --prefix)/opt/findutils/bin/g$current_abbr" ]] || [[ -e "$(brew --prefix)/opt/gnu-sed/bin/g$current_abbr" ]]'
+    if: '[[ -e "/usr/local/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/findutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/gnu-sed/bin/g$current_abbr" ]]'
