@@ -158,5 +158,5 @@
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "terminal.integrated.cursorStyle": "line",
     "explorer.confirmDragAndDrop": false,
-    "clipboard-manager.snippet.enabled": false,
+    "clipboard-manager.snippet.enabled": false
 }
