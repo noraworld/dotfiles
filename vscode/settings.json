@@ -157,5 +157,6 @@
     "git.confirmSync": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "terminal.integrated.cursorStyle": "line",
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "clipboard-manager.snippet.enabled": false,
 }
