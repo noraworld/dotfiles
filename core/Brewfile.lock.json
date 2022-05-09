@@ -2378,12 +2378,6 @@
           "full_name": "google-chrome"
         }
       },
-      "google-chrome-beta": {
-        "version": "101.0.4951.26",
-        "options": {
-          "full_name": "google-chrome-beta"
-        }
-      },
       "google-drive": {
         "version": "56.0.11",
         "options": {
