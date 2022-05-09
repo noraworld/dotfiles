@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
 # Set colors to ls command
-eval $(dircolors -b ~/.dir_colors)
+if type dircolors 1>/dev/null 2>/dev/null; then
+  eval $(dircolors -b ~/.dir_colors)
+elif type gdircolors 1>/dev/null 2>/dev/null; then
+  eval $(gdircolors -b ~/.dir_colors)
+fi
 
 if type starship 1>/dev/null 2>/dev/null; then
   eval "$(starship init zsh)"
