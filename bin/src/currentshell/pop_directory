@@ -1,5 +1,8 @@
 while read -r _args; do
-  if [[ "$_args" =~ ^[0-9]+$ ]]; then
+  if [[ "$_args" = "" ]]; then
+    popd 1>/dev/null || return
+    store_directory_stack
+  elif [[ "$_args" =~ ^[0-9]+$ ]]; then
     popd "+$_args" 1>/dev/null || return
     store_directory_stack
   else
