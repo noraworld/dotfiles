@@ -207,7 +207,7 @@ abbrevs:
 
   - name: git count
     abbr: count
-    snippet: log --oneline | wc --lines
+    snippet: log --oneline | wc -l | awk '{ print $1 }'
     global: true
     context: '^git\s'
 
