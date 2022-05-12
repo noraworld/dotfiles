@@ -97,6 +97,7 @@
         "Brewfile",
         "buildpacks",
         "cleardb",
+        "Cloudinary",
         "Codecov",
         "colordiff",
         "datetime",
