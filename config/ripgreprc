@@ -1,0 +1,8 @@
+--max-columns=150
+--max-columns-preview
+--smart-case
+
+# The options below may speed down the performance
+--no-ignore
+--hidden
+--sort-files

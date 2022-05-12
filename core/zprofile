@@ -23,6 +23,7 @@ export PKG_CONFIG_PATH=$(echo ${PKG_CONFIG_PATH-/usr/local/opt/imagemagick@6/lib
 export GIT_FETCH_PERIOD_THRESHOLD=$(echo ${GIT_FETCH_PERIOD_THRESHOLD-180})
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export SESSION_LOG_PATH=$(echo ${SESSION_LOG_PATH-$HOME/.log/tmux})
+export RIPGREP_CONFIG_PATH=$(echo ${RIPGREP_CONFIG_PATH-$HOME/.config/ripgreprc})
 
 export DOTPATH=""
 export PATH
