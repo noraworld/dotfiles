@@ -2,6 +2,9 @@
 --max-columns-preview
 --smart-case
 
+# Always ignored
+--glob=!node_modules/*
+
 # The options below may speed down the performance
 --no-ignore
 --hidden
