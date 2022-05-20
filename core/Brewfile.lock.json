@@ -2306,6 +2306,12 @@
           "full_name": "balenaetcher"
         }
       },
+      "bartender": {
+        "version": "4.1.49,41049",
+        "options": {
+          "full_name": "bartender"
+        }
+      },
       "blackhole-16ch": {
         "version": "0.2.10",
         "options": {
