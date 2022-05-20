@@ -2349,12 +2349,6 @@
           "full_name": "docker"
         }
       },
-      "dozer": {
-        "version": "4.0.0",
-        "options": {
-          "full_name": "dozer"
-        }
-      },
       "dropbox": {
         "version": "147.4.4800",
         "options": {
