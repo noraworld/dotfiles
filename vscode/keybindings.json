@@ -35,7 +35,6 @@
         "command": "workbench.action.terminal.focusNextPane",
         "when": "terminalFocus"
     },
-
     {
         "key": "ctrl+cmd+enter",
         "command": "workbench.action.terminal.toggleTerminal"
@@ -127,5 +126,10 @@
         "key": "ctrl+q",
         "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
         "when": "inQuickOpen && inViewsPicker"
-      }
+    },
+    {
+        "key": "cmd+m",
+        "command": "-markdown.extension.editing.toggleMath",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+    }
 ]
