@@ -86,6 +86,10 @@ abbrevs:
     global: true
     context: '^npx zenn\s'
 
+  - name: shellcheck
+    abbr: sc
+    snippet: shellcheck
+
 
 
   # for safe operations
