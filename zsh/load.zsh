@@ -56,6 +56,12 @@ zinit blockf light-mode as"program" from"gh-r" for \
 zinit ice as"program" cp"whatshell.sh -> whatshell" pick"whatshell"
 zinit snippet https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh
 
+zinit ice as"program" pick"getoptions"
+zinit snippet https://github.com/ko1nksm/getoptions/releases/latest/download/getoptions
+
+zinit ice as"program" pick"gengetoptions"
+zinit snippet https://github.com/ko1nksm/getoptions/releases/latest/download/gengetoptions
+
 autoload -Uz compinit && compinit
 
 # It should be after compinit
