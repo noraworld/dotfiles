@@ -5,7 +5,7 @@ min_time = 0
 show_milliseconds = true
 
 [time]
-disabled = false
+disabled = true # Disable temporarily because I don't want to mind time
 style = "#b0c4de"
 time_format = "%Y/%m/%d %T"
 format = "[$time]($style) "
