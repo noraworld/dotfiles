@@ -62,6 +62,11 @@ zinit snippet https://github.com/ko1nksm/getoptions/releases/latest/download/get
 zinit ice as"program" pick"gengetoptions"
 zinit snippet https://github.com/ko1nksm/getoptions/releases/latest/download/gengetoptions
 
+# TODO: There are man pages, but I don't know how to add them to $MANPATH
+#       https://github.com/zdharma-continuum/zinit/issues/8
+zinit ice from"gh-r" as"program" sbin"*/bin/gh -> gh"
+zinit light cli/cli
+
 autoload -Uz compinit && compinit
 
 # It should be after compinit
