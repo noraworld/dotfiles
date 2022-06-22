@@ -91,6 +91,7 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 The list of applications whose license should be activate or deactivate before you use or disuse the Mac computer.
 
 - Alfred
+- Bartender
 - Lunar
 - Witch
 
