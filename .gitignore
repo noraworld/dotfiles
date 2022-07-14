@@ -12,6 +12,8 @@ config/configstore/update-notifier-zenn-cli.json
 config/configstore/update-notifier-npm.json
 config/systemd/
 config/gh/
+# This is a binary
+config/nordvpn/nordvpn.conf
 
 # WIP
 config/karabiner/
