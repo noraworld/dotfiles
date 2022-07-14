@@ -67,6 +67,11 @@ zinit snippet https://github.com/ko1nksm/getoptions/releases/latest/download/gen
 zinit ice from"gh-r" as"program" sbin"*/bin/gh -> gh"
 zinit light cli/cli
 
+if [ "$OSTYPE" =~ "linux-gnu" ] && [ "$(uname -i)" = "aarch64" ]; then
+  zinit ice as"null"
+  zinit snippet https://downloads.nordcdn.com/apps/linux/install.sh
+fi
+
 autoload -Uz compinit && compinit
 
 # It should be after compinit
