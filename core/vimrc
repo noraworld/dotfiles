@@ -63,3 +63,9 @@ autocmd BufWritePre * call <SID>remove_dust()
 " Always start on first line of git commit message
 " cf. https://vim.fandom.com/wiki/Always_start_on_first_line_of_git_commit_message
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+" Set the filetype based on the file's extension, but only if
+" 'filetype' has not already been set
+" https://stackoverflow.com/questions/11666170/persistent-set-syntax-for-a-given-filetype#answer-28117335
+"" https://unix.stackexchange.com/questions/68972/no-syntax-highlighting-when-editing-crontab#answer-71320
+au BufRead,BufNewFile *.cron set filetype=crontab
