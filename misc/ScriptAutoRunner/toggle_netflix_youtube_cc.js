@@ -1,5 +1,5 @@
-// Title: Toggle subtitle on Netflix
-// Hostname: netflix.com
+// Title: Toggle subtitle on Netflix and YouTube
+// Hostname: netflix.com, youtube.com
 
 let count = 0
 
