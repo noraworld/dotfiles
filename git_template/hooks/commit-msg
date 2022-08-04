@@ -3,11 +3,22 @@
 max_commit_msg_length_threshold_to_warn=50
 max_commit_msg_length_threshold_to_strong_warn=69
 
-commit_msg=$(cat $1)
+commit_msg=$(cat $1 | grep -v '^#' | sed '/^$/d')
 first_line=`echo "$commit_msg" | head -1`
 first_line_length=${#first_line}
+staged_files=$(git status --porcelain | grep '^[MARCD]' | cut -c4- | xargs basename)
+staged_files_count=$(echo "$staged_files" | wc -l | awk '{ print $1 }')
 
 echo -e ""
+
+if [ "$first_line" = "" ]; then
+  if [ "$staged_files_count" -eq 1 ]; then
+    echo "$staged_files" > "$1"
+  else
+    echo "The number of staged files is not 1" >&2
+    exit 1
+  fi
+fi
 
 if [ $first_line_length -gt $max_commit_msg_length_threshold_to_warn ]; then
   if [ $first_line_length -gt $max_commit_msg_length_threshold_to_strong_warn ]; then
