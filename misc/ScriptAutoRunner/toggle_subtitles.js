@@ -1,8 +1,6 @@
 // Title: Toggle subtitle
 // Hostname: netflix.com, youtube.com, amazon.co.jp
 
-// Language Reactor is necessary on Netflix and YouTube
-
 let count = 0
 
 document.addEventListener('keydown', (event) => {
@@ -26,6 +24,8 @@ function subtitle(flag) {
 
   if (document.domain.match(/netflix.com$/) || document.domain.match(/youtube.com$/)) {
     try {
+      // Language Reactor is necessary on Netflix and YouTube
+      //   https://chrome.google.com/webstore/detail/hoombieeljmmljlkjmnheibnpciblicm
       document.querySelector('#lln-subs-content').style.opacity = visibility
     }
     catch (error) {
@@ -35,12 +35,20 @@ function subtitle(flag) {
   }
   else if (document.domain.match(/amazon.co.jp$/)) {
     try {
-      document.querySelector('#subtitles_fll_main_container').style.opacity = visibility
       document.querySelector('.fk87jrb').style.opacity = visibility
     }
     catch (error) {
       console.error(error)
       alert(error)
+    }
+
+    try {
+      // The error will occur when Subtitles for Language Learning (Prime Video) is off
+      //   https://chrome.google.com/webstore/detail/hlofmmmlhfelbfhcpapoackkglljfcnb
+      document.querySelector('#subtitles_fll_main_container').style.opacity = visibility
+    }
+    catch (error) {
+      console.error(error)
     }
   }
 
