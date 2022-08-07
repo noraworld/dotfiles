@@ -54,3 +54,4 @@ fd-find
 chromium-chromedriver
 shellcheck
 libraspberrypi-bin
+inotify-tools
