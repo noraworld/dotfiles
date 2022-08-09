@@ -131,5 +131,9 @@
         "key": "cmd+m",
         "command": "-markdown.extension.editing.toggleMath",
         "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+cmd+c ctrl+cmd+o",
+        "command": "git.commit"
     }
 ]
