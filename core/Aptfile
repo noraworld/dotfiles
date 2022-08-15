@@ -55,3 +55,4 @@ chromium-chromedriver
 shellcheck
 libraspberrypi-bin
 inotify-tools
+systemd-timesyncd
