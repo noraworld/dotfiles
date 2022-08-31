@@ -73,7 +73,11 @@
 
     "[markdown]": {
         "editor.tabSize": 4,
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
     },
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.print.absoluteImgPath": false,
