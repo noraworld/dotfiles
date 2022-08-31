@@ -2,3 +2,4 @@
 .DS_Store
 .git-fetch-last-update
 .git-fetch-period-threshold
+.vscode
