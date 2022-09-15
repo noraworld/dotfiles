@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "git remote -v"
+# git remote -v
+
+echo "git stash list"
+# git stash list
+
+echo "git branch -a"
+# git branch -a
+
+echo "cat .gitignore"
+# cat .gitignore
