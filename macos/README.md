@@ -104,18 +104,15 @@ The following macOS applications (not chcked) have not been tracked in Homebrew 
 - [x] Atom
 - [x] Firefox
 - [x] Google Chrome
-- [ ] Google Drive File Stream
-- [ ] Google Photos Backup
+- [x] Google Drive File Stream
 - [x] Karabiner-Elements
 - [x] Karabiner-EventViewer
 - [x] Keybase
 - [x] KeyboardCleanTool
-- [ ] Kindle
-- [ ] Lunar
+- [x] Kindle
+- [x] Lunar
 - [x] Scroll Reverser
-- [ ] Shifty
 - [x] Slack
 - [x] Steam
-- [ ] Tunnelblick
 - [x] Visual Studio Code
 - [x] zoom.us
