@@ -2275,12 +2275,6 @@
           "full_name": "docker"
         }
       },
-      "dropbox": {
-        "version": "154.4.5363",
-        "options": {
-          "full_name": "dropbox"
-        }
-      },
       "font-fira-code-nerd-font": {
         "version": "2.1.0",
         "options": {
