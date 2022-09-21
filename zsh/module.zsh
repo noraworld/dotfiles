@@ -8,7 +8,7 @@ autoload -Uz add-zsh-hook
 
 add-zsh-hook preexec __arm
 add-zsh-hook precmd  __autols
-add-zsh-hook precmd  __git_autofetch
+add-zsh-hook precmd  __git_auto_execute
 add-zsh-hook precmd  __unarm
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

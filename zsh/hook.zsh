@@ -23,7 +23,7 @@ function __autols() {
   AUTOLS_DIR="${PWD}"
 }
 
-function __git_autofetch() {
+function __git_auto_execute() {
   # Return if the current directory is not under the Git project
   if [ ! -e "$(git rev-parse --git-dir 2> /dev/null)" ]; then
     return
@@ -35,8 +35,8 @@ function __git_autofetch() {
 
   # Fetch, create a last update file, and return if a last update file does not exist
   if [ ! -f $_last_update_file ]; then
-    (git fetch   > /dev/null 2>&1 &)
-    (git refresh > /dev/null 2>&1 &) # on the way
+    __git_auto_fetch
+    __git_deletable_branches
     (echo $EPOCHREALTIME > $_last_update_file &)
 
     return
@@ -45,9 +45,26 @@ function __git_autofetch() {
   _git_fetch_duration=$(echo "scale=10; $EPOCHREALTIME - $(cat $_last_update_file)" | bc | sed 's/^\./0./' | sed 's/\.[0-9,]*$//g')
 
   if [ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]; then
-    (git fetch   > /dev/null 2>&1 &)
-    (git refresh > /dev/null 2>&1 &) # on the way
+    __git_auto_fetch
+    __git_deletable_branches
     (echo $EPOCHREALTIME > $_last_update_file &)
+  fi
+}
+
+function __git_auto_fetch() {
+  (git fetch   > /dev/null 2>&1 &)
+  (git refresh > /dev/null 2>&1 &) # on the way
+}
+
+function __git_deletable_branches() {
+  deletable_branches=$(git branch --merged | grep -v \* | grep -v "^(main\|master\|develop)$")
+
+  if [ "$deletable_branches" != "" ]; then
+    echo "The following branches are deletable because they have been tracked on the remote repository already"
+    echo
+    echo "$deletable_branches"
+    echo
+    echo "To delete them, perform \"git delete-local-branches\""
   fi
 }
 
