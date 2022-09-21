@@ -57,7 +57,7 @@ function __git_auto_fetch() {
 }
 
 function __git_deletable_branches() {
-  deletable_branches=$(git branch --merged | grep -v \* | grep -v "^(main\|master\|develop)$")
+  deletable_branches=$(git branch --merged | grep -v \* | grep -v "^\s*main\|master\|develop$")
 
   if [ "$deletable_branches" != "" ]; then
     echo "The following branches are deletable because they have been tracked on the remote repository already"
