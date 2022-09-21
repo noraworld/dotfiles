@@ -2311,12 +2311,6 @@
           "full_name": "google-japanese-ime"
         }
       },
-      "iterm2": {
-        "version": "3.4.16",
-        "options": {
-          "full_name": "iterm2"
-        }
-      },
       "karabiner-elements": {
         "version": "14.8.0",
         "options": {
