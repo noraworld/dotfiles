@@ -2353,12 +2353,6 @@
           "full_name": "witch"
         }
       },
-      "xquartz": {
-        "version": "2.8.2",
-        "options": {
-          "full_name": "xquartz"
-        }
-      },
       "youtube-to-mp3": {
         "version": "3.9.9.74",
         "options": {
