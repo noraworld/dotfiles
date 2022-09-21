@@ -83,7 +83,6 @@ cask "soundflower"
 cask "streamlabs-obs"
 cask "visual-studio-code"
 cask "witch"
-cask "youtube-to-mp3"
 mas "Be Focused Pro", id: 961632517
 mas "BetterSnapTool", id: 417375580
 mas "Keynote", id: 409183694
