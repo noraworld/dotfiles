@@ -2227,12 +2227,6 @@
           "full_name": "appcleaner"
         }
       },
-      "balenaetcher": {
-        "version": "1.7.9",
-        "options": {
-          "full_name": "balenaetcher"
-        }
-      },
       "bartender": {
         "version": "4.2.0,42000",
         "options": {
