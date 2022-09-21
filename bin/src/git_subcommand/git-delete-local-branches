@@ -1,0 +1,23 @@
+#!/bin/sh
+
+deletable_branches=$(git branch --merged | grep -v \* | grep -v "^(main\|master\|develop)$")
+
+if [ ! "$deletable_branches" ]; then
+  echo "Nothing to delete"
+  exit
+fi
+
+echo "The following branches will be deleted"
+echo
+echo "$deletable_branches"
+echo
+printf "Are you sure you want to delete? [y/N]: "
+exec < /dev/tty
+read -r confirm
+
+if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ] || [ "$confirm" = "Yes" ] || [ "$confirm" = "YES" ]; then
+  git branch --merged | grep -v \* | grep -v "^(main\|master\|develop)$" | xargs git branch -d
+else
+  echo "Canceled"
+  exit 1
+fi
