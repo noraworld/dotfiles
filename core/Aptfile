@@ -58,3 +58,12 @@ inotify-tools
 systemd-timesyncd
 at
 tree
+iptables
+libnss-systemd
+libpam-systemd
+libsystemd0
+libudev1
+systemd
+systemd-sysv
+systemd-timesyncd
+udev
