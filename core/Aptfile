@@ -67,3 +67,4 @@ systemd
 systemd-sysv
 systemd-timesyncd
 udev
+whois
