@@ -93,4 +93,4 @@ The list of applications whose license should be activate or deactivate before y
 - Alfred
 - Bartender
 - Lunar
-- Witch
+- [Witch](https://manytricks.com/osticket/kb/faq.php?id=2)
