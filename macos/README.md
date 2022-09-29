@@ -88,9 +88,11 @@ $ defaults write .GlobalPreferences com.apple.mouse.scaling 1
 </details>
 
 ## Licensed applications list
-The list of applications whose license should be activate or deactivate before you use or disuse the Mac computer.
+The list of applications whose license should be activated or deactivated before you use or disuse the Mac computer.
 
-- Alfred
-- Bartender
-- Lunar
-- [Witch](https://manytricks.com/osticket/kb/faq.php?id=2)
+| Apps                                                     | License stored in |
+| -------------------------------------------------------- | ----------------- |
+| Alfred                                                   |                   |
+| Bartender                                                |                   |
+| Lunar                                                    |                   |
+| [Witch](https://manytricks.com/osticket/kb/faq.php?id=2) | Google Drive      |
