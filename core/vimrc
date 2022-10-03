@@ -58,6 +58,7 @@ function! s:remove_dust()
   unlet cursor
 endfunction
 
+" https://stackoverflow.com/a/67463224/13999144
 autocmd BufWritePre *\(.diff\)\@<! call <SID>remove_dust()
 
 " Always start on first line of git commit message
