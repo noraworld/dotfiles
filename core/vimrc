@@ -58,7 +58,7 @@ function! s:remove_dust()
   unlet cursor
 endfunction
 
-autocmd BufWritePre * call <SID>remove_dust()
+autocmd BufWritePre *\(.diff\)\@<! call <SID>remove_dust()
 
 " Always start on first line of git commit message
 " cf. https://vim.fandom.com/wiki/Always_start_on_first_line_of_git_commit_message
