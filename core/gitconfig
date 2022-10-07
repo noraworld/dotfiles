@@ -38,3 +38,5 @@
 	process = git-lfs filter-process
 [commit]
 	gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
