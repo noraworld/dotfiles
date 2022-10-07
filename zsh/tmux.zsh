@@ -16,7 +16,7 @@ _record_filename="$(date +%Y%m%d_%H%M%S).log"
 if [ "$(echo $_tty_name | grep "tmux")" ]; then
   [ -d $SESSION_LOG_PATH ] || mkdir -p $SESSION_LOG_PATH
   tmux -u pipe-pane "cat >> $SESSION_LOG_PATH/../$_record_filename"
-elif [ ! "$(echo $_tty_name | grep "sshd")" ]; then
+elif [ ! "$(echo $_tty_name | grep "sshd")" ] && type tmux 1>/dev/null 2>/dev/null; then
   tmux -u
   mv $SESSION_LOG_PATH/../$_record_filename $SESSION_LOG_PATH/$_record_filename
   exit
