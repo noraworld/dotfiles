@@ -32,3 +32,4 @@ export MANPATH
 if type src-hilite-lesspipe.sh 1>/dev/null 2>/dev/null; then
   export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s'
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
