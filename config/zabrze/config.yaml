@@ -314,4 +314,4 @@ abbrevs:
     abbr-pattern: '' # matches all commands
     snippet: g${current_abbr}
     evaluate: true
-    if: '[[ -e "/usr/local/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/findutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/gnu-sed/bin/g$current_abbr" ]]'
+    if: '[[ -e "/usr/local/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/findutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/gnu-sed/bin/g$current_abbr" ]] || [[ -e "/opt/homebrew/bin/g$current_abbr" ]]'
