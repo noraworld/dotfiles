@@ -5,6 +5,7 @@
 	quotepath = false
 [include]
 	path = .gitconfig.local
+	path = .gitconfig.arm_mac
 [user]
 	useConfigOnly = true
 	signingkey = 482CAD94D37AF0D1
@@ -38,5 +39,3 @@
 	process = git-lfs filter-process
 [commit]
 	gpgsign = true
-[gpg]
-	program = /opt/homebrew/bin/gpg
