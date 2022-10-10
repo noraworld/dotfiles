@@ -178,7 +178,7 @@ fi
 install_vim_bundle
 check_git_version
 reload_profile
-touch .git/hooks/tmp && rm --recursive .git/hooks/* && git init
+touch .git/hooks/tmp && rm -r .git/hooks/* && git init
 install_vim_plugin
 
 install_brew
