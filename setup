@@ -170,6 +170,11 @@ fi
 # unlink unnecessary files
 unlink $HOME/.gitconfig.local.sample
 
+# unlink if not Apple silicon Mac
+if [ "$(uname -p)" != "arm" ] || [ "$(echo "$OSTYPE" | grep -c "^darwin")" -ne 1 ]; then
+  unlink $HOME/.gitconfig.arm_mac
+fi
+
 install_vim_bundle
 check_git_version
 reload_profile
