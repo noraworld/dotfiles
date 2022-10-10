@@ -90,7 +90,7 @@ function reload_profile() {
 }
 
 function install_brew() {
-  if [ "$(echo "$OSTYPE" | grep -c "^darwin")" -eq 1 ]; then
+  if [ "$(echo "$OSTYPE" | grep -c "^darwin")" -eq 1 ] && ! which brew 1>/dev/null 2>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     sudo chown -R $(whoami) /usr/local/Cellar
     sudo chown -R $(whoami) /usr/local/Caskroom
