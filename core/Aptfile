@@ -69,3 +69,4 @@ systemd-timesyncd
 udev
 whois
 wide-dhcpv6-client
+cmake
