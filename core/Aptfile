@@ -68,4 +68,3 @@ systemd-sysv
 systemd-timesyncd
 udev
 whois
-wide-dhcpv6-client
