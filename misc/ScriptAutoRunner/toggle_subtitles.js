@@ -33,7 +33,7 @@ observer.observe(document, { childList: true, subtree: true })
 // Toggle subtitles.
 let count = 0
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'ContextMenu') {
+  if (event.key === 'ContextMenu' || event.key === 'c') {
     count++
 
     if (count % 2 === 0) {
