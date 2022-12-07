@@ -1,24 +1,54 @@
 // Title: Toggle subtitle
 // Hostname: netflix.com, youtube.com, amazon.co.jp
 
-let count = 0
 
+
+// Try to disable subtitles several times.
+// This might not take effect for only one trial in case the subtitles aren't ready yet.
+let actualTrialCount = 0
+function tryToDisableSubtitle(expectedTrialCount = 5, interval = 1000) {
+  subtitle(false, false)
+  actualTrialCount++
+
+  if (actualTrialCount >= expectedTrialCount) {
+    actualTrialCount = 0
+    return
+  }
+
+  setTimeout(tryToDisableSubtitle, interval)
+}
+tryToDisableSubtitle()
+
+// Disable subtitles when a URL is changed.
+// They're on by default. You might want to conceal them at first because they might be spoilers.
+let href = location.href
+let observer = new MutationObserver(function() {
+  if (href !== location.href) {
+    tryToDisableSubtitle()
+    href = location.href
+  }
+})
+observer.observe(document, { childList: true, subtree: true })
+
+// Toggle subtitles.
+let count = 0
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ContextMenu') {
     count++
 
     if (count % 2 === 0) {
-      subtitle(true)
+      subtitle(false)
     }
     else {
-      subtitle(false)
+      subtitle(true)
     }
 
     document.activeElement.blur()
   }
 })
 
-function subtitle(flag) {
+// Turn on or off subtitles.
+function subtitle(flag, notified = true) {
   const visibility = flag ? '1' : '0'
   const message = flag ? 'ON' : 'OFF'
 
@@ -30,7 +60,7 @@ function subtitle(flag) {
     }
     catch (error) {
       console.error(error)
-      alert(error)
+      if (notified) alert(error)
     }
   }
   else if (document.domain.match(/amazon.co.jp$/)) {
@@ -39,7 +69,7 @@ function subtitle(flag) {
     }
     catch (error) {
       console.error(error)
-      alert(error)
+      if (notified) alert(error)
     }
 
     try {
@@ -52,9 +82,10 @@ function subtitle(flag) {
     }
   }
 
-  popup(message)
+  if (notified) popup(message)
 }
 
+// Pop up the message that states whether subtitles are now on or off.
 function popup(message) {
   let body = document.querySelector('body')
   let popupElement = document.createElement('div')
