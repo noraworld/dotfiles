@@ -110,6 +110,10 @@ abbrevs:
     evaluate: true
     snippet: $current_abbr -i
 
+  - name: date
+    abbr: date
+    snippet: date +"??:%M:%S"
+
 
 
   # deprecated
