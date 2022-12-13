@@ -112,7 +112,7 @@ abbrevs:
 
   - name: date
     abbr: date
-    snippet: date +"??:%M:%S"
+    snippet: date +"%T" | sed 's/^[0-9][0-9]:[0-9]/--:-/g'
 
 
 
