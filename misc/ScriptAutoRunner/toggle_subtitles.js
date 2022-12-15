@@ -10,6 +10,12 @@ function tryToDisableSubtitle(expectedTrialCount = 5, interval = 1000) {
   subtitle(false, false)
   actualTrialCount++
 
+  // Remove Language Reactor error message automatically
+  let llnNotification = document.querySelector('.lln-notification')
+  if (llnNotification) {
+    llnNotification.remove()
+  }
+
   if (actualTrialCount >= expectedTrialCount) {
     actualTrialCount = 0
     return
