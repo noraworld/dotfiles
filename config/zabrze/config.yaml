@@ -115,6 +115,11 @@ abbrevs:
     snippet: date +"%T" | sed 's/^[0-9][0-9]:[0-9]/--:-/g'
     global: true
 
+  - name: watch
+    abbr: watch
+    snippet: watch -t
+    global: true
+
 
 
   # deprecated
