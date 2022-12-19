@@ -2405,6 +2405,10 @@
       }
     },
     "mas": {
+      "Amphetamine": {
+        "id": "937984704",
+        "version": "5.2.2"
+      },
       "Be Focused Pro": {
         "id": "961632517",
         "version": "2.2"
@@ -2412,6 +2416,10 @@
       "BetterSnapTool": {
         "id": "417375580",
         "version": "1.9.7"
+      },
+      "Create File Menu": {
+        "id": "1440519779",
+        "version": "1.0"
       },
       "GarageBand": {
         "id": "682658836",
@@ -2444,6 +2452,10 @@
       "Pages": {
         "id": "409201541",
         "version": "11.2"
+      },
+      "The Unarchiver": {
+        "id": "425424353",
+        "version": "4.3.5"
       }
     }
   },
