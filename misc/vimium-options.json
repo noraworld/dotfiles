@@ -1,9 +1,13 @@
 {
-  "settingsVersion": "1.67",
+  "settingsVersion": "1.67.4",
   "exclusionRules": [
     {
       "pattern": "https?://*",
       "passKeys": "1234567890z"
+    },
+    {
+      "pattern": "https?://*",
+      "passKeys": "r"
     }
   ],
   "filterLinkHints": false,
