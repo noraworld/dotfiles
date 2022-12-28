@@ -38,8 +38,8 @@ observer.observe(document, { childList: true, subtree: true })
 
 // Toggle subtitles.
 let count = 0
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'ContextMenu' || event.key === 'c') {
+window.addEventListener('keydown', (event) => {
+  if ((event.key === 'ContextMenu' || event.key === 'c') && isAvailable()) {
     count++
 
     if (count % 2 === 0) {
@@ -50,8 +50,9 @@ document.addEventListener('keydown', (event) => {
     }
 
     document.activeElement.blur()
+    event.stopPropagation()
   }
-})
+}, true)
 
 // Turn on or off subtitles.
 function subtitle(flag, notified = true) {
@@ -114,4 +115,18 @@ function popup(message) {
   setTimeout(() => {
     body.removeChild(popupElement)
   }, 250)
+}
+
+function isAvailable() {
+  if ((document.activeElement.nodeName             === 'INPUT'
+    &&   document.activeElement.getAttribute('type') !== 'range')
+    ||   document.activeElement.nodeName             === 'TEXTAREA'
+    ||   document.activeElement.getAttribute('type') === 'text'
+    ||   document.activeElement.isContentEditable    === true)
+    {
+      return false
+    }
+    else {
+      return true
+    }
 }
