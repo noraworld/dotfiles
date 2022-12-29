@@ -17,7 +17,6 @@ brew "cmake"
 brew "coreutils"
 brew "dnsmasq"
 brew "docker"
-brew "libyaml"
 brew "docker-compose"
 brew "elixir"
 brew "emacs", args: ["with-cocoa"]
@@ -63,7 +62,7 @@ brew "py2cairo"
 brew "rbenv"
 brew "rbenv-gemset"
 brew "redis", restart_service: true
-brew "ruby", link: true
+brew "ripgrep"
 brew "sbt"
 brew "terminal-notifier"
 brew "terminator"
