@@ -11,7 +11,7 @@
         "revision": "3108b2e2a3346b439af7ce8e5bbd54e321c4d7fc"
       },
       "homebrew/core": {
-        "revision": "e56f0656db47c131bd4f470d5134381cce0446a8"
+        "revision": "8791bd14807fd214e465285d5c59e6c891323bfe"
       },
       "homebrew/dupes": {
         "revision": "9930b3257ac245c5e23f8db8b7f653169ec05bfa"
@@ -3315,6 +3315,12 @@
         "options": {
           "full_name": "xquartz"
         }
+      },
+      "google-drive": {
+        "version": "68.0.2",
+        "options": {
+          "full_name": "google-drive"
+        }
       }
     }
   },
@@ -3323,7 +3329,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "3.6.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "e56f0656db47c131bd4f470d5134381cce0446a8",
+        "Homebrew/homebrew-core": "8791bd14807fd214e465285d5c59e6c891323bfe",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.3"
