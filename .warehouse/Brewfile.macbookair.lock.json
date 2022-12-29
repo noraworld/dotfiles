@@ -11,7 +11,7 @@
         "revision": "3108b2e2a3346b439af7ce8e5bbd54e321c4d7fc"
       },
       "homebrew/core": {
-        "revision": "029f17dbdc27d128382106a34ae7fe935572d13c"
+        "revision": "e56f0656db47c131bd4f470d5134381cce0446a8"
       },
       "homebrew/dupes": {
         "revision": "9930b3257ac245c5e23f8db8b7f653169ec05bfa"
@@ -27,6 +27,9 @@
       },
       "waltarix/customs": {
         "revision": "8bdba66b543e4ccb50900c670d6475ba72ba50eb"
+      },
+      "homebrew/cask": {
+        "revision": "de7691a37ad83886ce754e81841384536e56dc9c"
       }
     },
     "brew": {
@@ -3284,6 +3287,34 @@
             }
           }
         }
+      },
+      "ext4fuse": {
+        "version": "0.1.3",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ext4fuse/blobs/sha256:5dc94c281e33bde87ef6c239f7ac37ad6653e72d002359ffb01d0f50f1e8278c",
+              "sha256": "5dc94c281e33bde87ef6c239f7ac37ad6653e72d002359ffb01d0f50f1e8278c"
+            }
+          }
+        }
+      }
+    },
+    "cask": {
+      "macfuse": {
+        "version": "4.4.1",
+        "options": {
+          "full_name": "macfuse"
+        }
+      },
+      "xquartz": {
+        "version": "2.8.4",
+        "options": {
+          "full_name": "xquartz"
+        }
       }
     }
   },
@@ -3292,7 +3323,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "3.6.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "029f17dbdc27d128382106a34ae7fe935572d13c",
+        "Homebrew/homebrew-core": "e56f0656db47c131bd4f470d5134381cce0446a8",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.3"
