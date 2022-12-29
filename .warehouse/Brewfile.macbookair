@@ -1,4 +1,3 @@
-tap "caskroom/cask"
 tap "coteditor/coteditor"
 tap "homebrew/bundle"
 tap "homebrew/core"
@@ -54,7 +53,7 @@ brew "nodebrew"
 brew "pandoc"
 brew "peco"
 brew "popt"
-brew "postgresql", restart_service: true
+brew "postgresql@14"
 brew "protobuf"
 brew "py2cairo"
 brew "rbenv"
