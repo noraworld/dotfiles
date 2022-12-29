@@ -22,6 +22,7 @@ brew "docker-compose"
 brew "elixir"
 brew "emacs", args: ["with-cocoa"]
 brew "ext4fuse"
+brew "fd"
 brew "ffmpeg"
 brew "findutils"
 brew "isl"
