@@ -41,49 +41,49 @@ function main() {
 
     # shred files
     if $quiet; then
-      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -fuz {};'
+      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; shred -fuz "{}";'
     else
-      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -fuvz {};'
+      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; shred -fuvz "{}";'
     fi
 
     # remove symlinks
     # this uses "rm" command because "shred" command cannot delete broken and dir symlinks
     if $quiet; then
-      find "$param" -type l -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm {};'
+      find "$param" -type l -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm "{}";'
     else
-      find "$param" -type l -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm -v {};'
+      find "$param" -type l -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm -v "{}";'
     fi
 
     # remove block special files
     # this uses "rm" command because "shred" command cannot delete special files
     if $quiet; then
-      find "$param" -type b -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm {};'
+      find "$param" -type b -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm "{}";'
     else
-      find "$param" -type b -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm -v {};'
+      find "$param" -type b -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm -v "{}";'
     fi
 
     # remove character special files
     # this uses "rm" command because "shred" command cannot delete special files
     if $quiet; then
-      find "$param" -type c -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm {};'
+      find "$param" -type c -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm "{}";'
     else
-      find "$param" -type c -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm -v {};'
+      find "$param" -type c -print0 | xargs -0 -I {} sh -c 'chflags nouchg "{}"; rm -v "{}";'
     fi
 
     # remove named pipe (FIFO)
     # this uses "rm" command because "shred" command cannot delete named pipe (FIFO)
     if $quiet; then
-      find "$param" -type p -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm {};'
+      find "$param" -type p -print0 | xargs -0 -I "{}" sh -c 'chflags nouchg "{}"; rm "{}";'
     else
-      find "$param" -type p -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm -v {};'
+      find "$param" -type p -print0 | xargs -0 -I "{}" sh -c 'chflags nouchg "{}"; rm -v "{}";'
     fi
 
     # remove socket files
     # this uses "rm" command because "shred" command cannot delete socket files
     if $quiet; then
-      find "$param" -type s -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm {};'
+      find "$param" -type s -print0 | xargs -0 -I "{}" sh -c 'chflags nouchg "{}"; rm "{}";'
     else
-      find "$param" -type s -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; rm -v {};'
+      find "$param" -type s -print0 | xargs -0 -I "{}" sh -c 'chflags nouchg "{}"; rm -v "{}";'
     fi
   else # shred file
     if [[ -b "$param" || -c "$param" || -p "$param" || -L "$param" || -S "$param" ]]; then
