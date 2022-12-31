@@ -41,9 +41,9 @@ function main() {
 
     # shred files
     if $quiet; then
-      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -uz {};'
+      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -fuz {};'
     else
-      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -uvz {};'
+      find "$param" -type f -print0 | xargs -0 -I {} sh -c 'chflags nouchg {}; shred -fuvz {};'
     fi
 
     # remove symlinks
@@ -97,10 +97,10 @@ function main() {
     elif [[ -f "$param" ]]; then
       if $quiet; then
         chflags nouchg "$param"
-        shred -uz "$param"
+        shred -fuz "$param"
       else
         chflags nouchg "$param"
-        shred -uvz "$param"
+        shred -fuvz "$param"
       fi
     fi
 
