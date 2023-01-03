@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Find the same files in a directory
+
+main() {
+  directory="$1"
+  if [ "$directory" = "" ]; then
+    directory="."
+  fi
+
+  # https://unix.stackexchange.com/questions/277697/whats-the-quickest-way-to-find-duplicated-files#answer-277707
+  find "$directory" ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD
+}
+
+main "$@"
