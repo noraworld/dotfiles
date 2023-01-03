@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Known Issues:
-#   Can't shred the "$RECYCLE.BIN" directory (maybe include the file whose name starting with "$")
+# Known Issue:
+#   Can't shred the "$RECYCLE.BIN" directory (the file whose name starts with "$" might be included)
 
 PROG_NAME=$(basename "$0")
 NORMAL_COLOR="\033[00m"
