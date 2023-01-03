@@ -119,11 +119,11 @@ function main() {
 function confirm() {
   if ! $without_confirmation; then
     echo -e "\033[1;91m"
-    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    echo -e "@@@                                                                                                 @@@"
-    echo -e "@@@   This will DESTROY all files in specific directory completely, and they won't be RESTORED!!!   @@@"
-    echo -e "@@@                                                                                                 @@@"
-    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    echo -e "@@@                                                                                                   @@@"
+    echo -e "@@@   This will DESTROY all the files in the directory completely, and they will NOT be RESTORED!!!   @@@"
+    echo -e "@@@                                                                                                   @@@"
+    echo -e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     echo -e "\033[00m"
 
     if ! $quiet; then
