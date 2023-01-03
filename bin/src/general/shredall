@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Known Issues:
+#   Can't shred the "$RECYCLE.BIN" directory
+
 PROG_NAME=$(basename "$0")
 NORMAL_COLOR="\033[00m"
 RED_COLOR="\033[38;05;1m"
