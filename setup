@@ -144,11 +144,12 @@ if [ ! -e $HOME/Library/Application\ Support/Code/User ]; then
   mkdir -p $HOME/Library/Application\ Support/Code/User
 fi
 
-link_file_or_directory $PWD/vim          $HOME/.vim/config
-link_file_or_directory $PWD/git_template $HOME/.git_template
-link_file_or_directory $PWD/bin/src      $HOME/.bin
-link_file_or_directory $PWD/config       $HOME/.config
-link_file_or_directory $PWD/zsh          $HOME/.zsh
+link_file_or_directory $PWD/vim           $HOME/.vim/config
+link_file_or_directory $PWD/git_template  $HOME/.git_template
+link_file_or_directory $PWD/bin/src       $HOME/.bin
+link_file_or_directory $PWD/config        $HOME/.config
+link_file_or_directory $PWD/zsh           $HOME/.zsh
+link_file_or_directory $PWD/bundle/config $HOME/.bundle/config
 
 # link VS Code preferences
 # TODO: this depends on macOS, so support for Linux
