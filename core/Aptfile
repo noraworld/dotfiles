@@ -68,3 +68,4 @@ systemd-sysv
 systemd-timesyncd
 udev
 whois
+nginx
