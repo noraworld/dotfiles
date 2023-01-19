@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# https://gist.github.com/lnrsoft/805627431dacb696e23bcf1dc3551b90
+
+# It didn't work properly...
+
+set -eu
+
+wget https://www.openssl.org/source/openssl-1.1.1s.tar.gz
+tar xvf openssl-1.1.1s.tar.gz
+cd openssl-1.1.1s
+./config
+make
+sudo make install
+cd ..
+rm -f openssl-1.1.1s.tar.gz
+rm -fr openssl-1.1.1s
