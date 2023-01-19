@@ -71,9 +71,6 @@ zinit light cli/cli
 if [ "$OSTYPE" =~ "linux-gnu" ] && [ "$(uname -i)" = "aarch64" ]; then
   zinit ice as"null"
   zinit snippet https://downloads.nordcdn.com/apps/linux/install.sh
-
-  zinit ice as"program" extract"https://www.openssl.org/source/openssl-1.1.1s.tar.gz" atclone"./config" atpull"%atclone" make
-  zinit light openssl/openssl
 fi
 
 autoload -Uz compinit && compinit
