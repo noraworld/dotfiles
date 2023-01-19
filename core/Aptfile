@@ -69,3 +69,5 @@ systemd-timesyncd
 udev
 whois
 nginx
+libtool
+libyaml-dev
