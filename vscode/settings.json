@@ -69,7 +69,6 @@
     },
 
     "git.autofetch": true,
-    "git.autofetchPeriod": 180,
 
     "[markdown]": {
         "editor.tabSize": 4,
