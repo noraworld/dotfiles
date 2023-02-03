@@ -205,5 +205,6 @@
     "explorer.confirmDragAndDrop": false,
     "clipboard-manager.snippet.enabled": false,
     "git.enableSmartCommit": true,
-    "git.postCommitCommand": "sync"
+    "git.postCommitCommand": "sync",
+    "update.showReleaseNotes": false
 }
