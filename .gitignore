@@ -13,6 +13,7 @@ config/configstore/zenn-cli.json
 config/configstore/update-notifier-npm.json
 config/systemd/
 config/gh/
+config/ookla/
 # This is a binary
 config/nordvpn/nordvpn.conf
 config/nordvpn/cli.log
