@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# https://www.speedtest.net/apps/cli
+
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+package install speedtest
