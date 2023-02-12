@@ -206,5 +206,6 @@
     "clipboard-manager.snippet.enabled": false,
     "git.enableSmartCommit": true,
     "git.postCommitCommand": "sync",
-    "update.showReleaseNotes": false
+    "update.showReleaseNotes": false,
+    "workbench.statusBar.visible": false
 }
