@@ -238,7 +238,7 @@ abbrevs:
     snippet: docker
 
   - name: docker compose
-    abbr: dcom
+    abbr: doco
     snippet: docker compose
 
   - name: docker compose
