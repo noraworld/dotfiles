@@ -34,7 +34,6 @@ brew "gnupg"
 brew "python@3.10", link: false
 brew "gobject-introspection"
 brew "hyperfine"
-brew "imagemagick"
 brew "imagemagick@6"
 brew "iproute2mac"
 brew "isl"
