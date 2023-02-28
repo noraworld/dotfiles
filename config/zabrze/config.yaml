@@ -47,16 +47,6 @@ abbrevs:
     snippet: "xargs --max-args=1 --open-tty"
     global: true
 
-  - name: cron-apply
-    abbr: ca
-    snippet: cron-apply
-
-  - name: cron-apply
-    abbr: ca
-    snippet: cron-apply
-    global: true
-    context: '^sudo\s'
-
   - name: internet-fasting-period
     abbr: ifp
     snippet: internet-fasting-period
