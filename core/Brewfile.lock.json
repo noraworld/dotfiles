@@ -2316,6 +2316,12 @@
           "full_name": "google-japanese-ime"
         }
       },
+      "iterm2": {
+        "version": "3.4.16",
+        "options": {
+          "full_name": "iterm2"
+        }
+      },
       "karabiner-elements": {
         "version": "14.10.0",
         "options": {
@@ -2420,9 +2426,9 @@
         "HOMEBREW_VERSION": "3.6.4",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "b227058ed19b12a35f909a7cabe807592bc0d927",
-        "CLT": "14.0.0.0.1.1661618636",
+        "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.0",
-        "macOS": "12.6"
+        "macOS": "12.6.3"
       }
     }
   }
