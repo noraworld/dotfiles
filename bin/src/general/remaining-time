@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+minute=$1
+remaining_time=$(echo $(expr $minute \* 60) - \($(date +%s) % $(expr $minute \* 60)\) | bc)
+
+echo "$(expr $remaining_time / 60) minutes $(expr $remaining_time % 60) seconds remaining (reference time: $minute minutes)"
