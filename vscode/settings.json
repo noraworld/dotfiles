@@ -210,5 +210,6 @@
     "git.postCommitCommand": "sync",
     "update.showReleaseNotes": false,
     "workbench.statusBar.visible": false,
-    "application.shellEnvironmentResolutionTimeout": 20
+    "application.shellEnvironmentResolutionTimeout": 20,
+    "workbench.activityBar.visible": false
 }
