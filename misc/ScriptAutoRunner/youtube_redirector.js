@@ -1,12 +1,12 @@
 // Title: YouTube Redirector
 // Hostname: youtube.com
 
-YOUTUBE_HOST = 'https://www.youtube.com'
-YOUTUBE_ALTERNATIVE_HOST = 'https://www.youtube-nocookie.com'
+YOUTUBE_HOST = 'www.youtube.com'
+YOUTUBE_ALTERNATIVE_HOST = 'www.youtube-nocookie.com'
 
 function main() {
   isFailed().then((status) => {
-    if (status) {
+    if (status && location.host === YOUTUBE_HOST) {
       location.href = getAvailableURL(getID())
     }
   })
@@ -14,7 +14,7 @@ function main() {
 
 async function isFailed() {
   try {
-    await fetch(YOUTUBE_HOST)
+    await fetch(`https://${YOUTUBE_HOST}`)
     return false
   }
   catch {
@@ -27,7 +27,7 @@ function getID() {
 }
 
 function getAvailableURL(id) {
-  return `${YOUTUBE_ALTERNATIVE_HOST}/embed/${id}`
+  return `https://${YOUTUBE_ALTERNATIVE_HOST}/embed/${id}`
 }
 
 main()
