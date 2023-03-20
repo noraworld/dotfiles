@@ -6,8 +6,9 @@ YOUTUBE_ALTERNATIVE_HOST = 'www.youtube-nocookie.com'
 
 function main() {
   isFailed().then((status) => {
-    if (status && location.host === YOUTUBE_HOST) {
-      location.href = getAvailableURL(getID())
+    const id = getID()
+    if (status && location.host === YOUTUBE_HOST && id) {
+      location.href = getAvailableURL(id)
     }
   })
 }
