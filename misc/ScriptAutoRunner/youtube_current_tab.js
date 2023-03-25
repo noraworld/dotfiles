@@ -3,6 +3,9 @@
 
 function main() {
   document.addEventListener('click', openInCurrentTab)
+
+  // Hidden overlay container when paused
+  document.querySelector('.ytp-pause-overlay-container').hidden = true
 }
 
 function openInCurrentTab() {
