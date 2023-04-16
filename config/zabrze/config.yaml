@@ -95,10 +95,10 @@ abbrevs:
     evaluate: true
     snippet: $current_abbr -i
 
-  - name: date
-    abbr: date
-    snippet: date +"%T" | sed 's/^[0-9][0-9]:[0-9]/--:-/g'
-    global: true
+  # - name: date
+  #   abbr: date
+  #   snippet: date +"%T" | sed 's/^[0-9][0-9]:[0-9]/--:-/g'
+  #   global: true
 
   - name: watch
     abbr: watch
