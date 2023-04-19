@@ -1,0 +1,72 @@
+#!/bin/sh
+
+set -eu
+
+main() {
+  file="$1"
+  validate
+
+  generate
+}
+
+validate() {
+  if [ -e "$file" ]; then
+    echo "error: file $file already exists" >&2
+    exit 1
+  fi
+}
+
+generate() {
+  touch "$file"
+  shebang
+  set_parameter
+  main_function
+  option_parser
+  invoke_main
+  # generate_options
+}
+
+shebang() {
+  printf "#!/bin/sh\n\n" >> "$file"
+}
+
+set_parameter() {
+  printf "set -eu\n\n" >> "$file"
+}
+
+main_function() {
+  printf "main() {\n}\n\n" >> "$file"
+}
+
+option_parser() {
+cat <<EOF >> "$file"
+# @getoptions
+parser_definition() {
+  setup   REST help:usage -- "Usage: $file [options]... [arguments]..." ''
+  msg -- 'Options:'
+  flag    FLAG    -f --flag                 -- "takes no arguments"
+  param   PARAM   -p --param                -- "takes one argument"
+  option  OPTION  -o --option on:"default"  -- "takes one optional argument"
+  disp    :usage  -h --help
+  disp    VERSION    --version
+}
+# @end
+
+# @gengetoptions parser -i parser_definition parse
+#
+#     INSERTED HERE
+#
+# @end
+
+EOF
+}
+
+invoke_main() {
+  printf "main \"\$@\"\n" >> "$file"
+}
+
+generate_options() {
+  gengetoptions embed --overwrite "$file"
+}
+
+main "$@"
