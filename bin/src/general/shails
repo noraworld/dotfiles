@@ -54,7 +54,8 @@ parser_definition() {
 
 # @gengetoptions parser -i parser_definition parse
 #
-#     INSERTED HERE
+#     To generate the option parser, you can use:
+#     $ gengetoptions embed --overwrite $file
 #
 # @end
 
