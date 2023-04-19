@@ -27,7 +27,8 @@ generate() {
 }
 
 shebang() {
-  printf "#!/bin/sh\n\n" >> "$file"
+  printf "#!/bin/sh\n" >> "$file"
+  printf "# shellcheck disable=SC2004\n\n" >> "$file" # workaround
 }
 
 set_parameter() {
