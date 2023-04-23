@@ -73,3 +73,17 @@ libtool
 libyaml-dev
 openresty
 speedtest
+
+# Shairport Sync
+libasound2-dev
+libavahi-client-dev
+libconfig-dev
+libdaemon-dev
+libpopt-dev
+libpulse-dev
+libsoxr-dev
+avahi-daemon
+libavcodec-dev
+libavformat-dev
+libplist-dev
+libsodium-dev
