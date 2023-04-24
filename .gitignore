@@ -14,6 +14,8 @@ config/configstore/update-notifier-npm.json
 config/systemd/
 config/gh/
 config/ookla/
+## https://github.com/noraworld/pulsewire-conf
+config/pipewire
 # This is a binary
 config/nordvpn/nordvpn.conf
 config/nordvpn/cli.log
