@@ -5,6 +5,7 @@
 # Always ignored
 --glob=!node_modules/*
 --glob=!*/.git/**/*
+--glob=!*.git/**/*
 --glob=!coverage/index.html
 --glob=!*.log
 
