@@ -2379,6 +2379,12 @@
           "full_name": "streamlabs-obs"
         }
       },
+      "telegram": {
+        "version": "9.0.1,237033",
+        "options": {
+          "full_name": "telegram"
+        }
+      },
       "visual-studio-code": {
         "version": "1.72.0",
         "options": {
