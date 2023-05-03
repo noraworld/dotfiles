@@ -16,6 +16,7 @@ config/gh/
 config/ookla/
 ## https://github.com/noraworld/pulsewire-conf
 config/pipewire
+config/wireplumber
 # This is a binary
 config/nordvpn/nordvpn.conf
 config/nordvpn/cli.log
