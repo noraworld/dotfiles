@@ -73,6 +73,12 @@ if [ "$OSTYPE" =~ "linux-gnu" ] && [ "$(uname -i)" = "aarch64" ]; then
   zinit snippet https://downloads.nordcdn.com/apps/linux/install.sh
 fi
 
+# zinit ice as"program" cp"dnsleaktest.sh -> dnsleaktest" pick"dnsleaktest"
+# zinit light macvk/dnsleaktest
+
+zinit ice as"program" pick"dnsleaktest"
+zinit snippet https://gist.githubusercontent.com/Tugzrida/6fe83682157ead89875a76d065874973/raw/6e995a779db79327e376ec92e667211f7d130fc4/dnsleaktest
+
 autoload -Uz compinit && compinit
 
 # It should be after compinit
