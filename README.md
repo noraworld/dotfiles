@@ -33,6 +33,13 @@ Run the setup script. You need to change directories so you can run it in dotfil
 ```shell
 cd dotfiles
 ./setup
+exit
+
+# This may take a lot of time
+# You may need to enter your login password during installation
+# You should do this twice to install items in the App Store
+brew bundle install --global --no-lock
+brew bundle install --global --no-lock
 
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf install ruby $(cat .ruby-version)
