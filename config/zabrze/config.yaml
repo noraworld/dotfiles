@@ -17,7 +17,7 @@ abbrevs:
 
   - name: grep
     abbr: grep
-    snippet: grep --color=auto
+    snippet: ggrep --color=auto
 
   ## Do not replace '-a' with '--append' because BSD script command
   ## does not support a long option
