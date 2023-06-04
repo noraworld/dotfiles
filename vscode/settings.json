@@ -43,7 +43,8 @@
         "**/bin/src/currentshell/**/*": "shellscript",
         "**/bin/src/zsh_completions/**/*": "shellscript",
         "**/bin/src/caution/**/*": "shellscript",
-        "Schemafile": "ruby" // for Ridgepole
+        "Schemafile": "ruby", // for Ridgepole
+        "*.cron": "crontab"
     },
 
     "terminal.integrated.scrollback": 100000,
