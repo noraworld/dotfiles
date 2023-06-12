@@ -3,6 +3,9 @@
 
 
 
+const DEEPL_API_KEY = 'YOUR_API_KEY'
+const DEEPL_API_URL = 'https://api-free.deepl.com/v2/translate'
+
 // Try to disable subtitles several times.
 // This might not take effect for only one trial in case the subtitles aren't ready yet.
 let actualTrialCount = 0
@@ -98,6 +101,43 @@ function subtitle(flag, notified = true) {
   }
 
   if (notified) popup(message)
+  if (flag) {
+    document.querySelector('.lln-sub-menu-btn').click()
+    translate(document.querySelector('.lln-copy-text').getAttribute('data-text-to-copy'))
+    document.querySelector('.lln-sub-menu-btn').click()
+  }
+}
+
+// https://qiita.com/yaju/items/bf4613393cd4ee402d17#javascript
+function translate(text, encoded = true) {
+  if (encoded) {
+    var content = 'auth_key=' + DEEPL_API_KEY + '&text=' + text + '&source_lang=EN&target_lang=JA'
+  }
+  else {
+    var content = encodeURI('auth_key=' + DEEPL_API_KEY + '&text=' + text + '&source_lang=EN&target_lang=JA')
+  }
+  let url = DEEPL_API_URL + '?' + content
+
+  fetch(url)
+    .then(function(response) {
+      if (response.ok) {
+        return response.json()
+      } else {
+        console.error('Could not reach the API: ' + response.statusText)
+      }
+    }).then(function(data) {
+      console.log(data["translations"][0]["text"])
+      document.querySelector('.lln-sentence-wrap').insertAdjacentHTML(
+        'afterend',
+        `<p style="margin: 0">${data["translations"][0]["text"]}</p>`
+      )
+    }).catch(function(error) {
+      console.error(error.message)
+      document.querySelector('.lln-sentence-wrap').insertAdjacentHTML(
+        'afterend',
+        `<p style="margin: 0">${error.message}</p>`
+      )
+    })
 }
 
 // Pop up the message that states whether subtitles are now on or off.
