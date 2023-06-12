@@ -37,16 +37,13 @@ let observer = new MutationObserver(function() {
 observer.observe(document, { childList: true, subtree: true })
 
 // Toggle subtitles.
-let count = 0
 window.addEventListener('keydown', (event) => {
   if ((event.key === 'ContextMenu' || event.key === 'c') && isAvailable()) {
-    count++
-
-    if (count % 2 === 0) {
-      subtitle(false)
+    if (document.querySelector('#lln-subs-content').style.opacity === '0') {
+      subtitle(true)
     }
     else {
-      subtitle(true)
+      subtitle(false)
     }
 
     document.activeElement.blur()
@@ -59,6 +56,9 @@ window.addEventListener('keydown', (event) => {
   else if ((event.key === '[') && isAvailable()) {
     document.querySelector('.lln-toggle').click()
     event.stopPropagation()
+  }
+  else if ((event.key === ' ' || event.key === 'Enter') && isAvailable()) {
+    subtitle(false, notified = false)
   }
 }, true)
 
