@@ -52,6 +52,14 @@ window.addEventListener('keydown', (event) => {
     document.activeElement.blur()
     event.stopPropagation()
   }
+  else if ((event.key === 'r') && isAvailable()) {
+    document.querySelector('.lln-repeat-sub-btn').click()
+    event.stopPropagation()
+  }
+  else if ((event.key === '[') && isAvailable()) {
+    document.querySelector('.lln-toggle').click()
+    event.stopPropagation()
+  }
 }, true)
 
 // Turn on or off subtitles.
