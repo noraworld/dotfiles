@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap ; LinkHints.activateMode\nmap h previousTab\nmap l nextTab\nmap gu goToRoot\nmap gU goUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap D scrollFullPageDown\nmap U scrollFullPageUp\nmap X restoreTab\nmap <c-X> removeTab\n\nunmap p\nunmap x\nunmap ^",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap ; LinkHints.activateMode\nmap h previousTab\nmap l nextTab\nmap gu goToRoot\nmap gU goUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap D scrollFullPageDown\nmap U scrollFullPageUp\nmap X restoreTab\nmap <c-X> removeTab\n\nunmap p\nunmap x\nunmap ^\nunmap [[",
   "linkHintCharacters": "jkio",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
