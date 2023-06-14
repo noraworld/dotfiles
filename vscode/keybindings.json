@@ -158,5 +158,10 @@
     {
         "key": "shift+cmd+j",
         "command": "terminal.focus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "closeFindWidget",
+        "when": "editorFocus && findWidgetVisible && !isComposing"
     }
 ]
