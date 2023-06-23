@@ -18,6 +18,11 @@ abbrevs:
   - name: grep
     abbr: grep
     snippet: ggrep --color=auto
+    if: '[[ -e "/usr/local/opt/coreutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/findutils/bin/g$current_abbr" ]] || [[ -e "/usr/local/opt/gnu-sed/bin/g$current_abbr" ]] || [[ -e "/opt/homebrew/bin/g$current_abbr" ]]'
+
+  - name: grep
+    abbr: grep
+    snippet: grep --color=auto
 
   ## Do not replace '-a' with '--append' because BSD script command
   ## does not support a long option
