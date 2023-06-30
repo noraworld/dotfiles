@@ -2790,6 +2790,12 @@
           "full_name": "lunar"
         }
       },
+      "steam": {
+        "version": "4.0",
+        "options": {
+          "full_name": "steam"
+        }
+      },
       "streamlabs-obs": {
         "version": "1.12.3",
         "options": {
