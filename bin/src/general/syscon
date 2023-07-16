@@ -1,0 +1,21 @@
+#!/bin/sh
+
+main() {
+  operation="$1"
+  service="$2"
+  option=""
+
+  if [ "$operation" = "status" ]; then
+    option="--no-pager"
+  fi
+
+  if [ "$(systemctl list-units --type=service | grep -c "$service")" -ne 0 ]; then
+    sudo systemctl "$option" "$operation" "$service"
+  elif [ "$(systemctl --user list-units --type=service | grep -c "$service")" -ne 0 ]; then
+    systemctl --user "$option" "$operation" "$service"
+  else
+    echo "error: no such service" >&2
+  fi
+}
+
+main "$@"
