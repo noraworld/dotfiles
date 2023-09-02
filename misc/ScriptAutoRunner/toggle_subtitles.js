@@ -28,6 +28,16 @@ function tryToDisableSubtitle(expectedTrialCount = 5, interval = 1000) {
 }
 tryToDisableSubtitle()
 
+function enforcePause(interval = 5000) {
+  llnToggle = document.querySelector('.lln-toggle')
+  if (llnToggle && llnToggle.checked === false) {
+    llnToggle.click()
+  }
+
+  setTimeout(enforcePause, interval)
+}
+enforcePause()
+
 // Disable subtitles when a URL is changed.
 // They're on by default. You might want to conceal them at first because they might be spoilers.
 let href = location.href
