@@ -56,11 +56,10 @@ window.addEventListener('keydown', (event) => {
     document.querySelector('.lln-repeat-sub-btn').click()
     event.stopPropagation()
   }
-  else if ((event.key === '[') && isAvailable()) {
-    document.querySelector('.lln-toggle').click()
-    event.stopPropagation()
-  }
-  else if ((event.key === ' ' || event.key === 'Enter') && isAvailable()) {
+  // else if ((event.key === '[') && isAvailable(event)) {
+  //   document.querySelector('.lln-toggle').click()
+  //   event.stopPropagation()
+  // }
     subtitle(false, notified = false)
   }
 }, true)
