@@ -51,7 +51,7 @@ observer.observe(document, { childList: true, subtree: true })
 
 // Toggle subtitles.
 window.addEventListener('keydown', (event) => {
-  if ((event.key === 'ContextMenu' || event.key === 'c') && isAvailable()) {
+  if ((event.key === 'ContextMenu' || event.key === 'c') && isAvailable(event)) {
     if (document.querySelector('#lln-subs-content').style.opacity === '0') {
       subtitle(true)
     }
@@ -62,7 +62,7 @@ window.addEventListener('keydown', (event) => {
     document.activeElement.blur()
     event.stopPropagation()
   }
-  else if ((event.key === 'r') && isAvailable()) {
+  else if ((event.key === 'r') && isAvailable(event)) {
     document.querySelector('.lln-repeat-sub-btn').click()
     event.stopPropagation()
   }
@@ -70,6 +70,7 @@ window.addEventListener('keydown', (event) => {
   //   document.querySelector('.lln-toggle').click()
   //   event.stopPropagation()
   // }
+  else if ((event.key === ' ' || event.key === 'Enter') && isAvailable(event)) {
     subtitle(false, notified = false)
   }
 }, true)
@@ -174,12 +175,13 @@ function popup(message) {
   }, 250)
 }
 
-function isAvailable() {
+function isAvailable(event) {
   if ((document.activeElement.nodeName             === 'INPUT'
     &&   document.activeElement.getAttribute('type') !== 'range')
     ||   document.activeElement.nodeName             === 'TEXTAREA'
     ||   document.activeElement.getAttribute('type') === 'text'
-    ||   document.activeElement.isContentEditable    === true)
+    ||   document.activeElement.isContentEditable    === true
+    ||   (event.metaKey || event.ctrlKey || event.altKey))
     {
       return false
     }
