@@ -139,13 +139,13 @@ function translate(text, encoded = true) {
       console.log(data["translations"][0]["text"])
       document.querySelector('.lln-sentence-wrap').insertAdjacentHTML(
         'afterend',
-        `<p style="margin: 0">${data["translations"][0]["text"]}</p>`
+        `<p style="margin: 0; text-shadow: rgb(0, 0, 0) 0px 0px 7px, rgba(0, 0, 0, 0.8) 0px 0px 18px; /* font-weight: 700; */">${data["translations"][0]["text"]}</p>`
       )
     }).catch(function(error) {
       console.error(error.message)
       document.querySelector('.lln-sentence-wrap').insertAdjacentHTML(
         'afterend',
-        `<p style="margin: 0">${error.message}</p>`
+        `<p style="margin: 0; text-shadow: rgb(0, 0, 0) 0px 0px 7px, rgba(0, 0, 0, 0.8) 0px 0px 18px; /* font-weight: 700; */">${error.message}</p>`
       )
     })
 }
