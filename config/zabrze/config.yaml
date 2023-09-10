@@ -85,6 +85,10 @@ abbrevs:
     abbr: sc
     snippet: shellcheck
 
+  - name: man
+    abbr: man
+    snippet: MANWIDTH=$(($(echo $COLUMNS - 20))) man
+
 
 
   # for safe operations
