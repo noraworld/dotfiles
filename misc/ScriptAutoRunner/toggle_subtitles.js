@@ -173,7 +173,7 @@ function popup(message) {
 
   setTimeout(() => {
     body.removeChild(popupElement)
-  }, 250)
+  }, 400)
 }
 
 function isAvailable(event) {
