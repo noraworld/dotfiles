@@ -11,7 +11,7 @@ main() {
 
   if [ "$(systemctl list-units --type=service | grep -c "$service")" -ne 0 ]; then
     sudo systemctl $option "$operation" "$service"
-  elif [ "$(systemctl --user list-units --type=service | grep -c "$service")" -ne 0 ]; then
+  elif [ "$(systemctl --user list-unit-files --type=service | grep -c "$service")" -ne 0 ]; then
     systemctl --user $option "$operation" "$service"
   else
     echo "error: no such service" >&2
