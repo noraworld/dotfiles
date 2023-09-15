@@ -74,12 +74,35 @@ window.addEventListener('keydown', (event) => {
   else if ((event.key === ' ' || event.key === 'Enter') && isAvailable(event)) {
     subtitle(false, notified = false)
   }
+  else if ((event.key === '[') && isAvailable(event)) {
+    if ((repeatCount % 2) === 0) {
+      popup('ON (rep)')
+
+      document.querySelector('video').onpause = function() {
+        setTimeout(() => {
+          document.querySelector('.lln-repeat-sub-btn').click()
+        }, 1000)
+      }
+
+      document.querySelector('.lln-repeat-sub-btn').click()
+      event.stopPropagation()
+    }
+    else {
+      popup('OFF (rep)')
+
+      document.querySelector('video').onpause = function() {
+        // only cancel
+      }
+    }
+
+    repeatCount++
+  }
 }, true)
 
 // Turn on or off subtitles.
 function subtitle(flag, notified = true) {
   const visibility = flag ? '1' : '0'
-  const message = flag ? 'ON' : 'OFF'
+  const message = flag ? 'ON (sub)' : 'OFF (sub)'
 
   if (document.domain.match(/netflix.com$/) || document.domain.match(/youtube.com$/)) {
     try {
