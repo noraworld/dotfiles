@@ -50,8 +50,9 @@ let observer = new MutationObserver(function() {
 observer.observe(document, { childList: true, subtree: true })
 
 // Toggle subtitles.
+let repeatCount = 0
 window.addEventListener('keydown', (event) => {
-  if ((event.key === 'ContextMenu' || event.key === 'c') && isAvailable(event)) {
+  if ((event.key === 'c') && isAvailable(event)) {
     if (document.querySelector('#lln-subs-content').style.opacity === '0') {
       subtitle(true)
     }
