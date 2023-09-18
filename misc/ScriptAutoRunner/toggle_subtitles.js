@@ -63,7 +63,7 @@ window.addEventListener('keydown', (event) => {
     document.activeElement.blur()
     event.stopPropagation()
   }
-  else if ((event.key === 'r') && isAvailable(event)) {
+  else if ((event.key === ' ' || event.key === 'Enter') && isAvailable(event)) {
     document.querySelector('.lln-repeat-sub-btn').click()
     event.stopPropagation()
   }
@@ -71,10 +71,19 @@ window.addEventListener('keydown', (event) => {
   //   document.querySelector('.lln-toggle').click()
   //   event.stopPropagation()
   // }
-  else if ((event.key === ' ' || event.key === 'Enter') && isAvailable(event)) {
+  else if ((event.key === 'ArrowUp') && isAvailable(event)) {
     subtitle(false, notified = false)
+
+    if (document.querySelector('video').paused) {
+      document.querySelector('video').play();
+    }
+    else {
+      document.querySelector('video').pause();
+    }
+
+    event.stopPropagation()
   }
-  else if ((event.key === '[') && isAvailable(event)) {
+  else if ((event.key === 'ArrowDown') && isAvailable(event)) {
     if ((repeatCount % 2) === 0) {
       popup('ON (rep)')
 
@@ -91,10 +100,11 @@ window.addEventListener('keydown', (event) => {
       popup('OFF (rep)')
 
       document.querySelector('video').onpause = function() {
-        // only cancel
+        event.stopPropagation()
       }
     }
 
+    event.stopPropagation()
     repeatCount++
   }
 }, true)
