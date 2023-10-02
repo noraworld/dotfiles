@@ -92,7 +92,7 @@ The list of applications whose license should be activated or deactivated before
 
 | Apps                                                     | License stored in |
 | -------------------------------------------------------- | ----------------- |
-| Alfred                                                   |                   |
+| [Alfred](https://www.alfredforum.com/topic/11207-licenses-can-i-manage-them/#:~:text=You%20can%20easily%20deactivate%20a,we'll%20help%20you%20out.) | |
 | Bartender                                                |                   |
 | Lunar                                                    |                   |
 | [Witch](https://manytricks.com/osticket/kb/faq.php?id=2) | Google Drive      |
