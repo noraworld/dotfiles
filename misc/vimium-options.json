@@ -1,7 +1,6 @@
 {
   "keyMappings": "# Insert your preferred key mappings here.\nmap ; LinkHints.activateMode\nmap h previousTab\nmap l nextTab\nmap gu goToRoot\nmap gU goUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap D scrollFullPageDown\nmap U scrollFullPageUp\nmap X restoreTab\nmap <c-X> removeTab\nmap M toggleMuteTab\n\nunmap p\nunmap x\nunmap ^\nunmap [[",
   "linkHintCharacters": "jkio",
-  "newTabUrl": "https://github.com/noraworld/bookmarks/blob/main/bookmarks_resident.md",
   "regexFindMode": true,
   "grabBackFocus": true,
   "settingsVersion": "2.0.5",
