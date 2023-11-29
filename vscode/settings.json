@@ -222,6 +222,5 @@
     "update.showReleaseNotes": false,
     "workbench.statusBar.visible": false,
     "application.shellEnvironmentResolutionTimeout": 20,
-    "workbench.activityBar.visible": true,
     "editor.inlineSuggest.enabled": true
 }
