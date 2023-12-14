@@ -11,7 +11,13 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-    "workbench.colorTheme": "One Dark Pro",
+
+    // "workbench.colorTheme" automatically changes when the system appearance is updated.
+    // This should be ignored because it is impossible to manage every time it is modified.
+    // https://zenn.dev/aktriver/articles/2021-12-editor-light-theme#vscode(visual-studio-code)
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
 
     "editor.wordWrap": "on",
     "editor.renderWhitespace": "boundary",
