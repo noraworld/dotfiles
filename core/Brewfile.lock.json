@@ -2976,18 +2976,6 @@
           "full_name": "bartender"
         }
       },
-      "blackhole-16ch": {
-        "version": "0.5.0",
-        "options": {
-          "full_name": "blackhole-16ch"
-        }
-      },
-      "blackhole-2ch": {
-        "version": "0.5.0",
-        "options": {
-          "full_name": "blackhole-2ch"
-        }
-      },
       "browserosaurus": {
         "version": "20.7.0",
         "options": {
