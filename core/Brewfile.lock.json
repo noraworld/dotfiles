@@ -2976,12 +2976,6 @@
           "full_name": "bartender"
         }
       },
-      "browserosaurus": {
-        "version": "20.7.0",
-        "options": {
-          "full_name": "browserosaurus"
-        }
-      },
       "chromedriver": {
         "version": "120.0.6099.109",
         "options": {
