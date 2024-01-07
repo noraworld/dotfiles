@@ -3036,12 +3036,6 @@
           "full_name": "lunar"
         }
       },
-      "telegram": {
-        "version": "10.5,257870",
-        "options": {
-          "full_name": "telegram"
-        }
-      },
       "visual-studio-code": {
         "version": "1.85.1",
         "options": {
