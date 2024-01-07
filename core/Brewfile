@@ -93,7 +93,6 @@ cask "zoom"
 mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
 mas "Noizio", id: 928871589
-mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 vscode "alefragnani.rtf"
 vscode "Angelmaneuver.wallpaper-setting"
