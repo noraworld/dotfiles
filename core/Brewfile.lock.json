@@ -2982,12 +2982,6 @@
           "full_name": "chromedriver"
         }
       },
-      "discord": {
-        "version": "0.0.290",
-        "options": {
-          "full_name": "discord"
-        }
-      },
       "firefox": {
         "version": "121.0",
         "options": {
