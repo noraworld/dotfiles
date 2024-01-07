@@ -90,7 +90,6 @@ cask "telegram"
 cask "visual-studio-code"
 cask "witch"
 cask "zoom"
-mas "Amphetamine", id: 937984704
 mas "Battery Monitor", id: 836505650
 mas "Be Focused Pro", id: 961632517
 mas "BetterSnapTool", id: 417375580
