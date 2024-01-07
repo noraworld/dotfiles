@@ -84,7 +84,6 @@ cask "steam"
 cask "streamlabs-obs"
 cask "telegram"
 cask "visual-studio-code"
-cask "witch"
 cask "zoom"
 mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307

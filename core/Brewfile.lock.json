@@ -3066,12 +3066,6 @@
           "full_name": "visual-studio-code"
         }
       },
-      "witch": {
-        "version": "4.6",
-        "options": {
-          "full_name": "witch"
-        }
-      },
       "zoom": {
         "version": "5.17.1.27701",
         "options": {
