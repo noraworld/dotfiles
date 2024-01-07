@@ -3036,12 +3036,6 @@
           "full_name": "karabiner-elements"
         }
       },
-      "keyboardcleantool": {
-        "version": "6",
-        "options": {
-          "full_name": "keyboardcleantool"
-        }
-      },
       "lunar": {
         "version": "6.5.0",
         "options": {
