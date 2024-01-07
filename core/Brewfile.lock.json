@@ -2988,12 +2988,6 @@
           "full_name": "discord"
         }
       },
-      "docker": {
-        "version": "4.26.1,131620",
-        "options": {
-          "full_name": "docker"
-        }
-      },
       "firefox": {
         "version": "121.0",
         "options": {
