@@ -56,6 +56,9 @@ asdf reshim python
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs $(cat .node-version)
 npm install
+
+sudo ln -s ~/.vimrc /root/.vimrc
+sudo ln -s ~/.vim /root/.vim
 ```
 
 **IMPORTANT NOTE 1**: You should install Vim plugins and quit it when it’s started up while executing a setup script.
