@@ -1,21 +1,10 @@
 #!/bin/sh
 
+# This script is a simple systemctl wrapper.
+# My Raspberry Pi sometimes halts when systemctl is performed in a current shell for some reason.
+
 main() {
-  service="$1"
-  operation="$2"
-  option=""
-
-  if [ "$operation" = "status" ]; then
-    option="--no-pager --full"
-  fi
-
-  if [ "$(systemctl list-units --type=service | grep -c "$service")" -ne 0 ]; then
-    sudo systemctl $option "$operation" "$service"
-  elif [ "$(systemctl --user list-unit-files --type=service | grep -c "$service")" -ne 0 ]; then
-    systemctl --user $option "$operation" "$service"
-  else
-    echo "error: no such service" >&2
-  fi
+  systemctl $@
 }
 
 main "$@"
