@@ -5,9 +5,7 @@ function main() {
   const COMMON_LOCALES       = ['en', 'en_US']
   const FG_MAGENTA           = '\x1b[35m%s\x1b[0m'
   const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail'
-
-  const fs   = require('fs')
-  const glob = require('glob')
+  const fs = require('fs')
 
   fs.readdir(EXTENSION_PATH, (err, extensionIds) => {
     extensionIds.forEach(extensionId => {
