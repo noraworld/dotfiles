@@ -10,10 +10,15 @@ function main() {
   fs.readdir(EXTENSION_PATH, (err, extensionIds) => {
     extensionIds.forEach(extensionId => {
       fs.readdir(`${EXTENSION_PATH}/${extensionId}`, (err, versionDirectories) => {
+        // if an unexpected path is detected
+        if (!versionDirectories) {
+          console.warn(FG_MAGENTA, `UNEXPECTED PATH ${EXTENSION_PATH}/${extensionId} IS DETECTED!`)
+          return
+        }
+
         // if the directory inside an extension ID doesn't contain any version directories
         if (!versionDirectories.length) {
-          // comment it out when you want to debug
-          // console.warn(FG_MAGENTA, 'NOT AN EXTENSION DIRECTORY!')
+          console.warn(FG_MAGENTA, 'NOT AN EXTENSION DIRECTORY!')
           return
         }
 
