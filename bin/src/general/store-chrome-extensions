@@ -1,33 +1,46 @@
-#!/bin/sh
+#!/usr/bin/env node
 
-# This code is insane! There are absolutely potential bugs.
+function main() {
+  const EXTENSION_PATH       = `${process.env.HOME}/Library/Application Support/Google/Chrome/Default/Extensions`
+  const COMMON_LOCALES       = ['en', 'en_US']
+  const FG_MAGENTA           = '\x1b[35m%s\x1b[0m'
+  const CHROME_WEB_STORE_URL = 'https://chromewebstore.google.com/detail'
 
-EXTENSIONS_PATH=$(ls "$HOME/Library/Application Support/Google/Chrome/Default/Extensions")
-CHROME_WEB_STORE_URL="https://chromewebstore.google.com/detail"
+  const fs   = require('fs')
+  const glob = require('glob')
 
-main() {
-  for extension_id in ${EXTENSIONS_PATH}; do
-    extension_name="$(cat $extension_id/*/manifest.json | jq .name)"
+  fs.readdir(EXTENSION_PATH, (err, extensionIds) => {
+    extensionIds.forEach(extensionId => {
+      fs.readdir(`${EXTENSION_PATH}/${extensionId}`, (err, versionDirectories) => {
+        // if the directory inside an extension ID doesn't contain any version directories
+        if (!versionDirectories.length) {
+          // comment it out when you want to debug
+          // console.warn(FG_MAGENTA, 'NOT AN EXTENSION DIRECTORY!')
+          return
+        }
 
-    if [ $(echo "$extension_name" | grep -cE "__MSG_.+__") -ne 0 ]; then
-      msg_key=$(echo "$extension_name" | sed -E "s/\"__MSG_(.+)__\"/\1/g")
-      message_json="$extension_id/*/_locales/en/messages.json"
+        let extensionSourceDirectory = `${EXTENSION_PATH}/${extensionId}/${versionDirectories[versionDirectories.length - 1]}`
+        let extensionName            = JSON.parse(fs.readFileSync(`${extensionSourceDirectory}/manifest.json`))['name']
 
-      if [ $(echo "$msg_key" | grep -cE "[0-9]+") -ne 0 ]; then
-        extension_name=$(cat $message_json | grep -A 3 "\"$msg_key\"\:" | grep "\"message\"\:" | awk -F'\"' '{print $4}')
-      elif ! [ -f $message_json ]; then
-        extension_name=$(cat $extension_id/*/_locales/en_US/messages.json | jq .$msg_key.message)
-      else
-        extension_name=$(cat $message_json | jq .$msg_key.message)
+        // if the extension name of a manifest.json is localized
+        if (extensionName.match(/__MSG_.+__/g)) {
+          for (locale of COMMON_LOCALES) {
+            let extensionNameKey = extensionName.replace(/^__MSG_/, '').replace(/__$/, '')
+            let messageJsonFile = `${extensionSourceDirectory}/_locales/${locale}/messages.json`
 
-        if [ "$extension_name" = "null" ]; then
-          extension_name=$(cat $message_json | jq .$(echo "$msg_key" | tr [:upper:] [:lower:]).message)
-        fi
-      fi
-    fi
+            if (fs.existsSync(messageJsonFile)) {
+              if (!JSON.parse(fs.readFileSync(messageJsonFile))[extensionNameKey]) extensionNameKey = extensionNameKey.toLowerCase()
+              extensionName = JSON.parse(fs.readFileSync(messageJsonFile))[extensionNameKey]['message']
+              break
+            }
+          }
+        }
 
-    echo \* \[$(echo "$extension_name" | sed -E 's/^"|"$//g')\]\($CHROME_WEB_STORE_URL/$extension_id\)
-  done
+        // output the result in a markdown format
+        console.log(`* [${extensionName}](${CHROME_WEB_STORE_URL}/${extensionId})`)
+      })
+    })
+  })
 }
 
-main "$@"
+main()
