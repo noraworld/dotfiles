@@ -222,5 +222,6 @@
     "update.showReleaseNotes": false,
     "workbench.statusBar.visible": false,
     "application.shellEnvironmentResolutionTimeout": 20,
-    "editor.inlineSuggest.enabled": true
+    "editor.inlineSuggest.enabled": true,
+    "remoteHub.commitDirectlyWarning": "off"
 }
