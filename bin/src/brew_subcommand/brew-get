@@ -16,6 +16,8 @@ main() {
     exit 2
   fi
 
+  confirm
+
   if $cask; then
     brew install --cask "$argv"
   else
@@ -30,6 +32,21 @@ main() {
   brew bundle install --no-upgrade --file="$DOTPATH/core/Brewfile"
 
   echo "Installed $argv successfully! Do not forget to add and commit changes."
+}
+
+confirm() {
+  echo "It is highly recommended to update your Brewfile first"
+  echo
+  printf "Are you sure you want to proceed? [y/N]: "
+  exec < /dev/tty
+  read -r confirm
+
+  if [ "$confirm" = "y" ]; then
+    return
+  else
+    echo "Canceled"
+    exit 1
+  fi
 }
 
 parse_options() {
