@@ -2924,6 +2924,12 @@
           "full_name": "alfred"
         }
       },
+      "appcleaner": {
+        "version": "3.6.8",
+        "options": {
+          "full_name": "appcleaner"
+        }
+      },
       "bartender": {
         "version": "4.2.25",
         "options": {
