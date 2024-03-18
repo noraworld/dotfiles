@@ -78,7 +78,6 @@ cask "karabiner-elements"
 cask "lunar"
 cask "visual-studio-code"
 cask "zoom"
-mas "LINE", id: 539883307
 mas "Noizio", id: 928871589
 vscode "alefragnani.rtf"
 vscode "angelmaneuver.wallpaper-setting"
