@@ -2912,12 +2912,6 @@
           "full_name": "1password"
         }
       },
-      "alfred": {
-        "version": "5.1.4,2195",
-        "options": {
-          "full_name": "alfred"
-        }
-      },
       "bartender": {
         "version": "4.2.25",
         "options": {
