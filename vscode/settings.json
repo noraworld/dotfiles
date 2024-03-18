@@ -224,6 +224,5 @@
     "application.shellEnvironmentResolutionTimeout": 20,
     "editor.inlineSuggest.enabled": true,
     "remoteHub.commitDirectlyWarning": "off",
-    "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Default Light Modern"
+    "window.autoDetectColorScheme": true
 }
