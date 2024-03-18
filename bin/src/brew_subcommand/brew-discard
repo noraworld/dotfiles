@@ -35,7 +35,7 @@ main() {
 }
 
 confirm() {
-  echo "It is highly recommended to update your Brewfile first"
+  echo "It is highly recommended to update your Brewfile first by \`brew backup\`"
   echo
   printf "Are you sure you want to proceed? [y/N]: "
   exec < /dev/tty
