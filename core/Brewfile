@@ -82,7 +82,6 @@ cask "lunar"
 cask "visual-studio-code"
 cask "youtube-to-mp3"
 cask "zoom"
-mas "BetterSnapTool", id: 417375580
 mas "LINE", id: 539883307
 mas "Noizio", id: 928871589
 vscode "alefragnani.rtf"
