@@ -8,12 +8,12 @@ abbrevs:
 
   - name: gls
     abbr: ls
-    snippet: gls --color=auto --literal
+    snippet: gls --color=auto --literal --time-style=+
     if: (( ${+commands[gls]} ))
 
   - name: ls
     abbr: ls
-    snippet: ls --color=auto --literal
+    snippet: ls --color=auto --literal --time-style=+
 
   - name: grep
     abbr: grep
