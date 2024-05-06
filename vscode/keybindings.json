@@ -104,10 +104,10 @@
     //     "key": "cmd+w",
     //     "command": "-workbench.action.closeActiveEditor"
     // },
-    {
-        "key": "cmd+q",
-        "command": "-workbench.action.quit"
-    },
+    // {
+    //     "key": "cmd+q",
+    //     "command": "-workbench.action.quit"
+    // },
     {
         "key": "ctrl+j",
         "command": "-editor.action.joinLines",
