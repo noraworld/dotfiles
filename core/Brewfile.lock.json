@@ -2892,12 +2892,6 @@
           "full_name": "1password"
         }
       },
-      "background-music": {
-        "version": "0.4.3",
-        "options": {
-          "full_name": "background-music"
-        }
-      },
       "bartender": {
         "version": "4.2.25",
         "options": {
