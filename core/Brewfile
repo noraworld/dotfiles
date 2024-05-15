@@ -79,6 +79,7 @@ cask "lunar"
 cask "visual-studio-code"
 cask "zoom"
 mas "Kindle", id: 302584613
+mas "LadioCast", id: 411213048
 mas "Noizio", id: 928871589
 mas "NordVPN", id: 905953485
 vscode "alefragnani.rtf"
