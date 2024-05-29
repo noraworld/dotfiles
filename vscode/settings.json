@@ -220,7 +220,7 @@
     "git.enableSmartCommit": true,
     "git.postCommitCommand": "sync",
     "update.showReleaseNotes": false,
-    "workbench.statusBar.visible": false,
+    // "workbench.statusBar.visible": false,
     "application.shellEnvironmentResolutionTimeout": 20,
     "editor.inlineSuggest.enabled": true,
     "remoteHub.commitDirectlyWarning": "off"
