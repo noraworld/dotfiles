@@ -130,9 +130,9 @@ abbrevs:
     abbr: popd
     snippet: pop_directory
 
-  - name: shred
-    abbr: shred
-    snippet: sudo shredall
+  #- name: shred
+  #  abbr: shred
+  #  snippet: sudo shredall
 
   - name: shredall
     abbr: shredall
