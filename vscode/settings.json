@@ -223,5 +223,6 @@
     // "workbench.statusBar.visible": false,
     "application.shellEnvironmentResolutionTimeout": 20,
     "editor.inlineSuggest.enabled": true,
-    "remoteHub.commitDirectlyWarning": "off"
+    "remoteHub.commitDirectlyWarning": "off",
+    "editor.stickyScroll.enabled": false,
 }
