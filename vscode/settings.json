@@ -225,5 +225,6 @@
     "editor.inlineSuggest.enabled": true,
     "remoteHub.commitDirectlyWarning": "off",
     "editor.stickyScroll.enabled": false,
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "window.autoDetectColorScheme": true,
 }
