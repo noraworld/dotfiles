@@ -227,4 +227,6 @@
     "editor.stickyScroll.enabled": false,
     "extensions.ignoreRecommendations": true,
     "window.autoDetectColorScheme": true,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown.preview.scrollEditorWithPreview": false
 }
