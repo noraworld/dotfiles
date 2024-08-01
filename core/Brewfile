@@ -76,7 +76,6 @@ cask "google-drive"
 cask "google-japanese-ime"
 cask "iterm2"
 cask "karabiner-elements"
-cask "lunar"
 cask "visual-studio-code"
 cask "zoom"
 mas "Kindle", id: 302584613
