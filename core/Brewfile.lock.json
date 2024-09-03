@@ -2039,6 +2039,50 @@
           }
         }
       },
+      "mecab": {
+        "version": "0.996",
+        "bottle": {
+          "rebuild": 4,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:b442dff5851dc2e529a82d84a59b135e6f79ba6af1f295589e776aa2439d71f6",
+              "sha256": "b442dff5851dc2e529a82d84a59b135e6f79ba6af1f295589e776aa2439d71f6"
+            },
+            "arm64_ventura": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:b64f24600f7e8cad0dd98a985b72a446db41af35a192261ec489fc059e9a354f",
+              "sha256": "b64f24600f7e8cad0dd98a985b72a446db41af35a192261ec489fc059e9a354f"
+            },
+            "arm64_monterey": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:99d7d453a35685f10cc15e0135d7ec612b9d695e58a2d36032daef5b6dac9a6f",
+              "sha256": "99d7d453a35685f10cc15e0135d7ec612b9d695e58a2d36032daef5b6dac9a6f"
+            },
+            "sonoma": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:d91a5e1bd7fdea15cfc0469705b33a71b02ad5c2ec2a599ab49829d9a6baa916",
+              "sha256": "d91a5e1bd7fdea15cfc0469705b33a71b02ad5c2ec2a599ab49829d9a6baa916"
+            },
+            "ventura": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:361bce3217483e859b5c6d364da2ea098c63058411ed5324af8bf6c018046fef",
+              "sha256": "361bce3217483e859b5c6d364da2ea098c63058411ed5324af8bf6c018046fef"
+            },
+            "monterey": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:754a860b791ac92d825d4ff6b6b1f63e7c31e8983e603e844d1e4675732f343f",
+              "sha256": "754a860b791ac92d825d4ff6b6b1f63e7c31e8983e603e844d1e4675732f343f"
+            },
+            "x86_64_linux": {
+              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mecab/blobs/sha256:f730abd5e95a325a9e2e012ac01714e9a22e694d91e5bb026d501495d9899ff6",
+              "sha256": "f730abd5e95a325a9e2e012ac01714e9a22e694d91e5bb026d501495d9899ff6"
+            }
+          }
+        }
+      },
       "mosh": {
         "version": "1.4.0",
         "bottle": {
