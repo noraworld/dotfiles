@@ -3130,6 +3130,12 @@
           "full_name": "chromedriver"
         }
       },
+      "docker": {
+        "version": "4.34.0,165256",
+        "options": {
+          "full_name": "docker"
+        }
+      },
       "firefox": {
         "version": "130.0",
         "options": {
