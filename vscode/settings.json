@@ -118,6 +118,7 @@
         "devto",
         "diskutil",
         "disp",
+        "disqus",
         "Dnsmasq",
         "Dotenv",
         "dotfiles",
@@ -228,5 +229,7 @@
     "extensions.ignoreRecommendations": true,
     "window.autoDetectColorScheme": true,
     "markdown.preview.scrollPreviewWithEditor": false,
-    "markdown.preview.scrollEditorWithPreview": false
+    "markdown.preview.scrollEditorWithPreview": false,
+    "editor.parameterHints.enabled": false,
+    "editor.hover.enabled": false
 }
