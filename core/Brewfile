@@ -59,7 +59,7 @@ brew "lsd"
 brew "mas"
 brew "mecab"
 brew "mosh"
-brew "mysql@8.0"
+brew "mysql@8.0", restart_service: true, link: true
 brew "nghttp2"
 brew "nmap"
 brew "openssl@1.1"
