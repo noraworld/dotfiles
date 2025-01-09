@@ -3396,6 +3396,12 @@
           "full_name": "karabiner-elements"
         }
       },
+      "lunar": {
+        "version": "6.8.6",
+        "options": {
+          "full_name": "lunar"
+        }
+      },
       "visual-studio-code": {
         "version": "1.96.2",
         "options": {
