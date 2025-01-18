@@ -2515,45 +2515,6 @@
           }
         }
       },
-      "postgresql@14": {
-        "version": "14.13",
-        "bottle": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_sequoia": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:98f8b1b18ad13b8ad8e07a1087ee457dbadb60a317ac77e71025e18ef65a1d72",
-              "sha256": "98f8b1b18ad13b8ad8e07a1087ee457dbadb60a317ac77e71025e18ef65a1d72"
-            },
-            "arm64_sonoma": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:e06e4275448de050feb2dfd89aded87b710beef7f0e56f78fe4d3ef143611c57",
-              "sha256": "e06e4275448de050feb2dfd89aded87b710beef7f0e56f78fe4d3ef143611c57"
-            },
-            "arm64_ventura": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:4c5c775bc9a1e8eca606ee23723a7a6e711696295dfa212e57807bd537842c67",
-              "sha256": "4c5c775bc9a1e8eca606ee23723a7a6e711696295dfa212e57807bd537842c67"
-            },
-            "sonoma": {
-              "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:821c9f71749f0b5adc8775ff47298fa1480f8362dfa6c3175c6bc43f1095716f",
-              "sha256": "821c9f71749f0b5adc8775ff47298fa1480f8362dfa6c3175c6bc43f1095716f"
-            },
-            "ventura": {
-              "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:35c483187065c59241192fb80fb5030c95275caa393891fbb258568e874bc6df",
-              "sha256": "35c483187065c59241192fb80fb5030c95275caa393891fbb258568e874bc6df"
-            },
-            "x86_64_linux": {
-              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/postgresql/14/blobs/sha256:1bde7950bb79ebc8232bae9498550fdb173fec30fc90cb2ea395158ab7acf018",
-              "sha256": "1bde7950bb79ebc8232bae9498550fdb173fec30fc90cb2ea395158ab7acf018"
-            }
-          }
-        }
-      },
       "python@3.11": {
         "version": "3.11.9_1",
         "bottle": {
