@@ -2290,48 +2290,6 @@
           }
         }
       },
-      "mysql@8.0": {
-        "version": "8.0.40_2",
-        "bottle": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_sequoia": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:675a5aa2b49b8ea24cd20cd6e002d2459846af17ec2362dd49fd5df0fdb26ac2",
-              "sha256": "675a5aa2b49b8ea24cd20cd6e002d2459846af17ec2362dd49fd5df0fdb26ac2"
-            },
-            "arm64_sonoma": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:ef1f6a68c4e041be98fbd1143bc4a922f7432acfbbad6af40e0f107be439bb13",
-              "sha256": "ef1f6a68c4e041be98fbd1143bc4a922f7432acfbbad6af40e0f107be439bb13"
-            },
-            "arm64_ventura": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:95f2bba21e6561478593b6387a8370fdb94734889d97cf8056e3413f31c0fbf1",
-              "sha256": "95f2bba21e6561478593b6387a8370fdb94734889d97cf8056e3413f31c0fbf1"
-            },
-            "sonoma": {
-              "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:f3d4dad5b24e7f9ad9640bf06c9bd6da2ab367819ed64f07426b8b10bea8fa09",
-              "sha256": "f3d4dad5b24e7f9ad9640bf06c9bd6da2ab367819ed64f07426b8b10bea8fa09"
-            },
-            "ventura": {
-              "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:97a5aa6a2d6571b18d1aad0777c3c3f4d2f6d3b79208be10723d751ffc94e21b",
-              "sha256": "97a5aa6a2d6571b18d1aad0777c3c3f4d2f6d3b79208be10723d751ffc94e21b"
-            },
-            "x86_64_linux": {
-              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mysql/8.0/blobs/sha256:a789bd3d286cfdae3bfeab735139c850efc8d4d8e85692b45183124ce3f9b769",
-              "sha256": "a789bd3d286cfdae3bfeab735139c850efc8d4d8e85692b45183124ce3f9b769"
-            }
-          }
-        },
-        "options": {
-          "link": true
-        }
-      },
       "nghttp2": {
         "version": "1.64.0",
         "bottle": {

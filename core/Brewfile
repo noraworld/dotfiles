@@ -59,7 +59,6 @@ brew "lsd"
 brew "mas"
 brew "mecab"
 brew "mosh"
-brew "mysql@8.0", link: true
 brew "nghttp2"
 brew "nmap"
 brew "openssl@1.1"
