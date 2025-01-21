@@ -307,6 +307,23 @@ abbrevs:
     abbr: '.9'
     snippet: awk '{ print $9 }'
 
+
+
+  # unlock
+  - name: unlock chime
+    abbr: ch
+    snippet: unlock chime --skip --times 5
+
+  - name: unlock crimson
+    abbr: cr
+    snippet: unlock crimson --skip --times 5
+
+  - name: unlock youtube-music
+    abbr: m
+    snippet: unlock youtube-music --skip --times 5
+
+
+
   - name: GNU getopt for macOS
     abbr: getopt
     snippet: $(brew --prefix)/opt/gnu-getopt/bin/getopt
