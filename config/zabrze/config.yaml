@@ -42,6 +42,10 @@ abbrevs:
     abbr: pop
     snippet: pop_directory
 
+  - name: bundle install
+    abbr: bi
+    snippet: bundle install
+
   - name: bundle exec
     abbr: be
     snippet: bundle exec
