@@ -313,7 +313,7 @@ abbrevs:
 
 
 
-  # unlock
+  # unlock & trailblazer
   - name: unlock chime
     abbr: ch
     snippet: unlock chime --skip
@@ -325,6 +325,18 @@ abbrevs:
   - name: unlock youtube-music
     abbr: m
     snippet: unlock youtube-music --skip
+
+  - name: trailblazer youtube-music-persistent
+    abbr: mp
+    snippet: trailblazer youtube-music-persistent
+
+  - name: trailblazer social-media
+    abbr: sm
+    snippet: trailblazer social-media
+
+  - name: trailblazer superman
+    abbr: s
+    snippet: trailblazer superman
 
 
 
