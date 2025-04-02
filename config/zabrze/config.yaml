@@ -316,15 +316,15 @@ abbrevs:
   # unlock
   - name: unlock chime
     abbr: ch
-    snippet: unlock chime --skip --times 5
+    snippet: unlock chime --skip
 
   - name: unlock crimson
     abbr: cr
-    snippet: unlock crimson --skip --times 5
+    snippet: unlock crimson --skip
 
   - name: unlock youtube-music
     abbr: m
-    snippet: unlock youtube-music --skip --times 5
+    snippet: unlock youtube-music --skip
 
 
 
