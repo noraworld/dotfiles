@@ -330,13 +330,17 @@ abbrevs:
     abbr: mp
     snippet: trailblazer youtube-music-persistent
 
+  - name: trailblazer superman
+    abbr: sp
+    snippet: trailblazer superman
+
   - name: trailblazer social-media
     abbr: sm
     snippet: trailblazer social-media
 
-  - name: trailblazer superman
+  - name: unlock social-media-allow
     abbr: s
-    snippet: trailblazer superman
+    snippet: unlock social-media-allow --skip
 
 
 
