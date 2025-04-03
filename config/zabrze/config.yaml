@@ -313,7 +313,7 @@ abbrevs:
 
 
 
-  # unlock & trailblazer
+  # Raspberry Pi
   - name: unlock chime
     abbr: ch
     snippet: unlock chime --skip
@@ -321,6 +321,14 @@ abbrevs:
   - name: unlock crimson
     abbr: cr
     snippet: unlock crimson --skip
+
+  - name: garnish prep && garnish savor
+    abbr: g
+    snippet: garnish prep && garnish savor
+
+  - name: ls dnsmasq conf
+    abbr: l
+    snippet: ls --color=auto --literal --time-style=+ -al /etc/dnsmasq.toggle && echo && ls --color=auto --literal --time-style=+ -al /etc/dnsmasq.priv/toggle
 
   - name: unlock youtube-music
     abbr: m
