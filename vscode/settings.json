@@ -24,6 +24,7 @@
     "editor.foldingStrategy": "indentation",
     // https://github.com/microsoft/vscode/issues/54312#issuecomment-583654497
     "editor.rulers": [
+
         {
             "column": 120, // it is generally recommended that the line length does not exceed this value
             "color": "#ffff0022"
@@ -106,6 +107,7 @@
         "bluez",
         "Brewfile",
         "buildpacks",
+        "Cambly",
         "Chatwork",
         "cleardb",
         "Cloudinary",
@@ -155,6 +157,7 @@
         "Logicool",
         "Longman",
         "Meshnet",
+        "Misskey",
         "Mistel",
         "mysqldump",
         "NARUTO",
