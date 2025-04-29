@@ -27,7 +27,7 @@
 
         {
             "column": 120, // it is generally recommended that the line length does not exceed this value
-            "color": "#ffff0022"
+            "color": "#ffc31e66"
         },
         {
             "column": 160,
