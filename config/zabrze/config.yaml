@@ -350,6 +350,10 @@ abbrevs:
     abbr: s
     snippet: unlock social-media-allow --skip
 
+  - name: trailblazer youtube
+    abbr: y
+    snippet: trailblazer youtube
+
 
 
   - name: GNU getopt for macOS
