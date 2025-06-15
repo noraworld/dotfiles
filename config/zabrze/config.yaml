@@ -95,7 +95,7 @@ abbrevs:
 
   - name: diff
     abbr: diff
-    snippet: diff -rx .DS_Store
+    snippet: colordiff -rx .DS_Store
 
   - name: colordiff
     abbr: colordiff
