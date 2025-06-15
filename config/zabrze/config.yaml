@@ -342,6 +342,10 @@ abbrevs:
     abbr: m
     snippet: unlock youtube-music --skip
 
+  - name: trailblazer all
+    abbr: all
+    snippet: trailblazer all --interval 40 --retry 10
+
   - name: trailblazer youtube-music-persistent
     abbr: mp
     snippet: trailblazer youtube-music-persistent
