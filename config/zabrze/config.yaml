@@ -93,6 +93,14 @@ abbrevs:
     abbr: man
     snippet: MANWIDTH=$(($(echo $COLUMNS - 20))) man
 
+  - name: diff
+    abbr: diff
+    snippet: diff -rx .DS_Store
+
+  - name: colordiff
+    abbr: colordiff
+    snippet: colordiff -rx .DS_Store
+
 
 
   # for safe operations
