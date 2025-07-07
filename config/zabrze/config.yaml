@@ -344,7 +344,7 @@ abbrevs:
 
   - name: trailblazer all
     abbr: all
-    snippet: trailblazer all --interval 40 --retry 10
+    snippet: trailblazer all --interval 40 --retry 10 --sincere
 
   - name: trailblazer youtube-music-persistent
     abbr: mp
