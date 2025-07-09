@@ -326,6 +326,10 @@ abbrevs:
     abbr: ch
     snippet: unlock chime --skip
 
+  - name: unlock gmail
+    abbr: gm
+    snippet: unlock gmail --skip
+
   - name: unlock crimson
     abbr: cr
     snippet: unlock crimson --skip
