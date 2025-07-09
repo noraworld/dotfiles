@@ -52,6 +52,7 @@ brew "imagemagick@6"
 brew "iproute2mac"
 brew "isl"
 brew "jq"
+brew "libffi"
 brew "libiconv", link: true
 brew "libmagic"
 brew "libmpc"
