@@ -344,7 +344,7 @@ abbrevs:
 
   - name: ls dnsmasq conf
     abbr: l
-    snippet: ls --color=auto --literal --time-style=+ -al /etc/dnsmasq.toggle && echo && ls --color=auto --literal --time-style=+ -al /etc/dnsmasq.priv/toggle
+    snippet: ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.toggle && echo && ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.priv/toggle
 
   - name: unlock youtube-music
     abbr: m
