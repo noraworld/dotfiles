@@ -101,6 +101,10 @@ abbrevs:
     abbr: colordiff
     snippet: colordiff -rx .DS_Store
 
+  - name: dig
+    abbr: dig
+    snippet: dig +short
+
 
 
   # for safe operations
