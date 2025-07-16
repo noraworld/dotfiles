@@ -105,6 +105,10 @@ abbrevs:
     abbr: dig
     snippet: dig +short
 
+  - name: len
+    abbr: len
+    snippet: perl -Mutf8 -e 'use Encode; print length(decode_utf8($ARGV[0])), "\n"'
+
 
 
   # for safe operations
