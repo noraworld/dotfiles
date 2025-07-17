@@ -354,29 +354,29 @@ abbrevs:
     abbr: m
     snippet: unlock youtube-music --skip
 
-  - name: trailblazer all
-    abbr: all
-    snippet: trailblazer all --interval 40 --retry 10 --sincere
-
-  - name: trailblazer youtube-music-persistent
-    abbr: mp
-    snippet: trailblazer youtube-music-persistent
-
-  - name: trailblazer superman
-    abbr: sp
-    snippet: trailblazer superman
-
-  - name: trailblazer social-media
-    abbr: sm
-    snippet: trailblazer social-media
-
   - name: unlock social-media-allow
     abbr: s
     snippet: unlock social-media-allow --skip
 
+  - name: trailblazer all
+    abbr: all
+    snippet: trailblazer all --interval 40 --retry 10 --sincere --refresh
+
+  - name: trailblazer youtube-music-persistent
+    abbr: mp
+    snippet: trailblazer youtube-music-persistent --sincere
+
+  - name: trailblazer superman
+    abbr: sp
+    snippet: trailblazer superman --sincere
+
+  - name: trailblazer social-media
+    abbr: sm
+    snippet: trailblazer social-media --sincere
+
   - name: trailblazer youtube
     abbr: y
-    snippet: trailblazer youtube
+    snippet: trailblazer youtube --sincere
 
 
 
