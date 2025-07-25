@@ -11,7 +11,7 @@ if [ -e ~/.bin ]; then
   PATH=$HOME/.bin/caution:$PATH
 
   # Load completions
-  fpath=( $HOME/.bin/zsh_completions "${fpath[@]}" )
+  fpath=( $HOME/.bin/zsh_completions $HOME/workspace/cron-conf/raspberrypi/bin/completions/zsh "${fpath[@]}" )
   while read line; do
     autoload -Uz ${line}
   done < $HOME/.bin/zsh_completions
