@@ -360,23 +360,23 @@ abbrevs:
 
   - name: trailblazer all
     abbr: all
-    snippet: trailblazer all --interval 40 --retry 10 --sincere --refresh
+    snippet: trailblazer all --interval 40 --retry 10 --sincere --force-retry --refresh
 
   - name: trailblazer youtube-music-persistent
     abbr: mp
-    snippet: trailblazer youtube-music-persistent --sincere
+    snippet: trailblazer youtube-music-persistent --sincere --force-retry
 
   - name: trailblazer superman
     abbr: sp
-    snippet: trailblazer superman --sincere
+    snippet: trailblazer superman --sincere --force-retry
 
   - name: trailblazer social-media
     abbr: sm
-    snippet: trailblazer social-media --sincere
+    snippet: trailblazer social-media --sincere --force-retry
 
   - name: trailblazer youtube
     abbr: y
-    snippet: trailblazer youtube --sincere
+    snippet: trailblazer youtube --sincere --force-retry
 
 
 
