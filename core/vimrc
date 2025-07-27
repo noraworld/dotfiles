@@ -64,6 +64,11 @@ autocmd BufWritePre *\(.diff\)\@<! call <SID>remove_dust()
 " Always start on first line of git commit message
 " cf. https://vim.fandom.com/wiki/Always_start_on_first_line_of_git_commit_message
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+" Do not wrap (defualt: 72)
+autocmd FileType gitcommit setlocal textwidth=0
+autocmd FileType gitcommit setlocal nowrap
+" Set vertical line
+autocmd FileType gitcommit setlocal colorcolumn=50,70
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
