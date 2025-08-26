@@ -32,6 +32,7 @@
 	wsErrorHighlight = all
 [pull]
 	rebase = false
+	ff = only
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
