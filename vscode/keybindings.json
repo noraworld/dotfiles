@@ -163,5 +163,15 @@
         "key": "ctrl+c",
         "command": "closeFindWidget",
         "when": "editorFocus && findWidgetVisible && !isComposing"
+    },
+    {
+        "key": "cmd+k b",
+        "command": "markdown.showPreview",
+        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+    },
+    {
+        "key": "shift+cmd+v",
+        "command": "-markdown.showPreview",
+        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
     }
 ]
