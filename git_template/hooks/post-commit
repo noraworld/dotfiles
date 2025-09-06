@@ -9,13 +9,13 @@
 #     cherry-pick (after --continue):       119e7db53 (HEAD -> release/app-20220214-2) HEAD@{0}: cherry-pick: Add tests for recent_comment_counts
 
 # Skip if cherry-picking
-if [ "$(git reflog -n 1 | egrep '\(?cherry-pick\)?:')" ]; then
+if git reflog -n 1 | grep -Eq '\(?cherry-pick\)?:'; then
   exit 0
 fi
 
 git --no-pager log -1
 
-echo "Committed as:"
-echo "  (use \"git reset --soft HEAD^\" to undo)\n"
-echo "	\033[1;93m`git config --local user.name` <`git config --local user.email`>\033[00m\n"
-echo "\033[1;95mCheck if they are correct\033[00m\n"
+printf "\nCommitted as:\n"
+printf "  (use \"git reset --soft HEAD^\" to undo)\n\n"
+printf "	\033[1;93m%s <%s>\033[00m\n\n" "$(git config --local user.name)" "$(git config --local user.email)"
+printf "\033[1;95mCheck if they are correct\033[00m\n\n"
