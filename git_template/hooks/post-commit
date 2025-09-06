@@ -13,7 +13,7 @@ if [ "$(git reflog -n 1 | egrep '\(?cherry-pick\)?:')" ]; then
   exit 0
 fi
 
-git log
+git --no-pager log -1
 
 echo "Committed as:"
 echo "  (use \"git reset --soft HEAD^\" to undo)\n"
