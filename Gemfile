@@ -9,3 +9,4 @@
 source 'https://rubygems.org'
 
 gem 'pokemon', '>= 0.1.0'
+gem 'cocoapods'
