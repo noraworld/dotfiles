@@ -52,8 +52,8 @@ function __git_auto_execute() {
 }
 
 function __git_auto_fetch() {
-  (git fetch   > /dev/null 2>&1 &)
-  (git refresh > /dev/null 2>&1 &) # on the way
+  (git fetch > /dev/null 2>&1 &)
+  (rm -fr $(git rev-parse --git-dir)/hooks && git init > /dev/null 2>&1 &) # on the way
 }
 
 function __git_deletable_branches() {
