@@ -246,7 +246,7 @@ abbrevs:
 
   - name: git refresh
     abbr: gref
-    snippet: touch $(git rev-parse --git-dir)/hooks/tmp && rm -r $(git rev-parse --git-dir)/hooks/* && git init
+    snippet: rm -fr $(git rev-parse --git-dir)/hooks && git init > /dev/null
     evaluate: true
 
 
