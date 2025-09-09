@@ -19,7 +19,7 @@ _[convert bash `ls` output to json array](https://stackoverflow.com/questions/10
 
 ### Markdown
 ```shell
-cat /Users/kosuke/Library/Application\ Support/Firefox/Profiles/*.default-release/addons.json | jq -r '.addons[] | "* [" + .name + "](" + .amoListingURL + ")"'
+cat ~/Library/Application\ Support/Firefox/Profiles/*.default-release/addons.json | jq -r '.addons[] | "* [" + .name + "](" + .amoListingURL + ")"'
 ```
 
 * Themes you have installed are also included
