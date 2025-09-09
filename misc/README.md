@@ -1,10 +1,12 @@
-# How to retrieve all the Chrome extensions you have installed
-## Markdown
+# How to retrieve all the browser extensions you have installed (macOS)
+## Google Chrome
+
+### Markdown
 ```shell
 store-chrome-extensions | sort > misc/chrome_extensions.md
 ```
 
-## JSON
+### JSON
 ```shell
 ls ~/Library/Application\ Support/Google/Chrome/Default/Extensions | jq -Rs 'split("\n")[:-1]' > misc/chrome_extensions.json
 ```
