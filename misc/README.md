@@ -12,3 +12,16 @@ ls ~/Library/Application\ Support/Google/Chrome/Default/Extensions | jq -Rs 'spl
 ```
 
 _[convert bash `ls` output to json array](https://stackoverflow.com/questions/10234327/convert-bash-ls-output-to-json-array#answer-32354503)_
+
+
+
+## Mozilla Firefox
+
+### Markdown
+```shell
+cat /Users/kosuke/Library/Application\ Support/Firefox/Profiles/*.default-release/addons.json | jq -r '.addons[] | "* [" + .name + "](" + .amoListingURL + ")"'
+```
+
+* Themes you have installed are also included
+* The extensions that violate Mozilla's policies are NOT included
+* [It seems like `addons.json` is updated automatically every 24 hours](https://www.google.com/search?q=firefox+addon.json+update+timing)
