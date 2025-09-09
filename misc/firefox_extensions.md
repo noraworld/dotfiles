@@ -28,6 +28,3 @@
 * [CyberPurify - Harmful Content Purifier for Kids](https://addons.mozilla.org/en-US/firefox/addon/porn-blocker-cyberpurify/)
 * [Video Commander](https://addons.mozilla.org/en-US/firefox/addon/video-commander/)
 * [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-* [myMark.me](https://addons.mozilla.org/en-US/firefox/blocked-addon/%7B47f0fe68-5290-4f04-842b-61826c625b72%7D/2.3/) [^restricted]
-
-[^restricted]: This extension is restricted for violating Mozilla’s policies and has been disabled. You can enable it, but this may be risky.
