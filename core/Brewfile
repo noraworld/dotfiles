@@ -106,6 +106,7 @@ mas "LadioCast", id: 411213048
 mas "Noizio", id: 928871589
 mas "NordVPN", id: 905953485
 mas "Relax Melodies", id: 467103113
+mas "Xcode", id: 497799835
 vscode "alefragnani.rtf"
 vscode "angelmaneuver.wallpaper-setting"
 vscode "be5invis.toml"
@@ -113,6 +114,8 @@ vscode "bierner.markdown-mermaid"
 vscode "bungcip.better-toml"
 vscode "connorshea.vscode-ruby-test-adapter"
 vscode "coolbear.systemd-unit-file"
+vscode "dart-code.dart-code"
+vscode "dart-code.flutter"
 vscode "devwright.vscode-terminal-capture"
 vscode "docker.docker"
 vscode "edgardmessias.clipboard-manager"
