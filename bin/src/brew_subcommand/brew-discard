@@ -27,7 +27,7 @@ main() {
   # Force update Brewfile by current Mac's installed packages
   brew bundle dump --force --file="$DOTPATH/core/Brewfile"
   # Delete existing Brewfile.lock.json to clean up
-  rm "$DOTPATH/core/Brewfile.lock.json"
+  rm -f "$DOTPATH/core/Brewfile.lock.json"
   # Update Brewfile.lock.json
   brew bundle install --no-upgrade --file="$DOTPATH/core/Brewfile"
 
