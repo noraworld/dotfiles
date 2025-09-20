@@ -134,6 +134,7 @@
         "elif",
         "endfor",
         "endraw",
+        "envsman",
         "EPOCHREALTIME",
         "esac",
         "ethernets",
