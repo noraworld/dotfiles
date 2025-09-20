@@ -1,6 +1,5 @@
 #!/bin/bash
 
-max_commit_msg_length_threshold_to_warn=50
 max_commit_msg_length_threshold_to_strong_warn=69
 
 commit_msg=$(cat $1 | grep -v '^#' | sed '/^$/d')
@@ -20,17 +19,12 @@ if [ "$first_line" = "" ]; then
   fi
 fi
 
-if [ $first_line_length -gt $max_commit_msg_length_threshold_to_warn ]; then
-  if [ $first_line_length -gt $max_commit_msg_length_threshold_to_strong_warn ]; then
-    echo -en "\033[1;93m"
-    echo -e  "strong warning: commit summaries exceed $max_commit_msg_length_threshold_to_strong_warn characters ($first_line_length characters)"
-    echo -e  "it cannot show on one line on GitHub"
-    echo -e  "\033[00m"
-    echo -en "Are you sure you want to continue to commit? [Y/n]: "
-  else
-    echo -e  "warning: commit summaries contain more than $max_commit_msg_length_threshold_to_warn characters ($first_line_length characters)"
-    echo -en "Continue commit anyway? [Y/n]: "
-  fi
+if [ $first_line_length -gt $max_commit_msg_length_threshold_to_strong_warn ]; then
+  echo -en "\033[1;93m"
+  echo -e  "strong warning: commit summaries exceed $max_commit_msg_length_threshold_to_strong_warn characters ($first_line_length characters)"
+  echo -e  "it cannot show on one line on GitHub"
+  echo -e  "\033[00m"
+  echo -en "Are you sure you want to continue to commit? [Y/n]: "
 
   exec < /dev/tty
   read confirm
