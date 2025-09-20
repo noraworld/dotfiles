@@ -3,6 +3,7 @@
 	editor = vim
 	pager = cat
 	quotepath = false
+	hooksPath = ~/.git_template/hooks
 [include]
 	path = .gitconfig.local
 	path = .gitconfig.arm_mac

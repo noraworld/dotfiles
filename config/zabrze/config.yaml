@@ -244,11 +244,6 @@ abbrevs:
     global: true
     context: '^git\s'
 
-  - name: git refresh
-    abbr: gref
-    snippet: rm -fr $(git rev-parse --git-dir)/hooks && git init > /dev/null
-    evaluate: true
-
 
 
   # docker
