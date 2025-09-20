@@ -37,7 +37,7 @@ function __git_auto_execute() {
   if [ ! -f $_last_update_file ]; then
     __git_auto_fetch
     __git_deletable_branches
-    (echo $EPOCHREALTIME > $_last_update_file) &
+    (echo $EPOCHREALTIME > $_last_update_file &)
 
     return
   fi
@@ -47,12 +47,12 @@ function __git_auto_execute() {
   if [ $_git_fetch_duration -ge $GIT_FETCH_PERIOD_THRESHOLD ]; then
     __git_auto_fetch
     __git_deletable_branches
-    (echo $EPOCHREALTIME > $_last_update_file) &
+    (echo $EPOCHREALTIME > $_last_update_file &)
   fi
 }
 
 function __git_auto_fetch() {
-  (git fetch > /dev/null 2>&1) &
+  (git fetch > /dev/null 2>&1 &)
 }
 
 function __git_deletable_branches() {
