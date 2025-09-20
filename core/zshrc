@@ -4,6 +4,7 @@
 
 _dotfiles=(
   # ". $HOME/.zsh/tmux.zsh;"
+  ". $HOME/.zsh/history.zsh;"
   ". $HOME/.dotpath;"
   ". $HOME/.zsh/alias.zsh;"
   ". $HOME/.zsh/path.zsh;"

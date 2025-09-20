@@ -23,10 +23,6 @@ zstyle ':completion:*' format '%B%d%b'
 #zstyle ':fzf-tab:complete:ls:*' fzf-preview 'lk $realpath'
 #zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color=always $realpath'
 
-export HISTSIZE=100000
-export HISTFILE=~/.zsh_history
-export SAVEHIST=9999999999
-
 # https://necotech.org/archives/988
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -34,8 +30,5 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 
 setopt +o nomatch
-setopt hist_ignore_dups
 setopt interactivecomments
-setopt inc_append_history
-setopt extended_history
 setopt IGNOREEOF
