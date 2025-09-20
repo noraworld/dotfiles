@@ -1,39 +1,27 @@
-#!/bin/bash
+#!/bin/sh
 
-max_commit_msg_length_threshold_to_strong_warn=69
+COMMIT_MESSAGE_MAX_LENGTH=69
 
-commit_msg=$(cat $1 | grep -v '^#' | sed '/^$/d')
-first_line=`echo "$commit_msg" | head -1`
+first_line=$(cat "$1" | grep -v '^#' | sed '/^$/d' | head -1)
 first_line_length=${#first_line}
-staged_files=$(git status --porcelain | grep '^[MARCD]' | cut -c4- | xargs basename)
-staged_files_count=$(echo "$staged_files" | wc -l | awk '{ print $1 }')
 
-echo -e ""
+echo
 
-if [ "$first_line" = "" ]; then
-  if [ "$staged_files_count" -eq 1 ]; then
-    echo "$staged_files" > "$1"
-  else
-    echo "The number of staged files is not 1" >&2
-    exit 1
-  fi
-fi
-
-if [ $first_line_length -gt $max_commit_msg_length_threshold_to_strong_warn ]; then
-  echo -en "\033[1;93m"
-  echo -e  "strong warning: commit summaries exceed $max_commit_msg_length_threshold_to_strong_warn characters ($first_line_length characters)"
-  echo -e  "it cannot show on one line on GitHub"
-  echo -e  "\033[00m"
-  echo -en "Are you sure you want to continue to commit? [Y/n]: "
+if [ "$first_line_length" -gt $COMMIT_MESSAGE_MAX_LENGTH ]; then
+  printf "\033[1;93m"
+  echo "The commit summary exceeds $COMMIT_MESSAGE_MAX_LENGTH characters ($first_line_length characters)"
+  echo "It may be truncated on GitHub"
+  printf "\033[00m"
+  printf "Are you sure you want to commit anyway? [y/N]: "
 
   exec < /dev/tty
-  read confirm
+  read -r confirm
 
-  if [ $confirm = "Y" ] || [ $confirm = "Yes" ] || [ $confirm = "YES" ]; then
-    echo -e "\n\033[1;93mContinue\033[00m\n"
-    exit 0
-  else
-    echo -e "\n\033[1;91mCanceled\033[00m"
+  if [ "$confirm" != "Y" ] && [ "$confirm" != "Yes" ] && [ "$confirm" != "YES" ]; then
+    printf "\033[1;91m\n"
+    printf "Canceled\n"
+    printf "\033[00m"
+
     exit 1
   fi
 fi
