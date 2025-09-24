@@ -324,6 +324,45 @@ abbrevs:
 
 
 
+  # cd ..
+  - name: up 1
+    abbr: up
+    snippet: cd ..
+
+  - name: up 2
+    abbr: up2
+    snippet: cd ../..
+
+  - name: up 3
+    abbr: up3
+    snippet: cd ../../..
+
+  - name: up 4
+    abbr: up4
+    snippet: cd ../../../..
+
+  - name: up 5
+    abbr: up5
+    snippet: cd ../../../../..
+
+  - name: up 6
+    abbr: up6
+    snippet: cd ../../../../../..
+
+  - name: up 7
+    abbr: up7
+    snippet: cd ../../../../../../..
+
+  - name: up 8
+    abbr: up8
+    snippet: cd ../../../../../../../..
+
+  - name: up 9
+    abbr: up9
+    snippet: cd ../../../../../../../../..
+
+
+
   # Raspberry Pi
   - name: unlock chime
     abbr: ch
