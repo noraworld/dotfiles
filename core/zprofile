@@ -18,6 +18,7 @@ export LESS_TERMCAP_ue=$(echo ${LESS_TERMCAP_ue-$'\E[0m'})          # Ends under
 export LESS_TERMCAP_us=$(echo ${LESS_TERMCAP_us-$'\E[01;32m'})      # Begins underline.
 export EDITOR=$(echo ${EDITOR-vim})
 export IGNOREEOF=$(echo ${IGNOREEOF-10000})
+export MANWIDTH=$(echo ${MANWIDTH-$(( COLUMNS - 20 ))})
 export RUBY_CONFIGURE_OPTS=$(echo ${RUBY_CONFIGURE_OPTS-"--with-openssl-dir=/usr/local/opt/openssl@1.1"})
 export LDFLAGS=$(echo ${LDFLAGS-"-L/opt/homebrew/opt/imagemagick@6/lib"})
 export CPPFLAGS=$(echo ${CPPFLAGS-"-I/opt/homebrew/opt/imagemagick@6/include"})
