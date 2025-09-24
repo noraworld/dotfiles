@@ -46,13 +46,6 @@ asdf install ruby $(cat .ruby-version)
 gem install bundler
 bundle install
 
-asdf plugin-add python
-asdf install python $(cat .python-version)
-pip install pipenv
-asdf reshim python
-pipenv install --target python_modules
-asdf reshim python
-
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs $(cat .node-version)
 npm install
