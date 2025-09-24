@@ -60,11 +60,6 @@ abbrevs:
     abbr: ifp
     snippet: internet-fasting-period
 
-  - name: pokemon
-    abbr: pokemon
-    snippet: ASDF_PYTHON_VERSION=$(cat $DOTPATH/.python-version) pokemon
-    evaluate: true
-
   - name: reload-tmux
     abbr: reload-tmux
     snippet: ps aux | grep tmux | grep -v grep | awk '{ print $2 }' | xargs kill -2

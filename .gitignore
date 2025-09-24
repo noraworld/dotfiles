@@ -1,9 +1,6 @@
 gitconfig.local
 node_modules/
 
-# Python library
-src/pokemon
-
 # Ignore unnecessary or sensitive files under $HOME/.config
 config/anyenv/
 config/pulse/
