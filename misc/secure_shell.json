@@ -1,1 +1,43 @@
-{"magic":"nassh-prefs","version":1,"nassh":{"profile-ids":[{"id":"2e22","json":{"description":"ubuntu@192.168.82.1:60313","username":"ubuntu","hostname":"192.168.82.1","port":60313,"identity":"raspberrypi"}}],"welcome/notes-version":1,"welcome/show-count":10},"hterm":{"default":{"audible-bell-sound":"","close-on-exit":false,"copy-on-select":false,"clear-selection-after-copy":false,"enable-clipboard-notice":false,"font-family":"\"FiraCode Nerd Font Mono\", \"DejaVu Sans Mono\", \"Noto Sans Mono\", \"Everson Mono\", FreeMono, Menlo, Terminal, monospace","font-size":"14","keybindings":{"Meta+Ctrl+T":"PASS","Meta+F":"PASS","Meta+L":"PASS","Meta+R":"PASS"},"keybindings-os-defaults":true,"mouse-right-click-paste":false,"scrollbar-visible":false},"mosh":{"scrollbar-visible":false}}}
+{
+  "magic": "nassh-prefs",
+  "version": 1,
+  "nassh": {
+    "profile-ids": [
+      {
+        "id": "2e22",
+        "json": {
+          "description": "ubuntu@192.168.82.1:60313",
+          "username": "ubuntu",
+          "hostname": "192.168.82.1",
+          "port": 60313,
+          "identity": "raspberrypi"
+        }
+      }
+    ],
+    "welcome/notes-version": 1,
+    "welcome/show-count": 10
+  },
+  "hterm": {
+    "default": {
+      "audible-bell-sound": "",
+      "close-on-exit": false,
+      "copy-on-select": false,
+      "clear-selection-after-copy": false,
+      "enable-clipboard-notice": false,
+      "font-family": "\"FiraCode Nerd Font Mono\", \"DejaVu Sans Mono\", \"Noto Sans Mono\", \"Everson Mono\", FreeMono, Menlo, Terminal, monospace",
+      "font-size": "14",
+      "keybindings": {
+        "Meta+Ctrl+T": "PASS",
+        "Meta+F": "PASS",
+        "Meta+L": "PASS",
+        "Meta+R": "PASS"
+      },
+      "keybindings-os-defaults": true,
+      "mouse-right-click-paste": false,
+      "scrollbar-visible": false
+    },
+    "mosh": {
+      "scrollbar-visible": false
+    }
+  }
+}
