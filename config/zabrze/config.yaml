@@ -389,7 +389,7 @@ abbrevs:
 
   - name: trailblazer
     abbr: t
-    snippet: trailblazer --sincere --force-retry
+    snippet: trailblazer --force-retry --sincere
 
 
 
