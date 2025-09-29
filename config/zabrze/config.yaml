@@ -93,8 +93,10 @@ abbrevs:
     snippet: colordiff -rx .DS_Store
 
   - name: dig
-    abbr: dig
-    snippet: dig +short
+    abbr: s
+    snippet: +short
+    global: true
+    context: '^dig\s'
 
   - name: len
     abbr: len
