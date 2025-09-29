@@ -383,13 +383,15 @@ abbrevs:
     abbr: s
     snippet: unlock social-media-allow --skip
 
-  - name: trailblazer all
-    abbr: all
-    snippet: trailblazer all --interval 40 --retry 10 --sincere --force-retry --refresh
-
   - name: trailblazer
     abbr: t
     snippet: trailblazer --force-retry --sincere
+
+  - name: trailblazer all
+    abbr: all
+    snippet: --interval 40 --retry 10 --refresh all
+    global: true
+    context: '^trailblazer\s'
 
 
 
