@@ -21,7 +21,7 @@
     "default": {
       "audible-bell-sound": "",
       "background-color": "rgb(0, 0, 0)",
-      "background-image": "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://github.com/LazoVelko/Pokemon-Terminal/blob/0fb9b07df35c4757ce3abc6304cfe7b9b3d3e1a5/pokemonterminal/Images/Generation%20IV%20-%20Sinnoh/420.jpg?raw=true)",
+      "background-image": "linear-gradient(rgba(0, 0, 0, 0.7)), url(https://github.com/LazoVelko/Pokemon-Terminal/blob/0fb9b07df35c4757ce3abc6304cfe7b9b3d3e1a5/pokemonterminal/Images/Generation%20IV%20-%20Sinnoh/420.jpg?raw=true)",
       "background-size": "cover",
       "background-position": "center",
       "close-on-exit": false,
