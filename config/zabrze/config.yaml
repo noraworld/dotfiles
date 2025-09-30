@@ -224,16 +224,16 @@ abbrevs:
     global: true
     context: '^git\s'
 
-  - name: git up
-    abbr: up
-    snippet: push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+  - name: git down
+    abbr: down
+    snippet: pull --ff-only origin $(git rev-parse --abbrev-ref HEAD)
     evaluate: true
     global: true
     context: '^git\s'
 
-  - name: git down
-    abbr: down
-    snippet: pull --ff-only origin $(git rev-parse --abbrev-ref HEAD)
+  - name: git up
+    abbr: up
+    snippet: push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
     evaluate: true
     global: true
     context: '^git\s'
