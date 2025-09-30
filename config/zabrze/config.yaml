@@ -387,7 +387,13 @@ abbrevs:
 
   - name: trailblazer
     abbr: t
-    snippet: trailblazer --force-retry --sincere
+    snippet: trailblazer --force-retry
+
+  - name: trailblazer --sincere
+    abbr: s
+    snippet: --sincere
+    global: true
+    context: '^trailblazer\s'
 
   - name: trailblazer all
     abbr: all
