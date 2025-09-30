@@ -231,6 +231,13 @@ abbrevs:
     global: true
     context: '^git\s'
 
+  - name: git down
+    abbr: down
+    snippet: pull --ff-only origin $(git rev-parse --abbrev-ref HEAD)
+    evaluate: true
+    global: true
+    context: '^git\s'
+
   - name: git count
     abbr: count
     snippet: log --oneline | wc -l | awk '{ print $1 }'
