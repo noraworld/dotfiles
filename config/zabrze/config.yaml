@@ -226,7 +226,7 @@ abbrevs:
 
   - name: git down
     abbr: down
-    snippet: pull --ff-only origin $(git rev-parse --abbrev-ref HEAD)
+    snippet: pull --ff-only origin $(git rev-parse --abbrev-ref HEAD) || git pull --ff-only origin $(git rev-parse --abbrev-ref HEAD)
     evaluate: true
     global: true
     context: '^git\s'
