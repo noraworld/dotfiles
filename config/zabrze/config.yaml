@@ -175,10 +175,6 @@ abbrevs:
     context: '^git\s'
 
   - name: git commit
-    abbr: gc
-    snippet: git commit
-
-  - name: git commit
     abbr: c
     snippet: commit
     global: true
