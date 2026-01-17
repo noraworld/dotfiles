@@ -176,7 +176,7 @@ abbrevs:
 
   - name: git commit
     abbr: c
-    snippet: commit
+    snippet: commit -t <(printf '%s' "{}")
     global: true
     context: '^git\s'
 
