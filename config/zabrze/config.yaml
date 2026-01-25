@@ -360,49 +360,54 @@ abbrevs:
 
 
   # Raspberry Pi
-  - name: unlock chime
-    abbr: ch
-    snippet: unlock chime --skip
-
-  - name: unlock gmail
-    abbr: gm
-    snippet: unlock gmail --skip
-
-  - name: unlock crimson
-    abbr: cr
-    snippet: unlock crimson --skip
-
-  - name: garnish prep && garnish savor
-    abbr: g
-    snippet: garnish prep && garnish savor
-
   - name: ls dnsmasq conf
     abbr: l
     snippet: ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.toggle && echo && ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.priv/toggle
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: unlock chime
+    abbr: ch
+    snippet: trailblazer --force-retry chime
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: unlock crimson
+    abbr: cr
+    snippet: trailblazer --force-retry crimson
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock youtube-music
     abbr: m
-    snippet: unlock youtube-music --skip
+    snippet: trailblazer --force-retry youtube-music
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock social-media-allow
     abbr: s
-    snippet: unlock social-media-allow --skip
+    snippet: trailblazer --force-retry social-media-allow
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: unlock youtube
+    abbr: y
+    snippet: trailblazer --force-retry youtube
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: trailblazer
     abbr: t
     snippet: trailblazer --force-retry
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: trailblazer --sincere
     abbr: s
     snippet: --sincere
     global: true
     context: '^trailblazer\s'
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: trailblazer all
     abbr: all
     snippet: --interval 40 --retry 10 --refresh all
     global: true
     context: '^trailblazer\s'
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
 
 
