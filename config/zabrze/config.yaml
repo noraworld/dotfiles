@@ -370,6 +370,11 @@ abbrevs:
     snippet: trailblazer --force-retry chime
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
+  - name: unlock chime
+    abbr: gm
+    snippet: trailblazer --force-retry chime
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
   - name: unlock crimson
     abbr: cr
     snippet: trailblazer --force-retry crimson
