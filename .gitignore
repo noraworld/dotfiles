@@ -8,6 +8,7 @@ config/iterm2/
 config/configstore/update-notifier-zenn-cli.json
 config/configstore/zenn-cli.json
 config/configstore/update-notifier-npm.json
+config/configstore/update-notifier-web-ext.json
 config/systemd/
 config/gh/
 config/ookla/
