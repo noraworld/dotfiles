@@ -277,4 +277,10 @@
     "dart.flutterSdkPath": "$HOME/.local/share/flutter", // TEST: Can $HOME be really used?
     "terminal.integrated.stickyScroll.enabled": false,
     "chatgpt.commentCodeLensEnabled": false,
+    "workbench.editor.tabSizing": "fixed",
+    "workbench.editor.tabSizingFixedMinWidth": 38,
+    "workbench.hover.delay": 750,
+    "workbench.editor.tabActionCloseVisibility": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "workbench.activityBar.location": "hidden"
 }
