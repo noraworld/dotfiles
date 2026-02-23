@@ -275,5 +275,6 @@
     "markdown.preview.scrollEditorWithPreview": false,
     "editor.parameterHints.enabled": false,
     "dart.flutterSdkPath": "$HOME/.local/share/flutter", // TEST: Can $HOME be really used?
-    "terminal.integrated.stickyScroll.enabled": false
+    "terminal.integrated.stickyScroll.enabled": false,
+    "chatgpt.commentCodeLensEnabled": false,
 }
