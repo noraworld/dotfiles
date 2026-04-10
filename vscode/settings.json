@@ -244,6 +244,7 @@
         "toplevel",
         "ttyplay",
         "ttyrec",
+        "uncancel",
         "unfocus",
         "urandom",
         "UUUM",
