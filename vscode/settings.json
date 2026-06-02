@@ -285,5 +285,6 @@
     "workbench.hover.delay": 750,
     "workbench.editor.tabActionCloseVisibility": false,
     "workbench.editor.editorActionsLocation": "titleBar",
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "chat.disableAIFeatures": true
 }
