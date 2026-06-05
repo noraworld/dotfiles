@@ -286,5 +286,13 @@
     "workbench.editor.tabActionCloseVisibility": false,
     "workbench.editor.editorActionsLocation": "titleBar",
     "workbench.activityBar.location": "hidden",
-    "chat.disableAIFeatures": true
+    "chat.disableAIFeatures": true,
+    // https://qiita.com/vrn/items/8e3d8f5de828adbec827
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#c979f7",
+        "editor.selectionHighlightBackground": "#394185",
+        "editor.findMatchHighlightBackground": "#264eff",
+        "editor.findMatchBorder": "#ffffff",
+        "editor.findMatchBackground": "#ae00ff"
+    }
 }
