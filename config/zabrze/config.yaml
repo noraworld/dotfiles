@@ -102,6 +102,18 @@ abbrevs:
     abbr: ping
     snippet: ping -c 600
 
+  - name: gpg encrypt
+    abbr: e
+    snippet: -e -r mail@noraworld.com
+    global: true
+    context: '^gpg\s'
+
+  - name: gpg decrypt
+    abbr: d
+    snippet: -d -o output.
+    global: true
+    context: '^gpg\s'
+
   - name: len
     abbr: len
     snippet: perl -Mutf8 -e 'use Encode; print length(decode_utf8($ARGV[0])), "\n"'
