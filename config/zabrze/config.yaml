@@ -406,7 +406,7 @@ abbrevs:
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock social-media-allow
-    abbr: s
+    abbr: sm
     snippet: trailblazer --force-retry social-media-allow
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
