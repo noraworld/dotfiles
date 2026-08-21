@@ -298,5 +298,6 @@
         "editor.findMatchHighlightBackground": "#264eff",
         "editor.findMatchBorder": "#ffffff",
         "editor.findMatchBackground": "#ae00ff"
-    }
+    },
+    "explorer.confirmPasteNative": false
 }
