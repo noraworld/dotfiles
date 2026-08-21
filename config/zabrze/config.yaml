@@ -118,6 +118,10 @@ abbrevs:
     abbr: len
     snippet: perl -Mutf8 -e 'use Encode; print length(decode_utf8($ARGV[0])), "\n"'
 
+  - name: 💗
+    abbr: s
+    snippet: gh issue comment --repo "noraworld/private-diary-templates" $(gh issue list --repo "noraworld/private-diary-templates" --search "💗" --state open --json number --jq .[].number) --body "TODO"
+
 
 
   # for safe operations
