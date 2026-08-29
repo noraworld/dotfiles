@@ -4,105 +4,199 @@ tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "olets/tap"
 tap "rbenv/tap"
+# Strip or convert ANSI codes into HTML, (La)Tex, RTF, or BBCode
 brew "ansifilter"
+# TIFF library and utilities
 brew "libtiff"
+# New file format for still image compression
 brew "jpeg-xl"
+# ARP scanning and fingerprinting tool
 brew "arp-scan"
+# C parser in Python
 brew "pycparser"
+# C Foreign Function Interface for Python
 brew "cffi"
+# Cryptographic recipes and primitives for Python
 brew "cryptography"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU binary tools for native development
 brew "binutils"
+# Collection of portable C++ source libraries
 brew "boost"
+# Software library to render fonts
 brew "freetype"
+# XML-based font configuration API for X Windows
 brew "fontconfig"
+# Core application library for C
 brew "glib"
+# Cross-platform make
 brew "cmake"
+# Color-highlighted diff(1) output
 brew "colordiff"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# Pack, ship and run any application as a lightweight container
 brew "docker"
+# Text processing system for reStructuredText
 brew "docutils"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Validating, recursive, caching DNS resolver
 brew "unbound"
+# GNU Transport Layer Security (TLS) Library
 brew "gnutls"
+# OpenType text shaping engine
 brew "harfbuzz"
+# Image processing and image analysis library
 brew "leptonica"
+# Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
+# Secure Reliable Transport
 brew "srt"
+# OCR (Optical Character Recognition) engine
 brew "tesseract"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Interpreter for PostScript and PDF
 brew "ghostscript"
+# Remote repository management made easy
 brew "ghq"
+# Distributed revision control system
 brew "git"
+# Audit git repos for secrets
 brew "gitleaks"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Generate introspection data for GObject libraries
 brew "gobject-introspection"
+# GNU grep, egrep and fgrep
 brew "grep"
+# GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
+# Command-line benchmarking tool
 brew "hyperfine"
+# C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
+# Database of common MIME types
 brew "shared-mime-info"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
+# Library for reading RAW files from digital photo cameras
 brew "libraw"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Tools and libraries to manipulate images in many formats
 brew "imagemagick@6"
+# CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# Integer Set Library for the polyhedral model
 brew "isl"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Portable Foreign Function Interface library
 brew "libffi"
+# Conversion library
 brew "libiconv", link: true
+# Implementation of the file(1) command
 brew "libmagic"
+# C library for the arithmetic of high precision complex numbers
 brew "libmpc"
+# YAML Parser
 brew "libyaml"
+# Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Mac App Store command-line interface
 brew "mas"
+# Yet another part-of-speech and morphological analyzer
 brew "mecab"
+# Remote terminal application
 brew "mosh"
+# Open source relational database management system
 brew "mysql@8.0"
+# HTTP/2 C Library
 brew "nghttp2"
+# Port scanning utility for large networks
 brew "nmap"
+# 7-Zip (high compression file archiver) implementation
 brew "p7zip"
+# Swiss-army knife of markup format conversion
 brew "pandoc"
+# Simplistic interactive filtering tool
 brew "peco"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Tool Command Language
 brew "tcl-tk"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Source-code syntax highlighter
 brew "source-highlight"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Send macOS User Notifications from the command-line
 brew "terminal-notifier"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Google's JavaScript engine
 brew "v8"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Watch files and take action when they change
 brew "watchman"
+# Fake keyboard/mouse input and window management for X
 brew "xdotool"
 brew "olets/tap/zsh-abbr"
 brew "rbenv/tap/openssl@1.1"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Menu bar icon organiser
 cask "bartender"
 cask "chromedriver"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
 cask "firefox"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
+# Web browser
 cask "google-chrome"
+# Client for the Google Drive storage service
 cask "google-drive"
+# Japanese input software
 cask "google-japanese-ime"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Keyboard customiser
 cask "karabiner-elements"
+# Adaptive brightness for external displays
 cask "lunar"
+# Open-source code editor
 cask "visual-studio-code"
+# Downloads music from playlists or channels
 cask "youtube-to-mp3"
+# Video communication and virtual meeting platform
 cask "zoom"
 mas "Be Focused Pro", id: 961632517
 mas "Create File Menu", id: 1440519779
