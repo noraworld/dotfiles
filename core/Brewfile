@@ -1,6 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "olets/tap"
 tap "rbenv/tap"
@@ -168,16 +166,12 @@ brew "watch"
 brew "watchman"
 # Fake keyboard/mouse input and window management for X
 brew "xdotool"
-brew "olets/tap/zsh-abbr"
-brew "rbenv/tap/openssl@1.1"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Menu bar icon organiser
 cask "bartender"
-cask "chromedriver"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
-cask "firefox"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 # Web browser
@@ -220,7 +214,6 @@ vscode "docker.docker"
 vscode "edgardmessias.clipboard-manager"
 vscode "emilast.logfilehighlighter"
 vscode "foxundermoon.shell-format"
-vscode "github.copilot-chat"
 vscode "hbenl.vscode-test-explorer"
 vscode "hogashi.crontab-syntax-highlight"
 vscode "iliazeus.vscode-ansi"
