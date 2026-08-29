@@ -180,6 +180,8 @@ cask "google-chrome"
 cask "google-drive"
 # Japanese input software
 cask "google-japanese-ime"
+# Desktop automation application
+cask "hammerspoon"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Keyboard customiser
