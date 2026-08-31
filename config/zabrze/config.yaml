@@ -385,6 +385,28 @@ abbrevs:
     snippet: ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.toggle && echo && ls --color=auto --literal --time-style=+ -l /etc/dnsmasq.priv/toggle
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
+  - name: trailblazer
+    abbr: t
+    snippet: trailblazer --force-retry --sincere --cache-only
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: trailblazer all
+    abbr: all
+    snippet: --interval 40 --retry 10 --refresh all
+    global: true
+    context: '^trailblazer\s'
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: unlock youtube
+    abbr: y
+    snippet: trailblazer --force-retry --sincere --cache-only youtube
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: unlock youtube-music
+    abbr: m
+    snippet: trailblazer --force-retry --sincere --cache-only youtube-music
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
   - name: unlock chime
     abbr: ch
     snippet: trailblazer --force-retry --sincere --cache-only chime
@@ -400,31 +422,9 @@ abbrevs:
     snippet: trailblazer --force-retry --sincere --cache-only crimson
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
-  - name: unlock youtube-music
-    abbr: m
-    snippet: trailblazer --force-retry --sincere --cache-only youtube-music
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
   - name: unlock social-media-allow
     abbr: sm
     snippet: trailblazer --force-retry --sincere --cache-only social-media-allow
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
-  - name: unlock youtube
-    abbr: y
-    snippet: trailblazer --force-retry --sincere --cache-only youtube
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
-  - name: trailblazer
-    abbr: t
-    snippet: trailblazer --force-retry --sincere --cache-only
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
-  - name: trailblazer all
-    abbr: all
-    snippet: --interval 40 --retry 10 --refresh all
-    global: true
-    context: '^trailblazer\s'
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
 
