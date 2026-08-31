@@ -417,16 +417,6 @@ abbrevs:
     snippet: trailblazer --force-retry --sincere --cache-only chime
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
-  - name: unlock crimson
-    abbr: cr
-    snippet: trailblazer --force-retry --sincere --cache-only crimson
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
-  - name: unlock social-media-allow
-    abbr: sm
-    snippet: trailblazer --force-retry --sincere --cache-only social-media-allow
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
 
 
   - name: GNU getopt for macOS
