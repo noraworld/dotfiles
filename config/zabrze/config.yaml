@@ -387,27 +387,27 @@ abbrevs:
 
   - name: trailblazer
     abbr: t
-    snippet: trailblazer --force-retry --sincere
+    snippet: trailblazer --quotarget-force-retry --sincere-force-retry --sincere
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock youtube
     abbr: y
-    snippet: trailblazer --force-retry --sincere youtube
+    snippet: trailblazer --quotarget-force-retry --sincere-force-retry --sincere youtube
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock youtube-music
     abbr: m
-    snippet: trailblazer --force-retry --sincere youtube-music
+    snippet: trailblazer --quotarget-force-retry --sincere-force-retry --sincere youtube-music
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock chime
     abbr: ch
-    snippet: trailblazer --force-retry --sincere chime
+    snippet: trailblazer --quotarget-force-retry --sincere-force-retry --sincere chime
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: unlock chime
     abbr: gm
-    snippet: trailblazer --force-retry --sincere chime
+    snippet: trailblazer --quotarget-force-retry --sincere-force-retry --sincere chime
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
   - name: trailblazer all
