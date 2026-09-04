@@ -390,13 +390,6 @@ abbrevs:
     snippet: trailblazer --force-retry --sincere
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
-  - name: trailblazer all
-    abbr: all
-    snippet: --interval 40 --retry 10 --refresh all
-    global: true
-    context: '^trailblazer\s'
-    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
-
   - name: unlock youtube
     abbr: y
     snippet: trailblazer --force-retry --sincere youtube
@@ -415,6 +408,13 @@ abbrevs:
   - name: unlock chime
     abbr: gm
     snippet: trailblazer --force-retry --sincere chime
+    if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
+
+  - name: trailblazer all
+    abbr: all
+    snippet: --interval 40 --retry 10 --refresh all
+    global: true
+    context: '^trailblazer\s'
     if: 'grep -q "Raspberry Pi" /proc/device-tree/model 2>/dev/null'
 
 
