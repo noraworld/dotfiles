@@ -1,7 +1,14 @@
 -- codex://threads/01a04c9a-81e0-7831-86d7-26fdd78b3d7c
 
-local RUN_EVERY_MINUTES = 30
-local RUN_EVERY_SECONDS = RUN_EVERY_MINUTES * 60
+local GRAYSCALE_SCHEDULE = {
+  -- Use hours for specific hours, or fromHour/toHour for an inclusive range.
+  -- Use everyMinutes for regular intervals, or minutes = { 0, 15, 45 } for exact minutes.
+  { hours = { 0 }, everyMinutes = 10 },
+  { fromHour = 1, toHour = 7, everyMinutes = 5 },
+  { fromHour = 10, toHour = 19, everyMinutes = 30 },
+  { hours = { 22 }, everyMinutes = 20 },
+  { hours = { 23 }, everyMinutes = 15 },
+}
 -- local DEBUG_ALERT_SECONDS = 4
 -- local DEBUG_LOG_PATH = os.getenv("HOME") .. "/.hammerspoon/grayscale-debug.log"
 
@@ -9,6 +16,7 @@ local grayscaleTimer = nil
 local wakeWatcher = nil
 local nextRunAt = 0
 local enableGrayscaleIfNeeded = nil
+local scheduledMinutes = nil
 
 local function appendDebugLog(message)
   -- local line = os.date("%Y-%m-%d %H:%M:%S") .. " " .. message .. "\n"
@@ -47,8 +55,83 @@ end tell
   end
 end
 
-local function nextCronRunAt(afterTime)
-  return (math.floor(afterTime / RUN_EVERY_SECONDS) + 1) * RUN_EVERY_SECONDS
+local function addScheduledMinute(minutesByDay, hour, minute)
+  if hour < 0 or hour > 23 or minute < 0 or minute > 59 then
+    showDebug("grayscale: ignored invalid schedule time " .. tostring(hour) .. ":" .. tostring(minute))
+    return
+  end
+
+  minutesByDay[hour * 60 + minute] = true
+end
+
+local function addScheduleEntry(minutesByDay, entry)
+  local hours = entry.hours
+  if not hours then
+    hours = {}
+    for hour = entry.fromHour, entry.toHour do
+      table.insert(hours, hour)
+    end
+  end
+
+  for _, hour in ipairs(hours) do
+    if entry.minutes then
+      for _, minute in ipairs(entry.minutes) do
+        addScheduledMinute(minutesByDay, hour, minute)
+      end
+    else
+      for minute = 0, 59, entry.everyMinutes do
+        addScheduledMinute(minutesByDay, hour, minute)
+      end
+    end
+  end
+end
+
+local function scheduledMinutesOfDay()
+  if scheduledMinutes then
+    return scheduledMinutes
+  end
+
+  local minutesByDay = {}
+  for _, entry in ipairs(GRAYSCALE_SCHEDULE) do
+    addScheduleEntry(minutesByDay, entry)
+  end
+
+  scheduledMinutes = {}
+  for minuteOfDay in pairs(minutesByDay) do
+    table.insert(scheduledMinutes, minuteOfDay)
+  end
+  table.sort(scheduledMinutes)
+
+  return scheduledMinutes
+end
+
+local function nextScheduledRunAt(afterTime)
+  local schedule = scheduledMinutesOfDay()
+  if #schedule == 0 then
+    return nil
+  end
+
+  local now = os.date("*t", afterTime)
+  local todayStart = os.time({
+    year = now.year,
+    month = now.month,
+    day = now.day,
+    hour = 0,
+    min = 0,
+    sec = 0,
+  })
+  local afterMinuteOfDay = now.hour * 60 + now.min
+
+  for _, minuteOfDay in ipairs(schedule) do
+    local runAt = todayStart + minuteOfDay * 60
+    if minuteOfDay > afterMinuteOfDay or (minuteOfDay == afterMinuteOfDay and now.sec < 1) then
+      if runAt > afterTime then
+        return runAt
+      end
+    end
+  end
+
+  return todayStart + 24 * 60 * 60 + schedule[1] * 60
 end
 
 local function scheduleNextRun()
@@ -56,7 +139,12 @@ local function scheduleNextRun()
     grayscaleTimer:stop()
   end
 
-  nextRunAt = nextCronRunAt(os.time())
+  nextRunAt = nextScheduledRunAt(os.time())
+  if not nextRunAt then
+    showDebug("grayscale: no scheduled times")
+    return
+  end
+
   grayscaleTimer = hs.timer.doAt(os.date("%H:%M", nextRunAt), "1d", function()
     enableGrayscaleIfNeeded()
     scheduleNextRun()
