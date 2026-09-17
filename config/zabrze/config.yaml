@@ -120,7 +120,7 @@ abbrevs:
 
   - name: 💗
     abbr: s
-    snippet: gh issue comment --repo "noraworld/private-diary-templates" $(gh issue list --repo "noraworld/private-diary-templates" --search "💗" --state open --json number --jq .[].number) --body "TODO"
+    snippet: gh issue comment --repo "noraworld/private-diary-templates" $(gh issue list --repo "noraworld/private-diary-templates" --search "💗" --state open --json number --jq .[].number) --body "TODO" && date
 
 
 
