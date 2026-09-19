@@ -98,6 +98,17 @@ abbrevs:
     global: true
     context: '^dig\s'
 
+  - name: filter adguard dns ip address
+    abbr: ad
+    snippet: "| sed 's/94\\.140\\.14\\.35/& (AdGuard DNS Family Protection)/g'"
+    global: true
+    context: '^dig\s'
+
+  - name: filter adguard dns ip address
+    abbr: ad
+    snippet: "sed 's/94\\.140\\.14\\.35/& (AdGuard DNS Family Protection)/g'"
+    global: true
+
   - name: ping
     abbr: ping
     snippet: ping -c 600
