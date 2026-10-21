@@ -3,11 +3,11 @@
 local GRAYSCALE_SCHEDULE = {
   -- Use hours for specific hours, or fromHour/toHour for an inclusive range.
   -- Use everyMinutes for regular intervals, or minutes = { 0, 15, 45 } for exact minutes.
-  { hours = { 0 }, everyMinutes = 10 },
-  { fromHour = 1, toHour = 7, everyMinutes = 5 },
-  { fromHour = 10, toHour = 19, everyMinutes = 30 },
-  { hours = { 22 }, everyMinutes = 20 },
-  { hours = { 23 }, everyMinutes = 15 },
+  -- { hours = { 0 }, everyMinutes = 10 },
+  -- { fromHour = 1, toHour = 7, everyMinutes = 5 },
+  -- { fromHour = 10, toHour = 19, everyMinutes = 30 },
+  -- { hours = { 22 }, everyMinutes = 20 },
+  -- { hours = { 23 }, everyMinutes = 15 },
 }
 -- local DEBUG_ALERT_SECONDS = 4
 -- local DEBUG_LOG_PATH = os.getenv("HOME") .. "/.hammerspoon/grayscale-debug.log"
